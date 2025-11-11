@@ -3,6 +3,10 @@ const max_speed = 250.0
 const accel = 1250.0
 
 @onready var character_sprite = $Sprite
+@onready var coffee_sprite = $Coffee
+
+func _ready() -> void:
+	coffee_sprite.play("default")
 
 func _process(delta):
 	movement_process(delta)
@@ -24,4 +28,8 @@ func movement_process(delta: float):
 		character_sprite.frame = 0
 	
 	velocity = velocity.move_toward(direction * max_speed, accel * delta)
+	coffee_sprite.rotation_degrees = (velocity.x / max_speed) * -2
 	move_and_slide()
+	
+	$"../../Interface/Container/Debug/Pos".text = "pos: " + str(position)
+	$"../../Interface/Container/Debug/Vel".text = "vel: " + str(velocity)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cfkjqduve5x73"]
+[gd_scene load_steps=8 format=3 uid="uid://cfkjqduve5x73"]
 
 [ext_resource type="PackedScene" uid="uid://cd0reu8phr487" path="res://Entities/PrototypePlayer/PrototypePlayer.tscn" id="1_kuq25"]
 [ext_resource type="Texture2D" uid="uid://b3i71lfwb5qf2" path="res://Scenes/Prototyping/ExampleTile.png" id="1_ulgll"]
@@ -6,14 +6,19 @@
 [ext_resource type="Texture2D" uid="uid://dqty43ohr3npy" path="res://Scenes/Prototyping/TreeTemplate.png" id="3_7uo42"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ucyuc"]
-size = Vector2(40, 22)
+size = Vector2(33, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7uo42"]
 size = Vector2(18, 17)
 
+[sub_resource type="LabelSettings" id="LabelSettings_7uo42"]
+shadow_size = 3
+shadow_color = Color(0, 0, 0, 1)
+
 [node name="PrototypeCafe" type="Node2D"]
 
 [node name="Tiles" type="Node2D" parent="."]
+visible = false
 
 [node name="Tile" type="TextureRect" parent="Tiles"]
 texture_filter = 3
@@ -55,69 +60,71 @@ texture = ExtResource("1_ulgll")
 expand_mode = 1
 metadata/_edit_lock_ = true
 
-[node name="Enviornment" type="Node2D" parent="."]
+[node name="Entities" type="Node2D" parent="."]
 y_sort_enabled = true
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Enviornment"]
+[node name="StaticBody2D" type="StaticBody2D" parent="Entities"]
 y_sort_enabled = true
 texture_filter = 1
-position = Vector2(1145, 620)
+position = Vector2(249, 140)
 
-[node name="Sprite2D" type="Sprite2D" parent="Enviornment/StaticBody2D"]
+[node name="Sprite2D" type="Sprite2D" parent="Entities/StaticBody2D"]
 position = Vector2(-0.24993896, 0.27947998)
-scale = Vector2(2.3823547, 2.3823543)
+scale = Vector2(2, 2)
 texture = ExtResource("2_ucyuc")
 offset = Vector2(0, -6)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Enviornment/StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/StaticBody2D"]
+position = Vector2(-0.5, -1)
 shape = SubResource("RectangleShape2D_ucyuc")
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="Enviornment"]
+[node name="StaticBody2D5" type="StaticBody2D" parent="Entities"]
 y_sort_enabled = true
 texture_filter = 1
-position = Vector2(1257, 620)
+position = Vector2(137, 228)
 
-[node name="Sprite2D" type="Sprite2D" parent="Enviornment/StaticBody2D2"]
-position = Vector2(-0.24993896, 0.27947998)
-scale = Vector2(2.3823547, 2.3823543)
-texture = ExtResource("2_ucyuc")
-offset = Vector2(0, -6)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Enviornment/StaticBody2D2"]
-shape = SubResource("RectangleShape2D_ucyuc")
-
-[node name="StaticBody2D3" type="StaticBody2D" parent="Enviornment"]
-y_sort_enabled = true
-texture_filter = 1
-position = Vector2(1361, 620)
-
-[node name="Sprite2D" type="Sprite2D" parent="Enviornment/StaticBody2D3"]
-position = Vector2(-0.24993896, 0.27947998)
-scale = Vector2(2.3823547, 2.3823543)
-texture = ExtResource("2_ucyuc")
-offset = Vector2(0, -6)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Enviornment/StaticBody2D3"]
-shape = SubResource("RectangleShape2D_ucyuc")
-
-[node name="StaticBody2D5" type="StaticBody2D" parent="Enviornment"]
-y_sort_enabled = true
-texture_filter = 1
-position = Vector2(1033, 708)
-
-[node name="Sprite2D" type="Sprite2D" parent="Enviornment/StaticBody2D5"]
+[node name="Sprite2D" type="Sprite2D" parent="Entities/StaticBody2D5"]
 y_sort_enabled = true
 scale = Vector2(6, 6)
 texture = ExtResource("3_7uo42")
 offset = Vector2(0, -15)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Enviornment/StaticBody2D5"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/StaticBody2D5"]
 shape = SubResource("RectangleShape2D_7uo42")
 
-[node name="PrototypePlayer" parent="Enviornment" instance=ExtResource("1_kuq25")]
-position = Vector2(1200, 720)
+[node name="PrototypePlayer" parent="Entities" instance=ExtResource("1_kuq25")]
+position = Vector2(304, 240)
+metadata/_edit_group_ = true
 
-[node name="Camera2D" type="Camera2D" parent="Enviornment/PrototypePlayer"]
-zoom = Vector2(1.4, 1.4)
+[node name="Camera2D" type="Camera2D" parent="Entities/PrototypePlayer"]
+zoom = Vector2(2, 2)
 position_smoothing_enabled = true
 position_smoothing_speed = 15.0
+
+[node name="Interface" type="CanvasLayer" parent="."]
+
+[node name="Container" type="Control" parent="Interface"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="Debug" type="VBoxContainer" parent="Interface/Container"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 9.0
+offset_right = 277.0
+offset_bottom = 426.0
+
+[node name="Pos" type="Label" parent="Interface/Container/Debug"]
+layout_mode = 2
+text = "pos: NaN"
+label_settings = SubResource("LabelSettings_7uo42")
+
+[node name="Vel" type="Label" parent="Interface/Container/Debug"]
+layout_mode = 2
+text = "vel: NaN"
+label_settings = SubResource("LabelSettings_7uo42")
