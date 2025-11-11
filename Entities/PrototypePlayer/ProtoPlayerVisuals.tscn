@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=3 uid="uid://buphxa7tvtxuq"]
+
+[ext_resource type="Script" uid="uid://c2gpdfevnvy80" path="res://Entities/PrototypePlayer/ProtoPlayerVisuals.gd" id="1_rdrk6"]
+
+[sub_resource type="Gradient" id="Gradient_ex15j"]
+colors = PackedColorArray(0, 0.4117647, 0.21568628, 1, 0.41568628, 0.38431373, 0.77254903, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_uj038"]
+gradient = SubResource("Gradient_ex15j")
+width = 1
+height = 5
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0, 0)
+
+[node name="PlayerVisuals" type="Control"]
+custom_minimum_size = Vector2(65, 95)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -32.5
+offset_top = -47.5
+offset_right = -1167.5
+offset_bottom = -672.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ProtoTexture" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_uj038")
+script = ExtResource("1_rdrk6")
