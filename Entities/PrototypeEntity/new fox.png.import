@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://p45k4b38qigy"
-path="res://.godot/imported/DialogueTexture.png-f1a9da5c2fcdfd13a0f67a87689c080b.ctex"
+uid="uid://ds1f126ifqkm4"
+path="res://.godot/imported/new fox.png-f03ee38499f7173db0095ffe1d57e58a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/DialogueMenu/DialogueTexture.png"
-dest_files=["res://.godot/imported/DialogueTexture.png-f1a9da5c2fcdfd13a0f67a87689c080b.ctex"]
+source_file="res://Entities/PrototypeEntity/new fox.png"
+dest_files=["res://.godot/imported/new fox.png-f03ee38499f7173db0095ffe1d57e58a.ctex"]
 
 [params]
 

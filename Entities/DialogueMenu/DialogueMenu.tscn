@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://dfiqw4je0y1dw"]
 
-[ext_resource type="Texture2D" uid="uid://p45k4b38qigy" path="res://Scenes/DialogueMenu/DialogueTexture.png" id="1_802pa"]
-[ext_resource type="Script" uid="uid://bqv8xiwl2b6lg" path="res://Scenes/DialogueMenu/DialogueMenu.gd" id="2_lku4c"]
-[ext_resource type="AudioStream" uid="uid://b0m2omi2n650w" path="res://Scenes/DialogueMenu/Blop-Mark_DiAngelo-79054334.mp3" id="3_hfh7h"]
+[ext_resource type="Texture2D" uid="uid://p45k4b38qigy" path="res://Entities/DialogueMenu/DialogueTexture.png" id="1_802pa"]
+[ext_resource type="Script" uid="uid://bqv8xiwl2b6lg" path="res://Entities/DialogueMenu/DialogueMenu.gd" id="2_lku4c"]
+[ext_resource type="AudioStream" uid="uid://b0m2omi2n650w" path="res://Entities/DialogueMenu/Blop-Mark_DiAngelo-79054334.mp3" id="3_hfh7h"]
 
 [node name="Dialogue" type="NinePatchRect"]
 texture_filter = 1
@@ -65,3 +65,12 @@ vertical_alignment = 1
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_hfh7h")
 volume_db = -17.0
+
+[node name="LetterTimer" type="Timer" parent="."]
+wait_time = 0.04
+
+[node name="PauseTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="finished" from="AudioStreamPlayer" to="." method="voicesound_finished"]
+[connection signal="timeout" from="LetterTimer" to="." method="letter_timer_timeout"]

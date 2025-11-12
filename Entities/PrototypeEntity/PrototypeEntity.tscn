@@ -1,6 +1,6 @@
 [gd_scene load_steps=25 format=3 uid="uid://bkima7b0owxam"]
 
-[ext_resource type="Texture2D" uid="uid://cs65b8wqykpyv" path="res://Entities/PrototypePlayer/bnuuy-sheet.png" id="1_n6xah"]
+[ext_resource type="Texture2D" uid="uid://cs65b8wqykpyv" path="res://Entities/PrototypePlayer/bnuuy-Sheet.png" id="1_n6xah"]
 [ext_resource type="Script" uid="uid://cmd82fs8ogm2n" path="res://Entities/PrototypeEntity/PrototypeEntity.gd" id="1_u07oj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1uq6x"]
@@ -172,7 +172,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_14rd4"]
-size = Vector2(15, 16)
+size = Vector2(42, 43)
 
 [node name="PrototypeNpc" type="Area2D"]
 script = ExtResource("1_u07oj")
@@ -185,7 +185,7 @@ animation = &"alt-left"
 offset = Vector2(0, -14.5)
 
 [node name="Collision" type="CollisionShape2D" parent="."]
-position = Vector2(-1, -13)
+position = Vector2(1, -30)
 scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_14rd4")
 debug_color = Color(0.7, 0.595, 0, 0.41960785)

@@ -1,11 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://cfkjqduve5x73"]
+[gd_scene load_steps=12 format=3 uid="uid://cfkjqduve5x73"]
 
 [ext_resource type="PackedScene" uid="uid://cd0reu8phr487" path="res://Entities/PrototypePlayer/PrototypePlayer.tscn" id="1_kuq25"]
-[ext_resource type="Texture2D" uid="uid://b3i71lfwb5qf2" path="res://Scenes/Prototyping/ExampleTile.png" id="1_ulgll"]
 [ext_resource type="Texture2D" uid="uid://bcqy2nclm2vgj" path="res://Scenes/Prototyping/BoxTemplate.png" id="2_ucyuc"]
 [ext_resource type="Texture2D" uid="uid://dqty43ohr3npy" path="res://Scenes/Prototyping/TreeTemplate.png" id="3_7uo42"]
 [ext_resource type="PackedScene" uid="uid://bkima7b0owxam" path="res://Entities/PrototypeEntity/PrototypeEntity.tscn" id="4_doo61"]
-[ext_resource type="PackedScene" uid="uid://dfiqw4je0y1dw" path="res://Scenes/DialogueMenu/DialogueMenu.tscn" id="6_5ym0v"]
+[ext_resource type="Texture2D" uid="uid://ds1f126ifqkm4" path="res://Entities/PrototypeEntity/new fox.png" id="6_5ym0v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ucyuc"]
 size = Vector2(33, 18)
@@ -13,54 +12,33 @@ size = Vector2(33, 18)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7uo42"]
 size = Vector2(18, 8.5)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_2mlk6"]
+atlas = ExtResource("6_5ym0v")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ri0d"]
+atlas = ExtResource("6_5ym0v")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_joo1j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2mlk6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ri0d")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [sub_resource type="LabelSettings" id="LabelSettings_7uo42"]
 shadow_size = 3
 shadow_color = Color(0, 0, 0, 1)
 
 [node name="PrototypeCafe" type="Node2D"]
-
-[node name="Tiles" type="Node2D" parent="."]
-visible = false
-
-[node name="Tile" type="TextureRect" parent="Tiles"]
-texture_filter = 3
-custom_minimum_size = Vector2(1200, 720)
-offset_right = 1200.0
-offset_bottom = 720.0
-texture = ExtResource("1_ulgll")
-expand_mode = 1
-metadata/_edit_lock_ = true
-
-[node name="Tile2" type="TextureRect" parent="Tiles"]
-texture_filter = 3
-custom_minimum_size = Vector2(1200, 720)
-offset_left = 1200.0
-offset_right = 2400.0
-offset_bottom = 720.0
-texture = ExtResource("1_ulgll")
-expand_mode = 1
-metadata/_edit_lock_ = true
-
-[node name="Tile3" type="TextureRect" parent="Tiles"]
-texture_filter = 3
-custom_minimum_size = Vector2(1200, 720)
-offset_top = 720.0
-offset_right = 1200.0
-offset_bottom = 1440.0
-texture = ExtResource("1_ulgll")
-expand_mode = 1
-metadata/_edit_lock_ = true
-
-[node name="Tile4" type="TextureRect" parent="Tiles"]
-texture_filter = 3
-custom_minimum_size = Vector2(1200, 720)
-offset_left = 1200.0
-offset_top = 720.0
-offset_right = 2400.0
-offset_bottom = 1440.0
-texture = ExtResource("1_ulgll")
-expand_mode = 1
-metadata/_edit_lock_ = true
 
 [node name="Entities" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -106,6 +84,13 @@ zoom = Vector2(2, 2)
 position_smoothing_enabled = true
 position_smoothing_speed = 15.0
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Entities"]
+texture_filter = 1
+position = Vector2(310, 114)
+scale = Vector2(1.8749999, 1.8749999)
+sprite_frames = SubResource("SpriteFrames_joo1j")
+frame = 1
+
 [node name="Interface" type="CanvasLayer" parent="."]
 
 [node name="Container" type="Control" parent="Interface"]
@@ -133,15 +118,3 @@ label_settings = SubResource("LabelSettings_7uo42")
 layout_mode = 2
 text = "vel: NaN"
 label_settings = SubResource("LabelSettings_7uo42")
-
-[node name="Dialogue" parent="Interface/Container" instance=ExtResource("6_5ym0v")]
-layout_mode = 0
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 25.0
-offset_top = 520.0
-offset_right = 1160.0
-offset_bottom = 705.0
-grow_horizontal = 1
-grow_vertical = 1

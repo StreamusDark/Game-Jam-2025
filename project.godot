@@ -17,7 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-GameManager="*res://Scenes/GameManager.gd"
+GameManager="*res://Entities/GameManager.gd"
 
 [display]
 
