@@ -1,0 +1,67 @@
+[gd_scene load_steps=4 format=3 uid="uid://dfiqw4je0y1dw"]
+
+[ext_resource type="Texture2D" uid="uid://p45k4b38qigy" path="res://Scenes/DialogueMenu/DialogueTexture.png" id="1_802pa"]
+[ext_resource type="Script" uid="uid://bqv8xiwl2b6lg" path="res://Scenes/DialogueMenu/DialogueMenu.gd" id="2_lku4c"]
+[ext_resource type="AudioStream" uid="uid://b0m2omi2n650w" path="res://Scenes/DialogueMenu/Blop-Mark_DiAngelo-79054334.mp3" id="3_hfh7h"]
+
+[node name="Dialogue" type="NinePatchRect"]
+texture_filter = 1
+custom_minimum_size = Vector2(1135, 185)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -65.0
+offset_bottom = -535.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_802pa")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+script = ExtResource("2_lku4c")
+
+[node name="DialogueText" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 13.0
+offset_top = 25.0
+offset_right = -13.0
+offset_bottom = -9.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0.27, 0.117000006, 0, 1)
+bbcode_enabled = true
+text = "Text!!!!!!!!!!!!!!"
+
+[node name="NamePlate" type="NinePatchRect" parent="."]
+self_modulate = Color(0.62152386, 0.62152386, 0.6215238, 1)
+layout_mode = 0
+offset_left = 24.0
+offset_top = -19.0
+offset_right = 228.0
+offset_bottom = 21.0
+texture = ExtResource("1_802pa")
+region_rect = Rect2(0, 0, 12, 12)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="CharacterName" type="Label" parent="NamePlate"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Person!!!!!!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_hfh7h")
+volume_db = -17.0

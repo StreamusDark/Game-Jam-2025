@@ -1,6 +1,7 @@
+class_name Player
 extends CharacterBody2D
-const max_speed = 250.0
-const accel = 1250.0
+const max_speed = 225.0
+const accel = 1000.0
 
 @onready var character_sprite = $Sprite
 @onready var coffee_sprite = $Coffee
@@ -12,7 +13,9 @@ func _process(delta):
 	movement_process(delta)
 
 func movement_process(delta: float):
-	var direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	var direction = Vector2.ZERO
+	if GameManager.player_can_move:
+		direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	
 	# Movement Animation
 	if direction.x != 0:

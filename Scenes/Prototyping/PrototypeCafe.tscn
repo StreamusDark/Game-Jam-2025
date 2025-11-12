@@ -1,15 +1,17 @@
-[gd_scene load_steps=8 format=3 uid="uid://cfkjqduve5x73"]
+[gd_scene load_steps=10 format=3 uid="uid://cfkjqduve5x73"]
 
 [ext_resource type="PackedScene" uid="uid://cd0reu8phr487" path="res://Entities/PrototypePlayer/PrototypePlayer.tscn" id="1_kuq25"]
 [ext_resource type="Texture2D" uid="uid://b3i71lfwb5qf2" path="res://Scenes/Prototyping/ExampleTile.png" id="1_ulgll"]
 [ext_resource type="Texture2D" uid="uid://bcqy2nclm2vgj" path="res://Scenes/Prototyping/BoxTemplate.png" id="2_ucyuc"]
 [ext_resource type="Texture2D" uid="uid://dqty43ohr3npy" path="res://Scenes/Prototyping/TreeTemplate.png" id="3_7uo42"]
+[ext_resource type="PackedScene" uid="uid://bkima7b0owxam" path="res://Entities/PrototypeEntity/PrototypeEntity.tscn" id="4_doo61"]
+[ext_resource type="PackedScene" uid="uid://dfiqw4je0y1dw" path="res://Scenes/DialogueMenu/DialogueMenu.tscn" id="6_5ym0v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ucyuc"]
-size = Vector2(33, 20)
+size = Vector2(33, 18)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7uo42"]
-size = Vector2(18, 17)
+size = Vector2(18, 8.5)
 
 [sub_resource type="LabelSettings" id="LabelSettings_7uo42"]
 shadow_size = 3
@@ -87,10 +89,13 @@ position = Vector2(137, 228)
 y_sort_enabled = true
 scale = Vector2(6, 6)
 texture = ExtResource("3_7uo42")
-offset = Vector2(0, -15)
+offset = Vector2(0, -15.8)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/StaticBody2D5"]
 shape = SubResource("RectangleShape2D_7uo42")
+
+[node name="PrototypeNpc" parent="Entities" instance=ExtResource("4_doo61")]
+position = Vector2(401, 224)
 
 [node name="PrototypePlayer" parent="Entities" instance=ExtResource("1_kuq25")]
 position = Vector2(304, 240)
@@ -128,3 +133,15 @@ label_settings = SubResource("LabelSettings_7uo42")
 layout_mode = 2
 text = "vel: NaN"
 label_settings = SubResource("LabelSettings_7uo42")
+
+[node name="Dialogue" parent="Interface/Container" instance=ExtResource("6_5ym0v")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 25.0
+offset_top = 520.0
+offset_right = 1160.0
+offset_bottom = 705.0
+grow_horizontal = 1
+grow_vertical = 1
