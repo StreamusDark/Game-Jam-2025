@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cs65b8wqykpyv"
-path="res://.godot/imported/bnuuy-sheet.png-42a4e633106072b8aea57637ed9ff30a.ctex"
+uid="uid://bddup3yptyeo5"
+path="res://.godot/imported/steam_button.png-7bed48cbf657b5c2b98260c42d8363b2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Entities/PrototypePlayer/bnuuy-sheet.png"
-dest_files=["res://.godot/imported/bnuuy-sheet.png-42a4e633106072b8aea57637ed9ff30a.ctex"]
+source_file="res://Scenes/Prototyping/CoffeeMachine/steam_button.png"
+dest_files=["res://.godot/imported/steam_button.png-7bed48cbf657b5c2b98260c42d8363b2.ctex"]
 
 [params]
 

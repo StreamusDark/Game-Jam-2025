@@ -1,0 +1,131 @@
+[gd_scene load_steps=6 format=3 uid="uid://c7gficdq3463"]
+
+[ext_resource type="Script" uid="uid://dds4tkqyratt0" path="res://Scenes/Prototyping/PrototypeCoffeeSim.gd" id="1_mifmu"]
+[ext_resource type="Texture2D" uid="uid://btgw1g36oqly" path="res://Scenes/Prototyping/CoffeeMachine/machine.png" id="2_qqsrl"]
+[ext_resource type="Texture2D" uid="uid://c3kjtu0o6pyua" path="res://Scenes/Prototyping/CoffeeMachine/liquid_button.png" id="3_74vje"]
+[ext_resource type="Texture2D" uid="uid://bddup3yptyeo5" path="res://Scenes/Prototyping/CoffeeMachine/steam_button.png" id="3_hk33k"]
+[ext_resource type="Texture2D" uid="uid://c4fvtrmd246v1" path="res://Scenes/Prototyping/CoffeeMachine/grinds_holder_left.png" id="5_0pyig"]
+
+[node name="PrototypeCoffeSim" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mifmu")
+
+[node name="BG" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.49019608)
+metadata/_edit_lock_ = true
+
+[node name="FillerTable" type="ColorRect" parent="BG"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -1470.0
+offset_top = -121.0
+offset_right = 1380.0
+offset_bottom = 52.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0.7647059, 0.45882353, 0.34117648, 1)
+
+[node name="FillerTabletop" type="ColorRect" parent="BG"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -1470.0
+offset_top = -131.0
+offset_right = 1380.0
+offset_bottom = -119.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0.62352943, 0.30980393, 0.22745098, 1)
+
+[node name="Interface" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -871.0
+offset_right = 780.0
+offset_bottom = 53.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Machine" type="Sprite2D" parent="Interface"]
+texture_filter = 1
+position = Vector2(1471, 382.00003)
+scale = Vector2(3.9066663, 3.9066665)
+texture = ExtResource("2_qqsrl")
+
+[node name="LiquidButton" type="TextureButton" parent="Interface/Machine"]
+texture_filter = 1
+offset_left = -96.112625
+offset_top = -65.01709
+offset_right = -69.112625
+offset_bottom = -38.651882
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("3_74vje")
+texture_pressed = ExtResource("3_74vje")
+
+[node name="SteamButton" type="TextureButton" parent="Interface/Machine"]
+texture_filter = 1
+offset_left = 78.97271
+offset_top = -64.249176
+offset_right = 105.97271
+offset_bottom = -37.88397
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("3_hk33k")
+texture_pressed = ExtResource("3_hk33k")
+
+[node name="PanHitboxes" type="Control" parent="Interface"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 790.0
+offset_right = -696.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="LeftPanHitbox" type="ColorRect" parent="Interface/PanHitboxes"]
+layout_mode = 0
+offset_left = -3.0
+offset_right = 165.0
+offset_bottom = 720.0
+color = Color(1, 0.864, 0.49, 0.25882354)
+
+[node name="RightPanHitbox" type="ColorRect" parent="Interface/PanHitboxes"]
+layout_mode = 0
+offset_left = 1197.0
+offset_right = 1365.0
+offset_bottom = 720.0
+color = Color(1, 0.864, 0.49, 0.25882354)
+
+[node name="LeftSpoon" type="TextureRect" parent="Interface"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 948.0
+offset_top = 246.0
+offset_right = 1245.0
+offset_bottom = 351.0
+texture = ExtResource("5_0pyig")
+
+[connection signal="mouse_entered" from="Interface/PanHitboxes/LeftPanHitbox" to="." method="leftpan_mouse_entered"]
+[connection signal="mouse_entered" from="Interface/PanHitboxes/RightPanHitbox" to="." method="rightpan_mouse_entered"]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cs65b8wqykpyv"
-path="res://.godot/imported/bnuuy-sheet.png-42a4e633106072b8aea57637ed9ff30a.ctex"
+uid="uid://c3kjtu0o6pyua"
+path="res://.godot/imported/liquid_button.png-cc3436a7ba377faa14457ec738485e04.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Entities/PrototypePlayer/bnuuy-sheet.png"
-dest_files=["res://.godot/imported/bnuuy-sheet.png-42a4e633106072b8aea57637ed9ff30a.ctex"]
+source_file="res://Scenes/Prototyping/CoffeeMachine/liquid_button.png"
+dest_files=["res://.godot/imported/liquid_button.png-cc3436a7ba377faa14457ec738485e04.ctex"]
 
 [params]
 

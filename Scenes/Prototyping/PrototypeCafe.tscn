@@ -1,26 +1,56 @@
-[gd_scene load_steps=12 format=3 uid="uid://cfkjqduve5x73"]
+[gd_scene load_steps=23 format=3 uid="uid://cfkjqduve5x73"]
 
 [ext_resource type="PackedScene" uid="uid://cd0reu8phr487" path="res://Entities/PrototypePlayer/PrototypePlayer.tscn" id="1_kuq25"]
+[ext_resource type="Script" uid="uid://smbembspi11t" path="res://Scenes/Prototyping/PrototypeMachine.gd" id="2_2mlk6"]
+[ext_resource type="Texture2D" uid="uid://bfwavxb7oqeqs" path="res://Scenes/Prototyping/CoffeeTemplate.png" id="2_5ym0v"]
 [ext_resource type="Texture2D" uid="uid://bcqy2nclm2vgj" path="res://Scenes/Prototyping/BoxTemplate.png" id="2_ucyuc"]
 [ext_resource type="Texture2D" uid="uid://dqty43ohr3npy" path="res://Scenes/Prototyping/TreeTemplate.png" id="3_7uo42"]
+[ext_resource type="Texture2D" uid="uid://dcb1ex0ikr2nj" path="res://Entities/PrototypeEntity/FoxSprite.png" id="4_5ym0v"]
 [ext_resource type="PackedScene" uid="uid://bkima7b0owxam" path="res://Entities/PrototypeEntity/PrototypeEntity.tscn" id="4_doo61"]
-[ext_resource type="Texture2D" uid="uid://ds1f126ifqkm4" path="res://Entities/PrototypeEntity/new fox.png" id="6_5ym0v"]
+[ext_resource type="Script" uid="uid://dbu5lmh2ges87" path="res://Scenes/Prototyping/PrototypeCustomer.gd" id="6_2ri0d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ucyuc"]
-size = Vector2(33, 18)
+size = Vector2(33, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5ym0v"]
+size = Vector2(60, 56)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7uo42"]
 size = Vector2(18, 8.5)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2mlk6"]
-atlas = ExtResource("6_5ym0v")
+atlas = ExtResource("4_5ym0v")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2ri0d"]
-atlas = ExtResource("6_5ym0v")
-region = Rect2(32, 0, 32, 32)
+atlas = ExtResource("4_5ym0v")
+region = Rect2(64, 0, 32, 32)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_joo1j"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_joo1j"]
+atlas = ExtResource("4_5ym0v")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_03jgq"]
+atlas = ExtResource("4_5ym0v")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_doo61"]
+atlas = ExtResource("4_5ym0v")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ym0v"]
+atlas = ExtResource("4_5ym0v")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pft5h"]
+atlas = ExtResource("4_5ym0v")
+region = Rect2(128, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gwvrw"]
+atlas = ExtResource("4_5ym0v")
+region = Rect2(192, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pft5h"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -28,11 +58,37 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_2ri0d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_joo1j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_03jgq")
 }],
 "loop": true,
-"name": &"default",
+"name": &"Front",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_doo61")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ym0v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pft5h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gwvrw")
+}],
+"loop": true,
+"name": &"Sitting",
 "speed": 5.0
 }]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_doo61"]
+size = Vector2(60, 74)
 
 [sub_resource type="LabelSettings" id="LabelSettings_7uo42"]
 shadow_size = 3
@@ -58,6 +114,28 @@ offset = Vector2(0, -6)
 position = Vector2(-0.5, -1)
 shape = SubResource("RectangleShape2D_ucyuc")
 
+[node name="Machine" type="StaticBody2D" parent="Entities" node_paths=PackedStringArray("Plr")]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(321, 332)
+script = ExtResource("2_2mlk6")
+Plr = NodePath("../PrototypePlayer")
+
+[node name="Sprite2D" type="Sprite2D" parent="Entities/Machine"]
+texture = ExtResource("2_5ym0v")
+offset = Vector2(0, -6)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/Machine"]
+position = Vector2(-0.5, 9)
+shape = SubResource("RectangleShape2D_ucyuc")
+
+[node name="Area2D" type="Area2D" parent="Entities/Machine"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/Machine/Area2D"]
+position = Vector2(0, -5)
+shape = SubResource("RectangleShape2D_5ym0v")
+debug_color = Color(0.36, 0.21600002, 0, 0.41960785)
+
 [node name="StaticBody2D5" type="StaticBody2D" parent="Entities"]
 y_sort_enabled = true
 texture_filter = 1
@@ -75,6 +153,25 @@ shape = SubResource("RectangleShape2D_7uo42")
 [node name="PrototypeNpc" parent="Entities" instance=ExtResource("4_doo61")]
 position = Vector2(401, 224)
 
+[node name="PrototypeCustomer" type="Area2D" parent="Entities" node_paths=PackedStringArray("Plr")]
+y_sort_enabled = true
+position = Vector2(152, 312)
+script = ExtResource("6_2ri0d")
+Plr = NodePath("../PrototypePlayer")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Entities/PrototypeCustomer"]
+texture_filter = 1
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_pft5h")
+animation = &"Sitting"
+frame_progress = 0.6990324
+offset = Vector2(0, -16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/PrototypeCustomer"]
+position = Vector2(0, -29)
+shape = SubResource("RectangleShape2D_doo61")
+debug_color = Color(0.51, 0.4335, 0, 0.41960785)
+
 [node name="PrototypePlayer" parent="Entities" instance=ExtResource("1_kuq25")]
 position = Vector2(304, 240)
 metadata/_edit_group_ = true
@@ -83,13 +180,6 @@ metadata/_edit_group_ = true
 zoom = Vector2(2, 2)
 position_smoothing_enabled = true
 position_smoothing_speed = 15.0
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Entities"]
-texture_filter = 1
-position = Vector2(310, 114)
-scale = Vector2(1.8749999, 1.8749999)
-sprite_frames = SubResource("SpriteFrames_joo1j")
-frame = 1
 
 [node name="Interface" type="CanvasLayer" parent="."]
 
@@ -118,3 +208,8 @@ label_settings = SubResource("LabelSettings_7uo42")
 layout_mode = 2
 text = "vel: NaN"
 label_settings = SubResource("LabelSettings_7uo42")
+
+[connection signal="body_entered" from="Entities/Machine/Area2D" to="Entities/Machine" method="body_entered"]
+[connection signal="body_exited" from="Entities/Machine/Area2D" to="Entities/Machine" method="body_exited"]
+[connection signal="body_entered" from="Entities/PrototypeCustomer" to="Entities/PrototypeCustomer" method="body_entered"]
+[connection signal="body_exited" from="Entities/PrototypeCustomer" to="Entities/PrototypeCustomer" method="body_exited"]

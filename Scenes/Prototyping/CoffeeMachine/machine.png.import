@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cs65b8wqykpyv"
-path="res://.godot/imported/bnuuy-sheet.png-42a4e633106072b8aea57637ed9ff30a.ctex"
+uid="uid://btgw1g36oqly"
+path="res://.godot/imported/machine.png-64f7480b8134e44ddcc46e859244638e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Entities/PrototypePlayer/bnuuy-sheet.png"
-dest_files=["res://.godot/imported/bnuuy-sheet.png-42a4e633106072b8aea57637ed9ff30a.ctex"]
+source_file="res://Scenes/Prototyping/CoffeeMachine/machine.png"
+dest_files=["res://.godot/imported/machine.png-64f7480b8134e44ddcc46e859244638e.ctex"]
 
 [params]
 

@@ -1,6 +1,5 @@
 extends NinePatchRect
 
-signal dialogue_completed()
 var dialogue_progress = 0
 var is_complete = false
 
