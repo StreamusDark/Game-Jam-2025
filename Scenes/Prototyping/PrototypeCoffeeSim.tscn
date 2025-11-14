@@ -1,7 +1,8 @@
-[gd_scene load_steps=37 format=3 uid="uid://c7gficdq3463"]
+[gd_scene load_steps=39 format=3 uid="uid://c7gficdq3463"]
 
 [ext_resource type="Script" uid="uid://dds4tkqyratt0" path="res://Scenes/Prototyping/PrototypeCoffeeSim.gd" id="1_mifmu"]
 [ext_resource type="Texture2D" uid="uid://btgw1g36oqly" path="res://Scenes/Prototyping/CoffeeMachine/machine.png" id="2_qqsrl"]
+[ext_resource type="Texture2D" uid="uid://2sw0o3x83rny" path="res://Scenes/Prototyping/Decorations/milk.png" id="3_2cdr2"]
 [ext_resource type="Texture2D" uid="uid://jd8x4jj41xn4" path="res://Scenes/Prototyping/CoffeeMachine/machine_glass.png" id="3_45fyo"]
 [ext_resource type="Texture2D" uid="uid://c3kjtu0o6pyua" path="res://Scenes/Prototyping/CoffeeMachine/liquid_button.png" id="3_74vje"]
 [ext_resource type="Texture2D" uid="uid://bddup3yptyeo5" path="res://Scenes/Prototyping/CoffeeMachine/steam_button.png" id="3_hk33k"]
@@ -24,6 +25,12 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_h5omg"]
 line_spacing = -24.0
+font = ExtResource("8_h5omg")
+font_size = 25
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_qn5ym"]
+line_spacing = -9.0
 font = ExtResource("8_h5omg")
 font_size = 25
 font_color = Color(0, 0, 0, 1)
@@ -59,11 +66,12 @@ scale_max = 15.0
 color = Color(0.96, 1, 0.994, 0.14509805)
 color_ramp = SubResource("GradientTexture1D_d1n2f")
 
-[sub_resource type="LabelSettings" id="LabelSettings_qn5ym"]
-line_spacing = -9.0
-font = ExtResource("8_h5omg")
-font_size = 25
-font_color = Color(0, 0, 0, 1)
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2cdr2"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 98, 0)
+scale_min = 10.0
+scale_max = 15.0
+color = Color(0.98, 0.9996667, 1, 0.9254902)
 
 [sub_resource type="Gradient" id="Gradient_d1n2f"]
 colors = PackedColorArray(0.31431612, 0.31431612, 0.3143161, 1, 0.55, 0.34466666, 0.11, 1)
@@ -91,7 +99,7 @@ font = ExtResource("8_h5omg")
 font_size = 25
 font_color = Color(0, 0, 0, 1)
 
-[node name="PrototypeCoffeSim" type="Control" node_paths=PackedStringArray("content_node", "current_cup", "current_cup_options", "liquid_button", "liquid_effect", "steam_button", "steam_effect", "cups_button", "cup_type_display", "beans_that_move", "milk_jug", "milk_jug_options", "milk_display")]
+[node name="PrototypeCoffeSim" type="Control" node_paths=PackedStringArray("content_node", "current_cup", "current_cup_options", "liquid_button", "liquid_effect", "steam_button", "steam_effect", "cups_button", "cup_type_display", "beans_that_move", "milk_jug", "milk_jug_options", "milk_display", "milk_bottle")]
 texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
@@ -113,6 +121,7 @@ beans_that_move = NodePath("Content/Machine/Beans")
 milk_jug = NodePath("Content/MilkJug")
 milk_jug_options = NodePath("Content/MilkJug/JugOptions")
 milk_display = NodePath("Content/MilkJug/Name/Text")
+milk_bottle = NodePath("Content/Decorations/MilkBottle")
 
 [node name="BG" type="ColorRect" parent="."]
 layout_mode = 1
@@ -132,56 +141,11 @@ position = Vector2(599.7, 1081)
 scale = Vector2(3.238, 3.238)
 texture = ExtResource("21_0otgf")
 
-[node name="MilkCarton" type="Button" parent="Content/Decorations"]
-offset_left = 102.9339
-offset_top = -60.53119
-offset_right = 148.42493
-offset_bottom = 13.686432
-text = "Milk"
-
-[node name="Name" type="NinePatchRect" parent="Content/Decorations/MilkCarton"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -32.97252
-offset_top = -17.85408
-offset_right = 32.97252
-offset_bottom = -4.9413147
-grow_horizontal = 2
-grow_vertical = 0
-texture = ExtResource("6_qn5ym")
-region_rect = Rect2(0, 0, 12, 12)
-patch_margin_left = 5
-patch_margin_top = 5
-patch_margin_right = 5
-patch_margin_bottom = 5
-
-[node name="Text" type="Label" parent="Content/Decorations/MilkCarton/Name"]
-texture_filter = 1
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 0.2977004
-offset_top = -0.1897521
-offset_right = 154.20654
-offset_bottom = 30.897484
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.3, 0.3)
-text = "Milk Carton"
-label_settings = SubResource("LabelSettings_h5omg")
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="CarrotFlakes" type="Button" parent="Content/Decorations"]
-offset_left = 52.285347
-offset_top = -90.79678
-offset_right = 97.776375
-offset_bottom = -16.579163
+offset_left = 52.28534
+offset_top = -90.7968
+offset_right = 97.77637
+offset_bottom = -16.579178
 text = "Carr
 ot"
 
@@ -222,6 +186,191 @@ text = "Carrot Flakes"
 label_settings = SubResource("LabelSettings_h5omg")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="MilkBottle" type="Sprite2D" parent="Content/Decorations"]
+position = Vector2(122, 36)
+scale = Vector2(0.72837895, 0.72837895)
+texture = ExtResource("3_2cdr2")
+centered = false
+offset = Vector2(-27, -125)
+
+[node name="Name" type="NinePatchRect" parent="Content/Decorations/MilkBottle"]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -75.23764
+offset_top = -150.30045
+offset_right = -9.292603
+offset_bottom = -137.38768
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("6_qn5ym")
+region_rect = Rect2(0, 0, 12, 12)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="Text" type="Label" parent="Content/Decorations/MilkBottle/Name"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.2977004
+offset_top = -0.1897521
+offset_right = 154.20654
+offset_bottom = 30.897484
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+text = "Milk Bottle"
+label_settings = SubResource("LabelSettings_h5omg")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BottleOptions" type="VBoxContainer" parent="Content/Decorations/MilkBottle"]
+visible = false
+offset_left = -130.81096
+offset_top = -110.98917
+offset_right = -61.427322
+offset_bottom = -56.389435
+scale = Vector2(1.4, 1.4)
+theme_override_constants/separation = 1
+alignment = 2
+
+[node name="Pour" type="NinePatchRect" parent="Content/Decorations/MilkBottle/BottleOptions"]
+self_modulate = Color(0.59150004, 1, 0.57, 1)
+texture_filter = 1
+custom_minimum_size = Vector2(40, 12)
+layout_mode = 2
+texture = ExtResource("6_qn5ym")
+region_rect = Rect2(0, 0, 12, 12)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="ActionName" type="Label" parent="Content/Decorations/MilkBottle/BottleOptions/Pour"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.37799
+offset_top = -1.4085693
+offset_right = 124.06326
+offset_bottom = 30.59143
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+text = "Serve"
+label_settings = SubResource("LabelSettings_qn5ym")
+vertical_alignment = 1
+
+[node name="Icon" type="Sprite2D" parent="Content/Decorations/MilkBottle/BottleOptions/Pour"]
+position = Vector2(11.018555, 5.657715)
+scale = Vector2(0.05117252, 0.05117252)
+texture = ExtResource("10_fl8i1")
+
+[node name="Hover" type="NinePatchRect" parent="Content/Decorations/MilkBottle/BottleOptions/Pour"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_q2g1w")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="Button" type="Button" parent="Content/Decorations/MilkBottle/BottleOptions/Pour"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+
+[node name="Cancel" type="NinePatchRect" parent="Content/Decorations/MilkBottle/BottleOptions"]
+texture_filter = 1
+custom_minimum_size = Vector2(40, 12)
+layout_mode = 2
+texture = ExtResource("6_qn5ym")
+region_rect = Rect2(0, 0, 12, 12)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="ActionName" type="Label" parent="Content/Decorations/MilkBottle/BottleOptions/Cancel"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.37799
+offset_top = -1.4085693
+offset_right = 124.06326
+offset_bottom = 30.59143
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+text = "Cancel"
+label_settings = SubResource("LabelSettings_qn5ym")
+vertical_alignment = 1
+
+[node name="Icon" type="Sprite2D" parent="Content/Decorations/MilkBottle/BottleOptions/Cancel"]
+position = Vector2(11.018555, 5.657715)
+scale = Vector2(0.05117252, 0.05117252)
+texture = ExtResource("10_fl8i1")
+
+[node name="Hover" type="NinePatchRect" parent="Content/Decorations/MilkBottle/BottleOptions/Cancel"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_q2g1w")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="Button" type="Button" parent="Content/Decorations/MilkBottle/BottleOptions/Cancel"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+
+[node name="Button" type="Button" parent="Content/Decorations/MilkBottle"]
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -27.0
+offset_top = -125.0
+offset_right = -27.0
+offset_bottom = -125.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+text = "Milk"
 
 [node name="Cocoa" type="Button" parent="Content/Decorations"]
 offset_left = -91.01298
@@ -424,11 +573,12 @@ lifetime = 4.5
 process_material = SubResource("ParticleProcessMaterial_0pyig")
 
 [node name="MilkJug" type="Button" parent="Content"]
-offset_left = 544.0
-offset_top = 418.0
-offset_right = 589.491
-offset_bottom = 492.21765
+offset_left = 770.0
+offset_top = 1137.0
+offset_right = 815.491
+offset_bottom = 1211.2177
 scale = Vector2(3.238, 3.238)
+mouse_default_cursor_shape = 2
 text = "Milk
 Jug"
 
@@ -711,6 +861,13 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_default_cursor_shape = 2
 
+[node name="Liquid" type="GPUParticles2D" parent="Content/MilkJug"]
+position = Vector2(20.258896, -8.743057)
+emitting = false
+lifetime = 2.0
+trail_enabled = true
+process_material = SubResource("ParticleProcessMaterial_2cdr2")
+
 [node name="CoffeeCup" type="Sprite2D" parent="Content"]
 texture_filter = 1
 position = Vector2(341, 532.4)
@@ -789,7 +946,6 @@ grow_vertical = 2
 mouse_default_cursor_shape = 2
 
 [node name="CoffeeOptions" type="VBoxContainer" parent="Content/CoffeeCup"]
-visible = false
 offset_left = 23.52494
 offset_top = -34.245163
 offset_right = 92.90858
@@ -1160,7 +1316,9 @@ label_settings = SubResource("LabelSettings_0otgf")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="pressed" from="Content/Decorations/MilkCarton" to="." method="milk_carton_pressed"]
+[connection signal="pressed" from="Content/Decorations/MilkBottle/BottleOptions/Pour/Button" to="." method="milkbottle_pour_pressed"]
+[connection signal="pressed" from="Content/Decorations/MilkBottle/BottleOptions/Cancel/Button" to="." method="milkbottle_cancel_pressed"]
+[connection signal="pressed" from="Content/Decorations/MilkBottle/Button" to="." method="milk_carton_pressed"]
 [connection signal="mouse_entered" from="Content/Machine/LiquidButton" to="." method="liquid_button_hover_enter"]
 [connection signal="mouse_exited" from="Content/Machine/LiquidButton" to="." method="liquid_button_hover_exit"]
 [connection signal="pressed" from="Content/Machine/LiquidButton" to="." method="liquid_button_pressed"]

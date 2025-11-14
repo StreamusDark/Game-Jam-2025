@@ -15,6 +15,7 @@ extends Control
 var current_cup_in_deco = false
 var current_cup_type = "none"
 var current_cup_selected = false
+var current_espresso_count = 0
 
 var coffee_pouring_active = false
 var steam_active = false
@@ -26,11 +27,18 @@ var milk_in_deco = true
 var milk_in_jug = false
 var milk_selected = false
 var milk_steam_percent: float = 0.0
+var milk_pouring = false
+
+@export var milk_bottle: Sprite2D
+var milk_bottle_selected = false
+var milk_bottle_pouring = false
 
 func _ready() -> void:
 	current_cup.position = Vector2(341.0, 532.4)
 	milk_jug.position = Vector2(770.0, 1137.0)
 	milk_display.text = GameManager.game_lang["milk_none"]
+	milk_bottle.position = Vector2(122.0, 36.0)
+	milk_bottle.rotation_degrees = 0
 	
 	content_node.position = Vector2(0,0)
 	$PanUp.visible = false
@@ -56,9 +64,56 @@ func restart():
 	
 	update_coffee_state("none")
 
+func change_selectable(selectable_id: String):
+	var cup_nodes = [current_cup.get_node("Hover"), current_cup.get_node("CoffeeTypeContainer"), current_cup_options]
+	var milkjug_nodes = [milk_jug.get_node("Name"), milk_jug_options] # milk_jug.get_node("Hover")
+	var milkbottle_nodes = [milk_bottle.get_node("Name"), milk_bottle.get_node("BottleOptions")]  # milk_bottle.get_node("Hover")
+	
+	var true_nodes = []
+	var false_nodes = []
+	
+	match selectable_id:
+		"cup":
+			current_cup_selected = true
+			milk_selected = false
+			
+			true_nodes = cup_nodes
+			false_nodes.append_array(milkjug_nodes)
+			false_nodes.append_array(milkbottle_nodes)
+		"milkjug":
+			current_cup_selected = false
+			milk_selected = true
+			
+			true_nodes = milkjug_nodes
+			false_nodes.append_array(cup_nodes)
+			false_nodes.append_array(milkbottle_nodes)
+		"milkbottle":
+			current_cup_selected = false
+			milk_selected = false
+			milk_bottle_selected = true
+			
+			true_nodes = milkbottle_nodes
+			false_nodes.append_array(cup_nodes)
+			false_nodes.append_array(milkjug_nodes)
+		"close":
+			current_cup_selected = false
+			milk_selected = false
+			milk_bottle_selected = true
+			
+			false_nodes.append_array(cup_nodes)
+			false_nodes.append_array(milkjug_nodes)
+			false_nodes.append_array(milkbottle_nodes)
+			print(false_nodes)
+	
+	for n in true_nodes: 
+		n.visible = true
+	for m in false_nodes: 
+		m.visible = false
+
 func update_coffee_state(coffee_id):
 	current_cup_type = coffee_id
 	if coffee_id == "none":
+		current_espresso_count = 0
 		current_cup.visible = false
 		return
 	
@@ -67,13 +122,13 @@ func update_coffee_state(coffee_id):
 	current_cup.get_node("CoffeeColouring").self_modulate = Beverage.coffee_colouring[current_cup_type]
 
 func liquid_button_pressed() -> void:
-	if current_cup_selected or milk_selected or GameManager.dialogue_menu_open:
+	if current_cup_selected or milk_selected or GameManager.dialogue_menu_open or milk_pouring:
 		return
 	if current_cup_type == "none" and (not GameManager.dialogue_menu_open):
 		var no_drink_info: Array[Dictionary] = [{"name":"", "message":GameManager.game_lang["coffee_needscup"]}]
 		GameManager.create_dialogue(no_drink_info, false)
 		return
-	elif current_cup_type == "double_espresso" and (not GameManager.dialogue_menu_open):
+	elif current_espresso_count == 2 and (not GameManager.dialogue_menu_open):
 		var too_much: Array[Dictionary] = [{"name":"", "message":GameManager.game_lang["coffee_toomuch"]}]
 		GameManager.create_dialogue(too_much, false)
 		return
@@ -86,10 +141,17 @@ func liquid_button_pressed() -> void:
 	liquid_effect.emitting = false
 	liquid_button.disabled = false
 	
-	if current_cup_type == "empty":
-		update_coffee_state("espresso")
-	elif current_cup_type == "espresso":
-		update_coffee_state("double_espresso")
+	var change_state_link = {
+		"empty": "espresso",
+		"espresso": "double_espresso",
+		"macchiato": "double_macchiato",
+		"minilatte": "latte",
+		"cortado": "cappuchino",
+		"flatwhite": "dry"
+	}
+	
+	current_espresso_count += 1
+	update_coffee_state(change_state_link[current_cup_type])
 
 func steam_button_down() -> void:
 	steam_active = true
@@ -112,16 +174,12 @@ func cup_button_pressed() -> void:
 		update_coffee_state("empty")
 
 func current_coffee_pressed() -> void:
-	if (not current_cup_selected) and (not coffee_pouring_active) and (not milk_selected):
-		current_cup.get_node("Hover").visible = true
-		current_cup.get_node("CoffeeTypeContainer").visible = true
-		current_cup_options.visible = true
-		current_cup_selected = true
+	if (not coffee_pouring_active):
+		change_selectable("cup")
 
 func current_coffee_hover_enter() -> void: 
-	if (not current_cup_selected):
-		current_cup.get_node("CoffeeTypeContainer").visible = true
-		current_cup.get_node("Hover").visible = true
+	current_cup.get_node("CoffeeTypeContainer").visible = true
+	current_cup.get_node("Hover").visible = true
 	
 func current_coffee_hover_exited() -> void: 
 	if (not current_cup_selected):
@@ -141,10 +199,7 @@ func discard_drink_pressed() -> void:
 	restart()
 
 func cancel_drink_pressed() -> void:
-	current_cup.get_node("CoffeeTypeContainer").visible = false
-	current_cup.get_node("Hover").visible = false
-	current_cup_options.visible = false
-	current_cup_selected = false
+	change_selectable("close")
 
 func close_machine() -> void:
 	GameManager.close_coffee_machine()
@@ -174,12 +229,14 @@ func pan_direction(up: bool):
 		$PanUp.visible = false
 		liquid_effect.visible = false
 		steam_effect.visible = false
+		milk_jug.get_node("Liquid").visible = false
 		var pos = Vector2(0, 0) if up else Vector2(0, -686)
 		await get_tree().create_tween().tween_property(content_node, "position", pos, 0.2).finished
 
 func pan_down_hover() -> void:
 	await pan_direction(false)
 	$PanUp.visible = true
+	milk_jug.get_node("Liquid").visible = true
 
 func pan_up_hover() -> void:
 	await pan_direction(true)
@@ -197,45 +254,60 @@ func close_button_hover_enter() -> void: $Exit.get_node("Hover").visible = true
 func close_button_hover_exited() -> void: $Exit.get_node("Hover").visible = false
 
 func milk_jug_clicked() -> void:
-	if (not current_cup_selected) and (not coffee_pouring_active) and (not milk_selected):
+	if (not milk_bottle_pouring) and (not steam_active):
 		#milk_jug.get_node("Hover").visible = true
+		change_selectable("milkjug")
 		milk_jug_options.get_node("Use").visible = (current_cup_type in ["espresso","double_espresso"]) and milk_in_jug and (current_cup_in_deco == milk_in_deco)
 		milk_jug_options.get_node("MoveUp").visible = milk_in_deco
 		milk_jug_options.get_node("MoveDown").visible = not milk_in_deco
-		milk_jug_options.visible = true
-		milk_selected = true
-		milk_jug.get_node("Name").visible = true
 
 func milk_move_up() -> void:
-	milk_cancel()
+	change_selectable("close")
 	milk_in_deco = false
 	
 	get_tree().create_tween().tween_property(milk_jug, "position", Vector2(544.0, 418.0), 0.2)
 
 func milk_move_down() -> void:
-	milk_cancel()
+	change_selectable("close")
 	milk_in_deco = true
 	
 	get_tree().create_tween().tween_property(milk_jug, "position", Vector2(770.0, 1137.0), 0.2)
 
-func milk_cancel() -> void:
-	milk_jug.get_node("Name").visible = false
-	#milk_jug.get_node("Hover").visible = false
-	milk_jug_options.visible = false
-	milk_selected = false
+func milk_cancel():
+	change_selectable("close")
 
 func milk_carton_pressed() -> void:
-	if (not milk_selected) and (not milk_in_jug) and (milk_in_deco):
-		milk_in_jug = true
-		milk_display.text = GameManager.game_lang["milk_froath"].replace("{0}", "0")
+	if (milk_in_deco) and (not milk_bottle_pouring):
+		change_selectable("milkbottle")
+		#(not milk_in_jug)
+		#milk_bottle_pouring = true
+
+func milkbottle_pour_pressed() -> void:
+	milk_bottle_pouring = true
+	change_selectable("close")
+	
+	get_tree().create_tween().tween_property(milk_bottle, "position", Vector2(159, 3.8), 0.3)
+	await get_tree().create_tween().tween_property(milk_bottle, "rotation_degrees", -92, 0.3).finished
+	milk_jug.get_node("Liquid").emitting = true
+	await get_tree().create_timer(3).timeout
+	get_tree().create_tween().tween_property(milk_bottle, "position", Vector2(122.0, 36.0), 0.3)
+	milk_jug.get_node("Liquid").emitting = false
+	await get_tree().create_tween().tween_property(milk_bottle, "rotation_degrees", 0, 0.3).finished
+		
+	milk_bottle_pouring = false
+	milk_in_jug = true
+	milk_display.text = GameManager.game_lang["milk_froath"].replace("{0}", "0")
+
+func milkbottle_cancel_pressed() -> void:
+	change_selectable("close")
 
 func milk_pour_pressed() -> void:
 	if current_cup_type == "espresso":
 		if milk_steam_percent < 25:
 			update_coffee_state("macchiato")
-		elif milk_steam_percent in range(25,50):
+		elif milk_steam_percent < 50:
 			update_coffee_state("minilatte")
-		elif milk_steam_percent in range(50,75):
+		elif milk_steam_percent < 75:
 			update_coffee_state("cortado")
 		else:
 			update_coffee_state("flatwhite")
@@ -243,9 +315,9 @@ func milk_pour_pressed() -> void:
 	elif current_cup_type == "double_espresso":
 		if milk_steam_percent < 25:
 			update_coffee_state("double_macchiato")
-		elif milk_steam_percent in range(25,50):
+		elif milk_steam_percent < 50:
 			update_coffee_state("latte")
-		elif milk_steam_percent in range(50,75):
+		elif milk_steam_percent < 75.:
 			update_coffee_state("cappuchino")
 		else:
 			update_coffee_state("dry")

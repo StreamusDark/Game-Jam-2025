@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bddup3yptyeo5"
-path="res://.godot/imported/steam_button.png-7bed48cbf657b5c2b98260c42d8363b2.ctex"
+uid="uid://2sw0o3x83rny"
+path="res://.godot/imported/milk.png-c8cd8a85a8322dde8bd2b07142c045b5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Prototyping/CoffeeMachine/steam_button.png"
-dest_files=["res://.godot/imported/steam_button.png-7bed48cbf657b5c2b98260c42d8363b2.ctex"]
+source_file="res://Scenes/Prototyping/Decorations/milk.png"
+dest_files=["res://.godot/imported/milk.png-c8cd8a85a8322dde8bd2b07142c045b5.ctex"]
 
 [params]
 
