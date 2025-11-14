@@ -1,0 +1,87 @@
+[gd_scene load_steps=6 format=3 uid="uid://beag8vvymj77r"]
+
+[ext_resource type="PackedScene" uid="uid://6slj7c4gr3v4" path="res://Scenes/ForestPrototype/Enemy.tscn" id="1_e7dap"]
+[ext_resource type="PackedScene" uid="uid://cd0reu8phr487" path="res://Entities/PrototypePlayer/PrototypePlayer.tscn" id="2_p5xqh"]
+[ext_resource type="Script" uid="uid://dgwi7lolqaeih" path="res://Scenes/ForestPrototype/HealthCmp.gd" id="3_8513l"]
+[ext_resource type="Texture2D" uid="uid://dqty43ohr3npy" path="res://Scenes/Prototyping/TreeTemplate.png" id="3_eu8te"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8513l"]
+size = Vector2(18, 8.5)
+
+[node name="PrototypeForest" type="Node2D"]
+
+[node name="Entities" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Enemy" parent="Entities" node_paths=PackedStringArray("player") instance=ExtResource("1_e7dap")]
+position = Vector2(682, 162)
+player = NodePath("../MovementNode")
+
+[node name="MovementNode" parent="Entities" instance=ExtResource("2_p5xqh")]
+position = Vector2(240, 222)
+
+[node name="Sprite" parent="Entities/MovementNode" index="0"]
+animation = &"alt-left"
+
+[node name="Camera2D" type="Camera2D" parent="Entities/MovementNode"]
+zoom = Vector2(2, 2)
+position_smoothing_enabled = true
+position_smoothing_speed = 15.0
+
+[node name="HealthComponent" type="Node" parent="Entities/MovementNode"]
+script = ExtResource("3_8513l")
+
+[node name="Tree" type="StaticBody2D" parent="Entities"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(137, 228)
+
+[node name="Sprite2D" type="Sprite2D" parent="Entities/Tree"]
+y_sort_enabled = true
+scale = Vector2(6, 6)
+texture = ExtResource("3_eu8te")
+offset = Vector2(0, -15.8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/Tree"]
+shape = SubResource("RectangleShape2D_8513l")
+
+[node name="Tree2" type="StaticBody2D" parent="Entities"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(435, 327)
+
+[node name="Sprite2D" type="Sprite2D" parent="Entities/Tree2"]
+y_sort_enabled = true
+scale = Vector2(6, 6)
+texture = ExtResource("3_eu8te")
+offset = Vector2(0, -15.8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/Tree2"]
+shape = SubResource("RectangleShape2D_8513l")
+
+[node name="Tree3" type="StaticBody2D" parent="Entities"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(357, 107)
+
+[node name="Sprite2D" type="Sprite2D" parent="Entities/Tree3"]
+y_sort_enabled = true
+scale = Vector2(6, 6)
+texture = ExtResource("3_eu8te")
+offset = Vector2(0, -15.8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/Tree3"]
+shape = SubResource("RectangleShape2D_8513l")
+
+[node name="Interface" type="CanvasLayer" parent="."]
+
+[node name="Container" type="Control" parent="Interface"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[editable path="Entities/MovementNode"]

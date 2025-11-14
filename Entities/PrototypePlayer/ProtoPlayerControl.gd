@@ -68,5 +68,3 @@ func movement_process(delta: float):
 		bev.rotation_degrees = (velocity.x / max_speed) * -(2.2 + bev_idx)
 		bev_idx += 1
 	
-	$"../../Interface/Container/Debug/Pos".text = "pos: " + str(position)
-	$"../../Interface/Container/Debug/Vel".text = "vel: " + str(velocity)
