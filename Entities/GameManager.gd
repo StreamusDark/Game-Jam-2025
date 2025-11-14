@@ -1,7 +1,9 @@
 extends Node
 
+var PlayerInstance: Player = null
 var player_can_move: bool = true
 var dialogue_menu_open: bool = false
+var machine_menu_open: bool = false
 var game_lang: Dictionary = {}
 
 func _ready() -> void:
@@ -11,7 +13,7 @@ func initalise_locale():
 	var csv_raw: String = FileAccess.open("res://Locale/localisation.csv", FileAccess.READ).get_as_text()
 	for kv in csv_raw.split("\n"):
 		var kv_spl = kv.split(":")
-		game_lang[kv_spl[0]] = kv_spl[1]
+		game_lang[kv_spl[0]] = kv_spl[1].replace("\\n", "\n")
 
 func append_to_interface(node):
 	var curr_scene = get_tree().current_scene
@@ -34,10 +36,18 @@ func destroy_dialogue(obj: NinePatchRect):
 	await get_tree().create_timer(1).timeout
 	dialogue_menu_open = false
 
+var machine_inst = null
 const machine_scene = preload("res://Scenes/Prototyping/PrototypeCoffeeSim.tscn")
 
 func open_coffee_machine():
-	dialogue_menu_open = true
 	player_can_move = false
-	var cof_inst = machine_scene.instantiate()
-	append_to_interface(cof_inst)
+	machine_menu_open = true
+	if machine_inst == null:
+		machine_inst = machine_scene.instantiate()
+		append_to_interface(machine_inst)
+	else:
+		machine_inst.visible = true
+
+func close_coffee_machine():
+	player_can_move = true
+	machine_menu_open = false

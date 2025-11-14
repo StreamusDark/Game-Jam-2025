@@ -7,6 +7,7 @@ var is_complete = false
 var current_sentence: String = ""
 var current_sentence_filtered: String = ""
 
+@onready var charname_container: NinePatchRect = $NamePlate
 @onready var charname_label: Label = $NamePlate/CharacterName
 
 @onready var voice_sound: AudioStreamPlayer = $AudioStreamPlayer
@@ -46,7 +47,10 @@ func _input(event: InputEvent) -> void:
 func update_dialogue(message_data: Dictionary) -> void:
 	is_complete = false
 	
-	charname_label.text = message_data["name"]
+	var speaker = message_data["name"]
+	charname_container.visible = false if speaker == "" else true
+	charname_label.text = speaker
+	
 	var message = message_data["message"]
 	
 	var reg = RegEx.new()
@@ -62,7 +66,7 @@ func update_dialogue(message_data: Dictionary) -> void:
 	letter_timer.start()
 
 func letter_timer_timeout() -> void:
-	var chr = current_sentence_filtered[content_menu.visible_characters]
+	var chr = current_sentence_filtered[content_menu.visible_characters-1]
 	if chr in ['!', '.', '?']:
 		voice_playing = false
 		await get_tree().create_timer(0.5).timeout

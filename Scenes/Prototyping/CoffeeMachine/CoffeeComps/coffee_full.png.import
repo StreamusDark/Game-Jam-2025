@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bfwavxb7oqeqs"
-path="res://.godot/imported/CoffeeTemplate.png-45b69b4d78115f6f423cffbeb64b36e4.ctex"
+uid="uid://bguhbibuc0t7m"
+path="res://.godot/imported/coffee_full.png-3b2d2231f1bcfe34566747aa37edadc2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Prototyping/CoffeeTemplate.png"
-dest_files=["res://.godot/imported/CoffeeTemplate.png-45b69b4d78115f6f423cffbeb64b36e4.ctex"]
+source_file="res://Scenes/Prototyping/CoffeeMachine/CoffeeComps/coffee_full.png"
+dest_files=["res://.godot/imported/coffee_full.png-3b2d2231f1bcfe34566747aa37edadc2.ctex"]
 
 [params]
 

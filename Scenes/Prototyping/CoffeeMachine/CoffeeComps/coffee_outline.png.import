@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c4fvtrmd246v1"
-path="res://.godot/imported/grinds_holder_left.png-5f47e964ddc428bd21a51f290fea4d3b.ctex"
+uid="uid://do60kff6i1it"
+path="res://.godot/imported/coffee_outline.png-bc2f0f3318982c3eac67866e272068c5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Prototyping/CoffeeMachine/grinds_holder_left.png"
-dest_files=["res://.godot/imported/grinds_holder_left.png-5f47e964ddc428bd21a51f290fea4d3b.ctex"]
+source_file="res://Scenes/Prototyping/CoffeeMachine/CoffeeComps/coffee_outline.png"
+dest_files=["res://.godot/imported/coffee_outline.png-bc2f0f3318982c3eac67866e272068c5.ctex"]
 
 [params]
 

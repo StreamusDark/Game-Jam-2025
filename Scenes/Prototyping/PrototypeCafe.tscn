@@ -1,19 +1,20 @@
-[gd_scene load_steps=23 format=3 uid="uid://cfkjqduve5x73"]
+[gd_scene load_steps=24 format=3 uid="uid://cfkjqduve5x73"]
 
 [ext_resource type="PackedScene" uid="uid://cd0reu8phr487" path="res://Entities/PrototypePlayer/PrototypePlayer.tscn" id="1_kuq25"]
 [ext_resource type="Script" uid="uid://smbembspi11t" path="res://Scenes/Prototyping/PrototypeMachine.gd" id="2_2mlk6"]
-[ext_resource type="Texture2D" uid="uid://bfwavxb7oqeqs" path="res://Scenes/Prototyping/CoffeeTemplate.png" id="2_5ym0v"]
 [ext_resource type="Texture2D" uid="uid://bcqy2nclm2vgj" path="res://Scenes/Prototyping/BoxTemplate.png" id="2_ucyuc"]
+[ext_resource type="Texture2D" uid="uid://c6sgg4xooxdrl" path="res://Scenes/Prototyping/CoffeeMachine/machine_full.png" id="3_2ri0d"]
 [ext_resource type="Texture2D" uid="uid://dqty43ohr3npy" path="res://Scenes/Prototyping/TreeTemplate.png" id="3_7uo42"]
 [ext_resource type="Texture2D" uid="uid://dcb1ex0ikr2nj" path="res://Entities/PrototypeEntity/FoxSprite.png" id="4_5ym0v"]
 [ext_resource type="PackedScene" uid="uid://bkima7b0owxam" path="res://Entities/PrototypeEntity/PrototypeEntity.tscn" id="4_doo61"]
+[ext_resource type="Script" uid="uid://c7fio4qjvur5h" path="res://Scenes/Prototyping/PrototypeSink.gd" id="4_joo1j"]
 [ext_resource type="Script" uid="uid://dbu5lmh2ges87" path="res://Scenes/Prototyping/PrototypeCustomer.gd" id="6_2ri0d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ucyuc"]
-size = Vector2(33, 14)
+size = Vector2(79, 34)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5ym0v"]
-size = Vector2(60, 56)
+size = Vector2(96, 84)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7uo42"]
 size = Vector2(18, 8.5)
@@ -122,11 +123,13 @@ script = ExtResource("2_2mlk6")
 Plr = NodePath("../PrototypePlayer")
 
 [node name="Sprite2D" type="Sprite2D" parent="Entities/Machine"]
-texture = ExtResource("2_5ym0v")
+position = Vector2(0, -4.4372115)
+scale = Vector2(0.26046532, 0.26046512)
+texture = ExtResource("3_2ri0d")
 offset = Vector2(0, -6)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/Machine"]
-position = Vector2(-0.5, 9)
+position = Vector2(-0.5, 5)
 shape = SubResource("RectangleShape2D_ucyuc")
 
 [node name="Area2D" type="Area2D" parent="Entities/Machine"]
@@ -135,6 +138,41 @@ shape = SubResource("RectangleShape2D_ucyuc")
 position = Vector2(0, -5)
 shape = SubResource("RectangleShape2D_5ym0v")
 debug_color = Color(0.36, 0.21600002, 0, 0.41960785)
+
+[node name="Sink" type="StaticBody2D" parent="Entities"]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(473, 332)
+script = ExtResource("4_joo1j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/Sink"]
+position = Vector2(-0.5, 5)
+shape = SubResource("RectangleShape2D_ucyuc")
+
+[node name="Area2D" type="Area2D" parent="Entities/Sink"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/Sink/Area2D"]
+position = Vector2(0, -5)
+shape = SubResource("RectangleShape2D_5ym0v")
+debug_color = Color(0.36, 0.21600002, 0, 0.41960785)
+
+[node name="ColorRect" type="ColorRect" parent="Entities/Sink"]
+offset_left = -40.0
+offset_top = -12.0
+offset_right = 39.0
+offset_bottom = 22.0
+color = Color(0.32, 0.56933343, 1, 1)
+
+[node name="Label" type="Label" parent="Entities/Sink/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "cool sink"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="StaticBody2D5" type="StaticBody2D" parent="Entities"]
 y_sort_enabled = true
@@ -153,11 +191,10 @@ shape = SubResource("RectangleShape2D_7uo42")
 [node name="PrototypeNpc" parent="Entities" instance=ExtResource("4_doo61")]
 position = Vector2(401, 224)
 
-[node name="PrototypeCustomer" type="Area2D" parent="Entities" node_paths=PackedStringArray("Plr")]
+[node name="PrototypeCustomer" type="Area2D" parent="Entities"]
 y_sort_enabled = true
 position = Vector2(152, 312)
 script = ExtResource("6_2ri0d")
-Plr = NodePath("../PrototypePlayer")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Entities/PrototypeCustomer"]
 texture_filter = 1
@@ -165,10 +202,10 @@ scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_pft5h")
 animation = &"Sitting"
 frame_progress = 0.6990324
-offset = Vector2(0, -16)
+offset = Vector2(0, -13)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/PrototypeCustomer"]
-position = Vector2(0, -29)
+position = Vector2(0, -18)
 shape = SubResource("RectangleShape2D_doo61")
 debug_color = Color(0.51, 0.4335, 0, 0.41960785)
 
@@ -211,5 +248,7 @@ label_settings = SubResource("LabelSettings_7uo42")
 
 [connection signal="body_entered" from="Entities/Machine/Area2D" to="Entities/Machine" method="body_entered"]
 [connection signal="body_exited" from="Entities/Machine/Area2D" to="Entities/Machine" method="body_exited"]
+[connection signal="body_entered" from="Entities/Sink/Area2D" to="Entities/Sink" method="body_entered"]
+[connection signal="body_exited" from="Entities/Sink/Area2D" to="Entities/Sink" method="body_exited"]
 [connection signal="body_entered" from="Entities/PrototypeCustomer" to="Entities/PrototypeCustomer" method="body_entered"]
 [connection signal="body_exited" from="Entities/PrototypeCustomer" to="Entities/PrototypeCustomer" method="body_exited"]

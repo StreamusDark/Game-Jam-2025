@@ -1,2 +1,29 @@
-proto_msg1:[wave]Woah![/wave] Who the [rainbow]heck[/rainbow] are [shake rate=20 level=10]you?![/shake]\nMy... [i][b]clone[/b][/i]?
+proto_name:Bean 2
+proto_msg1:[wave]Woah![/wave] Who the [rainbow]heck[/rainbow] are [shake rate=20 level=10]you?![/shake]\nMy... clone?
 proto_msg2:...[wave]Who knows?[/wave]\nMaybe I'm you from the future!
+proto_msg3:Hey, could you do me a favour maybe?\nThink you could me a [rainbow]{0}?[/rainbow]
+proto_msg4:Yippee! :3
+proto_msg5:I asked for a [rainbow]{0}[/rainbow], silly!
+coffee_name_empty:Empty Mug
+coffee_name_espresso:Espresso
+coffee_name_double_espresso:Double Espresso
+coffee_name_macchiato:Espresso Macchiato
+coffee_name_minilatte:Piccolo Latte
+coffee_name_cortado:Cortado
+coffee_name_flatwhite:Flat White
+coffee_name_double_macchiato:Double Macchiato
+coffee_name_latte:Latte
+coffee_name_cappuchino:Cappuchino
+coffee_name_dry:Dry Espresso
+coffee_needscup:Place a cup down before using the pourer!
+coffee_toomuch:This cup already has enough espresso in it!
+coffee_last_none:You don't have any coffee on your head currently!
+coffee_last_notcoffee:The top beverage on your head isn't coffee!
+coffee_action_serve:Serve
+coffee_action_destroy:Discard
+coffee_action_cancel:Cancel
+milk_none:Empty Jug
+milk_froath:{0}% Froathed Milk
+fox_name:Brush
+fox_emptymug:Are you for real?
+fox_satisfied:Oh, awesome! Thanks!

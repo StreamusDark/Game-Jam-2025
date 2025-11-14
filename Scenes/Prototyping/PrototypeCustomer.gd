@@ -1,22 +1,27 @@
 extends Area2D
 
-@export var Plr: Player
 var player_inzone = false
 
-const coffee_scene = preload("res://Entities/PrototypePlayer/Coffee.tscn")
+const coffee_scene = preload("res://Entities/PrototypeBeverage/Coffee.tscn")
 
 func _process(delta: float) -> void:
 	if player_inzone and not GameManager.dialogue_menu_open:
 		if Input.is_action_just_pressed("ui_confirm"):
-			if len(Plr.stacked_beverages) == 0: return
-			var latest_item = Plr.stacked_beverages[len(Plr.stacked_beverages) - 1]
+			var plr = GameManager.PlayerInstance
+			var latest_item = plr.beverages_latest
 			if latest_item is Beverage:
 				if latest_item.beverage_id == "Coffee":
-					Plr.inventory_remove_item()
-					var coff = coffee_scene.instantiate()
-					coff.offset = Vector2(-35, -15)
-					coff.play("default")
-					add_child(coff)
+					if latest_item.beverage_detail == "empty":
+						GameManager.create_dialogue([{"name":GameManager.game_lang["fox_name"], "message":GameManager.game_lang["fox_emptymug"]}], true)
+					else:
+						var coff = coffee_scene.instantiate()
+						coff.set_all_offset(Vector2(-35, -15))
+						coff.read_detail(latest_item.beverage_detail)
+						coff.play("default")
+						add_child(coff)
+					
+						plr.inventory_remove_item()
+						GameManager.create_dialogue([{"name":GameManager.game_lang["fox_name"], "message":GameManager.game_lang["fox_satisfied"]}], true)
 
 func body_entered(body: Node2D) -> void:
 	if body is Player:
