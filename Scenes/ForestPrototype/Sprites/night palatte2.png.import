@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cs65b8wqykpyv"
-path="res://.godot/imported/bnuuy-Sheet.png-5af2fd3b42a4f5f0476bf0d90a2bac74.ctex"
+uid="uid://3an108i6xldo"
+path="res://.godot/imported/night palatte2.png-6a45b954f1160059b2a8b81b3e735e6e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Entities/PrototypePlayer/bnuuy-Sheet.png"
-dest_files=["res://.godot/imported/bnuuy-Sheet.png-5af2fd3b42a4f5f0476bf0d90a2bac74.ctex"]
+source_file="res://Scenes/ForestPrototype/Sprites/night palatte2.png"
+dest_files=["res://.godot/imported/night palatte2.png-6a45b954f1160059b2a8b81b3e735e6e.ctex"]
 
 [params]
 

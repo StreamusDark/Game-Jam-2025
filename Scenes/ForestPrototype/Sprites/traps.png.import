@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cs65b8wqykpyv"
-path="res://.godot/imported/bnuuy-Sheet.png-5af2fd3b42a4f5f0476bf0d90a2bac74.ctex"
+uid="uid://bsp8csjoork35"
+path="res://.godot/imported/traps.png-95ba6d808c70b0a0dc341c138057ef18.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Entities/PrototypePlayer/bnuuy-Sheet.png"
-dest_files=["res://.godot/imported/bnuuy-Sheet.png-5af2fd3b42a4f5f0476bf0d90a2bac74.ctex"]
+source_file="res://Scenes/ForestPrototype/Sprites/traps.png"
+dest_files=["res://.godot/imported/traps.png-95ba6d808c70b0a0dc341c138057ef18.ctex"]
 
 [params]
 
