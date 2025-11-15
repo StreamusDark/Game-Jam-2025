@@ -151,9 +151,8 @@ sources/1 = SubResource("TileSetAtlasSource_o71rb")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v55wy"]
 size = Vector2(64, 64)
 
-[node name="PrototypeForest" type="Node2D" node_paths=PackedStringArray("health_counter", "collector_ui_labels", "hearts")]
+[node name="PrototypeForest" type="Node2D" node_paths=PackedStringArray("collector_ui_labels", "hearts")]
 script = ExtResource("1_oqm00")
-health_counter = NodePath("")
 collector_ui_labels = [NodePath("Interface/Container/GridContainer/Milk"), NodePath("Interface/Container/GridContainer/Carrot"), NodePath("Interface/Container/GridContainer/Coffee"), NodePath("Interface/Container/GridContainer/Strawberry")]
 hearts = [NodePath("Interface/Container/HealthUI/Heart1"), NodePath("Interface/Container/HealthUI/Heart2"), NodePath("Interface/Container/HealthUI/Heart3")]
 
@@ -183,10 +182,11 @@ night_manager = NodePath("../..")
 player = NodePath("../Player")
 
 [node name="Player" parent="Entities" instance=ExtResource("3_7ar17")]
-position = Vector2(16, 16)
+position = Vector2(15, 17)
 scale = Vector2(2, 2)
 max_speed = 160.0
 alt_mode = true
+kicking_enabled = true
 
 [node name="Sprite" parent="Entities/Player" index="0"]
 animation = &"alt-front"

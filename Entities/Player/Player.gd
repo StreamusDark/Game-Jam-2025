@@ -1,7 +1,6 @@
 class_name Player
 extends CharacterBody2D
 
-@export var player_sprite: AnimatedSprite2D
 @export var max_speed = 130.0
 const Acceleration = 1000.0
 
@@ -9,9 +8,24 @@ var inventory_data: Array[Node] = []
 var inventory_latest: Node = null
 
 @export var alt_mode = false
+@export var kicking_enabled = false
 var animation_prefix = ""
 
+@export_category("Node References")
+@export var player_sprite: AnimatedSprite2D
+@export var kick_sprite: AnimatedSprite2D
+
 const coffee_scene = preload("res://Entities/InventoryItem/CoffeeItem/CoffeeItem.tscn")
+var kicking = false
+
+var last_face_dir = ""
+
+var kick_offsets = {
+	"back" :  Vector2(0,  -14.5),
+	"front" : Vector2(0, -12.5),
+	"left" : Vector2(-5.0, -14.5),
+	"right" : Vector2(5.0, -14.5)
+}
 
 func _ready() -> void:
 	GameManager.PlayerInstance = self
@@ -24,14 +38,21 @@ func _process(delta: float):
 	if GameManager.player_can_move:
 		direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	
+	if kicking_enabled:
+		if Input.is_action_just_pressed("kick"):
+			if kicking == false:
+				kick()
+	
 	# Movement Animation
 	if direction.x != 0:
 		var face_dir = "left" if (direction.x < 0) else "right"
 		player_sprite.play(animation_prefix + face_dir)
+		last_face_dir = face_dir
 		
 	elif direction.y != 0:
 		var face_dir = "back" if (direction.y < 0) else "front"
 		player_sprite.play(animation_prefix + face_dir)
+		last_face_dir = face_dir
 		
 	else:
 		player_sprite.stop()
@@ -71,3 +92,25 @@ func inventory_remove_item():
 		inventory_latest = null
 	
 	max_speed = 130 - (25 * (len(inventory_data) - 1))
+
+
+func kick():
+	kicking = true
+	GameManager.player_can_move = false
+	
+	player_sprite.visible = false
+	kick_sprite.visible = true
+	
+	kick_sprite.position = kick_offsets[last_face_dir]
+	
+	kick_sprite.play(last_face_dir)
+	# IM GONNA KILL MYSELF IM GONNA KILL MYSELF IM GONNA KILL MYSELF IM GONNA KILL MYSELF IM GONNA KILL MYSELF IM GONNA KILL MYSELF IM GONNA KILL MYSELF 
+
+
+func _on_kick_animation_finished() -> void:
+	kicking = false
+	
+	player_sprite.visible = true
+	kick_sprite.visible = false
+	
+	GameManager.player_can_move = true
