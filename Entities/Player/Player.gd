@@ -2,19 +2,22 @@ class_name Player
 extends CharacterBody2D
 
 @export var player_sprite: AnimatedSprite2D
-var max_speed = 130.0
+@export var max_speed = 130.0
 const Acceleration = 1000.0
 
 var inventory_data: Array[Node] = []
 var inventory_latest: Node = null
 
-var alt_mode = false
+@export var alt_mode = false
 var animation_prefix = ""
 
 const coffee_scene = preload("res://Entities/InventoryItem/CoffeeItem/CoffeeItem.tscn")
 
 func _ready() -> void:
 	GameManager.PlayerInstance = self
+	
+	if alt_mode:
+		animation_prefix = "alt-"
 
 func _process(delta: float):
 	var direction = Vector2.ZERO

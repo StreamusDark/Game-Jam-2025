@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var max_speed = 200.0
+var max_speed = 140.0
 const accel = 1000.0
 
 @export_category("Scene Stuff")
