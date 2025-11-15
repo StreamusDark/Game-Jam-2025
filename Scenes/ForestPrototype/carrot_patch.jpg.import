@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c0o5ntd2gpvhe"
-path="res://.godot/imported/new fox3.png-6cf6f322e674f10e88837edbd32c00c2.ctex"
+uid="uid://n7w61kpf8hi1"
+path="res://.godot/imported/carrot_patch.jpg-3060562b83e4e5fe427b5ca681c6d9a7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/ForestPrototype/Sprites/new fox3.png"
-dest_files=["res://.godot/imported/new fox3.png-6cf6f322e674f10e88837edbd32c00c2.ctex"]
+source_file="res://Scenes/ForestPrototype/carrot_patch.jpg"
+dest_files=["res://.godot/imported/carrot_patch.jpg-3060562b83e4e5fe427b5ca681c6d9a7.ctex"]
 
 [params]
 

@@ -1,35 +1,47 @@
-[gd_scene load_steps=6 format=3 uid="uid://beag8vvymj77r"]
+[gd_scene load_steps=15 format=3 uid="uid://beag8vvymj77r"]
 
 [ext_resource type="PackedScene" uid="uid://6slj7c4gr3v4" path="res://Scenes/ForestPrototype/Enemy.tscn" id="1_e7dap"]
+[ext_resource type="Script" uid="uid://cwgkhv18iur6r" path="res://Scenes/ForestPrototype/ForestNightPhase.gd" id="1_oqm00"]
 [ext_resource type="PackedScene" uid="uid://cd0reu8phr487" path="res://Entities/PrototypePlayer/PrototypePlayer.tscn" id="2_p5xqh"]
-[ext_resource type="Script" uid="uid://dgwi7lolqaeih" path="res://Scenes/ForestPrototype/HealthCmp.gd" id="3_8513l"]
-[ext_resource type="Texture2D" uid="uid://dqty43ohr3npy" path="res://Scenes/Prototyping/TreeTemplate.png" id="3_eu8te"]
+[ext_resource type="Texture2D" uid="uid://yoeo3qfdk6gp" path="res://Scenes/ForestPrototype/Sprites/tree.png" id="4_oqm00"]
+[ext_resource type="PackedScene" uid="uid://bawamny16egbo" path="res://Scenes/ForestPrototype/HealthUI.tscn" id="5_oqm00"]
+[ext_resource type="Texture2D" uid="uid://doeeyewbc3umx" path="res://Scenes/ForestPrototype/hole.png" id="5_wdu2q"]
+[ext_resource type="PackedScene" uid="uid://cipo53gy842ou" path="res://Scenes/ForestPrototype/item_collect.tscn" id="6_7ar17"]
+[ext_resource type="Texture2D" uid="uid://p45k4b38qigy" path="res://Entities/DialogueMenu/DialogueTexture.png" id="7_1d2d7"]
+[ext_resource type="Texture2D" uid="uid://2sw0o3x83rny" path="res://Scenes/Prototyping/Decorations/milk.png" id="8_3k2p7"]
+[ext_resource type="Texture2D" uid="uid://c1rgx868ga46g" path="res://Scenes/ForestPrototype/strawberry_bush.jpg" id="9_1d2d7"]
+[ext_resource type="Texture2D" uid="uid://n7w61kpf8hi1" path="res://Scenes/ForestPrototype/carrot_patch.jpg" id="10_3k2p7"]
+[ext_resource type="Texture2D" uid="uid://bjph1rb40i2xf" path="res://Scenes/ForestPrototype/coffee_plant.png" id="11_o71rb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8513l"]
 size = Vector2(18, 8.5)
 
-[node name="PrototypeForest" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v55wy"]
+size = Vector2(100, 100)
+
+[node name="PrototypeForest" type="Node2D" node_paths=PackedStringArray("health_counter", "collector_ui_labels")]
+script = ExtResource("1_oqm00")
+health_counter = NodePath("Interface/Container/HealthUI/Counter")
+collector_ui_labels = [NodePath("Interface/Container/CollectorUI/VBoxContainer/Label"), NodePath("Interface/Container/CollectorUI/VBoxContainer/Label2"), NodePath("Interface/Container/CollectorUI/VBoxContainer/Label3"), NodePath("Interface/Container/CollectorUI/VBoxContainer/Label4")]
 
 [node name="Entities" type="Node2D" parent="."]
 y_sort_enabled = true
 
-[node name="Enemy" parent="Entities" node_paths=PackedStringArray("player") instance=ExtResource("1_e7dap")]
+[node name="Enemy" parent="Entities" node_paths=PackedStringArray("night_manager", "player") instance=ExtResource("1_e7dap")]
 position = Vector2(682, 162)
+night_manager = NodePath("../..")
 player = NodePath("../MovementNode")
 
 [node name="MovementNode" parent="Entities" instance=ExtResource("2_p5xqh")]
-position = Vector2(240, 222)
+alt_animations = true
 
 [node name="Sprite" parent="Entities/MovementNode" index="0"]
-animation = &"alt-left"
+animation = &"alt-front"
 
 [node name="Camera2D" type="Camera2D" parent="Entities/MovementNode"]
 zoom = Vector2(2, 2)
 position_smoothing_enabled = true
 position_smoothing_speed = 15.0
-
-[node name="HealthComponent" type="Node" parent="Entities/MovementNode"]
-script = ExtResource("3_8513l")
 
 [node name="Tree" type="StaticBody2D" parent="Entities"]
 y_sort_enabled = true
@@ -38,9 +50,10 @@ position = Vector2(137, 228)
 
 [node name="Sprite2D" type="Sprite2D" parent="Entities/Tree"]
 y_sort_enabled = true
-scale = Vector2(6, 6)
-texture = ExtResource("3_eu8te")
-offset = Vector2(0, -15.8)
+position = Vector2(0, -0.7500076)
+scale = Vector2(2, 2)
+texture = ExtResource("4_oqm00")
+offset = Vector2(0, -43.125)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/Tree"]
 shape = SubResource("RectangleShape2D_8513l")
@@ -52,9 +65,10 @@ position = Vector2(435, 327)
 
 [node name="Sprite2D" type="Sprite2D" parent="Entities/Tree2"]
 y_sort_enabled = true
-scale = Vector2(6, 6)
-texture = ExtResource("3_eu8te")
-offset = Vector2(0, -15.8)
+position = Vector2(0, -0.7500076)
+scale = Vector2(2, 2)
+texture = ExtResource("4_oqm00")
+offset = Vector2(0, -43.125)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/Tree2"]
 shape = SubResource("RectangleShape2D_8513l")
@@ -66,12 +80,40 @@ position = Vector2(357, 107)
 
 [node name="Sprite2D" type="Sprite2D" parent="Entities/Tree3"]
 y_sort_enabled = true
-scale = Vector2(6, 6)
-texture = ExtResource("3_eu8te")
-offset = Vector2(0, -15.8)
+position = Vector2(0, -0.7500076)
+scale = Vector2(2, 2)
+texture = ExtResource("4_oqm00")
+offset = Vector2(0, -43.125)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/Tree3"]
 shape = SubResource("RectangleShape2D_8513l")
+
+[node name="CafeHole" type="Area2D" parent="Entities"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/CafeHole"]
+shape = SubResource("RectangleShape2D_v55wy")
+debug_color = Color(0.20117643, 0.63309145, 1.92523e-07, 0.41960785)
+
+[node name="Hole" type="Sprite2D" parent="Entities/CafeHole"]
+z_index = -155
+position = Vector2(0.99999994, 0)
+scale = Vector2(0.06, 0.06)
+texture = ExtResource("5_wdu2q")
+
+[node name="ItemCollect" parent="Entities" instance=ExtResource("6_7ar17")]
+position = Vector2(-262, -92)
+
+[node name="ItemCollect2" parent="Entities" instance=ExtResource("6_7ar17")]
+position = Vector2(-146, 123)
+item_type = 1
+
+[node name="ItemCollect3" parent="Entities" instance=ExtResource("6_7ar17")]
+position = Vector2(220, 27)
+item_type = 2
+
+[node name="ItemCollect4" parent="Entities" instance=ExtResource("6_7ar17")]
+position = Vector2(137, -147)
+item_type = 3
 
 [node name="Interface" type="CanvasLayer" parent="."]
 
@@ -84,4 +126,79 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_lock_ = true
 
+[node name="HealthUI" parent="Interface/Container" instance=ExtResource("5_oqm00")]
+layout_mode = 1
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="CollectorUI" type="NinePatchRect" parent="Interface/Container"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 950.0
+offset_top = 45.0
+offset_right = -68.0
+offset_bottom = -370.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_1d2d7")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="Milk" type="Sprite2D" parent="Interface/Container/CollectorUI"]
+position = Vector2(132.99997, 45)
+scale = Vector2(0.38679245, 0.38679245)
+texture = ExtResource("8_3k2p7")
+
+[node name="CarrotPatch" type="Sprite2D" parent="Interface/Container/CollectorUI"]
+position = Vector2(132, 110)
+scale = Vector2(0.065, 0.065)
+texture = ExtResource("10_3k2p7")
+
+[node name="StrawberryBush" type="Sprite2D" parent="Interface/Container/CollectorUI"]
+position = Vector2(132, 185)
+scale = Vector2(0.055, 0.055)
+texture = ExtResource("9_1d2d7")
+
+[node name="CoffeePlant" type="Sprite2D" parent="Interface/Container/CollectorUI"]
+position = Vector2(131.99998, 267)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("11_o71rb")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Interface/Container/CollectorUI"]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 11.0
+offset_right = 76.0
+offset_bottom = 294.0
+
+[node name="Label" type="Label" parent="Interface/Container/CollectorUI/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "0"
+
+[node name="Label2" type="Label" parent="Interface/Container/CollectorUI/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "0"
+
+[node name="Label3" type="Label" parent="Interface/Container/CollectorUI/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "0"
+
+[node name="Label4" type="Label" parent="Interface/Container/CollectorUI/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "0"
+
 [editable path="Entities/MovementNode"]
+[editable path="Interface/Container/HealthUI"]

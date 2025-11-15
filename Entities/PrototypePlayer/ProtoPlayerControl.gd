@@ -8,6 +8,7 @@ const accel = 1000.0
 const coffee_scene = preload("res://Entities/PrototypeBeverage/Coffee.tscn")
 var beverages_data: Array[Node] = []
 var beverages_latest: Node = null
+@export var alt_animations = false
 
 func _ready() -> void:
 	GameManager.PlayerInstance = self
@@ -47,14 +48,18 @@ func movement_process(delta: float):
 	if GameManager.player_can_move:
 		direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	
+	var suffix = ""
+	if alt_animations:
+		suffix = "alt-"
+	
 	# Movement Animation
 	if direction.x != 0:
 		var face_dir = "left" if (direction.x < 0) else "right"
-		character_sprite.play(face_dir)
+		character_sprite.play(suffix + face_dir)
 		
 	elif direction.y != 0:
 		var face_dir = "back" if (direction.y < 0) else "front"
-		character_sprite.play(face_dir)
+		character_sprite.play(suffix + face_dir)
 		
 	else:
 		character_sprite.stop()

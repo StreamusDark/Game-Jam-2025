@@ -19,7 +19,7 @@ patch_margin_top = 5
 patch_margin_right = 5
 patch_margin_bottom = 5
 
-[node name="Label" type="Label" parent="."]
+[node name="HealthLabel" type="Label" parent="."]
 layout_mode = 0
 offset_left = 56.0
 offset_top = 17.0
@@ -28,7 +28,7 @@ offset_bottom = 40.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Health"
 
-[node name="Label2" type="Label" parent="."]
+[node name="Counter" type="Label" parent="."]
 layout_mode = 0
 offset_left = 72.0
 offset_top = 48.0

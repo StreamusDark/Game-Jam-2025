@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dc6vupcemyb2q"
-path="res://.godot/imported/new fox1.png-c3d840123623943ccf0bdbb011110798.ctex"
+uid="uid://blj7bosn0nby8"
+path="res://.godot/imported/new_fox-Sheet.png-74d245a59ce42e6a8181042744c6cc34.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/ForestPrototype/Sprites/new fox1.png"
-dest_files=["res://.godot/imported/new fox1.png-c3d840123623943ccf0bdbb011110798.ctex"]
+source_file="res://Entities/PrototypeEntity/new_fox-Sheet.png"
+dest_files=["res://.godot/imported/new_fox-Sheet.png-74d245a59ce42e6a8181042744c6cc34.ctex"]
 
 [params]
 

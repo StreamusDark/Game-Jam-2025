@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cjgpknsictfex"
-path="res://.godot/imported/new fox4.png-e6e461f28f819ae2b587765946a05ce0.ctex"
+uid="uid://bjph1rb40i2xf"
+path="res://.godot/imported/coffee_plant.png-2e82af2779b9772df245d91dce37aa2a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/ForestPrototype/Sprites/new fox4.png"
-dest_files=["res://.godot/imported/new fox4.png-e6e461f28f819ae2b587765946a05ce0.ctex"]
+source_file="res://Scenes/ForestPrototype/coffee_plant.png"
+dest_files=["res://.godot/imported/coffee_plant.png-2e82af2779b9772df245d91dce37aa2a.ctex"]
 
 [params]
 

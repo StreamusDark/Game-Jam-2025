@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://3an108i6xldo"
-path="res://.godot/imported/night palatte2.png-6a45b954f1160059b2a8b81b3e735e6e.ctex"
+uid="uid://buofv3gpepg7p"
+path="res://.godot/imported/steam_button.png-7bed48cbf657b5c2b98260c42d8363b2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/ForestPrototype/Sprites/night palatte2.png"
-dest_files=["res://.godot/imported/night palatte2.png-6a45b954f1160059b2a8b81b3e735e6e.ctex"]
+source_file="res://Scenes/Prototyping/CoffeeMachine/steam_button.png"
+dest_files=["res://.godot/imported/steam_button.png-7bed48cbf657b5c2b98260c42d8363b2.ctex"]
 
 [params]
 

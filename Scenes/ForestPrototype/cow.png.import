@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://sflowfr517nd"
-path="res://.godot/imported/night palatte1.png-f6bcbd82dfb2bb6fb88899de85499582.ctex"
+uid="uid://vp7sjfy1yg5x"
+path="res://.godot/imported/cow.png-3e304b6595db2db5004d32a338a46ad2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/ForestPrototype/Sprites/night palatte1.png"
-dest_files=["res://.godot/imported/night palatte1.png-f6bcbd82dfb2bb6fb88899de85499582.ctex"]
+source_file="res://Scenes/ForestPrototype/cow.png"
+dest_files=["res://.godot/imported/cow.png-3e304b6595db2db5004d32a338a46ad2.ctex"]
 
 [params]
 
