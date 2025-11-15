@@ -11,12 +11,17 @@ var inventory_latest: Node = null
 @export var kicking_enabled = false
 var animation_prefix = ""
 
+@export_category("External Node References")
+@export var enemy: Enemy
+
 @export_category("Node References")
 @export var player_sprite: AnimatedSprite2D
 @export var kick_sprite: AnimatedSprite2D
+@export var kick_area: Area2D
 
 const coffee_scene = preload("res://Entities/InventoryItem/CoffeeItem/CoffeeItem.tscn")
 var kicking = false
+var enemy_in_kick_area = false
 
 var last_face_dir = ""
 
@@ -42,6 +47,10 @@ func _process(delta: float):
 		if Input.is_action_just_pressed("kick"):
 			if kicking == false:
 				kick()
+		
+		if kicking and enemy_in_kick_area:
+			if not enemy.attack_on_cooldown:
+				enemy.get_kicked()
 	
 	# Movement Animation
 	if direction.x != 0:
@@ -114,3 +123,12 @@ func _on_kick_animation_finished() -> void:
 	kick_sprite.visible = false
 	
 	GameManager.player_can_move = true
+
+
+func _on_kick_area_body_entered(body: Node2D) -> void:
+	if body is Enemy:
+		enemy_in_kick_area = true
+
+func _on_kick_area_body_exited(body: Node2D) -> void:
+	if body is Enemy:
+		enemy_in_kick_area = false

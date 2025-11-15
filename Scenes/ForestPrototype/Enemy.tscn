@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://rhjvp5y48moo" path="res://Scenes/Prototyping/Enemy.gd" id="1_yghok"]
 [ext_resource type="Texture2D" uid="uid://blj7bosn0nby8" path="res://Entities/PrototypeEntity/new_fox-Sheet.png" id="2_5lapw"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_27m7t"]
-size = Vector2(92, 96)
+[sub_resource type="CircleShape2D" id="CircleShape2D_5lapw"]
+radius = 49.0306
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5lapw"]
 size = Vector2(44, 22)
@@ -276,17 +276,18 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("damage_box", "attack_cooldown", "character_sprite")]
+[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("damage_box", "attack_cooldown", "kicked_cooldown", "character_sprite")]
 script = ExtResource("1_yghok")
 damage_box = NodePath("DamageBox")
 attack_cooldown = NodePath("AttackCooldown")
+kicked_cooldown = NodePath("KickedCooldown")
 character_sprite = NodePath("Sprite")
 
 [node name="DamageBox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamageBox"]
 position = Vector2(0, -20)
-shape = SubResource("RectangleShape2D_27m7t")
+shape = SubResource("CircleShape2D_5lapw")
 debug_color = Color(0.98775905, 0, 0.31458336, 0.41960785)
 
 [node name="Collision" type="CollisionShape2D" parent="."]
@@ -304,9 +305,13 @@ offset = Vector2(0, -14.5)
 
 [node name="AttackCooldown" type="Timer" parent="."]
 
+[node name="KickedCooldown" type="Timer" parent="."]
+wait_time = 2.5
+
 [node name="OnScreenNotifier" type="VisibleOnScreenNotifier2D" parent="."]
 rect = Rect2(-24, -54, 50, 56)
 
 [connection signal="timeout" from="AttackCooldown" to="." method="_on_attack_cooldown_timeout"]
+[connection signal="timeout" from="KickedCooldown" to="." method="_on_kicked_cooldown_timeout"]
 [connection signal="screen_entered" from="OnScreenNotifier" to="." method="_on_screen_notifier_screen_entered"]
 [connection signal="screen_exited" from="OnScreenNotifier" to="." method="_on_screen_notifier_screen_exited"]

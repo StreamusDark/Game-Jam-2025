@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://icty0spbjj72"]
+[gd_scene load_steps=56 format=3 uid="uid://icty0spbjj72"]
 
 [ext_resource type="Script" uid="uid://bakayp6pognac" path="res://Entities/Player/Player.gd" id="1_ww0jn"]
 [ext_resource type="Texture2D" uid="uid://dl7vgb45hbnrn" path="res://Entities/Player/PlayerSpritesheet.png" id="2_ww0jn"]
@@ -409,12 +409,16 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("player_sprite", "kick_sprite")]
+[sub_resource type="CircleShape2D" id="CircleShape2D_vweq0"]
+radius = 39.051247
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("player_sprite", "kick_sprite", "kick_area")]
 y_sort_enabled = true
 motion_mode = 1
 script = ExtResource("1_ww0jn")
 player_sprite = NodePath("Sprite")
 kick_sprite = NodePath("Kick")
+kick_area = NodePath("KickArea")
 metadata/_edit_group_ = true
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
@@ -434,4 +438,13 @@ position = Vector2(5, -14.5)
 sprite_frames = SubResource("SpriteFrames_ww0jn")
 animation = &"front"
 
+[node name="KickArea" type="Area2D" parent="."]
+position = Vector2(0, -12)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KickArea"]
+shape = SubResource("CircleShape2D_vweq0")
+debug_color = Color(0.95446306, 0.21615252, 0, 0.41960785)
+
 [connection signal="animation_finished" from="Kick" to="." method="_on_kick_animation_finished"]
+[connection signal="body_entered" from="KickArea" to="." method="_on_kick_area_body_entered"]
+[connection signal="body_exited" from="KickArea" to="." method="_on_kick_area_body_exited"]

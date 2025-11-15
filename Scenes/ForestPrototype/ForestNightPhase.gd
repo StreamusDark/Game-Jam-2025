@@ -1,10 +1,10 @@
 class_name NightManager extends Node2D
 
 @export_category("Node References")
-@export var health_counter: Label
 @export var collector_ui_labels: Array[Label]
 
 @export var hearts: Array[Sprite2D]
+@export var game_over: Control
 
 var near_cafe_hole = false
 
@@ -41,7 +41,8 @@ var collected_items = {
 			idx += 1
 		
 		if health <= 0:
-			pass # DIE
+			GameManager.player_can_move = false
+			game_over.visible = true
 
 
 func damage_player(knockback_dir: Vector2):
@@ -68,3 +69,10 @@ func _on_cafe_hole_body_entered(body: Node2D) -> void:
 func _on_cafe_hole_body_exited(body: Node2D) -> void:
 	if body is Player:
 		near_cafe_hole = false
+
+
+func _on_restart_pressed() -> void:
+	get_tree().change_scene_to_file("res://Scenes/ForestPrototype/PrototypeForest.tscn")
+
+func _on_quit_pressed() -> void:
+	pass # shrug

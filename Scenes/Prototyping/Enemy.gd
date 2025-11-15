@@ -1,4 +1,4 @@
-extends CharacterBody2D
+class_name Enemy extends CharacterBody2D
 
 @export var max_speed = 200.0
 const accel = 1000.0
@@ -10,6 +10,7 @@ const accel = 1000.0
 @export_category("Node References")
 @export var damage_box: Area2D
 @export var attack_cooldown: Timer
+@export var kicked_cooldown: Timer
 @export var character_sprite: AnimatedSprite2D
 
 var on_screen = false
@@ -25,7 +26,7 @@ func movement_process(delta: float):
 	
 	var prefix = ""
 	
-	if attack_on_cooldown:
+	if attack_on_cooldown or is_kicked:
 		prefix = "sit-"
 	else:
 		direction = (player.global_position - global_position).normalized() # moves towards player
@@ -58,6 +59,7 @@ func movement_process(delta: float):
 var last_face_dir = ""
 
 var attack_on_cooldown = false
+var is_kicked = false
 
 func attempt_attack():
 	if not damage_box.overlaps_body(player): # damage box not overlapping player
@@ -73,6 +75,13 @@ func attempt_attack():
 	attack_on_cooldown = true
 
 
+func get_kicked():
+	var knockback_dir = (global_position - player.global_position).normalized() 
+	velocity = knockback_dir * 500
+	kicked_cooldown.start()
+	is_kicked = true
+
+
 func _on_attack_cooldown_timeout() -> void:
 	attack_on_cooldown = false
 
@@ -82,3 +91,7 @@ func _on_screen_notifier_screen_entered() -> void:
 
 func _on_screen_notifier_screen_exited() -> void:
 	on_screen = false
+
+
+func _on_kicked_cooldown_timeout() -> void:
+	is_kicked = false

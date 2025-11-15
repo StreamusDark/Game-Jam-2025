@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://beag8vvymj77r"]
+[gd_scene load_steps=17 format=4 uid="uid://beag8vvymj77r"]
 
 [ext_resource type="PackedScene" uid="uid://6slj7c4gr3v4" path="res://Scenes/ForestPrototype/Enemy.tscn" id="1_e7dap"]
 [ext_resource type="Script" uid="uid://cwgkhv18iur6r" path="res://Scenes/ForestPrototype/ForestNightPhase.gd" id="1_oqm00"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://du2okswp5hxd8" path="res://Scenes/ForestPrototype/tree.tscn" id="7_3k2p7"]
 [ext_resource type="Texture2D" uid="uid://dkhjfns4o05l0" path="res://Scenes/ForestPrototype/Sprites/emtpy hearts.png" id="9_o71rb"]
 [ext_resource type="Texture2D" uid="uid://uwb4cgg4tsea" path="res://Scenes/ForestPrototype/Sprites/hearts.png" id="10_tehqt"]
+[ext_resource type="Texture2D" uid="uid://dwv8m1pgvvipq" path="res://Scenes/ForestPrototype/game_over.png" id="12_7ar17"]
 [ext_resource type="Texture2D" uid="uid://f40jjpa76wsx" path="res://Scenes/ForestPrototype/Sprites/night ui.png" id="16_tehqt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3k2p7"]
@@ -151,10 +152,11 @@ sources/1 = SubResource("TileSetAtlasSource_o71rb")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v55wy"]
 size = Vector2(64, 64)
 
-[node name="PrototypeForest" type="Node2D" node_paths=PackedStringArray("collector_ui_labels", "hearts")]
+[node name="PrototypeForest" type="Node2D" node_paths=PackedStringArray("collector_ui_labels", "hearts", "game_over")]
 script = ExtResource("1_oqm00")
 collector_ui_labels = [NodePath("Interface/Container/GridContainer/Milk"), NodePath("Interface/Container/GridContainer/Carrot"), NodePath("Interface/Container/GridContainer/Coffee"), NodePath("Interface/Container/GridContainer/Strawberry")]
 hearts = [NodePath("Interface/Container/HealthUI/Heart1"), NodePath("Interface/Container/HealthUI/Heart2"), NodePath("Interface/Container/HealthUI/Heart3")]
+game_over = NodePath("Interface/Container/GameOver")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 texture_filter = 1
@@ -181,12 +183,13 @@ max_speed = 130.0
 night_manager = NodePath("../..")
 player = NodePath("../Player")
 
-[node name="Player" parent="Entities" instance=ExtResource("3_7ar17")]
+[node name="Player" parent="Entities" node_paths=PackedStringArray("enemy") instance=ExtResource("3_7ar17")]
 position = Vector2(15, 17)
 scale = Vector2(2, 2)
 max_speed = 160.0
 alt_mode = true
 kicking_enabled = true
+enemy = NodePath("../Enemy")
 
 [node name="Sprite" parent="Entities/Player" index="0"]
 animation = &"alt-front"
@@ -428,7 +431,50 @@ size_flags_horizontal = 3
 size_flags_vertical = 6
 text = "0"
 
+[node name="GameOver" type="Control" parent="Interface/Container"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BG" type="ColorRect" parent="Interface/Container/GameOver"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.6745098)
+metadata/_edit_lock_ = true
+
+[node name="GameOver" type="Sprite2D" parent="Interface/Container/GameOver"]
+texture_filter = 1
+position = Vector2(610, 360)
+scale = Vector2(2, 2)
+texture = ExtResource("12_7ar17")
+
+[node name="Restart" type="Button" parent="Interface/Container/GameOver"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 532.0
+offset_top = 429.0
+offset_right = 679.0
+offset_bottom = 477.0
+
+[node name="Quit" type="Button" parent="Interface/Container/GameOver"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 532.0
+offset_top = 493.0
+offset_right = 679.0
+offset_bottom = 541.0
+
 [connection signal="body_entered" from="CafeHole" to="." method="_on_cafe_hole_body_entered"]
 [connection signal="body_exited" from="CafeHole" to="." method="_on_cafe_hole_body_exited"]
+[connection signal="pressed" from="Interface/Container/GameOver/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="Interface/Container/GameOver/Quit" to="." method="_on_quit_pressed"]
 
 [editable path="Entities/Player"]
