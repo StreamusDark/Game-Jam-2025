@@ -54,7 +54,7 @@ func destroy_dialogue(obj: NinePatchRect):
 	dialogue_menu_open = false
 
 var machine_inst = null
-const machine_scene = preload("res://Scenes/Prototyping/PrototypeCoffeeSim.tscn")
+const machine_scene = preload("res://Scenes/CoffeeMachine/CoffeeMachine.tscn")
 
 func open_coffee_machine():
 	player_can_move = false

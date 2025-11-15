@@ -2,11 +2,14 @@ class_name Player
 extends CharacterBody2D
 
 @export var player_sprite: AnimatedSprite2D
-var max_speed = 160.0
+var max_speed = 130.0
 const Acceleration = 1000.0
 
 var inventory_data: Array[Node] = []
 var inventory_latest: Node = null
+
+var alt_mode = false
+var animation_prefix = ""
 
 const coffee_scene = preload("res://Entities/InventoryItem/CoffeeItem/CoffeeItem.tscn")
 
@@ -21,11 +24,11 @@ func _process(delta: float):
 	# Movement Animation
 	if direction.x != 0:
 		var face_dir = "left" if (direction.x < 0) else "right"
-		player_sprite.play(face_dir)
+		player_sprite.play(animation_prefix + face_dir)
 		
 	elif direction.y != 0:
 		var face_dir = "back" if (direction.y < 0) else "front"
-		player_sprite.play(face_dir)
+		player_sprite.play(animation_prefix + face_dir)
 		
 	else:
 		player_sprite.stop()
@@ -64,4 +67,4 @@ func inventory_remove_item():
 	else:
 		inventory_latest = null
 	
-	max_speed = 160 - (35 * (len(inventory_data) - 1))
+	max_speed = 130 - (25 * (len(inventory_data) - 1))

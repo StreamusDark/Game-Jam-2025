@@ -1,6 +1,6 @@
 [gd_scene load_steps=38 format=3 uid="uid://6slj7c4gr3v4"]
 
-[ext_resource type="Script" uid="uid://dieocixhbhput" path="res://Scenes/Prototyping/Enemy.gd" id="1_yghok"]
+[ext_resource type="Script" path="res://Scenes/Prototyping/Enemy.gd" id="1_yghok"]
 [ext_resource type="Texture2D" uid="uid://blj7bosn0nby8" path="res://Entities/PrototypeEntity/new_fox-Sheet.png" id="2_5lapw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_27m7t"]

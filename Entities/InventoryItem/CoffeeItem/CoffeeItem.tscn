@@ -14,8 +14,8 @@ script = ExtResource("2_p2umt")
 [node name="Colouring" type="AnimatedSprite2D" parent="."]
 y_sort_enabled = true
 texture_filter = 1
-position = Vector2(-1.5, 0)
-scale = Vector2(1.125, 1)
+position = Vector2(-0.5000007, 0)
+scale = Vector2(1.2916666, 1)
 sprite_frames = ExtResource("1_4i3dl")
 frame = 2
 speed_scale = 0.0

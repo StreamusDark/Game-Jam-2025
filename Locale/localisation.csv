@@ -26,6 +26,32 @@ coffee_action_destroy:Discard
 coffee_action_cancel:Cancel
 milk_none:Empty Jug
 milk_froath:Froathed Milk ({0}%)
-fox_name:Brush
+fox_name_0:Brush
+fox_name_1:Basil
+fox_name_2:Breeze
+fox_name_3:Milo
+fox_name_4:Maple
+fox_name_5:Foxy
+fox_name_6:Clover
+fox_name_7:Smoke
+fox_name_8:Rattle
+fox_name_9:Bush
+fox_name_10:Larry
+fox_name_11:Roger
+fox_name_12:Aoife
+fox_name_13:Kat
+fox_name_14:Senan
+fox_name_15:Michael
+fox_name_16:Peter
+fox_name_17:Lyxi
+fox_name_18:Ruan
+fox_name_19:Dara
+fox_name_20:Craig
+fox_speak_0:Hi there, could I get a [rainbow]{0}[/rainbow], please?\nThanks!
+fox_recheck:Hey, I ordered a [rainbow]{0}[/rainbow], is it ready soon?
+fox_wrongorder:Oh! I think you got the orders messed up?\nI ordered a [rainbow]{0}[/rainbow]...
 fox_emptymug:Are you for real?
+fox_drinking:(is drinking)
 fox_satisfied:Oh, awesome! Thanks!
+fox_neutral:Great thanks.
+fox_disatisfied:Finally.

@@ -1,9 +1,8 @@
-[gd_scene load_steps=24 format=3 uid="uid://cfkjqduve5x73"]
+[gd_scene load_steps=23 format=3 uid="uid://cfkjqduve5x73"]
 
-[ext_resource type="PackedScene" uid="uid://cd0reu8phr487" path="res://Entities/PrototypePlayer/PrototypePlayer.tscn" id="1_kuq25"]
 [ext_resource type="Script" uid="uid://smbembspi11t" path="res://Scenes/Prototyping/PrototypeMachine.gd" id="2_2mlk6"]
 [ext_resource type="Texture2D" uid="uid://bcqy2nclm2vgj" path="res://Scenes/Prototyping/BoxTemplate.png" id="2_ucyuc"]
-[ext_resource type="Texture2D" uid="uid://c6sgg4xooxdrl" path="res://Scenes/Prototyping/CoffeeMachine/machine_full.png" id="3_2ri0d"]
+[ext_resource type="Texture2D" uid="uid://c6sgg4xooxdrl" path="res://Scenes/CoffeeMachine/Sprites/Machine/machine_full.png" id="3_2ri0d"]
 [ext_resource type="Texture2D" uid="uid://dqty43ohr3npy" path="res://Scenes/Prototyping/TreeTemplate.png" id="3_7uo42"]
 [ext_resource type="Texture2D" uid="uid://dcb1ex0ikr2nj" path="res://Entities/PrototypeEntity/FoxSprite.png" id="4_5ym0v"]
 [ext_resource type="PackedScene" uid="uid://bkima7b0owxam" path="res://Entities/PrototypeEntity/PrototypeEntity.tscn" id="4_doo61"]
@@ -209,8 +208,18 @@ position = Vector2(0, -18)
 shape = SubResource("RectangleShape2D_doo61")
 debug_color = Color(0.51, 0.4335, 0, 0.41960785)
 
-[node name="PrototypePlayer" parent="Entities" instance=ExtResource("1_kuq25")]
+[node name="PrototypePlayer" parent="Entities"]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
 position = Vector2(304, 240)
+script = null
 metadata/_edit_group_ = true
 
 [node name="Camera2D" type="Camera2D" parent="Entities/PrototypePlayer"]

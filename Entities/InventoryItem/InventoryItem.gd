@@ -26,7 +26,9 @@ const coffee_colouring = {
 func read_detail(detail: Variant):
 	item_detail = detail
 	if item_id == ItemType.COFFEE: 
-		coffee_detail(detail as GameManager.CoffeeType)
+		if type_string(typeof(detail)) == "String":
+			detail = GameManager.CoffeeCodenames.find(detail)
+		coffee_detail(detail)
 
 func set_all_offset(off:Vector2):
 	for n in get_children():

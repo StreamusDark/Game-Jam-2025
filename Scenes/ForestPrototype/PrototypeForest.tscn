@@ -1,14 +1,13 @@
-[gd_scene load_steps=15 format=3 uid="uid://beag8vvymj77r"]
+[gd_scene load_steps=14 format=3 uid="uid://beag8vvymj77r"]
 
 [ext_resource type="PackedScene" uid="uid://6slj7c4gr3v4" path="res://Scenes/ForestPrototype/Enemy.tscn" id="1_e7dap"]
-[ext_resource type="Script" uid="uid://cwgkhv18iur6r" path="res://Scenes/ForestPrototype/ForestNightPhase.gd" id="1_oqm00"]
-[ext_resource type="PackedScene" uid="uid://cd0reu8phr487" path="res://Entities/PrototypePlayer/PrototypePlayer.tscn" id="2_p5xqh"]
+[ext_resource type="Script" path="res://Scenes/ForestPrototype/ForestNightPhase.gd" id="1_oqm00"]
+[ext_resource type="PackedScene" uid="uid://icty0spbjj72" path="res://Entities/Player/Player.tscn" id="3_7ar17"]
 [ext_resource type="Texture2D" uid="uid://yoeo3qfdk6gp" path="res://Scenes/ForestPrototype/Sprites/tree.png" id="4_oqm00"]
-[ext_resource type="PackedScene" uid="uid://bawamny16egbo" path="res://Scenes/ForestPrototype/HealthUI.tscn" id="5_oqm00"]
 [ext_resource type="Texture2D" uid="uid://doeeyewbc3umx" path="res://Scenes/ForestPrototype/hole.png" id="5_wdu2q"]
-[ext_resource type="PackedScene" uid="uid://cipo53gy842ou" path="res://Scenes/ForestPrototype/item_collect.tscn" id="6_7ar17"]
+[ext_resource type="PackedScene" path="res://Scenes/ForestPrototype/item_collect.tscn" id="6_7ar17"]
 [ext_resource type="Texture2D" uid="uid://p45k4b38qigy" path="res://Entities/DialogueMenu/DialogueTexture.png" id="7_1d2d7"]
-[ext_resource type="Texture2D" uid="uid://2sw0o3x83rny" path="res://Scenes/Prototyping/Decorations/milk.png" id="8_3k2p7"]
+[ext_resource type="Texture2D" uid="uid://2sw0o3x83rny" path="res://Scenes/CoffeeMachine/Sprites/MilkBottleSprites/milk_bottle_sheet.png" id="8_3k2p7"]
 [ext_resource type="Texture2D" uid="uid://c1rgx868ga46g" path="res://Scenes/ForestPrototype/strawberry_bush.jpg" id="9_1d2d7"]
 [ext_resource type="Texture2D" uid="uid://n7w61kpf8hi1" path="res://Scenes/ForestPrototype/carrot_patch.jpg" id="10_3k2p7"]
 [ext_resource type="Texture2D" uid="uid://bjph1rb40i2xf" path="res://Scenes/ForestPrototype/coffee_plant.png" id="11_o71rb"]
@@ -30,15 +29,12 @@ y_sort_enabled = true
 [node name="Enemy" parent="Entities" node_paths=PackedStringArray("night_manager", "player") instance=ExtResource("1_e7dap")]
 position = Vector2(682, 162)
 night_manager = NodePath("../..")
-player = NodePath("../MovementNode")
+player = NodePath("../Player")
 
-[node name="MovementNode" parent="Entities" instance=ExtResource("2_p5xqh")]
-alt_animations = true
+[node name="Player" parent="Entities" instance=ExtResource("3_7ar17")]
+scale = Vector2(2, 2)
 
-[node name="Sprite" parent="Entities/MovementNode" index="0"]
-animation = &"alt-front"
-
-[node name="Camera2D" type="Camera2D" parent="Entities/MovementNode"]
+[node name="Camera2D" type="Camera2D" parent="Entities/Player"]
 zoom = Vector2(2, 2)
 position_smoothing_enabled = true
 position_smoothing_speed = 15.0
@@ -126,10 +122,39 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_lock_ = true
 
-[node name="HealthUI" parent="Interface/Container" instance=ExtResource("5_oqm00")]
+[node name="HealthUI" type="NinePatchRect" parent="Interface/Container"]
+texture_filter = 1
 layout_mode = 1
-grow_horizontal = 1
-grow_vertical = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 45.0
+offset_top = 45.0
+offset_right = -998.0
+offset_bottom = -584.0
+texture = ExtResource("7_1d2d7")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="HealthLabel" type="Label" parent="Interface/Container/HealthUI"]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 17.0
+offset_right = 108.0
+offset_bottom = 40.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Health"
+
+[node name="Counter" type="Label" parent="Interface/Container/HealthUI"]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 48.0
+offset_right = 112.0
+offset_bottom = 71.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "3"
 
 [node name="CollectorUI" type="NinePatchRect" parent="Interface/Container"]
 texture_filter = 1
@@ -199,6 +224,3 @@ layout_mode = 2
 size_flags_vertical = 6
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "0"
-
-[editable path="Entities/MovementNode"]
-[editable path="Interface/Container/HealthUI"]
