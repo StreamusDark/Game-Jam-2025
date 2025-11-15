@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://sflowfr517nd"
-path="res://.godot/imported/night palatte1.png-f6bcbd82dfb2bb6fb88899de85499582.ctex"
+uid="uid://doeeyewbc3umx"
+path="res://.godot/imported/hole.png-1c0ee89c84e2f6a60cea4b562b1a64ce.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/ForestPrototype/Sprites/night palatte1.png"
-dest_files=["res://.godot/imported/night palatte1.png-f6bcbd82dfb2bb6fb88899de85499582.ctex"]
+source_file="res://Scenes/ForestPrototype/hole.png"
+dest_files=["res://.godot/imported/hole.png-1c0ee89c84e2f6a60cea4b562b1a64ce.ctex"]
 
 [params]
 

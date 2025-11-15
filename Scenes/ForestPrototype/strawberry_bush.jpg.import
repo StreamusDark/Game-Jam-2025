@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dc6vupcemyb2q"
-path="res://.godot/imported/new fox1.png-c3d840123623943ccf0bdbb011110798.ctex"
+uid="uid://c1rgx868ga46g"
+path="res://.godot/imported/strawberry_bush.jpg-18a6c968abeee78bab848cab7e20f888.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/ForestPrototype/Sprites/new fox1.png"
-dest_files=["res://.godot/imported/new fox1.png-c3d840123623943ccf0bdbb011110798.ctex"]
+source_file="res://Scenes/ForestPrototype/strawberry_bush.jpg"
+dest_files=["res://.godot/imported/strawberry_bush.jpg-18a6c968abeee78bab848cab7e20f888.ctex"]
 
 [params]
 

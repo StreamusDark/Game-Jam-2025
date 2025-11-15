@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://3an108i6xldo"
-path="res://.godot/imported/night palatte2.png-6a45b954f1160059b2a8b81b3e735e6e.ctex"
+uid="uid://n7w61kpf8hi1"
+path="res://.godot/imported/carrot_patch.jpg-3060562b83e4e5fe427b5ca681c6d9a7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/ForestPrototype/Sprites/night palatte2.png"
-dest_files=["res://.godot/imported/night palatte2.png-6a45b954f1160059b2a8b81b3e735e6e.ctex"]
+source_file="res://Scenes/ForestPrototype/carrot_patch.jpg"
+dest_files=["res://.godot/imported/carrot_patch.jpg-3060562b83e4e5fe427b5ca681c6d9a7.ctex"]
 
 [params]
 

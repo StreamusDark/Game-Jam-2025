@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c4teiswbvdq2a"
-path="res://.godot/imported/new fox2.png-389db853d4e18fda79fc4db61bb3459a.ctex"
+uid="uid://vp7sjfy1yg5x"
+path="res://.godot/imported/cow.png-3e304b6595db2db5004d32a338a46ad2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/ForestPrototype/Sprites/new fox2.png"
-dest_files=["res://.godot/imported/new fox2.png-389db853d4e18fda79fc4db61bb3459a.ctex"]
+source_file="res://Scenes/ForestPrototype/cow.png"
+dest_files=["res://.godot/imported/cow.png-3e304b6595db2db5004d32a338a46ad2.ctex"]
 
 [params]
 
