@@ -5,10 +5,15 @@ enum CUSTOMER_TYPE {
 	FOX
 }
 
-
 var customer_type: CUSTOMER_TYPE
 var customer_name: String
 var customer_seat_number = -1
+
+@export var satisfaction_timeout_time = 5
+@export var disatisfaction_rate = 0.1
+var customer_current_satisfaction = 10
+var customer_served_satisfaction = 0
+
 var drink_request: Dictionary = {}
 var drink_request_formatted: String
 const type_to_id = {CUSTOMER_TYPE.FOX: "fox"}
@@ -18,6 +23,11 @@ var drinking = false
 
 @onready var customer_sprites: AnimatedSprite2D = $Sprite
 @onready var game_scene: CafeGame = get_tree().current_scene
+@onready var satisfaction_timer: Timer = $SatisfactionTimer
+
+func _ready() -> void:
+	customer_served_satisfaction = customer_current_satisfaction - ((disatisfaction_rate * 60) / satisfaction_timeout_time)
+	print("Satisfaction decrease: ", customer_served_satisfaction, " per min")
 
 func init(customer_variant: CUSTOMER_TYPE):
 	# Pick Drink
@@ -26,9 +36,8 @@ func init(customer_variant: CUSTOMER_TYPE):
 	
 	match type:
 		InventoryItem.ItemType.COFFEE:
-			#var options = InventoryItem.coffee_colouring.keys().filter(func(n): return n not in [GameManager.CoffeeType.NONE, GameManager.CoffeeType.EMPTY])
-			#detail = GameManager.CoffeeCodenames[options.pick_random()]
-			detail = "cappuchino"
+			var options = InventoryItem.coffee_colouring.keys().filter(func(n): return n not in [GameManager.CoffeeType.NONE, GameManager.CoffeeType.EMPTY])
+			detail = GameManager.CoffeeCodenames[options.pick_random()]
 			drink_request_formatted = GameManager.game_lang["coffee_name_" + detail]
 	
 	drink_request = {
@@ -46,10 +55,12 @@ func init(customer_variant: CUSTOMER_TYPE):
 	
 	var queue_offset = 114.0 + (27 * len(game_scene.customer_queue))
 	await get_tree().create_tween().tween_property(self, "position", Vector2(queue_offset, 90), randi_range(2,6)).finished
+	satisfaction_timer.start(satisfaction_timeout_time)
 	customer_sprites.play("sit-left")
 	game_scene.customer_queue.append(self)
 
 func pick_seat():
+	satisfaction_timer.stop()
 	game_scene.customer_queue.remove_at(0)
 	
 	# Absolute garbage code, never write this again kat. -kat
@@ -67,6 +78,7 @@ func pick_seat():
 	await get_tree().create_tween().tween_property(self, "position", position_goal, 1).finished
 	customer_sprites.play("sit-front")
 	awaiting_order = true
+	satisfaction_timer.start(satisfaction_timeout_time)
 
 func short_dialogue(msg: String):
 	GameManager.create_dialogue([{
@@ -90,10 +102,15 @@ func on_interact():
 		return
 	
 	if (item.item_id != drink_request["type"]) or (GameManager.CoffeeCodenames[item.item_detail] != drink_request["detail"]):
+		GameManager.update_satisfaction(-2.0)
 		short_dialogue(GameManager.game_lang["fox_wrongorder"])
 		return
 	
+	satisfaction_timer.stop()
 	short_dialogue(GameManager.game_lang["fox_satisfied"])
+	GameManager.RunData["customers_served"] += 1
+	GameManager.RunData["coffees_served"][item.item_detail] += 1
+	GameManager.update_satisfaction(customer_served_satisfaction)
 	
 	var coffee_clone: AnimatedSprite2D = coffee_scene.instantiate()
 	coffee_clone.play("default")
@@ -117,3 +134,6 @@ func on_interact():
 	
 	game_scene.occupied_seats[customer_seat_number] = null
 	queue_free()
+
+func satisfaction_timeout() -> void:
+	GameManager.update_satisfaction(-disatisfaction_rate)

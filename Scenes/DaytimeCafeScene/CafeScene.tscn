@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=4 uid="uid://wibk80qhr1t2"]
+[gd_scene load_steps=40 format=4 uid="uid://wibk80qhr1t2"]
 
 [ext_resource type="Script" uid="uid://6apjgsnxwiv4" path="res://Scenes/DaytimeCafeScene/CafeGameplay.gd" id="1_vlhgq"]
 [ext_resource type="PackedScene" uid="uid://icty0spbjj72" path="res://Entities/Player/Player.tscn" id="2_7e3x4"]
@@ -16,7 +16,9 @@
 [ext_resource type="Texture2D" uid="uid://jqj7ain4532b" path="res://Scenes/DaytimeCafeScene/Components/Mats.png" id="12_nsguh"]
 [ext_resource type="Texture2D" uid="uid://c1y3g4mss6sri" path="res://Scenes/DaytimeCafeScene/Interface/timer.png" id="15_oic7s"]
 [ext_resource type="FontFile" uid="uid://db1mivm1mc3hf" path="res://Assets/Fonts/Belajar Menulis.otf" id="16_hmors"]
+[ext_resource type="Texture2D" uid="uid://cjtx86xjlk46s" path="res://Scenes/DaytimeCafeScene/Interface/dial_panel.png" id="17_cbydh"]
 [ext_resource type="AudioStream" uid="uid://coo8kwlbvt8sg" path="res://Assets/Music/Daytime Folly.mp3" id="17_jr2k8"]
+[ext_resource type="Texture2D" uid="uid://dj068wjsxt674" path="res://Scenes/DaytimeCafeScene/Interface/dial_pointer.png" id="18_ncafe"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uet74"]
 texture = ExtResource("2_uet74")
@@ -159,11 +161,17 @@ font = ExtResource("16_hmors")
 font_size = 35
 font_color = Color(0.99215686, 0.23137255, 0.32941177, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_ncafe"]
+font = ExtResource("16_hmors")
+font_size = 20
+outline_size = 9
+outline_color = Color(0, 0, 0, 1)
+
 [node name="CafeScene" type="Node2D" node_paths=PackedStringArray("table_nodes", "entities_node", "timer_display")]
 script = ExtResource("1_vlhgq")
 table_nodes = NodePath("Entities/TablesNodes")
 entities_node = NodePath("Entities")
-timer_display = NodePath("Interface/Container/Timer/CurrentTime")
+timer_display = NodePath("Interface/Container/HBoxContainer/Timer/CurrentTime")
 
 [node name="TileMap" type="TileMapLayer" parent="."]
 texture_filter = 1
@@ -588,19 +596,24 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_lock_ = true
 
-[node name="Timer" type="TextureRect" parent="Interface/Container"]
-texture_filter = 1
+[node name="HBoxContainer" type="HBoxContainer" parent="Interface/Container"]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -280.0
+offset_left = -602.0
 offset_right = -32.0
-offset_bottom = 98.0
+offset_bottom = 100.0
 grow_horizontal = 0
+alignment = 2
+
+[node name="Timer" type="TextureRect" parent="Interface/Container/HBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(250, 100)
+layout_mode = 2
 texture = ExtResource("15_oic7s")
 
-[node name="Title" type="Label" parent="Interface/Container/Timer"]
+[node name="Title" type="Label" parent="Interface/Container/HBoxContainer/Timer"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -616,7 +629,7 @@ label_settings = SubResource("LabelSettings_hmors")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CurrentTime" type="Label" parent="Interface/Container/Timer"]
+[node name="CurrentTime" type="Label" parent="Interface/Container/HBoxContainer/Timer"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -632,17 +645,47 @@ label_settings = SubResource("LabelSettings_jr2k8")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Satisfaction" type="TextureRect" parent="Interface/Container/HBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(130, 0)
+layout_mode = 2
+texture = ExtResource("17_cbydh")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Spinner" type="Sprite2D" parent="Interface/Container/HBoxContainer/Satisfaction"]
+position = Vector2(65, 51.76137)
+rotation = 2.0943952
+scale = Vector2(4, 3.7)
+texture = ExtResource("18_ncafe")
+offset = Vector2(0, -4)
+
+[node name="Title" type="Label" parent="Interface/Container/HBoxContainer/Satisfaction"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.5
+offset_top = 60.0
+offset_right = -10.5
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Satisfaction"
+label_settings = SubResource("LabelSettings_ncafe")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="DaylightTime" type="Timer" parent="."]
 wait_time = 480.0
 
 [node name="TimeOfDayLighting" type="DirectionalLight2D" parent="."]
-color = Color(0.77, 0.74689996, 0.49279997, 1)
+color = Color(0, 0, 0, 1)
 blend_mode = 1
 
 [node name="DaytimeTheme" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("17_jr2k8")
 volume_db = -30.0
-autoplay = true
 
 [connection signal="body_entered" from="Entities/FrontTable/DessertCounter/InteractCollider" to="Entities/FrontTable/DessertCounter" method="body_entered"]
 [connection signal="body_exited" from="Entities/FrontTable/DessertCounter/InteractCollider" to="Entities/FrontTable/DessertCounter" method="body_exited"]

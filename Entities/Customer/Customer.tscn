@@ -21,5 +21,9 @@ position = Vector2(0, -12)
 shape = SubResource("RectangleShape2D_p0mig")
 debug_color = Color(0.7, 0.6766667, 0, 0.41960785)
 
+[node name="SatisfactionTimer" type="Timer" parent="."]
+wait_time = 10.0
+
 [connection signal="body_entered" from="." to="." method="body_entered"]
 [connection signal="body_exited" from="." to="." method="body_exited"]
+[connection signal="timeout" from="SatisfactionTimer" to="." method="satisfaction_timeout"]

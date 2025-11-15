@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dl7vgb45hbnrn"
-path="res://.godot/imported/PlayerSpriteSheet.png-3ddf69d5f9321df72496232b6a7f5f65.ctex"
+uid="uid://dj068wjsxt674"
+path="res://.godot/imported/dial_pointer.png-672a012debd6997a2b34b85d98095a0b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Entities/Player/PlayerSpriteSheet.png"
-dest_files=["res://.godot/imported/PlayerSpriteSheet.png-3ddf69d5f9321df72496232b6a7f5f65.ctex"]
+source_file="res://Scenes/DaytimeCafeScene/Interface/dial_pointer.png"
+dest_files=["res://.godot/imported/dial_pointer.png-672a012debd6997a2b34b85d98095a0b.ctex"]
 
 [params]
 

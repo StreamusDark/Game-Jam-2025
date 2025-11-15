@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dl7vgb45hbnrn"
-path="res://.godot/imported/PlayerSpriteSheet.png-3ddf69d5f9321df72496232b6a7f5f65.ctex"
+uid="uid://bsahc5ebrnohb"
+path="res://.godot/imported/Cross Icon.png-4f85997360922fb05af7eac36f029d8c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Entities/Player/PlayerSpriteSheet.png"
-dest_files=["res://.godot/imported/PlayerSpriteSheet.png-3ddf69d5f9321df72496232b6a7f5f65.ctex"]
+source_file="res://Scenes/CoffeeMachine/Sprites/Interface/Cross Icon.png"
+dest_files=["res://.godot/imported/Cross Icon.png-4f85997360922fb05af7eac36f029d8c.ctex"]
 
 [params]
 
