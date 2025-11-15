@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://yoeo3qfdk6gp"
-path="res://.godot/imported/tree.png-c598898b9faeef3232e2ecc85da69794.ctex"
+uid="uid://f40jjpa76wsx"
+path="res://.godot/imported/night ui.png-53711f56f82523082727a66206fffbf5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/ForestPrototype/Sprites/tree.png"
-dest_files=["res://.godot/imported/tree.png-c598898b9faeef3232e2ecc85da69794.ctex"]
+source_file="res://Scenes/ForestPrototype/Sprites/night ui.png"
+dest_files=["res://.godot/imported/night ui.png-53711f56f82523082727a66206fffbf5.ctex"]
 
 [params]
 

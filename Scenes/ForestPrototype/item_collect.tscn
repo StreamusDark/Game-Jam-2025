@@ -1,26 +1,126 @@
-[gd_scene load_steps=7 format=3 uid="uid://cipo53gy842ou"]
+[gd_scene load_steps=16 format=3 uid="uid://cipo53gy842ou"]
 
 [ext_resource type="Script" uid="uid://epqoyoe5qnbp" path="res://Scenes/ForestPrototype/item_collect.gd" id="1_1m3d5"]
-[ext_resource type="Texture2D" uid="uid://vp7sjfy1yg5x" path="res://Scenes/ForestPrototype/cow.png" id="2_kcovc"]
-[ext_resource type="Texture2D" uid="uid://n7w61kpf8hi1" path="res://Scenes/ForestPrototype/carrot_patch.jpg" id="3_bckpd"]
-[ext_resource type="Texture2D" uid="uid://bjph1rb40i2xf" path="res://Scenes/ForestPrototype/coffee_plant.png" id="4_yqx3g"]
+[ext_resource type="Texture2D" uid="uid://jfsyhhpdyqi6" path="res://Scenes/ForestPrototype/Sprites/cow.png" id="2_1m3d5"]
+[ext_resource type="Texture2D" uid="uid://e7tcgebp8r00" path="res://Scenes/ForestPrototype/Sprites/carrot patch.png" id="3_kcovc"]
+[ext_resource type="Texture2D" uid="uid://cu2mk64v2tnlf" path="res://Scenes/ForestPrototype/Sprites/coffee bush.png" id="5_1m3d5"]
 [ext_resource type="Texture2D" uid="uid://c1rgx868ga46g" path="res://Scenes/ForestPrototype/strawberry_bush.jpg" id="5_18skw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tehqt"]
-size = Vector2(100, 100)
+size = Vector2(128, 128)
 
-[node name="ItemCollect" type="Area2D" node_paths=PackedStringArray("sprite")]
+[sub_resource type="AtlasTexture" id="AtlasTexture_1m3d5"]
+atlas = ExtResource("3_kcovc")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kcovc"]
+atlas = ExtResource("3_kcovc")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bckpd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1m3d5")
+}],
+"loop": true,
+"name": &"collected",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kcovc")
+}],
+"loop": true,
+"name": &"harvest",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yqx3g"]
+atlas = ExtResource("2_1m3d5")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_18skw"]
+atlas = ExtResource("2_1m3d5")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_72vfh"]
+atlas = ExtResource("2_1m3d5")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tqmh4"]
+atlas = ExtResource("2_1m3d5")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lanin"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yqx3g")
+}],
+"loop": true,
+"name": &"back",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_18skw")
+}],
+"loop": true,
+"name": &"front",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_72vfh")
+}],
+"loop": true,
+"name": &"left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tqmh4")
+}],
+"loop": true,
+"name": &"right",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1m3d5"]
+size = Vector2(32, 32)
+
+[node name="ItemCollect" type="Area2D" node_paths=PackedStringArray("item_sprites")]
 script = ExtResource("1_1m3d5")
-item_textures = Array[Texture2D]([ExtResource("2_kcovc"), ExtResource("3_bckpd"), ExtResource("4_yqx3g"), ExtResource("5_18skw")])
-sprite = NodePath("Sprite")
+item_sprites = [NodePath("Cow"), NodePath("CarrotPatch"), NodePath("CoffeePlant"), NodePath("Strawberry")]
 
 [node name="Shape" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_tehqt")
 debug_color = Color(0.6955586, 0.28241545, 1, 0.41960785)
 
-[node name="Sprite" type="Sprite2D" parent="."]
-scale = Vector2(0.065, 0.065)
-texture = ExtResource("2_kcovc")
+[node name="CarrotPatch" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_bckpd")
+animation = &"harvest"
+
+[node name="Cow" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_lanin")
+animation = &"front"
+
+[node name="Strawberry" type="Sprite2D" parent="."]
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("5_18skw")
+
+[node name="CoffeePlant" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("5_1m3d5")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_1m3d5")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bsp8csjoork35"
-path="res://.godot/imported/traps.png-95ba6d808c70b0a0dc341c138057ef18.ctex"
+uid="uid://ba47dunm51nn8"
+path="res://.godot/imported/night tree tapped.png-aa6c31799ad30e9d7c0eb00e4935f0a0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/ForestPrototype/Sprites/traps.png"
-dest_files=["res://.godot/imported/traps.png-95ba6d808c70b0a0dc341c138057ef18.ctex"]
+source_file="res://Scenes/ForestPrototype/Sprites/night tree tapped.png"
+dest_files=["res://.godot/imported/night tree tapped.png-aa6c31799ad30e9d7c0eb00e4935f0a0.ctex"]
 
 [params]
 

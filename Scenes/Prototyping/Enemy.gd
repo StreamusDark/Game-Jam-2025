@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var max_speed = 140.0
+@export var max_speed = 200.0
 const accel = 1000.0
 
 @export_category("Scene Stuff")
@@ -11,6 +11,8 @@ const accel = 1000.0
 @export var damage_box: Area2D
 @export var attack_cooldown: Timer
 @export var character_sprite: AnimatedSprite2D
+
+var on_screen = false
 
 func _process(delta):
 	movement_process(delta)
@@ -43,8 +45,12 @@ func movement_process(delta: float):
 	else:
 		character_sprite.play(prefix + last_face_dir)
 	
+	var speed = max_speed
+	# half the speed of the enemy if it's not on screen
+	if not on_screen:
+		speed = speed/2
 	
-	velocity = velocity.move_toward(direction * max_speed, accel * delta)
+	velocity = velocity.move_toward(direction * speed, accel * delta)
 	velocity = velocity.clamp(Vector2(-200, -200), Vector2(200, 200))
 	
 	move_and_slide()
@@ -54,7 +60,6 @@ var last_face_dir = ""
 var attack_on_cooldown = false
 
 func attempt_attack():
-	
 	if not damage_box.overlaps_body(player): # damage box not overlapping player
 		return
 	if attack_on_cooldown:
@@ -70,3 +75,10 @@ func attempt_attack():
 
 func _on_attack_cooldown_timeout() -> void:
 	attack_on_cooldown = false
+
+
+func _on_screen_notifier_screen_entered() -> void:
+	on_screen = true
+
+func _on_screen_notifier_screen_exited() -> void:
+	on_screen = false
