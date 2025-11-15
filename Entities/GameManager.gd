@@ -6,6 +6,29 @@ var dialogue_menu_open: bool = false
 var machine_menu_open: bool = false
 var game_lang: Dictionary = {}
 
+var Satisfaction: float = 50.0
+var RunData: Dictionary = {
+	"day": 1,
+	"satisfaction": 50.0,
+	"customers_served": 0,
+	"cafe_inventory": {
+		"coffee": 1000,
+		"milk": 50,
+	},
+	"coffees_served": {
+		CoffeeType.ESPRESSO: 0,
+		CoffeeType.DOUBLE_ESPRESSO: 0,
+		CoffeeType.MACCHIATO: 0,
+		CoffeeType.MINILATTE: 0,
+		CoffeeType.CORTADO: 0,
+		CoffeeType.FLATWHITE: 0,
+		CoffeeType.DOUBLE_MACCHIATO: 0,
+		CoffeeType.LATTE: 0,
+		CoffeeType.CAPPUCHINO: 0,
+		CoffeeType.DRY: 0
+	}
+}
+
 enum CoffeeType {
 	NONE,
 	EMPTY,
@@ -68,3 +91,8 @@ func open_coffee_machine():
 func close_coffee_machine():
 	player_can_move = true
 	machine_menu_open = false
+
+func update_satisfaction(value: float):
+	GameManager.RunData["satisfaction"] += value
+	var scene: CafeGame = get_tree().current_scene
+	scene.update_satisfaction()

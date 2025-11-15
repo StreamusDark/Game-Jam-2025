@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://c7gficdq3463"]
+[gd_scene load_steps=63 format=3 uid="uid://c7gficdq3463"]
 
 [ext_resource type="Script" uid="uid://dds4tkqyratt0" path="res://Scenes/CoffeeMachine/CoffeeMachine.gd" id="1_mifmu"]
 [ext_resource type="Texture2D" uid="uid://btgw1g36oqly" path="res://Scenes/CoffeeMachine/Sprites/Machine/machine.png" id="2_qqsrl"]
@@ -19,7 +19,6 @@
 [ext_resource type="FontFile" uid="uid://db1mivm1mc3hf" path="res://Assets/Fonts/Belajar Menulis.otf" id="8_h5omg"]
 [ext_resource type="Texture2D" uid="uid://bum0y3tnda8ly" path="res://Scenes/CoffeeMachine/Sprites/CupMountainSprites/cups_button_outline.png" id="8_pkxhv"]
 [ext_resource type="Texture2D" uid="uid://d1yjawnnoq7wu" path="res://Scenes/CoffeeMachine/Sprites/MilkBottleSprites/milk_bottle_outline.png" id="9_co82f"]
-[ext_resource type="Texture2D" uid="uid://dor1jbks2vd0g" path="res://icon.svg" id="10_fl8i1"]
 [ext_resource type="Texture2D" uid="uid://c524603wfbtv0" path="res://Entities/DialogueMenu/DialogueTextureOutline.png" id="11_q2g1w"]
 [ext_resource type="Texture2D" uid="uid://d1bmkdjtisx3" path="res://Scenes/CoffeeMachine/Sprites/Machine/MachineButtons/liquid_button_pressed.png" id="15_yqsuo"]
 [ext_resource type="Texture2D" uid="uid://dn6eifmfff8s6" path="res://Scenes/CoffeeMachine/Sprites/Machine/MachineButtons/steam_button_pressed.png" id="18_0ywbk"]
@@ -27,9 +26,14 @@
 [ext_resource type="Texture2D" uid="uid://4f4uojuwyyno" path="res://Scenes/CoffeeMachine/Sprites/MilkJugSprites/milk_jug_liquid.png" id="19_prxrh"]
 [ext_resource type="Texture2D" uid="uid://c7mvocsp40ien" path="res://Scenes/CoffeeMachine/Sprites/MilkJugSprites/milk_jug_body.png" id="20_p32a0"]
 [ext_resource type="Texture2D" uid="uid://bqsfwqfds36x8" path="res://Scenes/CoffeeMachine/Sprites/Machine/counter.png" id="21_0otgf"]
+[ext_resource type="Texture2D" uid="uid://coavg7qvi842h" path="res://Scenes/CoffeeMachine/Sprites/Interface/serve.png" id="25_43oqh"]
+[ext_resource type="Texture2D" uid="uid://c210g4tce10e5" path="res://Scenes/CoffeeMachine/Sprites/Interface/Mini Bin2.png" id="26_wmgx3"]
+[ext_resource type="Texture2D" uid="uid://bsahc5ebrnohb" path="res://Scenes/CoffeeMachine/Sprites/Interface/Cross Icon.png" id="27_heljd"]
 [ext_resource type="Texture2D" uid="uid://bi64uyp22x6r" path="res://Scenes/CoffeeMachine/Sprites/MilkJugSprites/milk_jug_outline.png" id="28_xtusc"]
 [ext_resource type="Texture2D" uid="uid://biejf8w24fbvx" path="res://Scenes/CoffeeMachine/Sprites/Interface/recipebook.png" id="29_r8gtr"]
 [ext_resource type="Texture2D" uid="uid://blyawphb8wvdf" path="res://Scenes/CoffeeMachine/Sprites/Interface/recipebook_outline.png" id="30_wqp5t"]
+[ext_resource type="Texture2D" uid="uid://ba7k53me2005i" path="res://Scenes/CoffeeMachine/Sprites/Interface/Pour Icon.png" id="32_wc1bx"]
+[ext_resource type="Texture2D" uid="uid://catst085ks57s" path="res://Scenes/CoffeeMachine/Sprites/Interface/Move Icon.png" id="33_gnwfp"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_h5omg"]
 line_spacing = -24.0
@@ -421,14 +425,14 @@ offset_bottom = 30.59143
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.3, 0.3)
-text = "Serve"
+text = "Pour"
 label_settings = SubResource("LabelSettings_qn5ym")
 vertical_alignment = 1
 
 [node name="Icon" type="Sprite2D" parent="Content/Decorations/MilkBottle/BottleOptions/Pour"]
 position = Vector2(11.018555, 5.657715)
-scale = Vector2(0.05117252, 0.05117252)
-texture = ExtResource("10_fl8i1")
+scale = Vector2(0.4744036, 0.4744036)
+texture = ExtResource("32_wc1bx")
 
 [node name="Hover" type="NinePatchRect" parent="Content/Decorations/MilkBottle/BottleOptions/Pour"]
 visible = false
@@ -484,8 +488,8 @@ vertical_alignment = 1
 
 [node name="Icon" type="Sprite2D" parent="Content/Decorations/MilkBottle/BottleOptions/Cancel"]
 position = Vector2(11.018555, 5.657715)
-scale = Vector2(0.05117252, 0.05117252)
-texture = ExtResource("10_fl8i1")
+scale = Vector2(0.44176278, 0.44176278)
+texture = ExtResource("27_heljd")
 
 [node name="Hover" type="NinePatchRect" parent="Content/Decorations/MilkBottle/BottleOptions/Cancel"]
 visible = false
@@ -822,8 +826,8 @@ vertical_alignment = 1
 
 [node name="Icon" type="Sprite2D" parent="Content/CoffeeCup/CoffeeOptions/Serve"]
 position = Vector2(11.018555, 5.657715)
-scale = Vector2(0.05117252, 0.05117252)
-texture = ExtResource("10_fl8i1")
+scale = Vector2(0.39859316, 0.39859316)
+texture = ExtResource("25_43oqh")
 
 [node name="Hover" type="NinePatchRect" parent="Content/CoffeeCup/CoffeeOptions/Serve"]
 visible = false
@@ -879,9 +883,9 @@ label_settings = SubResource("LabelSettings_qn5ym")
 vertical_alignment = 1
 
 [node name="Icon" type="Sprite2D" parent="Content/CoffeeCup/CoffeeOptions/Discard"]
-position = Vector2(11.018555, 5.657715)
-scale = Vector2(0.05117252, 0.05117252)
-texture = ExtResource("10_fl8i1")
+position = Vector2(11.018555, 5.657959)
+scale = Vector2(0.41020194, 0.410202)
+texture = ExtResource("26_wmgx3")
 
 [node name="Hover" type="NinePatchRect" parent="Content/CoffeeCup/CoffeeOptions/Discard"]
 visible = false
@@ -937,8 +941,8 @@ vertical_alignment = 1
 
 [node name="Icon" type="Sprite2D" parent="Content/CoffeeCup/CoffeeOptions/Cancel"]
 position = Vector2(11.018555, 5.657715)
-scale = Vector2(0.05117252, 0.05117252)
-texture = ExtResource("10_fl8i1")
+scale = Vector2(0.39972946, 0.39972946)
+texture = ExtResource("27_heljd")
 
 [node name="Hover" type="NinePatchRect" parent="Content/CoffeeCup/CoffeeOptions/Cancel"]
 visible = false
@@ -965,8 +969,7 @@ grow_vertical = 2
 mouse_default_cursor_shape = 2
 
 [node name="Jug" type="Sprite2D" parent="Content"]
-position = Vector2(516, 422)
-rotation = -1.0471976
+position = Vector2(596, 614)
 scale = Vector2(3.238, 3.238)
 texture = ExtResource("19_jsbfv")
 offset = Vector2(0, -30)
@@ -1107,8 +1110,8 @@ vertical_alignment = 1
 
 [node name="Icon" type="Sprite2D" parent="Content/Jug/JugOptions/Use"]
 position = Vector2(11.018555, 5.657715)
-scale = Vector2(0.05117252, 0.05117252)
-texture = ExtResource("10_fl8i1")
+scale = Vector2(0.47982046, 0.47982046)
+texture = ExtResource("32_wc1bx")
 
 [node name="Hover" type="NinePatchRect" parent="Content/Jug/JugOptions/Use"]
 visible = false
@@ -1165,8 +1168,8 @@ vertical_alignment = 1
 
 [node name="Icon" type="Sprite2D" parent="Content/Jug/JugOptions/MoveUp"]
 position = Vector2(11.018555, 5.657715)
-scale = Vector2(0.05117252, 0.05117252)
-texture = ExtResource("10_fl8i1")
+scale = Vector2(0.45201284, 0.45201284)
+texture = ExtResource("33_gnwfp")
 
 [node name="Hover" type="NinePatchRect" parent="Content/Jug/JugOptions/MoveUp"]
 visible = false
@@ -1223,8 +1226,8 @@ vertical_alignment = 1
 
 [node name="Icon" type="Sprite2D" parent="Content/Jug/JugOptions/MoveDown"]
 position = Vector2(11.018555, 5.657715)
-scale = Vector2(0.05117252, 0.05117252)
-texture = ExtResource("10_fl8i1")
+scale = Vector2(0.44556352, 0.44556352)
+texture = ExtResource("33_gnwfp")
 
 [node name="Hover" type="NinePatchRect" parent="Content/Jug/JugOptions/MoveDown"]
 visible = false
@@ -1281,8 +1284,8 @@ vertical_alignment = 1
 
 [node name="Icon" type="Sprite2D" parent="Content/Jug/JugOptions/Discard"]
 position = Vector2(11.018555, 5.657715)
-scale = Vector2(0.05117252, 0.05117252)
-texture = ExtResource("10_fl8i1")
+scale = Vector2(0.42282432, 0.42282435)
+texture = ExtResource("26_wmgx3")
 
 [node name="Hover" type="NinePatchRect" parent="Content/Jug/JugOptions/Discard"]
 visible = false
@@ -1338,8 +1341,8 @@ vertical_alignment = 1
 
 [node name="Icon" type="Sprite2D" parent="Content/Jug/JugOptions/Cancel"]
 position = Vector2(11.018555, 5.657715)
-scale = Vector2(0.05117252, 0.05117252)
-texture = ExtResource("10_fl8i1")
+scale = Vector2(0.41136295, 0.41136295)
+texture = ExtResource("27_heljd")
 
 [node name="Hover" type="NinePatchRect" parent="Content/Jug/JugOptions/Cancel"]
 visible = false

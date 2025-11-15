@@ -6,6 +6,7 @@ class_name CafeGame
 
 @export var timer_display: Label
 @onready var time_of_day_lighting = $TimeOfDayLighting
+@onready var satisfaction_spinner = $Interface/Container/HBoxContainer/Satisfaction/Spinner
 
 const customer_scene = preload("res://Entities/Customer/Customer.tscn")
 var customer_queue: Array[Customer] = []
@@ -17,6 +18,7 @@ func _ready() -> void:
 		occupied_seats[n] = null
 	
 	$TimeOfDayLighting.color = Color("8fb6ff81")
+	update_satisfaction()
 	start_day()
 
 func _process(delta: float) -> void:
@@ -34,6 +36,14 @@ func new_customer():
 	entities_node.add_child(inst)
 	inst.init(Customer.CUSTOMER_TYPE.FOX)
 	customer_count += 1
+
+func update_satisfaction():
+	# -90 - 90
+	# -90 = 0 and 90 = 100 and 0 = 50
+	var low_rot = -120
+	var high_rot = 120
+	var rate = lerp(low_rot, high_rot, GameManager.RunData["satisfaction"] / 100)
+	satisfaction_spinner.rotation_degrees = rate
 
 func do_light_cycle():
 	time_of_day_lighting.color = Color("8fb6ff81")
