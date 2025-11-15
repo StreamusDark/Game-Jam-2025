@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://cght77eq6hesx"]
 
-[ext_resource type="Texture2D" uid="uid://8g2cftq8tyi3" path="res://Entities/PrototypeBeverage/CoffeeStrips.png" id="1_a1yi2"]
+[ext_resource type="Texture2D" uid="uid://8g2cftq8tyi3" path="res://Entities/InventoryItem/CoffeeItem/CoffeeSpritesheet.png" id="1_a1yi2"]
 [ext_resource type="Script" uid="uid://dkdd2ovy8gj42" path="res://Entities/PrototypeBeverage/Beverage.gd" id="2_w7jso"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wcheu"]

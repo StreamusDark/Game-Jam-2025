@@ -6,6 +6,23 @@ var dialogue_menu_open: bool = false
 var machine_menu_open: bool = false
 var game_lang: Dictionary = {}
 
+enum CoffeeType {
+	NONE,
+	EMPTY,
+	ESPRESSO,
+	DOUBLE_ESPRESSO,
+	MACCHIATO,
+	MINILATTE,
+	CORTADO,
+	FLATWHITE,
+	DOUBLE_MACCHIATO,
+	LATTE,
+	CAPPUCHINO,
+	DRY,
+}
+
+const CoffeeCodenames = ["none", "empty", "espresso", "double_espresso", "macchiato", "minilatte", "cortado", "flatwhite", "double_macchiato", "latte", "cappuchino", "dry" ]
+
 func _ready() -> void:
 	initalise_locale()
 

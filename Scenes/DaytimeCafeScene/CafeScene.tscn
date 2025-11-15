@@ -1,0 +1,241 @@
+[gd_scene load_steps=24 format=4 uid="uid://wibk80qhr1t2"]
+
+[ext_resource type="Texture2D" uid="uid://cpf0ecakv5etp" path="res://Scenes/DaytimeCafeScene/wireframe.png" id="1_7e3x4"]
+[ext_resource type="PackedScene" uid="uid://icty0spbjj72" path="res://Entities/Player/Player.tscn" id="2_7e3x4"]
+[ext_resource type="Texture2D" uid="uid://d2itlt2ejwqta" path="res://Scenes/DaytimeCafeScene/Tilemaps/wood.png" id="2_uet74"]
+[ext_resource type="Texture2D" uid="uid://1pdaaifvv17x" path="res://Scenes/DaytimeCafeScene/Tilemaps/walls.png" id="3_bc8pf"]
+[ext_resource type="Texture2D" uid="uid://dku2nc3stxu2p" path="res://Scenes/DaytimeCafeScene/Tilemaps/void.png" id="3_rcqgx"]
+[ext_resource type="Texture2D" uid="uid://d363bcephsvy4" path="res://Scenes/DaytimeCafeScene/Components/Full Counter.png" id="6_urop6"]
+[ext_resource type="Texture2D" uid="uid://obwbtoev2pxq" path="res://Scenes/DaytimeCafeScene/Components/Counter.png" id="7_3dscb"]
+[ext_resource type="Script" uid="uid://c3pan6twuv8m" path="res://Scenes/DaytimeCafeScene/DessertCounter.gd" id="7_5mwdy"]
+[ext_resource type="Script" uid="uid://ctohfi5c5vwx3" path="res://Scenes/DaytimeCafeScene/Components/Sink.gd" id="7_urop6"]
+[ext_resource type="Texture2D" uid="uid://dpmmrwccg7081" path="res://Scenes/DaytimeCafeScene/Components/Sink.png" id="8_obde2"]
+[ext_resource type="Script" uid="uid://d0qq8vwtv3bk4" path="res://Scenes/DaytimeCafeScene/CoffeeMachineTrigger.gd" id="8_yq1jw"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uet74"]
+texture = ExtResource("2_uet74")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rcqgx"]
+texture = ExtResource("3_bc8pf")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+4:0/0 = 0
+4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, -16, 16, 16, 16, 16, -16)
+5:0/0 = 0
+5:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, -16, 16, 16, 16, 16, -16)
+6:0/0 = 0
+6:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, -16, 16, 16, 16, 16, -16)
+7:0/0 = 0
+7:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, -16, 16, 16, 16, 16, -16)
+0:1/0 = 0
+4:1/0 = 0
+4:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, -16, 16, 16, 16, 16, -16)
+5:1/0 = 0
+5:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, -16, 16, 16, 16, 16, -16)
+6:1/0 = 0
+6:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, -16, 16, 16, 16, 16, -16)
+7:1/0 = 0
+7:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, -16, 16, 16, 16, 16, -16)
+0:2/0 = 0
+4:2/0 = 0
+4:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, -16, 16, 16, 16, 16, -16)
+5:2/0 = 0
+5:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, -16, 16, 16, 16, 16, -16)
+6:2/0 = 0
+6:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, -16, 16, 16, 16, 16, -16)
+7:2/0 = 0
+7:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, -16, 16, 16, 16, 16, -16)
+0:3/0 = 0
+4:3/0 = 0
+4:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, -16, 16, 16, 16, 16, -16)
+5:3/0 = 0
+5:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, -16, 16, 16, 16, 16, -16)
+6:3/0 = 0
+6:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, -16, 16, 16, 16, 16, -16)
+7:3/0 = 0
+7:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, -16, 16, 16, 16, 16, -16)
+4:4/0 = 0
+4:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, -16, 16, 16, 16, 16, -16)
+5:4/0 = 0
+5:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, -16, 16, 16, 16, 16, -16)
+6:4/0 = 0
+6:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, -16, 16, 16, 16, 16, -16)
+7:4/0 = 0
+7:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, -16, 16, 16, 16, 16, -16)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gtils"]
+texture = ExtResource("3_rcqgx")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, -16, 16, 16, 16, 16, -16)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, -16, 16, 16, 16, 16, -16)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, -16, 16, 16, 16, 16, -16)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, -16, 16, 16, 16, 16, -16)
+
+[sub_resource type="TileSet" id="TileSet_bc8pf"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 1
+sources/1 = SubResource("TileSetAtlasSource_uet74")
+sources/2 = SubResource("TileSetAtlasSource_rcqgx")
+sources/3 = SubResource("TileSetAtlasSource_gtils")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_obde2"]
+size = Vector2(26, 23.764488)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5mwdy"]
+size = Vector2(34, 35)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yq1jw"]
+size = Vector2(26, 51.99025)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nsguh"]
+size = Vector2(24.5, 63.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vlhgq"]
+size = Vector2(26, 25.995129)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sj5sr"]
+size = Vector2(24.5, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3dscb"]
+size = Vector2(26, 94.250046)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_urop6"]
+size = Vector2(33, 64)
+
+[node name="CafeScene" type="Node2D"]
+
+[node name="TileMap" type="TileMapLayer" parent="."]
+texture_filter = 1
+tile_map_data = PackedByteArray("AAAAAAAAAQAAAAAAAAAAAAEAAQABAAAAAAAAAAIAAQAAAAAAAAAAAAMAAQAAAAAAAAAAAAQAAQAAAAAAAAAAAAUAAQAAAAAAAAAAAAYAAQAAAAAAAAABAAAAAQABAAEAAAABAAEAAQAAAAAAAAABAAIAAQABAAAAAAABAAMAAQAAAAAAAAABAAQAAQAAAAAAAAABAAUAAQABAAAAAAABAAYAAQAAAAAAAAACAAAAAQAAAAEAAAACAAEAAQAAAAAAAAACAAIAAQAAAAAAAAACAAMAAQAAAAAAAAACAAQAAQAAAAAAAAACAAUAAQAAAAAAAAACAAYAAQAAAAAAAAADAAAAAQAAAAAAAAADAAEAAQAAAAAAAAADAAIAAQAAAAAAAAADAAMAAQAAAAAAAAADAAQAAQAAAAAAAAADAAUAAQAAAAAAAAADAAYAAQABAAAAAAAEAAAAAQABAAEAAAAEAAEAAQAAAAAAAAAEAAIAAQABAAAAAAAEAAMAAQAAAAAAAAAEAAQAAQABAAEAAAAEAAUAAQABAAEAAAAEAAYAAQAAAAAAAAAFAAAAAQABAAEAAAAFAAEAAQABAAAAAAAFAAIAAQABAAEAAAAFAAMAAQAAAAAAAAAFAAQAAQAAAAAAAAAFAAUAAQABAAEAAAAFAAYAAQAAAAAAAAAGAAAAAQAAAAAAAAAGAAEAAQAAAAAAAAAGAAIAAQABAAAAAAAGAAMAAQABAAAAAAAGAAQAAQAAAAAAAAAGAAUAAQAAAAEAAAAGAAYAAQAAAAAAAAAHAAAAAQAAAAAAAAAHAAEAAQAAAAAAAAAHAAIAAQAAAAAAAAAHAAMAAQAAAAAAAAAHAAQAAQABAAAAAAAHAAUAAQAAAAEAAAAHAAYAAQAAAAAAAAAIAAAAAQAAAAAAAAAIAAEAAQAAAAEAAAAIAAIAAQAAAAAAAAAIAAMAAQABAAAAAAAIAAQAAQAAAAAAAAAIAAUAAQAAAAAAAAAIAAYAAQABAAEAAAAJAAAAAQAAAAAAAAAJAAEAAQABAAEAAAAJAAIAAQABAAAAAAAJAAMAAQAAAAEAAAAJAAQAAQAAAAEAAAAJAAUAAQAAAAAAAAAJAAYAAQABAAEAAAAKAAAAAQAAAAAAAAAKAAEAAQAAAAAAAAAKAAIAAQAAAAAAAAAKAAMAAQAAAAAAAAAKAAQAAQABAAAAAAAKAAUAAQAAAAEAAAAKAAYAAQABAAAAAAALAAAAAQAAAAAAAAALAAEAAQAAAAAAAAALAAIAAQAAAAAAAAALAAMAAQAAAAAAAAALAAQAAQABAAAAAAALAAUAAQAAAAAAAAALAAYAAQAAAAAAAAAMAAAAAQAAAAAAAAAMAAEAAQAAAAAAAAAMAAIAAQAAAAAAAAAMAAMAAQAAAAAAAAAMAAQAAQAAAAAAAAAMAAUAAQAAAAAAAAAMAAYAAQAAAAAAAAANAAAAAQAAAAAAAAANAAEAAQAAAAEAAAANAAIAAQABAAEAAAANAAMAAQAAAAAAAAANAAQAAQAAAAAAAAANAAUAAQAAAAAAAAANAAYAAQAAAAAAAAAAAP//AgAEAAQAAAABAP//AgAEAAQAAAACAP//AgAEAAQAAAADAP//AgAEAAQAAAAEAP//AgAEAAQAAAAFAP//AgAEAAQAAAAGAP//AgAEAAQAAAAHAP//AgAEAAQAAAAIAP//AgAEAAQAAAAJAP//AgAEAAQAAAAKAP//AgAEAAQAAAALAP//AgAEAAQAAAAMAP//AgAEAAQAAAANAP//AgAEAAQAAAAAAP7/AgAEAAMAAAABAP7/AgAEAAMAAAACAP7/AgAFAAMAAAADAP7/AgAGAAMAAAAEAP7/AgAHAAMAAAAFAP7/AgAEAAMAAAAGAP7/AgAFAAMAAAAHAP7/AgAGAAMAAAAIAP7/AgAHAAMAAAAJAP7/AgAEAAMAAAAKAP7/AgAFAAMAAAALAP7/AgAGAAMAAAAMAP7/AgAHAAMAAAANAP7/AgAEAAMAAAAAAPv/AgAEAAAAAAAAAPz/AgAEAAEAAAAAAP3/AgAEAAIAAAABAPv/AgAFAAAAAAABAPz/AgAFAAEAAAABAP3/AgAFAAIAAAACAPv/AgAGAAAAAAACAPz/AgAGAAEAAAACAP3/AgAGAAIAAAADAPv/AgAHAAAAAAADAPz/AgAHAAEAAAADAP3/AgAHAAIAAAAEAPv/AgAEAAAAAAAEAPz/AgAEAAEAAAAEAP3/AgAEAAIAAAAFAPv/AgAFAAAAAAAFAPz/AgAFAAEAAAAFAP3/AgAFAAIAAAAGAPv/AgAGAAAAAAAGAPz/AgAGAAEAAAAGAP3/AgAGAAIAAAAHAPv/AgAHAAAAAAAHAPz/AgAHAAEAAAAHAP3/AgAHAAIAAAAIAPv/AgAEAAAAAAAIAPz/AgAEAAEAAAAIAP3/AgAEAAIAAAAJAPv/AgAFAAAAAAAJAPz/AgAFAAEAAAAJAP3/AgAFAAIAAAAKAPv/AgAGAAAAAAAKAPz/AgAGAAEAAAAKAP3/AgAGAAIAAAALAPv/AgAHAAAAAAALAPz/AgAHAAEAAAALAP3/AgAHAAIAAAAMAPv/AgAEAAAAAAAMAPz/AgAEAAEAAAAMAP3/AgAEAAIAAAANAPv/AgAFAAAAAAANAPz/AgAFAAEAAAANAP3/AgAFAAIAAAD+////AwAAAAAAAAD+/wAAAwAAAAAAAAD+/wEAAwAAAAAAAAD+/wIAAwAAAAAAAAD+/wMAAwAAAAAAAAD+/wQAAwAAAAAAAAD+/wUAAwAAAAAAAAD+/wYAAwAAAAAAAAD+/wcAAwAAAAAAAAD/////AwAAAAAAAAD//wAAAwAAAAAAAAD//wEAAwAAAAAAAAD//wIAAwAAAAAAAAD//wMAAwAAAAAAAAD//wQAAwAAAAAAAAD//wUAAwAAAAAAAAD//wYAAwAAAAAAAAD//wcAAwAAAAAAAAD+/wgAAwAAAAAAAAD//wgAAwAAAAAAAAAAAAcAAwAAAAAAAAAAAAgAAwAAAAAAAAABAAcAAwAAAAAAAAABAAgAAwAAAAAAAAACAAcAAwAAAAAAAAACAAgAAwAAAAAAAAADAAcAAwAAAAAAAAADAAgAAwAAAAAAAAAEAAcAAwAAAAAAAAAEAAgAAwAAAAAAAAAFAAcAAwAAAAAAAAAFAAgAAwAAAAAAAAAGAAcAAwAAAAAAAAAGAAgAAwAAAAAAAAAHAAcAAwAAAAAAAAAHAAgAAwAAAAAAAAAIAAcAAwAAAAAAAAAIAAgAAwAAAAAAAAAJAAcAAwAAAAAAAAAJAAgAAwAAAAAAAAAKAAcAAwAAAAAAAAAKAAgAAwAAAAAAAAALAAcAAwAAAAAAAAALAAgAAwAAAAAAAAAMAAcAAwAAAAAAAAAMAAgAAwAAAAAAAAANAAcAAwAAAAAAAAANAAgAAwAAAAAAAAAOAP//AwAAAAAAAAAOAAAAAwAAAAAAAAAOAAEAAwAAAAAAAAAOAAIAAwAAAAAAAAAOAAMAAwAAAAAAAAAOAAQAAwAAAAAAAAAOAAUAAwAAAAAAAAAOAAYAAwAAAAAAAAAOAAcAAwAAAAAAAAAOAAgAAwAAAAAAAAAPAP//AwAAAAAAAAAPAAAAAwAAAAAAAAAPAAEAAwAAAAAAAAAPAAIAAwAAAAAAAAAPAAMAAwAAAAAAAAAPAAQAAwAAAAAAAAAPAAUAAwAAAAAAAAAPAAYAAwAAAAAAAAAPAAcAAwAAAAAAAAAPAAgAAwAAAAAAAAD9////AwAAAAAAAAD9/wAAAwAAAAAAAAD9/wEAAwAAAAAAAAD9/wIAAwAAAAAAAAD9/wMAAwAAAAAAAAD9/wQAAwAAAAAAAAD9/wUAAwAAAAAAAAD9/wYAAwAAAAAAAAD9/wcAAwAAAAAAAAD9/wgAAwAAAAAAAAD9/wkAAwAAAAAAAAD+/wkAAwAAAAAAAAD//wkAAwAAAAAAAAAAAAkAAwAAAAAAAAABAAkAAwAAAAAAAAACAAkAAwAAAAAAAAADAAkAAwAAAAAAAAAEAAkAAwAAAAAAAAAFAAkAAwAAAAAAAAAGAAkAAwAAAAAAAAAHAAkAAwAAAAAAAAAIAAkAAwAAAAAAAAAJAAkAAwAAAAAAAAAKAAkAAwAAAAAAAAALAAkAAwAAAAAAAAAMAAkAAwAAAAAAAAANAAkAAwAAAAAAAAAOAAkAAwAAAAAAAAAPAAkAAwAAAAAAAAAQAP//AwAAAAAAAAAQAAAAAwAAAAAAAAAQAAEAAwAAAAAAAAAQAAIAAwAAAAAAAAAQAAMAAwAAAAAAAAAQAAQAAwAAAAAAAAAQAAUAAwAAAAAAAAAQAAYAAwAAAAAAAAAQAAcAAwAAAAAAAAAQAAgAAwAAAAAAAAAQAAkAAwAAAAAAAAD9//v/AwAAAAAAAAD9//z/AwAAAAAAAAD9//3/AwAAAAAAAAD9//7/AwAAAAAAAAD+//v/AwAAAAAAAAD+//z/AwAAAAAAAAD+//3/AwAAAAAAAAD+//7/AwAAAAAAAAD///v/AwAAAAAAAAD///z/AwAAAAAAAAD///3/AwAAAAAAAAD///7/AwAAAAAAAAD7//v/AwAAAAAAAAD7//z/AwAAAAAAAAD7//3/AwAAAAAAAAD7//7/AwAAAAAAAAD7////AwAAAAAAAAD7/wAAAwAAAAAAAAD7/wEAAwAAAAAAAAD7/wIAAwAAAAAAAAD7/wMAAwAAAAAAAAD7/wQAAwAAAAAAAAD7/wUAAwAAAAAAAAD7/wYAAwAAAAAAAAD7/wcAAwAAAAAAAAD7/wgAAwAAAAAAAAD7/wkAAwAAAAAAAAD8//v/AwAAAAAAAAD8//z/AwAAAAAAAAD8//3/AwAAAAAAAAD8//7/AwAAAAAAAAD8////AwAAAAAAAAD8/wAAAwAAAAAAAAD8/wEAAwAAAAAAAAD8/wIAAwAAAAAAAAD8/wMAAwAAAAAAAAD8/wQAAwAAAAAAAAD8/wUAAwAAAAAAAAD8/wYAAwAAAAAAAAD8/wcAAwAAAAAAAAD8/wgAAwAAAAAAAAD8/wkAAwAAAAAAAAD7/woAAwAAAAAAAAD7/wsAAwAAAAAAAAD8/woAAwAAAAAAAAD8/wsAAwAAAAAAAAD9/woAAwAAAAAAAAD9/wsAAwAAAAAAAAD+/woAAwAAAAAAAAD+/wsAAwAAAAAAAAD//woAAwAAAAAAAAD//wsAAwAAAAAAAAAAAAoAAwAAAAAAAAAAAAsAAwAAAAAAAAABAAoAAwAAAAAAAAABAAsAAwAAAAAAAAACAAoAAwAAAAAAAAACAAsAAwAAAAAAAAADAAoAAwAAAAAAAAADAAsAAwAAAAAAAAAEAAoAAwAAAAAAAAAEAAsAAwAAAAAAAAAFAAoAAwAAAAAAAAAFAAsAAwAAAAAAAAAGAAoAAwAAAAAAAAAGAAsAAwAAAAAAAAAHAAoAAwAAAAAAAAAHAAsAAwAAAAAAAAAIAAoAAwAAAAAAAAAIAAsAAwAAAAAAAAAJAAoAAwAAAAAAAAAJAAsAAwAAAAAAAAAKAAoAAwAAAAAAAAAKAAsAAwAAAAAAAAALAAoAAwAAAAAAAAALAAsAAwAAAAAAAAAMAAoAAwAAAAAAAAAMAAsAAwAAAAAAAAANAAoAAwAAAAAAAAANAAsAAwAAAAAAAAAOAAoAAwAAAAAAAAAOAAsAAwAAAAAAAAAPAAoAAwAAAAAAAAAPAAsAAwAAAAAAAAAQAAoAAwAAAAAAAAAQAAsAAwAAAAAAAAARAPv/AwAAAAAAAAARAPz/AwAAAAAAAAARAP3/AwAAAAAAAAARAP7/AwAAAAAAAAARAP//AwAAAAAAAAARAAAAAwAAAAAAAAARAAEAAwAAAAAAAAARAAIAAwAAAAAAAAARAAMAAwAAAAAAAAARAAQAAwAAAAAAAAARAAUAAwAAAAAAAAARAAYAAwAAAAAAAAARAAcAAwAAAAAAAAARAAgAAwAAAAAAAAARAAkAAwAAAAAAAAARAAoAAwAAAAAAAAARAAsAAwAAAAAAAAASAPv/AwAAAAAAAAASAPz/AwAAAAAAAAASAP3/AwAAAAAAAAASAP7/AwAAAAAAAAASAP//AwAAAAAAAAASAAAAAwAAAAAAAAASAAEAAwAAAAAAAAASAAIAAwAAAAAAAAASAAMAAwAAAAAAAAASAAQAAwAAAAAAAAASAAUAAwAAAAAAAAASAAYAAwAAAAAAAAASAAcAAwAAAAAAAAASAAgAAwAAAAAAAAASAAkAAwAAAAAAAAASAAoAAwAAAAAAAAASAAsAAwAAAAAAAAAOAPv/AwAAAAAAAAAOAPz/AwAAAAAAAAAOAP3/AwAAAAAAAAAOAP7/AwAAAAAAAAAPAPv/AwAAAAAAAAAPAPz/AwAAAAAAAAAPAP3/AwAAAAAAAAAPAP7/AwAAAAAAAAAQAPv/AwAAAAAAAAAQAPz/AwAAAAAAAAAQAP3/AwAAAAAAAAAQAP7/AwAAAAAAAAA=")
+tile_set = SubResource("TileSet_bc8pf")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(0.32810044, 0.32810044)
+texture = ExtResource("1_7e3x4")
+centered = false
+
+[node name="Entities" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Player" parent="Entities" instance=ExtResource("2_7e3x4")]
+position = Vector2(50, 77)
+
+[node name="MainCamera" type="Camera2D" parent="Entities/Player"]
+zoom = Vector2(4, 4)
+position_smoothing_enabled = true
+position_smoothing_speed = 15.0
+
+[node name="FrontTable" type="Node2D" parent="Entities"]
+y_sort_enabled = true
+position = Vector2(72, 32)
+
+[node name="Counter" type="Sprite2D" parent="Entities/FrontTable"]
+texture_filter = 1
+position = Vector2(16, 0)
+scale = Vector2(1.230769, 1.1034482)
+texture = ExtResource("6_urop6")
+offset = Vector2(0, 54)
+
+[node name="DessertCounter" type="StaticBody2D" parent="Entities/FrontTable"]
+script = ExtResource("7_5mwdy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/FrontTable/DessertCounter"]
+position = Vector2(16, 110.627045)
+scale = Vector2(1.231, 1.231)
+shape = SubResource("RectangleShape2D_obde2")
+
+[node name="InteractCollider" type="Area2D" parent="Entities/FrontTable/DessertCounter"]
+position = Vector2(0, 96)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/FrontTable/DessertCounter/InteractCollider"]
+position = Vector2(16.5, 14)
+shape = SubResource("RectangleShape2D_5mwdy")
+debug_color = Color(0.7, 0.5833334, 0, 0.41960785)
+
+[node name="Cashreg" type="StaticBody2D" parent="Entities/FrontTable"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/FrontTable/Cashreg"]
+position = Vector2(16, 64)
+scale = Vector2(1.231, 1.231)
+shape = SubResource("RectangleShape2D_yq1jw")
+
+[node name="InteractCollider" type="Area2D" parent="Entities/FrontTable/Cashreg"]
+position = Vector2(0, 33)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/FrontTable/Cashreg/InteractCollider"]
+position = Vector2(11.75, 31.25)
+shape = SubResource("RectangleShape2D_nsguh")
+debug_color = Color(0.7, 0.5833334, 0, 0.41960785)
+
+[node name="CoffeeMachine" type="StaticBody2D" parent="Entities/FrontTable"]
+script = ExtResource("8_yq1jw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/FrontTable/CoffeeMachine"]
+position = Vector2(16, 16)
+scale = Vector2(1.231, 1.231)
+shape = SubResource("RectangleShape2D_vlhgq")
+
+[node name="InteractCollider" type="Area2D" parent="Entities/FrontTable/CoffeeMachine"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/FrontTable/CoffeeMachine/InteractCollider"]
+position = Vector2(11.75, 12)
+shape = SubResource("RectangleShape2D_sj5sr")
+debug_color = Color(0.7, 0.5833334, 0, 0.41960785)
+
+[node name="CounterSink" type="StaticBody2D" parent="Entities"]
+y_sort_enabled = true
+position = Vector2(0, 32)
+script = ExtResource("7_urop6")
+
+[node name="Counter" type="Sprite2D" parent="Entities/CounterSink"]
+texture_filter = 1
+position = Vector2(16, 16)
+texture = ExtResource("7_3dscb")
+offset = Vector2(0, 16)
+
+[node name="Sink" type="Sprite2D" parent="Entities/CounterSink"]
+texture_filter = 1
+position = Vector2(16, 48)
+texture = ExtResource("8_obde2")
+offset = Vector2(0, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/CounterSink"]
+position = Vector2(16, 60)
+scale = Vector2(1.230769, 1.1034479)
+shape = SubResource("RectangleShape2D_3dscb")
+
+[node name="InteractCollider" type="Area2D" parent="Entities/CounterSink"]
+position = Vector2(0, 48)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/CounterSink/InteractCollider"]
+position = Vector2(17.5, 33)
+shape = SubResource("RectangleShape2D_urop6")
+debug_color = Color(0.7, 0.5833334, 0, 0.41960785)
+
+[node name="Interface" type="CanvasLayer" parent="."]
+
+[node name="Container" type="Control" parent="Interface"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[connection signal="body_entered" from="Entities/FrontTable/DessertCounter/InteractCollider" to="Entities/FrontTable/DessertCounter" method="body_entered"]
+[connection signal="body_exited" from="Entities/FrontTable/DessertCounter/InteractCollider" to="Entities/FrontTable/DessertCounter" method="body_exited"]
+[connection signal="body_entered" from="Entities/FrontTable/CoffeeMachine/InteractCollider" to="Entities/FrontTable/CoffeeMachine" method="body_entered"]
+[connection signal="body_exited" from="Entities/FrontTable/CoffeeMachine/InteractCollider" to="Entities/FrontTable/CoffeeMachine" method="body_exited"]
+[connection signal="body_entered" from="Entities/CounterSink/InteractCollider" to="Entities/CounterSink" method="body_entered"]
+[connection signal="body_exited" from="Entities/CounterSink/InteractCollider" to="Entities/CounterSink" method="body_exited"]

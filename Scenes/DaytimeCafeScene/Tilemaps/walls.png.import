@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8g2cftq8tyi3"
-path="res://.godot/imported/CoffeeStrips.png-1b62cbc58a3f04918197a7eb010c5ddd.ctex"
+uid="uid://1pdaaifvv17x"
+path="res://.godot/imported/walls.png-167c446b20aa6eefcd35b1d02e61eee7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Entities/PrototypeBeverage/CoffeeStrips.png"
-dest_files=["res://.godot/imported/CoffeeStrips.png-1b62cbc58a3f04918197a7eb010c5ddd.ctex"]
+source_file="res://Scenes/DaytimeCafeScene/Tilemaps/walls.png"
+dest_files=["res://.godot/imported/walls.png-167c446b20aa6eefcd35b1d02e61eee7.ctex"]
 
 [params]
 

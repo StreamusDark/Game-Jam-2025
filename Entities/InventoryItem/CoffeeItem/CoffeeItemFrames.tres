@@ -1,0 +1,32 @@
+[gd_resource type="SpriteFrames" load_steps=5 format=3 uid="uid://cwv7hxln7hrnl"]
+
+[ext_resource type="Texture2D" uid="uid://8g2cftq8tyi3" path="res://Entities/InventoryItem/CoffeeItem/CoffeeSpritesheet.png" id="1_rs4yo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1xgmp"]
+atlas = ExtResource("1_rs4yo")
+region = Rect2(0, 0, 24, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cp63o"]
+atlas = ExtResource("1_rs4yo")
+region = Rect2(24, 0, 24, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pcbao"]
+atlas = ExtResource("1_rs4yo")
+region = Rect2(48, 0, 24, 25)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1xgmp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cp63o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pcbao")
+}],
+"loop": false,
+"name": &"default",
+"speed": 0.0
+}]

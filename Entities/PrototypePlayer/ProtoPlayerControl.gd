@@ -1,4 +1,4 @@
-class_name Player
+class_name PlayerProto
 extends CharacterBody2D
 var max_speed = 225.0
 const accel = 1000.0
@@ -10,7 +10,8 @@ var beverages_data: Array[Node] = []
 var beverages_latest: Node = null
 
 func _ready() -> void:
-	GameManager.PlayerInstance = self
+	pass
+	#GameManager.PlayerInstance = self
 
 func _process(delta):
 	movement_process(delta)

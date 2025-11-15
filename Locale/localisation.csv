@@ -17,13 +17,15 @@ coffee_name_cappuchino:Cappuchino
 coffee_name_dry:Dry Espresso
 coffee_needscup:Place a cup down before using the pourer!
 coffee_toomuch:This cup already has enough espresso in it!
+coffee_needmilkjug:You need a milk jug with milk to use the steam pipe!
 coffee_last_none:You don't have any coffee on your head currently!
 coffee_last_notcoffee:The top beverage on your head isn't coffee!
+coffee_toomany:You're holding too many cups on your head!
 coffee_action_serve:Serve
 coffee_action_destroy:Discard
 coffee_action_cancel:Cancel
 milk_none:Empty Jug
-milk_froath:{0}% Froathed Milk
+milk_froath:Froathed Milk ({0}%)
 fox_name:Brush
 fox_emptymug:Are you for real?
 fox_satisfied:Oh, awesome! Thanks!
