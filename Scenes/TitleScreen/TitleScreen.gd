@@ -18,6 +18,7 @@ var day_night_progression: float = 0:
 		clouds2.self_modulate = lerp(Color("fff"), Color("372b3d"), day_night_progression / 100)
 
 func _ready() -> void:
+	get_tree().paused = false
 	black_overlay.visible = true
 	black_overlay.self_modulate = Color("ffffff")
 	

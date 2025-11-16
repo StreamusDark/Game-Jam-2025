@@ -6,8 +6,8 @@ const Defaults: Dictionary = {
 		"satisfaction": 50.0,
 		"customers_served": 0,
 		"cafe_inventory": {
-			"coffee": 15,
-			"milk": 15,
+			"coffee": 100,
+			"milk": 50,
 		},
 		"coffees_served": {
 			GameManager.CoffeeType.ESPRESSO: 0,

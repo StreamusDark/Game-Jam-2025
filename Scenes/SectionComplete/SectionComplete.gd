@@ -33,7 +33,7 @@ func init():
 func anim_finished(anim_name: StringName) -> void:
 	$Title.visible = true
 	$VBoxContainer.visible = true
-	$VBoxContainer/SkipNight.visible = (not is_night)
+	$VBoxContainer/SkipNight.visible = (not is_night) and (GameManager.RunData["day"] != 0)
 
 func continue_pressed() -> void:
 	get_tree().paused = false

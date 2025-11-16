@@ -838,3 +838,4 @@ bus = &"Music"
 [connection signal="body_exited" from="Entities/FrontTable/CoffeeMachine/InteractCollider" to="Entities/FrontTable/CoffeeMachine" method="body_exited"]
 [connection signal="body_entered" from="Entities/CounterSink/InteractCollider" to="Entities/CounterSink" method="body_entered"]
 [connection signal="body_exited" from="Entities/CounterSink/InteractCollider" to="Entities/CounterSink" method="body_exited"]
+[connection signal="timeout" from="DaylightTime" to="." method="gametimer_timeout"]

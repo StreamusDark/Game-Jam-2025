@@ -11,6 +11,7 @@ var tutorial_progression = {
 	"first_espresso": false,
 	"first_serve_button": false,
 	"first_serving_correct": false,
+	"learnt_about_double_espresso": false,
 	"second_fox_dialogue": false,
 	"second_serving_correct": false,
 	"third_fox_dialogue": false,
@@ -45,8 +46,6 @@ var customer_queue: Array[Customer] = []
 var tutorial_puppet_customer: Customer
 
 func _ready() -> void:
-	Engine.time_scale = 3
-	
 	for n in table_nodes.get_child_count():
 		occupied_seats[n] = null
 	
@@ -78,10 +77,13 @@ func _ready() -> void:
 	await get_tree().create_tween().tween_property(black_screen, "self_modulate", Color("ffffff00"), 0.65).finished
 	black_screen.visible = false
 	
-	$Interface/Container/SectionComplete.init()
-	
-	return
-	if GameManager.RunData["day"] == 0:
+	if GameManager.RunData["day"] == 7:
+		GameManager.create_dialogue([
+			{"name":"", "message": GameManager.game_lang["demo_limitation_0"]},
+			{"name":"", "message": GameManager.game_lang["demo_limitation_1"]}
+		], false)
+		await wait_until(func(): return not GameManager.dialogue_menu_open)
+	elif GameManager.RunData["day"] == 0:
 		start_tutorial()
 	else:
 		start_day()
@@ -161,12 +163,15 @@ func start_day():
 	var high = min_limit + (max_start - min_limit) * exp(-decay_rate * float(current_day - 1))
 	var low = min_limit + (min_start - min_limit) * exp(-decay_rate * float(current_day - 1))
 	
-	while (game_timer.time_left > 0) or (not game_over_screen.is_game_over):
+	while day_active:
+		if (game_timer.time_left <= 0) or (game_over_screen.is_game_over):
+			break
 		new_customer()
 		await get_tree().create_timer(randf_range(low, high)).timeout
 
 func wait_until(condition: Callable) -> void:
 	while not condition.call():
+		if "process_frame" not in get_tree(): break
 		await get_tree().process_frame
 
 # Absolute mess. Apologies for anyone reading this. The jam is literally due 8 hours as of writing this -Kat
@@ -281,9 +286,11 @@ func tutorial_progress(prog: int):
 		tutorial_customer_puppets[1].awaiting_order = true
 	
 	elif prog == 8:
-		GameManager.create_dialogue([
-			{"name":"", "message": GameManager.game_lang["tutorial_20"]}
-		], false)
+		if (not tutorial_progression["learnt_about_double_espresso"]):
+			GameManager.create_dialogue([
+				{"name":"", "message": GameManager.game_lang["tutorial_20"]}
+			], false)
+			tutorial_progression["learnt_about_double_espresso"] = true
 	
 	elif prog == 9:
 		tutorial_progression["second_serving_correct"] = true
@@ -324,5 +331,13 @@ func tutorial_progress(prog: int):
 		await get_tree().create_timer(2).timeout
 		GameManager.create_dialogue([{"name":"", "message": GameManager.game_lang["tutorial_30"]}], false)
 		await wait_until(func(): return not GameManager.dialogue_menu_open)
+		await wait_until(func(): return not GameManager.dialogue_menu_open)
+		await wait_until(func(): return not GameManager.dialogue_menu_open)
 		await get_tree().create_timer(2).timeout
 		$Interface/Container/SectionComplete.init()
+
+func gametimer_timeout() -> void:
+	game_timer.stop()
+	game_timer.autostart = false
+	$Interface/Container/TopRight/Timer/CurrentTime.text = "17:00"
+	$Interface/Container/SectionComplete.init()

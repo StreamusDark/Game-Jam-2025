@@ -14,16 +14,12 @@ var near_cafe_hole = false
 
 enum ITEMS {
 	MILK,
-	CARROTS,
 	COFFEE_BEANS,
-	STRAWBERRIES,
 }
 
 var collected_items = {
 	ITEMS.MILK : 0,
-	ITEMS.CARROTS : 0,
-	ITEMS.COFFEE_BEANS : 0,
-	ITEMS.STRAWBERRIES : 0,
+	ITEMS.COFFEE_BEANS : 0
 }
 
 
@@ -71,6 +67,11 @@ func _ready() -> void:
 	await get_tree().create_timer(1).timeout
 	await get_tree().create_tween().tween_property(black_screen, "self_modulate", Color("ffffff00"), 0.65).finished
 	black_screen.visible = false
+	
+	if GameManager.RunData["day"] == 0:
+		GameManager.create_dialogue([
+			{"name":"", "message": GameManager.game_lang["tutorial_night_none"]}
+		], false)
 	
 	var enemy_count = ceil(float(day_num) / 2)
 	for n in enemy_count:

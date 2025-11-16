@@ -13,9 +13,9 @@ script = ExtResource("1_n7d7n")
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = ExtResource("1_p0mig")
-animation = &"left"
+animation = &"sit-right"
 frame = 2
-frame_progress = 0.25484854
+frame_progress = 0.9084566
 offset = Vector2(0, -14.5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

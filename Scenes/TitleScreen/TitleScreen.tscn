@@ -289,7 +289,7 @@ offset_top = 676.5
 offset_bottom = -4.5
 grow_horizontal = 2
 grow_vertical = 2
-text = "Game by Team 53 for the Games Now! Autumn 2025 Game Jam
+text = "Game by Team 52 for the Games Now! Autumn 2025 Game Jam
 Invincitank / TheBigGooner / ratkat / Katrinaaster / Ghosty / PJRM0BM0D / StreamusDark / Lyxilytical / Cassy D Kelly"
 label_settings = SubResource("LabelSettings_q82or")
 horizontal_alignment = 1

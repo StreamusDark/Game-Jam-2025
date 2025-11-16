@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=3 uid="uid://c7gficdq3463"]
+[gd_scene load_steps=69 format=3 uid="uid://c7gficdq3463"]
 
 [ext_resource type="Script" uid="uid://dds4tkqyratt0" path="res://Scenes/CoffeeMachine/CoffeeMachine.gd" id="1_mifmu"]
 [ext_resource type="Texture2D" uid="uid://btgw1g36oqly" path="res://Scenes/CoffeeMachine/Sprites/Machine/machine.png" id="2_qqsrl"]
@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://bum0y3tnda8ly" path="res://Scenes/CoffeeMachine/Sprites/CupMountainSprites/cups_button_outline.png" id="8_pkxhv"]
 [ext_resource type="Texture2D" uid="uid://d1yjawnnoq7wu" path="res://Scenes/CoffeeMachine/Sprites/MilkBottleSprites/milk_bottle_outline.png" id="9_co82f"]
 [ext_resource type="Texture2D" uid="uid://c524603wfbtv0" path="res://Entities/DialogueMenu/DialogueTextureOutline.png" id="11_q2g1w"]
+[ext_resource type="Texture2D" uid="uid://cgks5cp1v0muq" path="res://Scenes/interface_button_day.png" id="14_back8"]
 [ext_resource type="Texture2D" uid="uid://d1bmkdjtisx3" path="res://Scenes/CoffeeMachine/Sprites/Machine/MachineButtons/liquid_button_pressed.png" id="15_yqsuo"]
 [ext_resource type="AudioStream" uid="uid://c4ybcry8vh01p" path="res://Assets/Sounds/machine_beep.wav" id="17_w4l5r"]
 [ext_resource type="Texture2D" uid="uid://dn6eifmfff8s6" path="res://Scenes/CoffeeMachine/Sprites/Machine/MachineButtons/steam_button_pressed.png" id="18_0ywbk"]
@@ -105,6 +106,10 @@ line_spacing = -9.0
 font = ExtResource("8_h5omg")
 font_size = 25
 font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_back8"]
+font = ExtResource("8_h5omg")
+shadow_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pkxhv"]
 
@@ -474,6 +479,42 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_default_cursor_shape = 2
 
+[node name="Badge" type="NinePatchRect" parent="Content/Decorations/MilkBottle"]
+self_modulate = Color(0.966, 1, 0.32, 1)
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -46.21106
+offset_top = -172.26712
+offset_right = -6.2110596
+offset_bottom = -152.47014
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("14_back8")
+region_rect = Rect2(0, 0, 71, 23)
+patch_margin_left = 15
+patch_margin_top = 7
+patch_margin_right = 15
+patch_margin_bottom = 8
+
+[node name="Value" type="Label" parent="Content/Decorations/MilkBottle/Badge"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -4.60151
+offset_right = 28.049454
+offset_bottom = 24.937365
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+text = "15"
+label_settings = SubResource("LabelSettings_back8")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Machine" type="Sprite2D" parent="Content"]
 texture_filter = 1
 position = Vector2(599, 408.00003)
@@ -489,6 +530,42 @@ texture = ExtResource("3_xhjn3")
 position = Vector2(-46.454292, -83.37949)
 scale = Vector2(0.99999994, 0.99999994)
 texture = ExtResource("3_45fyo")
+
+[node name="Badge" type="NinePatchRect" parent="Content/Machine/Glass"]
+self_modulate = Color(0.966, 1, 0.32, 1)
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -131.14706
+offset_top = -37.091103
+offset_right = -91.147064
+offset_bottom = -17.294123
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("14_back8")
+region_rect = Rect2(0, 0, 71, 23)
+patch_margin_left = 15
+patch_margin_top = 7
+patch_margin_right = 15
+patch_margin_bottom = 8
+
+[node name="Value" type="Label" parent="Content/Machine/Glass/Badge"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -4.60151
+offset_right = 26.69719
+offset_bottom = 26.89815
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+text = "15"
+label_settings = SubResource("LabelSettings_back8")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="LiquidButton" type="TextureButton" parent="Content/Machine"]
 texture_filter = 1
@@ -1846,7 +1923,7 @@ bus = &"SoundEffects"
 [connection signal="pressed" from="Content/Jug/JugOptions/Cancel/Button" to="." method="milk_cancel"]
 [connection signal="mouse_entered" from="Exit/Button" to="." method="close_button_hover_enter"]
 [connection signal="mouse_exited" from="Exit/Button" to="." method="close_button_hover_exited"]
-[connection signal="pressed" from="Exit/Button" to="." method="close_machine"]
+[connection signal="pressed" from="Exit/Button" to="." method="close_machine_button_pressed"]
 [connection signal="pressed" from="UseLast/Button" to="." method="uselast_pressed"]
 [connection signal="pressed" from="RecipeBook/Button" to="." method="open_recipes"]
 [connection signal="mouse_entered" from="PanDown" to="." method="pan_down_hover"]

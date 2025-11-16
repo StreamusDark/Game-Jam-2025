@@ -55,8 +55,6 @@ const CoffeeDifficultyOptions = {
 		GameManager.CoffeeType.CAPPUCHINO
 	],
 	Difficulies.HARD: [ 
-		GameManager.CoffeeType.ESPRESSO,
-		GameManager.CoffeeType.DOUBLE_ESPRESSO,
 		GameManager.CoffeeType.MACCHIATO,
 		GameManager.CoffeeType.MINILATTE,
 		GameManager.CoffeeType.CORTADO,
@@ -67,8 +65,6 @@ const CoffeeDifficultyOptions = {
 		GameManager.CoffeeType.DRY
 	],
 	Difficulies.EXTREME: [ 
-		GameManager.CoffeeType.ESPRESSO,
-		GameManager.CoffeeType.DOUBLE_ESPRESSO,
 		GameManager.CoffeeType.MACCHIATO,
 		GameManager.CoffeeType.MINILATTE,
 		GameManager.CoffeeType.CORTADO,
@@ -88,7 +84,7 @@ func _ready() -> void:
 func initalise_locale():
 	var csv_raw: String = FileAccess.open("res://Locale/localisation.csv", FileAccess.READ).get_as_text()
 	for kv in csv_raw.split("\n"):
-		var kv_spl = kv.split(":")
+		var kv_spl = kv.split(":", true, 1)
 		game_lang[kv_spl[0]] = kv_spl[1].replace("\\n", "\n")
 
 func append_to_interface(node):

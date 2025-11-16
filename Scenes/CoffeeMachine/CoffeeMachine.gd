@@ -54,6 +54,10 @@ func _ready() -> void:
 	
 	content_node.position = Vector2(0,0)
 	$PanUp.visible = false
+	
+	$Content/Machine/Glass/Badge/Value.text = str(GameManager.RunData["cafe_inventory"]["coffee"])
+	$Content/Decorations/MilkBottle/Badge/Value.text = str(GameManager.RunData["cafe_inventory"]["milk"])
+	
 	restart_cup()
 	restart_jug()
 
@@ -159,6 +163,10 @@ func liquid_button_pressed() -> void:
 	liquid_button.get_node("Beep").play()
 	if current_cup_selected or milk_selected or GameManager.dialogue_menu_open or milk_pouring:
 		return
+	
+	if GameManager.RunData["cafe_inventory"]["coffee"] <= 0:
+		GameManager.create_dialogue([{"name":"", "message": GameManager.game_lang["item_outofinventory"]}], true)
+		return
 		
 	if current_cup_type == GameManager.CoffeeType.NONE and (not GameManager.dialogue_menu_open):
 		var no_drink_info: Array[Dictionary] = [{"name":"", "message":GameManager.game_lang["coffee_needscup"]}]
@@ -174,6 +182,9 @@ func liquid_button_pressed() -> void:
 	coffee_pouring_active = true
 	liquid_button.get_node("Pouring").play()
 	await get_tree().create_timer(8).timeout
+	
+	GameManager.RunData["cafe_inventory"]["coffee"] -= 1
+	$Content/Machine/Glass/Badge/Value.text = str(GameManager.RunData["cafe_inventory"]["coffee"])
 	
 	coffee_pouring_active = false
 	liquid_effect.emitting = false
@@ -275,11 +286,19 @@ func discard_drink_pressed() -> void:
 func cancel_drink_pressed() -> void:
 	change_selectable("close")
 
-func close_machine() -> void:
+
+func close_machine_button_pressed() -> void:
 	if (tutorial_mode and not game_scene.tutorial_progression["first_serve_button"]):
 		return
+	
+	if (GameManager.dialogue_menu_open): 
+		return
+	close_machine()
+
+func close_machine() -> void:
 	GameManager.close_coffee_machine()
 	visible = false
+	pan_direction(true)
 
 func uselast_pressed() -> void:
 	if coffee_pouring_active or steam_active or GameManager.dialogue_menu_open or using_last_drink:
@@ -375,6 +394,10 @@ func milk_carton_pressed() -> void:
 	if tutorial_mode and not (game_scene.tutorial_progression["first_pan_down"]):
 		return
 	
+	if GameManager.RunData["cafe_inventory"]["milk"] <= 0:
+		GameManager.create_dialogue([{"name":"", "message": GameManager.game_lang["item_outofinventory"]}], true)
+		return
+	
 	if (milk_in_deco) and (not milk_bottle_pouring):
 		change_selectable("milkbottle")
 
@@ -403,6 +426,9 @@ func milkbottle_pour_pressed() -> void:
 	await get_tree().create_timer(3).timeout
 	
 	get_tree().create_tween().tween_property(milk_bottle, "position", Vector2(122.0, 36.0), 0.3)
+	
+	GameManager.RunData["cafe_inventory"]["milk"] -= 1
+	$Content/Decorations/MilkBottle/Badge/Value.text = str(GameManager.RunData["cafe_inventory"]["milk"])
 	
 	milk_jug.get_node("Liquid").emitting = false
 	milk_bottle_pouring = false
