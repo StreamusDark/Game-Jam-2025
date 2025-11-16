@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://ca7kidqb3rqqp"]
+[gd_scene load_steps=5 format=3 uid="uid://ca7kidqb3rqqp"]
 
 [ext_resource type="Script" uid="uid://c6ktq1h1p5y48" path="res://Entities/Customer/Customer.gd" id="1_n7d7n"]
 [ext_resource type="SpriteFrames" uid="uid://dky3y2fx3bqah" path="res://Entities/Customer/CustomerFoxFrames.tres" id="1_p0mig"]
+[ext_resource type="AudioStream" uid="uid://cm8vwcsi51x8w" path="res://Assets/Sounds/plate_place.wav" id="3_38jce"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p0mig"]
 size = Vector2(34, 40)
@@ -13,7 +14,8 @@ script = ExtResource("1_n7d7n")
 texture_filter = 1
 sprite_frames = ExtResource("1_p0mig")
 animation = &"left"
-frame_progress = 0.33837277
+frame = 2
+frame_progress = 0.25484854
 offset = Vector2(0, -14.5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -23,6 +25,10 @@ debug_color = Color(0.7, 0.6766667, 0, 0.41960785)
 
 [node name="SatisfactionTimer" type="Timer" parent="."]
 wait_time = 10.0
+
+[node name="MoveSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_38jce")
+bus = &"SoundEffects"
 
 [connection signal="body_entered" from="." to="." method="body_entered"]
 [connection signal="body_exited" from="." to="." method="body_exited"]

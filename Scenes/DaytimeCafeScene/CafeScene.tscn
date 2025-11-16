@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=4 uid="uid://wibk80qhr1t2"]
+[gd_scene load_steps=45 format=4 uid="uid://wibk80qhr1t2"]
 
 [ext_resource type="Script" uid="uid://6apjgsnxwiv4" path="res://Scenes/DaytimeCafeScene/CafeGameplay.gd" id="1_vlhgq"]
 [ext_resource type="PackedScene" uid="uid://icty0spbjj72" path="res://Entities/Player/Player.tscn" id="2_7e3x4"]
@@ -19,6 +19,10 @@
 [ext_resource type="Texture2D" uid="uid://cjtx86xjlk46s" path="res://Scenes/DaytimeCafeScene/Interface/dial_panel.png" id="17_cbydh"]
 [ext_resource type="AudioStream" uid="uid://coo8kwlbvt8sg" path="res://Assets/Music/Daytime Folly.mp3" id="17_jr2k8"]
 [ext_resource type="Texture2D" uid="uid://dj068wjsxt674" path="res://Scenes/DaytimeCafeScene/Interface/dial_pointer.png" id="18_ncafe"]
+[ext_resource type="PackedScene" uid="uid://dgg81brqfield" path="res://Scenes/GameOverScreen/GameOverScreen.tscn" id="19_gupgk"]
+[ext_resource type="PackedScene" uid="uid://c7gficdq3463" path="res://Scenes/CoffeeMachine/CoffeeMachine.tscn" id="19_xcxqu"]
+[ext_resource type="PackedScene" uid="uid://cfwuxa35v5ble" path="res://Scenes/PauseMenu/PauseMenu.tscn" id="20_p0iq8"]
+[ext_resource type="PackedScene" uid="uid://dcoqjsoheckfv" path="res://Scenes/SectionComplete/SectionComplete.tscn" id="21_up1lg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uet74"]
 texture = ExtResource("2_uet74")
@@ -167,11 +171,20 @@ font_size = 20
 outline_size = 9
 outline_color = Color(0, 0, 0, 1)
 
-[node name="CafeScene" type="Node2D" node_paths=PackedStringArray("table_nodes", "entities_node", "timer_display")]
+[sub_resource type="LabelSettings" id="LabelSettings_p0iq8"]
+font = ExtResource("16_hmors")
+font_size = 86
+
+[node name="CafeScene" type="Node2D" node_paths=PackedStringArray("table_nodes", "entities_node", "section_complete_screen", "pause_screen", "game_over_screen", "timer_display", "black_screen")]
+process_mode = 1
 script = ExtResource("1_vlhgq")
 table_nodes = NodePath("Entities/TablesNodes")
 entities_node = NodePath("Entities")
-timer_display = NodePath("Interface/Container/HBoxContainer/Timer/CurrentTime")
+section_complete_screen = NodePath("Interface/Container/SectionComplete")
+pause_screen = NodePath("Interface/Container/PauseMenu")
+game_over_screen = NodePath("Interface/Container/GameOver")
+timer_display = NodePath("Interface/Container/TopRight/Timer/CurrentTime")
+black_screen = NodePath("Interface/Container/BlackOverlay")
 
 [node name="TileMap" type="TileMapLayer" parent="."]
 texture_filter = 1
@@ -579,9 +592,8 @@ position = Vector2(10, 8)
 shape = SubResource("RectangleShape2D_oic7s")
 
 [node name="RightEdge" type="ColorRect" parent="."]
-visible = false
-offset_left = 450.0
-offset_right = 490.0
+offset_left = 456.0
+offset_right = 674.0
 offset_bottom = 193.0
 color = Color(0, 0, 0, 1)
 
@@ -596,7 +608,55 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_lock_ = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Interface/Container"]
+[node name="TopLeft" type="HBoxContainer" parent="Interface/Container"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -1200.0
+offset_right = -630.0
+offset_bottom = 100.0
+grow_horizontal = 0
+
+[node name="Day" type="TextureRect" parent="Interface/Container/TopLeft"]
+texture_filter = 1
+custom_minimum_size = Vector2(140, 100)
+layout_mode = 2
+texture = ExtResource("15_oic7s")
+
+[node name="Day" type="Label" parent="Interface/Container/TopLeft/Day"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 23.0
+offset_top = 4.0
+offset_right = -23.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Day"
+label_settings = SubResource("LabelSettings_hmors")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Num" type="Label" parent="Interface/Container/TopLeft/Day"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 23.0
+offset_top = 29.5
+offset_right = -23.0
+offset_bottom = -7.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "1"
+label_settings = SubResource("LabelSettings_jr2k8")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TopRight" type="HBoxContainer" parent="Interface/Container"]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -607,13 +667,13 @@ offset_bottom = 100.0
 grow_horizontal = 0
 alignment = 2
 
-[node name="Timer" type="TextureRect" parent="Interface/Container/HBoxContainer"]
+[node name="Timer" type="TextureRect" parent="Interface/Container/TopRight"]
 texture_filter = 1
 custom_minimum_size = Vector2(250, 100)
 layout_mode = 2
 texture = ExtResource("15_oic7s")
 
-[node name="Title" type="Label" parent="Interface/Container/HBoxContainer/Timer"]
+[node name="Title" type="Label" parent="Interface/Container/TopRight/Timer"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -629,7 +689,7 @@ label_settings = SubResource("LabelSettings_hmors")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CurrentTime" type="Label" parent="Interface/Container/HBoxContainer/Timer"]
+[node name="CurrentTime" type="Label" parent="Interface/Container/TopRight/Timer"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -640,27 +700,27 @@ offset_right = -23.0
 offset_bottom = -7.5
 grow_horizontal = 2
 grow_vertical = 2
-text = "15:00"
+text = "09:00"
 label_settings = SubResource("LabelSettings_jr2k8")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Satisfaction" type="TextureRect" parent="Interface/Container/HBoxContainer"]
+[node name="Satisfaction" type="TextureRect" parent="Interface/Container/TopRight"]
 texture_filter = 1
-custom_minimum_size = Vector2(130, 0)
+custom_minimum_size = Vector2(130, 90)
 layout_mode = 2
 texture = ExtResource("17_cbydh")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Spinner" type="Sprite2D" parent="Interface/Container/HBoxContainer/Satisfaction"]
+[node name="Spinner" type="Sprite2D" parent="Interface/Container/TopRight/Satisfaction"]
 position = Vector2(65, 51.76137)
 rotation = 2.0943952
 scale = Vector2(4, 3.7)
 texture = ExtResource("18_ncafe")
 offset = Vector2(0, -4)
 
-[node name="Title" type="Label" parent="Interface/Container/HBoxContainer/Satisfaction"]
+[node name="Title" type="Label" parent="Interface/Container/TopRight/Satisfaction"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -676,6 +736,87 @@ label_settings = SubResource("LabelSettings_ncafe")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="CoffeeMachineSim" parent="Interface/Container" instance=ExtResource("19_xcxqu")]
+visible = false
+layout_mode = 1
+
+[node name="GameOver" parent="Interface/Container" instance=ExtResource("19_gupgk")]
+visible = false
+layout_mode = 1
+
+[node name="BlackOverlay" type="ColorRect" parent="Interface/Container"]
+visible = false
+self_modulate = Color(1, 1, 1, 0.6745098)
+z_index = 9
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="DayCnt" type="Control" parent="Interface/Container/BlackOverlay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Day" type="Label" parent="Interface/Container/BlackOverlay/DayCnt"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -634.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Day"
+label_settings = SubResource("LabelSettings_p0iq8")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Control" type="Control" parent="Interface/Container/BlackOverlay/DayCnt"]
+clip_contents = true
+anchors_preset = 0
+offset_left = 600.0
+offset_top = 285.5
+offset_right = 1170.0
+offset_bottom = 434.5
+
+[node name="Alignment" type="VBoxContainer" parent="Interface/Container/BlackOverlay/DayCnt/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -149.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Old" type="Label" parent="Interface/Container/BlackOverlay/DayCnt/Control/Alignment"]
+layout_mode = 2
+text = "1"
+label_settings = SubResource("LabelSettings_p0iq8")
+vertical_alignment = 1
+
+[node name="New" type="Label" parent="Interface/Container/BlackOverlay/DayCnt/Control/Alignment"]
+layout_mode = 2
+text = "2"
+label_settings = SubResource("LabelSettings_p0iq8")
+vertical_alignment = 1
+
+[node name="SectionComplete" parent="Interface/Container" instance=ExtResource("21_up1lg")]
+visible = false
+layout_mode = 1
+is_night = false
+
+[node name="PauseMenu" parent="Interface/Container" instance=ExtResource("20_p0iq8")]
+visible = false
+layout_mode = 1
+is_night = false
+
 [node name="DaylightTime" type="Timer" parent="."]
 wait_time = 480.0
 
@@ -686,6 +827,8 @@ blend_mode = 1
 [node name="DaytimeTheme" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("17_jr2k8")
 volume_db = -30.0
+autoplay = true
+bus = &"Music"
 
 [connection signal="body_entered" from="Entities/FrontTable/DessertCounter/InteractCollider" to="Entities/FrontTable/DessertCounter" method="body_entered"]
 [connection signal="body_exited" from="Entities/FrontTable/DessertCounter/InteractCollider" to="Entities/FrontTable/DessertCounter" method="body_exited"]

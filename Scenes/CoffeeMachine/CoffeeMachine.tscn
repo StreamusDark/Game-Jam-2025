@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=3 uid="uid://c7gficdq3463"]
+[gd_scene load_steps=67 format=3 uid="uid://c7gficdq3463"]
 
 [ext_resource type="Script" uid="uid://dds4tkqyratt0" path="res://Scenes/CoffeeMachine/CoffeeMachine.gd" id="1_mifmu"]
 [ext_resource type="Texture2D" uid="uid://btgw1g36oqly" path="res://Scenes/CoffeeMachine/Sprites/Machine/machine.png" id="2_qqsrl"]
@@ -21,7 +21,9 @@
 [ext_resource type="Texture2D" uid="uid://d1yjawnnoq7wu" path="res://Scenes/CoffeeMachine/Sprites/MilkBottleSprites/milk_bottle_outline.png" id="9_co82f"]
 [ext_resource type="Texture2D" uid="uid://c524603wfbtv0" path="res://Entities/DialogueMenu/DialogueTextureOutline.png" id="11_q2g1w"]
 [ext_resource type="Texture2D" uid="uid://d1bmkdjtisx3" path="res://Scenes/CoffeeMachine/Sprites/Machine/MachineButtons/liquid_button_pressed.png" id="15_yqsuo"]
+[ext_resource type="AudioStream" uid="uid://c4ybcry8vh01p" path="res://Assets/Sounds/machine_beep.wav" id="17_w4l5r"]
 [ext_resource type="Texture2D" uid="uid://dn6eifmfff8s6" path="res://Scenes/CoffeeMachine/Sprites/Machine/MachineButtons/steam_button_pressed.png" id="18_0ywbk"]
+[ext_resource type="AudioStream" uid="uid://bqn3tmv7ib3pe" path="res://Assets/Sounds/machine_pour.wav" id="18_es3n4"]
 [ext_resource type="Texture2D" uid="uid://beccycgowkkcb" path="res://Scenes/CoffeeMachine/Sprites/MilkJugSprites/milk_jug_back.png" id="19_jsbfv"]
 [ext_resource type="Texture2D" uid="uid://4f4uojuwyyno" path="res://Scenes/CoffeeMachine/Sprites/MilkJugSprites/milk_jug_liquid.png" id="19_prxrh"]
 [ext_resource type="Texture2D" uid="uid://c7mvocsp40ien" path="res://Scenes/CoffeeMachine/Sprites/MilkJugSprites/milk_jug_body.png" id="20_p32a0"]
@@ -31,15 +33,11 @@
 [ext_resource type="Texture2D" uid="uid://bsahc5ebrnohb" path="res://Scenes/CoffeeMachine/Sprites/Interface/Cross Icon.png" id="27_heljd"]
 [ext_resource type="Texture2D" uid="uid://bi64uyp22x6r" path="res://Scenes/CoffeeMachine/Sprites/MilkJugSprites/milk_jug_outline.png" id="28_xtusc"]
 [ext_resource type="Texture2D" uid="uid://biejf8w24fbvx" path="res://Scenes/CoffeeMachine/Sprites/Interface/recipebook.png" id="29_r8gtr"]
+[ext_resource type="AudioStream" uid="uid://cm8vwcsi51x8w" path="res://Assets/Sounds/plate_place.wav" id="30_j84yk"]
 [ext_resource type="Texture2D" uid="uid://blyawphb8wvdf" path="res://Scenes/CoffeeMachine/Sprites/Interface/recipebook_outline.png" id="30_wqp5t"]
 [ext_resource type="Texture2D" uid="uid://ba7k53me2005i" path="res://Scenes/CoffeeMachine/Sprites/Interface/Pour Icon.png" id="32_wc1bx"]
 [ext_resource type="Texture2D" uid="uid://catst085ks57s" path="res://Scenes/CoffeeMachine/Sprites/Interface/Move Icon.png" id="33_gnwfp"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_h5omg"]
-line_spacing = -24.0
-font = ExtResource("8_h5omg")
-font_size = 25
-font_color = Color(0, 0, 0, 1)
+[ext_resource type="Texture2D" uid="uid://c1e1bwfpnya4n" path="res://Scenes/CoffeeMachine/Sprites/Interface/Recipe Book.png" id="35_gnwfp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jsbfv"]
 atlas = ExtResource("3_2cdr2")
@@ -95,6 +93,12 @@ animations = [{
 "name": &"pour",
 "speed": 5.0
 }]
+
+[sub_resource type="LabelSettings" id="LabelSettings_h5omg"]
+line_spacing = -24.0
+font = ExtResource("8_h5omg")
+font_size = 25
+font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_qn5ym"]
 line_spacing = -9.0
@@ -182,7 +186,7 @@ font_color = Color(0, 0, 0, 1)
 line_spacing = -9.0
 font = ExtResource("8_h5omg")
 font_size = 40
-font_color = Color(0, 0, 0, 1)
+font_color = Color(0.32, 0.22170666, 0.00959999, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_43oqh"]
 line_spacing = -9.0
@@ -197,6 +201,7 @@ font_size = 20
 font_color = Color(0, 0, 0, 1)
 
 [node name="CoffeeMachineSim" type="Control" node_paths=PackedStringArray("content_node", "current_cup", "current_cup_options", "liquid_button", "liquid_effect", "steam_button", "steam_effect", "cups_button", "cup_type_display", "beans_that_move", "milk_jug", "milk_jug_options", "milk_display", "milk_bottle")]
+process_mode = 1
 texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
@@ -237,52 +242,6 @@ texture_filter = 1
 position = Vector2(599.7, 1081)
 scale = Vector2(3.238, 3.238)
 texture = ExtResource("21_0otgf")
-
-[node name="CarrotFlakes" type="Button" parent="Content/Decorations"]
-offset_left = 52.28534
-offset_top = -90.7968
-offset_right = 97.77637
-offset_bottom = -16.579178
-text = "Carr
-ot"
-
-[node name="Name" type="NinePatchRect" parent="Content/Decorations/CarrotFlakes"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -32.97252
-offset_top = -17.85408
-offset_right = 32.97252
-offset_bottom = -4.9413147
-grow_horizontal = 2
-grow_vertical = 0
-texture = ExtResource("6_qn5ym")
-region_rect = Rect2(0, 0, 12, 12)
-patch_margin_left = 5
-patch_margin_top = 5
-patch_margin_right = 5
-patch_margin_bottom = 5
-
-[node name="Text" type="Label" parent="Content/Decorations/CarrotFlakes/Name"]
-texture_filter = 1
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 0.2977004
-offset_top = -0.1897521
-offset_right = 154.20654
-offset_bottom = 30.897484
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.3, 0.3)
-text = "Carrot Flakes"
-label_settings = SubResource("LabelSettings_h5omg")
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="MilkBottle" type="AnimatedSprite2D" parent="Content/Decorations"]
 position = Vector2(122, 36)
@@ -515,97 +474,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_default_cursor_shape = 2
 
-[node name="Cocoa" type="Button" parent="Content/Decorations"]
-offset_left = -91.01298
-offset_top = -90.79678
-offset_right = -30.697998
-offset_bottom = -16.579163
-text = "Cocoa"
-
-[node name="Name" type="NinePatchRect" parent="Content/Decorations/Cocoa"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -32.97252
-offset_top = -17.85408
-offset_right = 32.97252
-offset_bottom = -4.9413147
-grow_horizontal = 2
-grow_vertical = 0
-texture = ExtResource("6_qn5ym")
-region_rect = Rect2(0, 0, 12, 12)
-patch_margin_left = 5
-patch_margin_top = 5
-patch_margin_right = 5
-patch_margin_bottom = 5
-
-[node name="Text" type="Label" parent="Content/Decorations/Cocoa/Name"]
-texture_filter = 1
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 0.2977004
-offset_top = -0.1897521
-offset_right = 154.20654
-offset_bottom = 30.897484
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.3, 0.3)
-text = "Cocoa Powder"
-label_settings = SubResource("LabelSettings_h5omg")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Syrup" type="Button" parent="Content/Decorations"]
-offset_left = -145.36754
-offset_top = -75.97281
-offset_right = -99.66031
-offset_bottom = 23.16249
-text = "Syr
-up"
-
-[node name="Name" type="NinePatchRect" parent="Content/Decorations/Syrup"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -29.161407
-offset_top = -17.85408
-offset_right = 29.161407
-offset_bottom = -4.9413147
-grow_horizontal = 2
-grow_vertical = 0
-texture = ExtResource("6_qn5ym")
-region_rect = Rect2(0, 0, 12, 12)
-patch_margin_left = 5
-patch_margin_top = 5
-patch_margin_right = 5
-patch_margin_bottom = 5
-
-[node name="Text" type="Label" parent="Content/Decorations/Syrup/Name"]
-texture_filter = 1
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 0.2977004
-offset_top = -0.1897521
-offset_right = 135.3919
-offset_bottom = 30.897484
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.3, 0.3)
-text = "Syrup"
-label_settings = SubResource("LabelSettings_h5omg")
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="Machine" type="Sprite2D" parent="Content"]
 texture_filter = 1
 position = Vector2(599, 408.00003)
@@ -648,6 +516,15 @@ grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("4_d1n2f")
 
+[node name="Beep" type="AudioStreamPlayer" parent="Content/Machine/LiquidButton"]
+stream = ExtResource("17_w4l5r")
+bus = &"SoundEffects"
+
+[node name="Pouring" type="AudioStreamPlayer" parent="Content/Machine/LiquidButton"]
+stream = ExtResource("18_es3n4")
+volume_db = -5.0
+bus = &"SoundEffects"
+
 [node name="SteamButton" type="TextureButton" parent="Content/Machine"]
 texture_filter = 1
 offset_left = -19.89154
@@ -674,6 +551,10 @@ grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("4_d1n2f")
 
+[node name="Beep" type="AudioStreamPlayer" parent="Content/Machine/SteamButton"]
+stream = ExtResource("17_w4l5r")
+bus = &"SoundEffects"
+
 [node name="CupsButton" type="Button" parent="Content/Machine"]
 offset_left = 62.832413
 offset_top = -87.25074
@@ -697,6 +578,10 @@ offset_right = 69.21329
 offset_bottom = 176.38228
 mouse_filter = 2
 texture = ExtResource("8_pkxhv")
+
+[node name="MoveSound" type="AudioStreamPlayer" parent="Content/Machine/CupsButton"]
+stream = ExtResource("30_j84yk")
+bus = &"SoundEffects"
 
 [node name="SteamTap" type="TextureRect" parent="Content"]
 offset_left = 482.81717
@@ -1368,6 +1253,10 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_default_cursor_shape = 2
 
+[node name="MoveSound" type="AudioStreamPlayer" parent="Content/Jug"]
+stream = ExtResource("30_j84yk")
+bus = &"SoundEffects"
+
 [node name="Exit" type="NinePatchRect" parent="."]
 texture_filter = 1
 custom_minimum_size = Vector2(40, 12)
@@ -1612,7 +1501,7 @@ grow_vertical = 2
 color = Color(0, 0, 0, 0.7019608)
 metadata/_edit_lock_ = true
 
-[node name="Panel" type="NinePatchRect" parent="RecipeBg"]
+[node name="Book" type="TextureRect" parent="RecipeBg"]
 texture_filter = 1
 custom_minimum_size = Vector2(40, 12)
 layout_mode = 1
@@ -1625,60 +1514,52 @@ offset_right = -176.66669
 offset_bottom = -106.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("6_qn5ym")
-region_rect = Rect2(0, 0, 12, 12)
-patch_margin_left = 5
-patch_margin_top = 5
-patch_margin_right = 5
-patch_margin_bottom = 5
+texture = ExtResource("35_gnwfp")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="RecipeBg/Panel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 0
+[node name="LeftPage" type="VBoxContainer" parent="RecipeBg/Book"]
+layout_mode = 0
+offset_left = 83.0
+offset_top = 31.0
+offset_right = 506.0
+offset_bottom = 511.0
+rotation = 0.10471976
+scale = Vector2(0.9, 0.9)
 
-[node name="Title" type="Label" parent="RecipeBg/Panel/VBoxContainer"]
+[node name="Title" type="Label" parent="RecipeBg/Book/LeftPage"]
 texture_filter = 1
 layout_mode = 2
-text = "Recipe Book"
+text = "Recipes"
 label_settings = SubResource("LabelSettings_wqp5t")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Pages" type="HBoxContainer" parent="RecipeBg/Panel/VBoxContainer"]
-custom_minimum_size = Vector2(0, 400)
-layout_mode = 2
-
-[node name="SingleEsp" type="VBoxContainer" parent="RecipeBg/Panel/VBoxContainer/Pages"]
+[node name="SingleEsp" type="VBoxContainer" parent="RecipeBg/Book/LeftPage"]
 custom_minimum_size = Vector2(423.334, 0)
 layout_mode = 2
 
-[node name="Title" type="Label" parent="RecipeBg/Panel/VBoxContainer/Pages/SingleEsp"]
+[node name="Title" type="Label" parent="RecipeBg/Book/LeftPage/SingleEsp"]
 texture_filter = 1
 layout_mode = 2
-text = "Single Expresso"
+text = "Single Espresso"
 label_settings = SubResource("LabelSettings_43oqh")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Macchiato" type="HBoxContainer" parent="RecipeBg/Panel/VBoxContainer/Pages/SingleEsp"]
+[node name="Macchiato" type="HBoxContainer" parent="RecipeBg/Book/LeftPage/SingleEsp"]
 custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
 
-[node name="Name" type="Label" parent="RecipeBg/Panel/VBoxContainer/Pages/SingleEsp/Macchiato"]
+[node name="Name" type="Label" parent="RecipeBg/Book/LeftPage/SingleEsp/Macchiato"]
 texture_filter = 1
 custom_minimum_size = Vector2(210, 0)
 layout_mode = 2
-text = "Espresso Macchiato"
+text = "Espresso 
+Macchiato"
 label_settings = SubResource("LabelSettings_wmgx3")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Percent" type="Label" parent="RecipeBg/Panel/VBoxContainer/Pages/SingleEsp/Macchiato"]
+[node name="Percent" type="Label" parent="RecipeBg/Book/LeftPage/SingleEsp/Macchiato"]
 texture_filter = 1
 custom_minimum_size = Vector2(180, 0)
 layout_mode = 2
@@ -1687,11 +1568,11 @@ label_settings = SubResource("LabelSettings_wmgx3")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Piccolo" type="HBoxContainer" parent="RecipeBg/Panel/VBoxContainer/Pages/SingleEsp"]
+[node name="Piccolo" type="HBoxContainer" parent="RecipeBg/Book/LeftPage/SingleEsp"]
 custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
 
-[node name="Name" type="Label" parent="RecipeBg/Panel/VBoxContainer/Pages/SingleEsp/Piccolo"]
+[node name="Name" type="Label" parent="RecipeBg/Book/LeftPage/SingleEsp/Piccolo"]
 texture_filter = 1
 custom_minimum_size = Vector2(210, 0)
 layout_mode = 2
@@ -1700,7 +1581,7 @@ label_settings = SubResource("LabelSettings_wmgx3")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Percent" type="Label" parent="RecipeBg/Panel/VBoxContainer/Pages/SingleEsp/Piccolo"]
+[node name="Percent" type="Label" parent="RecipeBg/Book/LeftPage/SingleEsp/Piccolo"]
 texture_filter = 1
 custom_minimum_size = Vector2(180, 0)
 layout_mode = 2
@@ -1709,11 +1590,11 @@ label_settings = SubResource("LabelSettings_wmgx3")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Cortado" type="HBoxContainer" parent="RecipeBg/Panel/VBoxContainer/Pages/SingleEsp"]
+[node name="Cortado" type="HBoxContainer" parent="RecipeBg/Book/LeftPage/SingleEsp"]
 custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
 
-[node name="Name" type="Label" parent="RecipeBg/Panel/VBoxContainer/Pages/SingleEsp/Cortado"]
+[node name="Name" type="Label" parent="RecipeBg/Book/LeftPage/SingleEsp/Cortado"]
 texture_filter = 1
 custom_minimum_size = Vector2(210, 0)
 layout_mode = 2
@@ -1722,7 +1603,7 @@ label_settings = SubResource("LabelSettings_wmgx3")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Percent" type="Label" parent="RecipeBg/Panel/VBoxContainer/Pages/SingleEsp/Cortado"]
+[node name="Percent" type="Label" parent="RecipeBg/Book/LeftPage/SingleEsp/Cortado"]
 texture_filter = 1
 custom_minimum_size = Vector2(180, 0)
 layout_mode = 2
@@ -1731,11 +1612,11 @@ label_settings = SubResource("LabelSettings_wmgx3")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Flatwhite" type="HBoxContainer" parent="RecipeBg/Panel/VBoxContainer/Pages/SingleEsp"]
+[node name="Flatwhite" type="HBoxContainer" parent="RecipeBg/Book/LeftPage/SingleEsp"]
 custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
 
-[node name="Name" type="Label" parent="RecipeBg/Panel/VBoxContainer/Pages/SingleEsp/Flatwhite"]
+[node name="Name" type="Label" parent="RecipeBg/Book/LeftPage/SingleEsp/Flatwhite"]
 texture_filter = 1
 custom_minimum_size = Vector2(210, 0)
 layout_mode = 2
@@ -1744,7 +1625,7 @@ label_settings = SubResource("LabelSettings_wmgx3")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Percent" type="Label" parent="RecipeBg/Panel/VBoxContainer/Pages/SingleEsp/Flatwhite"]
+[node name="Percent" type="Label" parent="RecipeBg/Book/LeftPage/SingleEsp/Flatwhite"]
 texture_filter = 1
 custom_minimum_size = Vector2(180, 0)
 layout_mode = 2
@@ -1753,32 +1634,50 @@ label_settings = SubResource("LabelSettings_wmgx3")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="DoubleEsp" type="VBoxContainer" parent="RecipeBg/Panel/VBoxContainer/Pages"]
+[node name="RightPage" type="VBoxContainer" parent="RecipeBg/Book"]
+layout_mode = 0
+offset_left = 376.47403
+offset_top = 72.93817
+offset_right = 799.474
+offset_bottom = 544.0482
+rotation = -0.10471976
+scale = Vector2(0.9, 0.9)
+
+[node name="Title" type="Label" parent="RecipeBg/Book/RightPage"]
+texture_filter = 1
+layout_mode = 2
+text = "Recipes"
+label_settings = SubResource("LabelSettings_wqp5t")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DoubleEsp" type="VBoxContainer" parent="RecipeBg/Book/RightPage"]
 custom_minimum_size = Vector2(423.334, 0)
 layout_mode = 2
 
-[node name="Title" type="Label" parent="RecipeBg/Panel/VBoxContainer/Pages/DoubleEsp"]
+[node name="Title" type="Label" parent="RecipeBg/Book/RightPage/DoubleEsp"]
 texture_filter = 1
 layout_mode = 2
-text = "Double Expresso"
+text = "Double Espresso"
 label_settings = SubResource("LabelSettings_43oqh")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="DubMacchiato" type="HBoxContainer" parent="RecipeBg/Panel/VBoxContainer/Pages/DoubleEsp"]
+[node name="DubMacchiato" type="HBoxContainer" parent="RecipeBg/Book/RightPage/DoubleEsp"]
 custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
 
-[node name="Name" type="Label" parent="RecipeBg/Panel/VBoxContainer/Pages/DoubleEsp/DubMacchiato"]
+[node name="Name" type="Label" parent="RecipeBg/Book/RightPage/DoubleEsp/DubMacchiato"]
 texture_filter = 1
 custom_minimum_size = Vector2(210, 0)
 layout_mode = 2
-text = "Double Macchiato"
+text = "Double 
+Macchiato"
 label_settings = SubResource("LabelSettings_wmgx3")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Percent" type="Label" parent="RecipeBg/Panel/VBoxContainer/Pages/DoubleEsp/DubMacchiato"]
+[node name="Percent" type="Label" parent="RecipeBg/Book/RightPage/DoubleEsp/DubMacchiato"]
 texture_filter = 1
 custom_minimum_size = Vector2(180, 0)
 layout_mode = 2
@@ -1787,11 +1686,11 @@ label_settings = SubResource("LabelSettings_wmgx3")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Latte" type="HBoxContainer" parent="RecipeBg/Panel/VBoxContainer/Pages/DoubleEsp"]
+[node name="Latte" type="HBoxContainer" parent="RecipeBg/Book/RightPage/DoubleEsp"]
 custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
 
-[node name="Name" type="Label" parent="RecipeBg/Panel/VBoxContainer/Pages/DoubleEsp/Latte"]
+[node name="Name" type="Label" parent="RecipeBg/Book/RightPage/DoubleEsp/Latte"]
 texture_filter = 1
 custom_minimum_size = Vector2(210, 0)
 layout_mode = 2
@@ -1800,7 +1699,7 @@ label_settings = SubResource("LabelSettings_wmgx3")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Percent" type="Label" parent="RecipeBg/Panel/VBoxContainer/Pages/DoubleEsp/Latte"]
+[node name="Percent" type="Label" parent="RecipeBg/Book/RightPage/DoubleEsp/Latte"]
 texture_filter = 1
 custom_minimum_size = Vector2(180, 0)
 layout_mode = 2
@@ -1809,11 +1708,11 @@ label_settings = SubResource("LabelSettings_wmgx3")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Cappuch" type="HBoxContainer" parent="RecipeBg/Panel/VBoxContainer/Pages/DoubleEsp"]
+[node name="Cappuch" type="HBoxContainer" parent="RecipeBg/Book/RightPage/DoubleEsp"]
 custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
 
-[node name="Name" type="Label" parent="RecipeBg/Panel/VBoxContainer/Pages/DoubleEsp/Cappuch"]
+[node name="Name" type="Label" parent="RecipeBg/Book/RightPage/DoubleEsp/Cappuch"]
 texture_filter = 1
 custom_minimum_size = Vector2(210, 0)
 layout_mode = 2
@@ -1822,7 +1721,7 @@ label_settings = SubResource("LabelSettings_wmgx3")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Percent" type="Label" parent="RecipeBg/Panel/VBoxContainer/Pages/DoubleEsp/Cappuch"]
+[node name="Percent" type="Label" parent="RecipeBg/Book/RightPage/DoubleEsp/Cappuch"]
 texture_filter = 1
 custom_minimum_size = Vector2(180, 0)
 layout_mode = 2
@@ -1831,11 +1730,11 @@ label_settings = SubResource("LabelSettings_wmgx3")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Dry" type="HBoxContainer" parent="RecipeBg/Panel/VBoxContainer/Pages/DoubleEsp"]
+[node name="Dry" type="HBoxContainer" parent="RecipeBg/Book/RightPage/DoubleEsp"]
 custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
 
-[node name="Name" type="Label" parent="RecipeBg/Panel/VBoxContainer/Pages/DoubleEsp/Dry"]
+[node name="Name" type="Label" parent="RecipeBg/Book/RightPage/DoubleEsp/Dry"]
 texture_filter = 1
 custom_minimum_size = Vector2(210, 0)
 layout_mode = 2
@@ -1844,7 +1743,7 @@ label_settings = SubResource("LabelSettings_wmgx3")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Percent" type="Label" parent="RecipeBg/Panel/VBoxContainer/Pages/DoubleEsp/Dry"]
+[node name="Percent" type="Label" parent="RecipeBg/Book/RightPage/DoubleEsp/Dry"]
 texture_filter = 1
 custom_minimum_size = Vector2(180, 0)
 layout_mode = 2
@@ -1915,6 +1814,10 @@ patch_margin_left = 5
 patch_margin_top = 5
 patch_margin_right = 5
 patch_margin_bottom = 5
+
+[node name="MoveSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("30_j84yk")
+bus = &"SoundEffects"
 
 [connection signal="pressed" from="Content/Decorations/MilkBottle/Button" to="." method="milk_carton_pressed"]
 [connection signal="pressed" from="Content/Decorations/MilkBottle/BottleOptions/Pour/Button" to="." method="milkbottle_pour_pressed"]

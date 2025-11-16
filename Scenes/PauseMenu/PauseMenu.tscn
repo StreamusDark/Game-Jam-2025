@@ -1,0 +1,363 @@
+[gd_scene load_steps=22 format=3 uid="uid://cfwuxa35v5ble"]
+
+[ext_resource type="Script" uid="uid://d05b6plqc4d06" path="res://Scenes/PauseMenu/PauseMenu.gd" id="1_456hk"]
+[ext_resource type="Texture2D" uid="uid://can6ddmhretak" path="res://Scenes/PauseMenu/pause_day.png" id="1_kgxba"]
+[ext_resource type="Texture2D" uid="uid://db7b0bc7hkgsr" path="res://Scenes/PauseMenu/pause_night.png" id="2_f1kpg"]
+[ext_resource type="Texture2D" uid="uid://cgks5cp1v0muq" path="res://Scenes/interface_button_day.png" id="3_ifvnd"]
+[ext_resource type="FontFile" uid="uid://db1mivm1mc3hf" path="res://Assets/Fonts/Belajar Menulis.otf" id="4_456hk"]
+[ext_resource type="Texture2D" uid="uid://cpsy0ekqmj70v" path="res://Scenes/interface_button_hover.png" id="5_blrd7"]
+[ext_resource type="Texture2D" uid="uid://84nwetya22hl" path="res://Scenes/PauseMenu/Slider/slider_ticker_day.png" id="7_blrd7"]
+[ext_resource type="Texture2D" uid="uid://bp23ij1hodbu0" path="res://Scenes/interface_button_night.png" id="8_x6lxg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f1kpg"]
+atlas = ExtResource("1_kgxba")
+region = Rect2(0, 0, 156, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4bayv"]
+atlas = ExtResource("1_kgxba")
+region = Rect2(156, 0, 156, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_82qyg"]
+atlas = ExtResource("1_kgxba")
+region = Rect2(312, 0, 156, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ifvnd"]
+atlas = ExtResource("2_f1kpg")
+region = Rect2(0, 0, 156, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_456hk"]
+atlas = ExtResource("2_f1kpg")
+region = Rect2(156, 0, 156, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_blrd7"]
+atlas = ExtResource("2_f1kpg")
+region = Rect2(312, 0, 156, 50)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d7lcw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f1kpg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4bayv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_82qyg")
+}],
+"loop": true,
+"name": &"day",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ifvnd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_456hk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_blrd7")
+}],
+"loop": true,
+"name": &"night",
+"speed": 4.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_x6lxg"]
+font = ExtResource("4_456hk")
+font_size = 26
+
+[sub_resource type="LabelSettings" id="LabelSettings_ifvnd"]
+font = ExtResource("4_456hk")
+font_size = 26
+font_color = Color(1, 0.8000001, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_456hk"]
+font = ExtResource("4_456hk")
+font_size = 20
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_blrd7"]
+texture = ExtResource("3_ifvnd")
+texture_margin_left = 31.0
+texture_margin_top = 11.0
+texture_margin_right = 31.0
+texture_margin_bottom = 11.0
+expand_margin_top = 3.0
+expand_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_x6lxg"]
+texture = ExtResource("7_blrd7")
+modulate_color = Color(0, 0, 0, 0.5686275)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qr5tg"]
+texture = ExtResource("8_x6lxg")
+texture_margin_left = 31.0
+texture_margin_top = 11.0
+texture_margin_right = 31.0
+texture_margin_bottom = 11.0
+expand_margin_top = 3.0
+expand_margin_bottom = 3.0
+
+[node name="PauseMenu" type="Control"]
+process_mode = 2
+z_index = 10
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_456hk")
+is_night = true
+
+[node name="BG" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.6745098)
+metadata/_edit_lock_ = true
+
+[node name="Pause" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(418, 248)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_d7lcw")
+animation = &"day"
+
+[node name="Continue" type="NinePatchRect" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -16.0
+offset_right = -36.110962
+offset_bottom = 34.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_ifvnd")
+region_rect = Rect2(0, 0, 71, 23)
+patch_margin_left = 15
+patch_margin_top = 9
+patch_margin_right = 15
+patch_margin_bottom = 8
+
+[node name="Title" type="Label" parent="Continue"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Continue Run"
+label_settings = SubResource("LabelSettings_x6lxg")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="Continue"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+
+[node name="Hover" type="NinePatchRect" parent="Continue"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -133.9455
+offset_top = -27.0
+offset_right = 134.0545
+offset_bottom = 27.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_blrd7")
+patch_margin_left = 22
+patch_margin_top = 9
+patch_margin_right = 23
+patch_margin_bottom = 8
+
+[node name="Quit" type="NinePatchRect" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = 44.0
+offset_right = -36.110962
+offset_bottom = 94.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_ifvnd")
+region_rect = Rect2(0, 0, 71, 23)
+patch_margin_left = 15
+patch_margin_top = 9
+patch_margin_right = 15
+patch_margin_bottom = 8
+
+[node name="Title" type="Label" parent="Quit"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Quit to Title"
+label_settings = SubResource("LabelSettings_x6lxg")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="Quit"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+
+[node name="Hover" type="NinePatchRect" parent="Quit"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -133.9455
+offset_top = -27.0
+offset_right = 134.0545
+offset_bottom = 27.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_blrd7")
+patch_margin_left = 22
+patch_margin_top = 9
+patch_margin_right = 23
+patch_margin_bottom = 8
+
+[node name="Objective" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 90.0
+offset_top = -210.35477
+offset_right = 470.0
+offset_bottom = 208.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_ifvnd")
+region_rect = Rect2(0, 0, 71, 23)
+patch_margin_left = 15
+patch_margin_top = 9
+patch_margin_right = 15
+patch_margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Objective"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 17.0
+offset_top = 24.0
+offset_right = -17.0
+offset_bottom = 5.645233
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="Objective/VBoxContainer"]
+layout_mode = 2
+text = "Objective"
+label_settings = SubResource("LabelSettings_ifvnd")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Description" type="Label" parent="Objective/VBoxContainer"]
+custom_minimum_size = Vector2(0, 350)
+layout_mode = 2
+text = "Your job is to serve the customers coming in the coffees they order! Keep the satisfaction meter up by serving them in order to complete the day! Satisfaction goes down when you have not been attentive to the customers."
+label_settings = SubResource("LabelSettings_456hk")
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="MusicSlider" type="HSlider" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 297.0
+offset_top = 544.0
+offset_right = 567.0
+offset_bottom = 566.0
+theme_override_icons/tick = ExtResource("7_blrd7")
+theme_override_styles/slider = SubResource("StyleBoxTexture_blrd7")
+theme_override_styles/grabber_area = SubResource("StyleBoxTexture_x6lxg")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxTexture_x6lxg")
+max_value = 1.0
+step = 0.001
+value = 1.0
+
+[node name="Title" type="Label" parent="MusicSlider"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -47.0
+offset_bottom = -17.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Music Volume"
+label_settings = SubResource("LabelSettings_x6lxg")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SoundsSlider" type="HSlider" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 297.0
+offset_top = 624.0
+offset_right = 567.0
+offset_bottom = 646.0
+theme_override_icons/tick = ExtResource("7_blrd7")
+theme_override_styles/slider = SubResource("StyleBoxTexture_qr5tg")
+theme_override_styles/grabber_area = SubResource("StyleBoxTexture_x6lxg")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxTexture_x6lxg")
+max_value = 1.0
+step = 0.001
+value = 1.0
+
+[node name="Title" type="Label" parent="SoundsSlider"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -47.0
+offset_bottom = -17.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "SFX Volume"
+label_settings = SubResource("LabelSettings_x6lxg")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Continue/Button" to="." method="continue_pressed"]
+[connection signal="pressed" from="Quit/Button" to="." method="quit_pressed"]
+[connection signal="drag_ended" from="MusicSlider" to="." method="music_changed"]
+[connection signal="drag_ended" from="SoundsSlider" to="." method="sfx_changed"]

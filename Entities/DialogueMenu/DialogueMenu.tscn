@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dfiqw4je0y1dw"]
+[gd_scene load_steps=8 format=3 uid="uid://dfiqw4je0y1dw"]
 
 [ext_resource type="Texture2D" uid="uid://p45k4b38qigy" path="res://Entities/DialogueMenu/DialogueTexture.png" id="1_802pa"]
 [ext_resource type="Script" uid="uid://bqv8xiwl2b6lg" path="res://Entities/DialogueMenu/DialogueMenu.gd" id="2_lku4c"]
@@ -10,6 +10,11 @@
 font = ExtResource("3_g5ey2")
 font_size = 60
 font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_qhxro"]
+font = ExtResource("3_g5ey2")
+font_size = 56
+font_color = Color(0.27, 0.117000006, 0, 1)
 
 [node name="Dialogue" type="NinePatchRect"]
 z_index = 2
@@ -36,7 +41,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 13.0
 offset_top = 25.0
-offset_right = -13.0
+offset_right = -65.0
 offset_bottom = -9.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -88,6 +93,24 @@ wait_time = 0.04
 
 [node name="PauseTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="ContinueIcon" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -52.0
+offset_top = -63.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+pivot_offset = Vector2(22, 28)
+text = "Z"
+label_settings = SubResource("LabelSettings_qhxro")
+horizontal_alignment = 1
 
 [connection signal="finished" from="AudioStreamPlayer" to="." method="voicesound_finished"]
 [connection signal="timeout" from="LetterTimer" to="." method="letter_timer_timeout"]

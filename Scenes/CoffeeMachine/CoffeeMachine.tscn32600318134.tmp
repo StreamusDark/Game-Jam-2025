@@ -1,0 +1,1962 @@
+[gd_scene load_steps=64 format=3 uid="uid://c7gficdq3463"]
+
+[ext_resource type="Script" uid="uid://dds4tkqyratt0" path="res://Scenes/CoffeeMachine/CoffeeMachine.gd" id="1_mifmu"]
+[ext_resource type="Texture2D" uid="uid://btgw1g36oqly" path="res://Scenes/CoffeeMachine/Sprites/Machine/machine.png" id="2_qqsrl"]
+[ext_resource type="Texture2D" uid="uid://2sw0o3x83rny" path="res://Scenes/CoffeeMachine/Sprites/MilkBottleSprites/milk_bottle_sheet.png" id="3_2cdr2"]
+[ext_resource type="Texture2D" uid="uid://jd8x4jj41xn4" path="res://Scenes/CoffeeMachine/Sprites/Machine/machine_glass.png" id="3_45fyo"]
+[ext_resource type="Texture2D" uid="uid://c3kjtu0o6pyua" path="res://Scenes/CoffeeMachine/Sprites/Machine/MachineButtons/liquid_button.png" id="3_74vje"]
+[ext_resource type="Texture2D" uid="uid://buofv3gpepg7p" path="res://Scenes/CoffeeMachine/Sprites/Machine/MachineButtons/steam_button.png" id="3_hk33k"]
+[ext_resource type="Texture2D" uid="uid://d1fvn22sibbrt" path="res://Scenes/CoffeeMachine/Sprites/Machine/roll_credits.png" id="3_xhjn3"]
+[ext_resource type="Texture2D" uid="uid://cf0dekp4qsyp6" path="res://Scenes/CoffeeMachine/Sprites/Machine/MachineButtons/button_outline.png" id="4_d1n2f"]
+[ext_resource type="Texture2D" uid="uid://b0at02nheylfu" path="res://Scenes/CoffeeMachine/Sprites/CoffeeCupSprite/coffee_back.png" id="4_l2ffj"]
+[ext_resource type="Texture2D" uid="uid://cqm1opcul4qdx" path="res://Scenes/CoffeeMachine/Sprites/Machine/steam_tap.png" id="5_0pyig"]
+[ext_resource type="Texture2D" uid="uid://dpugwqi5lcww5" path="res://Scenes/CoffeeMachine/Sprites/CoffeeCupSprite/coffee_liquid.png" id="5_qvqh4"]
+[ext_resource type="Texture2D" uid="uid://ffah6f4ehsqe" path="res://Scenes/CoffeeMachine/Sprites/CoffeeCupSprite/coffee_front.png" id="5_rho41"]
+[ext_resource type="Texture2D" uid="uid://c0svgp3udadee" path="res://Scenes/CoffeeMachine/Sprites/MilkBottleSprites/milk_pour.png" id="6_k0pt1"]
+[ext_resource type="Texture2D" uid="uid://p45k4b38qigy" path="res://Entities/DialogueMenu/DialogueTexture.png" id="6_qn5ym"]
+[ext_resource type="Texture2D" uid="uid://c7h8pnupi8anj" path="res://Scenes/CoffeeMachine/Sprites/CupMountainSprites/cups_button.png" id="7_7p6l6"]
+[ext_resource type="Texture2D" uid="uid://do60kff6i1it" path="res://Scenes/CoffeeMachine/Sprites/CoffeeCupSprite/coffee_outline.png" id="7_h5omg"]
+[ext_resource type="FontFile" uid="uid://db1mivm1mc3hf" path="res://Assets/Fonts/Belajar Menulis.otf" id="8_h5omg"]
+[ext_resource type="Texture2D" uid="uid://bum0y3tnda8ly" path="res://Scenes/CoffeeMachine/Sprites/CupMountainSprites/cups_button_outline.png" id="8_pkxhv"]
+[ext_resource type="Texture2D" uid="uid://d1yjawnnoq7wu" path="res://Scenes/CoffeeMachine/Sprites/MilkBottleSprites/milk_bottle_outline.png" id="9_co82f"]
+[ext_resource type="Texture2D" uid="uid://c524603wfbtv0" path="res://Entities/DialogueMenu/DialogueTextureOutline.png" id="11_q2g1w"]
+[ext_resource type="Texture2D" uid="uid://d1bmkdjtisx3" path="res://Scenes/CoffeeMachine/Sprites/Machine/MachineButtons/liquid_button_pressed.png" id="15_yqsuo"]
+[ext_resource type="Texture2D" uid="uid://dn6eifmfff8s6" path="res://Scenes/CoffeeMachine/Sprites/Machine/MachineButtons/steam_button_pressed.png" id="18_0ywbk"]
+[ext_resource type="Texture2D" uid="uid://beccycgowkkcb" path="res://Scenes/CoffeeMachine/Sprites/MilkJugSprites/milk_jug_back.png" id="19_jsbfv"]
+[ext_resource type="Texture2D" uid="uid://4f4uojuwyyno" path="res://Scenes/CoffeeMachine/Sprites/MilkJugSprites/milk_jug_liquid.png" id="19_prxrh"]
+[ext_resource type="Texture2D" uid="uid://c7mvocsp40ien" path="res://Scenes/CoffeeMachine/Sprites/MilkJugSprites/milk_jug_body.png" id="20_p32a0"]
+[ext_resource type="Texture2D" uid="uid://bqsfwqfds36x8" path="res://Scenes/CoffeeMachine/Sprites/Machine/counter.png" id="21_0otgf"]
+[ext_resource type="Texture2D" uid="uid://coavg7qvi842h" path="res://Scenes/CoffeeMachine/Sprites/Interface/serve.png" id="25_43oqh"]
+[ext_resource type="Texture2D" uid="uid://c210g4tce10e5" path="res://Scenes/CoffeeMachine/Sprites/Interface/Mini Bin2.png" id="26_wmgx3"]
+[ext_resource type="Texture2D" uid="uid://bsahc5ebrnohb" path="res://Scenes/CoffeeMachine/Sprites/Interface/Cross Icon.png" id="27_heljd"]
+[ext_resource type="Texture2D" uid="uid://bi64uyp22x6r" path="res://Scenes/CoffeeMachine/Sprites/MilkJugSprites/milk_jug_outline.png" id="28_xtusc"]
+[ext_resource type="Texture2D" uid="uid://biejf8w24fbvx" path="res://Scenes/CoffeeMachine/Sprites/Interface/recipebook.png" id="29_r8gtr"]
+[ext_resource type="Texture2D" uid="uid://blyawphb8wvdf" path="res://Scenes/CoffeeMachine/Sprites/Interface/recipebook_outline.png" id="30_wqp5t"]
+[ext_resource type="Texture2D" uid="uid://ba7k53me2005i" path="res://Scenes/CoffeeMachine/Sprites/Interface/Pour Icon.png" id="32_wc1bx"]
+[ext_resource type="Texture2D" uid="uid://catst085ks57s" path="res://Scenes/CoffeeMachine/Sprites/Interface/Move Icon.png" id="33_gnwfp"]
+[ext_resource type="Texture2D" uid="uid://c1e1bwfpnya4n" path="res://Scenes/CoffeeMachine/Sprites/Interface/Recipe Book.png" id="35_gnwfp"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_h5omg"]
+line_spacing = -24.0
+font = ExtResource("8_h5omg")
+font_size = 25
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jsbfv"]
+atlas = ExtResource("3_2cdr2")
+region = Rect2(0, 0, 53, 121)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k0pt1"]
+atlas = ExtResource("3_2cdr2")
+region = Rect2(53, 0, 53, 121)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_co82f"]
+atlas = ExtResource("3_2cdr2")
+region = Rect2(106, 0, 53, 121)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xtusc"]
+atlas = ExtResource("3_2cdr2")
+region = Rect2(159, 0, 53, 121)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iu2py"]
+atlas = ExtResource("6_k0pt1")
+region = Rect2(0, 0, 112, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qscbx"]
+atlas = ExtResource("6_k0pt1")
+region = Rect2(112, 0, 112, 41)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p32a0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jsbfv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k0pt1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_co82f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xtusc")
+}],
+"loop": false,
+"name": &"default",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iu2py")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qscbx")
+}],
+"loop": true,
+"name": &"pour",
+"speed": 5.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_qn5ym"]
+line_spacing = -9.0
+font = ExtResource("8_h5omg")
+font_size = 25
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pkxhv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_l2ffj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rho41"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qvqh4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qn5ym"]
+
+[sub_resource type="Gradient" id="Gradient_d1n2f"]
+colors = PackedColorArray(0.31431612, 0.31431612, 0.3143161, 1, 0.55, 0.34466666, 0.11, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_7p6l6"]
+gradient = SubResource("Gradient_d1n2f")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_d1n2f"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 98, 0)
+scale_min = 11.0
+scale_max = 15.0
+color = Color(0.66, 0.50116, 0.4092, 1)
+color_ramp = SubResource("GradientTexture1D_7p6l6")
+
+[sub_resource type="Gradient" id="Gradient_0pyig"]
+offsets = PackedFloat32Array(0.49411765, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_d1n2f"]
+gradient = SubResource("Gradient_0pyig")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0pyig"]
+particle_flag_disable_z = true
+angle_min = -69.99999
+angle_max = 70.000015
+direction = Vector3(0, 0, 0)
+spread = 15.0
+initial_velocity_min = 50.0
+initial_velocity_max = 100.0
+gravity = Vector3(0, -50, 0)
+scale_min = 10.0
+scale_max = 15.0
+color = Color(0.96, 1, 0.994, 0.14509805)
+color_ramp = SubResource("GradientTexture1D_d1n2f")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2cdr2"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 98, 0)
+scale_min = 10.0
+scale_max = 15.0
+color = Color(0.98, 0.9996667, 1, 0.9254902)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xtusc"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 98, 0)
+scale_min = 10.0
+scale_max = 15.0
+color = Color(0.962, 0.96, 1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_q2g1w"]
+line_spacing = -9.0
+font = ExtResource("8_h5omg")
+font_size = 25
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_r8gtr"]
+line_spacing = -9.0
+font = ExtResource("8_h5omg")
+font_size = 25
+
+[sub_resource type="LabelSettings" id="LabelSettings_0otgf"]
+line_spacing = -24.0
+font = ExtResource("8_h5omg")
+font_size = 25
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_wqp5t"]
+line_spacing = -9.0
+font = ExtResource("8_h5omg")
+font_size = 40
+font_color = Color(0.32, 0.22170666, 0.00959999, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_43oqh"]
+line_spacing = -9.0
+font = ExtResource("8_h5omg")
+font_size = 30
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_wmgx3"]
+line_spacing = -9.0
+font = ExtResource("8_h5omg")
+font_size = 20
+font_color = Color(0, 0, 0, 1)
+
+[node name="CoffeeMachineSim" type="Control" node_paths=PackedStringArray("content_node", "current_cup", "current_cup_options", "liquid_button", "liquid_effect", "steam_button", "steam_effect", "cups_button", "cup_type_display", "beans_that_move", "milk_jug", "milk_jug_options", "milk_display", "milk_bottle")]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mifmu")
+content_node = NodePath("Content")
+current_cup = NodePath("Content/CoffeeCup")
+current_cup_options = NodePath("Content/CoffeeCup/CoffeeOptions")
+liquid_button = NodePath("Content/Machine/LiquidButton")
+liquid_effect = NodePath("Content/CoffeeCup/CoffeeEffect")
+steam_button = NodePath("Content/Machine/SteamButton")
+steam_effect = NodePath("Content/Jug/SteamEffect")
+cups_button = NodePath("Content/Machine/CupsButton")
+cup_type_display = NodePath("Content/CoffeeCup/CoffeeTypeContainer/CoffeeType")
+beans_that_move = NodePath("Content/Machine/Beans")
+milk_jug = NodePath("Content/Jug")
+milk_jug_options = NodePath("Content/Jug/JugOptions")
+milk_display = NodePath("Content/Jug/MilkJug/Name/Text")
+milk_bottle = NodePath("Content/Decorations/MilkBottle")
+
+[node name="BG" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.7019608)
+metadata/_edit_lock_ = true
+
+[node name="Content" type="Node2D" parent="."]
+
+[node name="Decorations" type="Sprite2D" parent="Content"]
+texture_filter = 1
+position = Vector2(599.7, 1081)
+scale = Vector2(3.238, 3.238)
+texture = ExtResource("21_0otgf")
+
+[node name="CarrotFlakes" type="Button" parent="Content/Decorations"]
+offset_left = 52.28534
+offset_top = -90.7968
+offset_right = 97.77637
+offset_bottom = -16.579178
+text = "Carr
+ot"
+
+[node name="Name" type="NinePatchRect" parent="Content/Decorations/CarrotFlakes"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -32.97252
+offset_top = -17.85408
+offset_right = 32.97252
+offset_bottom = -4.9413147
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("6_qn5ym")
+region_rect = Rect2(0, 0, 12, 12)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="Text" type="Label" parent="Content/Decorations/CarrotFlakes/Name"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.2977004
+offset_top = -0.1897521
+offset_right = 154.20654
+offset_bottom = 30.897484
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+text = "Carrot Flakes"
+label_settings = SubResource("LabelSettings_h5omg")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MilkBottle" type="AnimatedSprite2D" parent="Content/Decorations"]
+position = Vector2(122, 36)
+scale = Vector2(0.72837895, 0.72837895)
+sprite_frames = SubResource("SpriteFrames_p32a0")
+frame = 3
+speed_scale = 0.0
+centered = false
+offset = Vector2(-27, -125)
+
+[node name="MilkPourHigher" type="AnimatedSprite2D" parent="Content/Decorations/MilkBottle"]
+visible = false
+position = Vector2(-4.3159485, -61.108093)
+rotation = 1.5707964
+sprite_frames = SubResource("SpriteFrames_p32a0")
+animation = &"pour"
+speed_scale = 0.0
+
+[node name="MilkPourLower" type="AnimatedSprite2D" parent="Content/Decorations/MilkBottle"]
+visible = false
+position = Vector2(-4.3159485, -61.108093)
+rotation = 1.5707964
+sprite_frames = SubResource("SpriteFrames_p32a0")
+animation = &"pour"
+frame = 1
+speed_scale = 0.0
+
+[node name="MilkHigher" type="AnimatedSprite2D" parent="Content/Decorations/MilkBottle"]
+visible = false
+position = Vector2(-0.5, -64.5)
+sprite_frames = SubResource("SpriteFrames_p32a0")
+frame = 1
+speed_scale = 0.0
+
+[node name="MilkLower" type="AnimatedSprite2D" parent="Content/Decorations/MilkBottle"]
+visible = false
+position = Vector2(-0.5, -64.5)
+sprite_frames = SubResource("SpriteFrames_p32a0")
+frame = 2
+speed_scale = 0.0
+
+[node name="Lid" type="AnimatedSprite2D" parent="Content/Decorations/MilkBottle"]
+visible = false
+position = Vector2(0, -64.44797)
+sprite_frames = SubResource("SpriteFrames_p32a0")
+speed_scale = 0.0
+
+[node name="Button" type="Button" parent="Content/Decorations/MilkBottle"]
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -27.0
+offset_top = -125.0
+offset_right = -27.0
+offset_bottom = -125.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+text = "Milk"
+
+[node name="Hover" type="Sprite2D" parent="Content/Decorations/MilkBottle/Button"]
+position = Vector2(26.57605, 63.94403)
+scale = Vector2(0.9999999, 0.9999999)
+texture = ExtResource("9_co82f")
+
+[node name="Name" type="NinePatchRect" parent="Content/Decorations/MilkBottle/Button"]
+z_index = 1
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -48.23761
+offset_top = -25.300446
+offset_right = 17.707428
+offset_bottom = -12.38768
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("6_qn5ym")
+region_rect = Rect2(0, 0, 12, 12)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="Text" type="Label" parent="Content/Decorations/MilkBottle/Button/Name"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.2977004
+offset_top = -0.1897521
+offset_right = 154.20654
+offset_bottom = 30.897484
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+text = "Milk Bottle"
+label_settings = SubResource("LabelSettings_h5omg")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BottleOptions" type="VBoxContainer" parent="Content/Decorations/MilkBottle"]
+visible = false
+z_index = 1
+offset_left = -130.81096
+offset_top = -110.98917
+offset_right = -61.427322
+offset_bottom = -56.389435
+scale = Vector2(1.4, 1.4)
+theme_override_constants/separation = 1
+alignment = 2
+
+[node name="Pour" type="NinePatchRect" parent="Content/Decorations/MilkBottle/BottleOptions"]
+self_modulate = Color(0.59150004, 1, 0.57, 1)
+texture_filter = 1
+custom_minimum_size = Vector2(40, 12)
+layout_mode = 2
+texture = ExtResource("6_qn5ym")
+region_rect = Rect2(0, 0, 12, 12)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="ActionName" type="Label" parent="Content/Decorations/MilkBottle/BottleOptions/Pour"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.37799
+offset_top = -1.4085693
+offset_right = 124.06326
+offset_bottom = 30.59143
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+text = "Pour"
+label_settings = SubResource("LabelSettings_qn5ym")
+vertical_alignment = 1
+
+[node name="Icon" type="Sprite2D" parent="Content/Decorations/MilkBottle/BottleOptions/Pour"]
+position = Vector2(11.018555, 5.657715)
+scale = Vector2(0.4744036, 0.4744036)
+texture = ExtResource("32_wc1bx")
+
+[node name="Hover" type="NinePatchRect" parent="Content/Decorations/MilkBottle/BottleOptions/Pour"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_q2g1w")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="Button" type="Button" parent="Content/Decorations/MilkBottle/BottleOptions/Pour"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+
+[node name="Cancel" type="NinePatchRect" parent="Content/Decorations/MilkBottle/BottleOptions"]
+texture_filter = 1
+custom_minimum_size = Vector2(40, 12)
+layout_mode = 2
+texture = ExtResource("6_qn5ym")
+region_rect = Rect2(0, 0, 12, 12)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="ActionName" type="Label" parent="Content/Decorations/MilkBottle/BottleOptions/Cancel"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.37799
+offset_top = -1.4085693
+offset_right = 124.06326
+offset_bottom = 30.59143
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+text = "Cancel"
+label_settings = SubResource("LabelSettings_qn5ym")
+vertical_alignment = 1
+
+[node name="Icon" type="Sprite2D" parent="Content/Decorations/MilkBottle/BottleOptions/Cancel"]
+position = Vector2(11.018555, 5.657715)
+scale = Vector2(0.44176278, 0.44176278)
+texture = ExtResource("27_heljd")
+
+[node name="Hover" type="NinePatchRect" parent="Content/Decorations/MilkBottle/BottleOptions/Cancel"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_q2g1w")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="Button" type="Button" parent="Content/Decorations/MilkBottle/BottleOptions/Cancel"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+
+[node name="Cocoa" type="Button" parent="Content/Decorations"]
+offset_left = -91.01298
+offset_top = -90.79678
+offset_right = -30.697998
+offset_bottom = -16.579163
+text = "Cocoa"
+
+[node name="Name" type="NinePatchRect" parent="Content/Decorations/Cocoa"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -32.97252
+offset_top = -17.85408
+offset_right = 32.97252
+offset_bottom = -4.9413147
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("6_qn5ym")
+region_rect = Rect2(0, 0, 12, 12)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="Text" type="Label" parent="Content/Decorations/Cocoa/Name"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.2977004
+offset_top = -0.1897521
+offset_right = 154.20654
+offset_bottom = 30.897484
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+text = "Cocoa Powder"
+label_settings = SubResource("LabelSettings_h5omg")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Syrup" type="Button" parent="Content/Decorations"]
+offset_left = -145.36754
+offset_top = -75.97281
+offset_right = -99.66031
+offset_bottom = 23.16249
+text = "Syr
+up"
+
+[node name="Name" type="NinePatchRect" parent="Content/Decorations/Syrup"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -29.161407
+offset_top = -17.85408
+offset_right = 29.161407
+offset_bottom = -4.9413147
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("6_qn5ym")
+region_rect = Rect2(0, 0, 12, 12)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="Text" type="Label" parent="Content/Decorations/Syrup/Name"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.2977004
+offset_top = -0.1897521
+offset_right = 135.3919
+offset_bottom = 30.897484
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+text = "Syrup"
+label_settings = SubResource("LabelSettings_h5omg")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Machine" type="Sprite2D" parent="Content"]
+texture_filter = 1
+position = Vector2(599, 408.00003)
+scale = Vector2(3.4, 3.4)
+texture = ExtResource("2_qqsrl")
+
+[node name="Beans" type="Sprite2D" parent="Content/Machine"]
+position = Vector2(-46, -84)
+scale = Vector2(0.99999994, 0.99999994)
+texture = ExtResource("3_xhjn3")
+
+[node name="Glass" type="Sprite2D" parent="Content/Machine"]
+position = Vector2(-46.454292, -83.37949)
+scale = Vector2(0.99999994, 0.99999994)
+texture = ExtResource("3_45fyo")
+
+[node name="LiquidButton" type="TextureButton" parent="Content/Machine"]
+texture_filter = 1
+offset_left = -94.92099
+offset_top = -57.69779
+offset_right = -67.92099
+offset_bottom = -31.332788
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("3_74vje")
+texture_pressed = ExtResource("15_yqsuo")
+texture_disabled = ExtResource("15_yqsuo")
+
+[node name="Hover" type="TextureRect" parent="Content/Machine/LiquidButton"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -0.9654541
+offset_top = -1.3371096
+offset_right = 1.0345459
+offset_bottom = 0.29789162
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("4_d1n2f")
+
+[node name="SteamButton" type="TextureButton" parent="Content/Machine"]
+texture_filter = 1
+offset_left = -19.89154
+offset_top = -57.69793
+offset_right = 7.1084595
+offset_bottom = -31.33293
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("3_hk33k")
+texture_pressed = ExtResource("18_0ywbk")
+texture_disabled = ExtResource("18_0ywbk")
+
+[node name="Hover" type="TextureRect" parent="Content/Machine/SteamButton"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -0.9654541
+offset_top = -0.81739616
+offset_right = 1.0345459
+offset_bottom = 0.81739616
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("4_d1n2f")
+
+[node name="CupsButton" type="Button" parent="Content/Machine"]
+offset_left = 62.832413
+offset_top = -87.25074
+offset_right = 137.83241
+offset_bottom = 90.74926
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_pkxhv")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_l2ffj")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_rho41")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_qvqh4")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_qn5ym")
+icon = ExtResource("7_7p6l6")
+flat = true
+
+[node name="Hover" type="TextureRect" parent="Content/Machine/CupsButton"]
+visible = false
+layout_mode = 0
+offset_left = -1.7867126
+offset_top = 2.3822746
+offset_right = 69.21329
+offset_bottom = 176.38228
+mouse_filter = 2
+texture = ExtResource("8_pkxhv")
+
+[node name="SteamTap" type="TextureRect" parent="Content"]
+offset_left = 482.81717
+offset_top = 307.8171
+offset_right = 628.0
+offset_bottom = 460.21906
+pivot_offset = Vector2(27, 0)
+texture = ExtResource("5_0pyig")
+expand_mode = 1
+
+[node name="CoffeeCup" type="Sprite2D" parent="Content"]
+texture_filter = 1
+position = Vector2(341, 532.4)
+scale = Vector2(3.3999994, 3.3999994)
+texture = ExtResource("4_l2ffj")
+
+[node name="CoffeeColouring" type="Sprite2D" parent="Content/CoffeeCup"]
+self_modulate = Color(0.19, 0.09072501, 0.0095000025, 1)
+texture = ExtResource("5_qvqh4")
+
+[node name="Hover" type="Sprite2D" parent="Content/CoffeeCup"]
+visible = false
+scale = Vector2(0.9999999, 0.9999999)
+texture = ExtResource("7_h5omg")
+
+[node name="CoffeeEffect" type="GPUParticles2D" parent="Content/CoffeeCup"]
+position = Vector2(-5.360321, -39.12738)
+scale = Vector2(1.0000001, 1.0000001)
+emitting = false
+amount = 15
+lifetime = 1.75
+trail_enabled = true
+process_material = SubResource("ParticleProcessMaterial_d1n2f")
+
+[node name="CoffeeFront" type="Sprite2D" parent="Content/CoffeeCup"]
+texture = ExtResource("5_rho41")
+
+[node name="CoffeeTypeContainer" type="NinePatchRect" parent="Content/CoffeeCup"]
+z_index = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -78.84761
+offset_top = -44.965393
+offset_right = 6.318527
+offset_bottom = -32.052628
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("6_qn5ym")
+region_rect = Rect2(0, 0, 12, 12)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="CoffeeType" type="Label" parent="Content/CoffeeCup/CoffeeTypeContainer"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.2977004
+offset_top = -0.1897521
+offset_right = 198.02634
+offset_bottom = 30.897484
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+text = "Double Espresso"
+label_settings = SubResource("LabelSettings_h5omg")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CoffeeClick" type="Button" parent="Content/CoffeeCup"]
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -31.5
+offset_top = -33.297783
+offset_right = -31.5
+offset_bottom = -33.297783
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+
+[node name="CoffeeOptions" type="VBoxContainer" parent="Content/CoffeeCup"]
+visible = false
+z_index = 1
+offset_left = 23.52494
+offset_top = -34.245163
+offset_right = 92.90858
+offset_bottom = 20.35456
+theme_override_constants/separation = 1
+alignment = 2
+
+[node name="Serve" type="NinePatchRect" parent="Content/CoffeeCup/CoffeeOptions"]
+self_modulate = Color(0.59150004, 1, 0.57, 1)
+texture_filter = 1
+custom_minimum_size = Vector2(40, 12)
+layout_mode = 2
+texture = ExtResource("6_qn5ym")
+region_rect = Rect2(0, 0, 12, 12)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="ActionName" type="Label" parent="Content/CoffeeCup/CoffeeOptions/Serve"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.37799
+offset_top = -1.4085693
+offset_right = 124.06326
+offset_bottom = 30.59143
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+text = "Serve"
+label_settings = SubResource("LabelSettings_qn5ym")
+vertical_alignment = 1
+
+[node name="Icon" type="Sprite2D" parent="Content/CoffeeCup/CoffeeOptions/Serve"]
+position = Vector2(11.018555, 5.657715)
+scale = Vector2(0.39859316, 0.39859316)
+texture = ExtResource("25_43oqh")
+
+[node name="Hover" type="NinePatchRect" parent="Content/CoffeeCup/CoffeeOptions/Serve"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_q2g1w")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="Button" type="Button" parent="Content/CoffeeCup/CoffeeOptions/Serve"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+
+[node name="Discard" type="NinePatchRect" parent="Content/CoffeeCup/CoffeeOptions"]
+self_modulate = Color(1, 0.57, 0.6775, 1)
+texture_filter = 1
+custom_minimum_size = Vector2(40, 12)
+layout_mode = 2
+texture = ExtResource("6_qn5ym")
+region_rect = Rect2(0, 0, 12, 12)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="ActionName" type="Label" parent="Content/CoffeeCup/CoffeeOptions/Discard"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.37799
+offset_top = -1.4085693
+offset_right = 124.06326
+offset_bottom = 30.59143
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+text = "Discard"
+label_settings = SubResource("LabelSettings_qn5ym")
+vertical_alignment = 1
+
+[node name="Icon" type="Sprite2D" parent="Content/CoffeeCup/CoffeeOptions/Discard"]
+position = Vector2(11.018555, 5.657959)
+scale = Vector2(0.41020194, 0.410202)
+texture = ExtResource("26_wmgx3")
+
+[node name="Hover" type="NinePatchRect" parent="Content/CoffeeCup/CoffeeOptions/Discard"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_q2g1w")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="Button" type="Button" parent="Content/CoffeeCup/CoffeeOptions/Discard"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+
+[node name="Cancel" type="NinePatchRect" parent="Content/CoffeeCup/CoffeeOptions"]
+texture_filter = 1
+custom_minimum_size = Vector2(40, 12)
+layout_mode = 2
+texture = ExtResource("6_qn5ym")
+region_rect = Rect2(0, 0, 12, 12)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="ActionName" type="Label" parent="Content/CoffeeCup/CoffeeOptions/Cancel"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.37799
+offset_top = -1.4085693
+offset_right = 124.06326
+offset_bottom = 30.59143
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+text = "Cancel"
+label_settings = SubResource("LabelSettings_qn5ym")
+vertical_alignment = 1
+
+[node name="Icon" type="Sprite2D" parent="Content/CoffeeCup/CoffeeOptions/Cancel"]
+position = Vector2(11.018555, 5.657715)
+scale = Vector2(0.39972946, 0.39972946)
+texture = ExtResource("27_heljd")
+
+[node name="Hover" type="NinePatchRect" parent="Content/CoffeeCup/CoffeeOptions/Cancel"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_q2g1w")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="Button" type="Button" parent="Content/CoffeeCup/CoffeeOptions/Cancel"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+
+[node name="Jug" type="Sprite2D" parent="Content"]
+position = Vector2(596, 614)
+scale = Vector2(3.238, 3.238)
+texture = ExtResource("19_jsbfv")
+offset = Vector2(0, -30)
+
+[node name="Colouring" type="Sprite2D" parent="Content/Jug"]
+self_modulate = Color(0.962, 0.96, 1, 1)
+scale = Vector2(1.0000004, 1.0000004)
+texture = ExtResource("19_prxrh")
+offset = Vector2(0, -30)
+
+[node name="SteamEffect" type="GPUParticles2D" parent="Content/Jug"]
+position = Vector2(-1.6380615, -55.794373)
+rotation = 1.5707964
+scale = Vector2(0.30883265, 0.30883265)
+emitting = false
+amount = 160
+lifetime = 4.5
+process_material = SubResource("ParticleProcessMaterial_0pyig")
+
+[node name="Liquid" type="GPUParticles2D" parent="Content/Jug"]
+position = Vector2(6.691635, -67.34458)
+scale = Vector2(3.238, 3.238)
+emitting = false
+lifetime = 2.0
+trail_enabled = true
+process_material = SubResource("ParticleProcessMaterial_2cdr2")
+
+[node name="LiquidToCup" type="GPUParticles2D" parent="Content/Jug"]
+position = Vector2(-20.042961, -49.41314)
+scale = Vector2(3.238, 3.238)
+emitting = false
+lifetime = 1.2
+trail_enabled = true
+process_material = SubResource("ParticleProcessMaterial_xtusc")
+
+[node name="Front" type="Sprite2D" parent="Content/Jug"]
+position = Vector2(0.9264984, 0)
+scale = Vector2(1.0000002, 1.0000002)
+texture = ExtResource("20_p32a0")
+offset = Vector2(0, -30)
+
+[node name="MilkJug" type="Button" parent="Content/Jug"]
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -70.0
+offset_right = -32.0
+offset_bottom = -70.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+text = "Milk
+Jug"
+
+[node name="Hover" type="Sprite2D" parent="Content/Jug/MilkJug"]
+position = Vector2(33.662766, 47.560196)
+texture = ExtResource("28_xtusc")
+
+[node name="Name" type="NinePatchRect" parent="Content/Jug/MilkJug"]
+z_index = 1
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -43.22438
+offset_top = -24.030777
+offset_right = 43.22435
+offset_bottom = -7.1031647
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("6_qn5ym")
+region_rect = Rect2(0, 0, 12, 12)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="Text" type="Label" parent="Content/Jug/MilkJug/Name"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.2977004
+offset_top = -0.1897521
+offset_right = 202.44943
+offset_bottom = 41.999336
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+text = "0% Froathed Milk"
+label_settings = SubResource("LabelSettings_h5omg")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="JugOptions" type="VBoxContainer" parent="Content/Jug"]
+visible = false
+z_index = 1
+offset_left = -100.37061
+offset_top = -70.104996
+offset_right = -30.986946
+offset_bottom = -15.505264
+theme_override_constants/separation = 1
+alignment = 2
+
+[node name="Use" type="NinePatchRect" parent="Content/Jug/JugOptions"]
+self_modulate = Color(0.59150004, 1, 0.57, 1)
+texture_filter = 1
+custom_minimum_size = Vector2(40, 12)
+layout_mode = 2
+texture = ExtResource("6_qn5ym")
+region_rect = Rect2(0, 0, 12, 12)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="ActionName" type="Label" parent="Content/Jug/JugOptions/Use"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.37799
+offset_top = -1.4085693
+offset_right = 124.06326
+offset_bottom = 30.59143
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+text = "Pour"
+label_settings = SubResource("LabelSettings_qn5ym")
+vertical_alignment = 1
+
+[node name="Icon" type="Sprite2D" parent="Content/Jug/JugOptions/Use"]
+position = Vector2(11.018555, 5.657715)
+scale = Vector2(0.47982046, 0.47982046)
+texture = ExtResource("32_wc1bx")
+
+[node name="Hover" type="NinePatchRect" parent="Content/Jug/JugOptions/Use"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_q2g1w")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="Button" type="Button" parent="Content/Jug/JugOptions/Use"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+
+[node name="MoveUp" type="NinePatchRect" parent="Content/Jug/JugOptions"]
+self_modulate = Color(0.57, 0.7419999, 1, 1)
+texture_filter = 1
+custom_minimum_size = Vector2(40, 12)
+layout_mode = 2
+texture = ExtResource("6_qn5ym")
+region_rect = Rect2(0, 0, 12, 12)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="ActionName" type="Label" parent="Content/Jug/JugOptions/MoveUp"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.37799
+offset_top = -1.4085693
+offset_right = 124.06326
+offset_bottom = 30.59143
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+text = "Move Up"
+label_settings = SubResource("LabelSettings_qn5ym")
+vertical_alignment = 1
+
+[node name="Icon" type="Sprite2D" parent="Content/Jug/JugOptions/MoveUp"]
+position = Vector2(11.018555, 5.657715)
+scale = Vector2(0.45201284, 0.45201284)
+texture = ExtResource("33_gnwfp")
+
+[node name="Hover" type="NinePatchRect" parent="Content/Jug/JugOptions/MoveUp"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_q2g1w")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="Button" type="Button" parent="Content/Jug/JugOptions/MoveUp"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+
+[node name="MoveDown" type="NinePatchRect" parent="Content/Jug/JugOptions"]
+self_modulate = Color(0.57, 0.7419999, 1, 1)
+texture_filter = 1
+custom_minimum_size = Vector2(40, 12)
+layout_mode = 2
+texture = ExtResource("6_qn5ym")
+region_rect = Rect2(0, 0, 12, 12)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="ActionName" type="Label" parent="Content/Jug/JugOptions/MoveDown"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.37799
+offset_top = -1.4085693
+offset_right = 124.06326
+offset_bottom = 30.59143
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+text = "Move Down"
+label_settings = SubResource("LabelSettings_qn5ym")
+vertical_alignment = 1
+
+[node name="Icon" type="Sprite2D" parent="Content/Jug/JugOptions/MoveDown"]
+position = Vector2(11.018555, 5.657715)
+scale = Vector2(0.44556352, 0.44556352)
+texture = ExtResource("33_gnwfp")
+
+[node name="Hover" type="NinePatchRect" parent="Content/Jug/JugOptions/MoveDown"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_q2g1w")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="Button" type="Button" parent="Content/Jug/JugOptions/MoveDown"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+
+[node name="Discard" type="NinePatchRect" parent="Content/Jug/JugOptions"]
+self_modulate = Color(1, 0.57, 0.6775, 1)
+texture_filter = 1
+custom_minimum_size = Vector2(40, 12)
+layout_mode = 2
+texture = ExtResource("6_qn5ym")
+region_rect = Rect2(0, 0, 12, 12)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="ActionName" type="Label" parent="Content/Jug/JugOptions/Discard"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.37799
+offset_top = -1.4085693
+offset_right = 124.06326
+offset_bottom = 30.59143
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+text = "Empty"
+label_settings = SubResource("LabelSettings_qn5ym")
+vertical_alignment = 1
+
+[node name="Icon" type="Sprite2D" parent="Content/Jug/JugOptions/Discard"]
+position = Vector2(11.018555, 5.657715)
+scale = Vector2(0.42282432, 0.42282435)
+texture = ExtResource("26_wmgx3")
+
+[node name="Hover" type="NinePatchRect" parent="Content/Jug/JugOptions/Discard"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_q2g1w")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="Button" type="Button" parent="Content/Jug/JugOptions/Discard"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+
+[node name="Cancel" type="NinePatchRect" parent="Content/Jug/JugOptions"]
+texture_filter = 1
+custom_minimum_size = Vector2(40, 12)
+layout_mode = 2
+texture = ExtResource("6_qn5ym")
+region_rect = Rect2(0, 0, 12, 12)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="ActionName" type="Label" parent="Content/Jug/JugOptions/Cancel"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.37799
+offset_top = -1.4085693
+offset_right = 124.06326
+offset_bottom = 30.59143
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+text = "Cancel"
+label_settings = SubResource("LabelSettings_qn5ym")
+vertical_alignment = 1
+
+[node name="Icon" type="Sprite2D" parent="Content/Jug/JugOptions/Cancel"]
+position = Vector2(11.018555, 5.657715)
+scale = Vector2(0.41136295, 0.41136295)
+texture = ExtResource("27_heljd")
+
+[node name="Hover" type="NinePatchRect" parent="Content/Jug/JugOptions/Cancel"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_q2g1w")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="Button" type="Button" parent="Content/Jug/JugOptions/Cancel"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+
+[node name="Exit" type="NinePatchRect" parent="."]
+texture_filter = 1
+custom_minimum_size = Vector2(40, 12)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -167.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = 73.0
+grow_horizontal = 0
+texture = ExtResource("6_qn5ym")
+region_rect = Rect2(0, 0, 12, 12)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="ActionName" type="Label" parent="Exit"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Leave"
+label_settings = SubResource("LabelSettings_q2g1w")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="Exit"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+
+[node name="Hover" type="NinePatchRect" parent="Exit/Button"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_q2g1w")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="UseLast" type="NinePatchRect" parent="."]
+texture_filter = 1
+custom_minimum_size = Vector2(40, 12)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -435.0
+offset_top = 16.0
+offset_right = -184.0
+offset_bottom = 73.0
+grow_horizontal = 0
+texture = ExtResource("6_qn5ym")
+region_rect = Rect2(0, 0, 12, 12)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="ActionName" type="Label" parent="UseLast"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Use Last Coffee"
+label_settings = SubResource("LabelSettings_q2g1w")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="UseLast"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+
+[node name="Hover" type="NinePatchRect" parent="UseLast/Button"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_q2g1w")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="RecipeBook" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(1127.5, 184.49998)
+scale = Vector2(4.531249, 4.531249)
+texture = ExtResource("29_r8gtr")
+flip_h = true
+
+[node name="ActionName" type="Label" parent="RecipeBook"]
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -10.538025
+offset_top = 13.420685
+offset_right = 37.461975
+offset_bottom = 25.420685
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+text = "Recipes"
+label_settings = SubResource("LabelSettings_r8gtr")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="RecipeBook"]
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -16.0
+offset_top = -16.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+
+[node name="Hover" type="Sprite2D" parent="RecipeBook/Button"]
+position = Vector2(15.889648, 15.0069065)
+texture = ExtResource("30_wqp5t")
+flip_h = true
+
+[node name="PanDown" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -394.0
+offset_top = -48.0
+offset_right = 138.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 0
+texture = ExtResource("6_qn5ym")
+region_rect = Rect2(0, 0, 12, 12)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="text" type="Label" parent="PanDown"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "vvvv"
+label_settings = SubResource("LabelSettings_0otgf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanUp" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -394.0
+offset_top = -672.0
+offset_right = 138.0
+offset_bottom = -632.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 0
+texture = ExtResource("6_qn5ym")
+region_rect = Rect2(0, 0, 12, 12)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="text" type="Label" parent="PanUp"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 3.1415927
+pivot_offset = Vector2(266, 22)
+text = "vvvv"
+label_settings = SubResource("LabelSettings_0otgf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RecipeBg" type="ColorRect" parent="."]
+visible = false
+z_index = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.7019608)
+metadata/_edit_lock_ = true
+
+[node name="Book" type="TextureRect" parent="RecipeBg"]
+texture_filter = 1
+custom_minimum_size = Vector2(40, 12)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 176.66669
+offset_top = 106.0
+offset_right = -176.66669
+offset_bottom = -106.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("35_gnwfp")
+
+[node name="LeftPage" type="VBoxContainer" parent="RecipeBg/Book"]
+layout_mode = 0
+offset_left = 83.0
+offset_top = 31.0
+offset_right = 506.0
+offset_bottom = 511.0
+rotation = 0.10471976
+scale = Vector2(0.9, 0.9)
+
+[node name="Title" type="Label" parent="RecipeBg/Book/LeftPage"]
+texture_filter = 1
+layout_mode = 2
+text = "Recipes"
+label_settings = SubResource("LabelSettings_wqp5t")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SingleEsp" type="VBoxContainer" parent="RecipeBg/Book/LeftPage"]
+custom_minimum_size = Vector2(423.334, 0)
+layout_mode = 2
+
+[node name="Title" type="Label" parent="RecipeBg/Book/LeftPage/SingleEsp"]
+texture_filter = 1
+layout_mode = 2
+text = "Single Espresso"
+label_settings = SubResource("LabelSettings_43oqh")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Macchiato" type="HBoxContainer" parent="RecipeBg/Book/LeftPage/SingleEsp"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+
+[node name="Name" type="Label" parent="RecipeBg/Book/LeftPage/SingleEsp/Macchiato"]
+texture_filter = 1
+custom_minimum_size = Vector2(210, 0)
+layout_mode = 2
+text = "Espresso 
+Macchiato"
+label_settings = SubResource("LabelSettings_wmgx3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Percent" type="Label" parent="RecipeBg/Book/LeftPage/SingleEsp/Macchiato"]
+texture_filter = 1
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+text = "0-25% Steamed"
+label_settings = SubResource("LabelSettings_wmgx3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Piccolo" type="HBoxContainer" parent="RecipeBg/Book/LeftPage/SingleEsp"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+
+[node name="Name" type="Label" parent="RecipeBg/Book/LeftPage/SingleEsp/Piccolo"]
+texture_filter = 1
+custom_minimum_size = Vector2(210, 0)
+layout_mode = 2
+text = "Piccolo Latte"
+label_settings = SubResource("LabelSettings_wmgx3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Percent" type="Label" parent="RecipeBg/Book/LeftPage/SingleEsp/Piccolo"]
+texture_filter = 1
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+text = "25-50% Steamed"
+label_settings = SubResource("LabelSettings_wmgx3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Cortado" type="HBoxContainer" parent="RecipeBg/Book/LeftPage/SingleEsp"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+
+[node name="Name" type="Label" parent="RecipeBg/Book/LeftPage/SingleEsp/Cortado"]
+texture_filter = 1
+custom_minimum_size = Vector2(210, 0)
+layout_mode = 2
+text = "Cortado"
+label_settings = SubResource("LabelSettings_wmgx3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Percent" type="Label" parent="RecipeBg/Book/LeftPage/SingleEsp/Cortado"]
+texture_filter = 1
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+text = "50-75% Steamed"
+label_settings = SubResource("LabelSettings_wmgx3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Flatwhite" type="HBoxContainer" parent="RecipeBg/Book/LeftPage/SingleEsp"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+
+[node name="Name" type="Label" parent="RecipeBg/Book/LeftPage/SingleEsp/Flatwhite"]
+texture_filter = 1
+custom_minimum_size = Vector2(210, 0)
+layout_mode = 2
+text = "Flat White"
+label_settings = SubResource("LabelSettings_wmgx3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Percent" type="Label" parent="RecipeBg/Book/LeftPage/SingleEsp/Flatwhite"]
+texture_filter = 1
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+text = "75-100% Steamed"
+label_settings = SubResource("LabelSettings_wmgx3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RightPage" type="VBoxContainer" parent="RecipeBg/Book"]
+layout_mode = 0
+offset_left = 376.47403
+offset_top = 72.93817
+offset_right = 799.474
+offset_bottom = 544.0482
+rotation = -0.10471976
+scale = Vector2(0.9, 0.9)
+
+[node name="Title" type="Label" parent="RecipeBg/Book/RightPage"]
+texture_filter = 1
+layout_mode = 2
+text = "Recipes"
+label_settings = SubResource("LabelSettings_wqp5t")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DoubleEsp" type="VBoxContainer" parent="RecipeBg/Book/RightPage"]
+custom_minimum_size = Vector2(423.334, 0)
+layout_mode = 2
+
+[node name="Title" type="Label" parent="RecipeBg/Book/RightPage/DoubleEsp"]
+texture_filter = 1
+layout_mode = 2
+text = "Double Espresso"
+label_settings = SubResource("LabelSettings_43oqh")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DubMacchiato" type="HBoxContainer" parent="RecipeBg/Book/RightPage/DoubleEsp"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+
+[node name="Name" type="Label" parent="RecipeBg/Book/RightPage/DoubleEsp/DubMacchiato"]
+texture_filter = 1
+custom_minimum_size = Vector2(210, 0)
+layout_mode = 2
+text = "Double 
+Macchiato"
+label_settings = SubResource("LabelSettings_wmgx3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Percent" type="Label" parent="RecipeBg/Book/RightPage/DoubleEsp/DubMacchiato"]
+texture_filter = 1
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+text = "0-25% Steamed"
+label_settings = SubResource("LabelSettings_wmgx3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Latte" type="HBoxContainer" parent="RecipeBg/Book/RightPage/DoubleEsp"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+
+[node name="Name" type="Label" parent="RecipeBg/Book/RightPage/DoubleEsp/Latte"]
+texture_filter = 1
+custom_minimum_size = Vector2(210, 0)
+layout_mode = 2
+text = "Latte"
+label_settings = SubResource("LabelSettings_wmgx3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Percent" type="Label" parent="RecipeBg/Book/RightPage/DoubleEsp/Latte"]
+texture_filter = 1
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+text = "25-50% Steamed"
+label_settings = SubResource("LabelSettings_wmgx3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Cappuch" type="HBoxContainer" parent="RecipeBg/Book/RightPage/DoubleEsp"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+
+[node name="Name" type="Label" parent="RecipeBg/Book/RightPage/DoubleEsp/Cappuch"]
+texture_filter = 1
+custom_minimum_size = Vector2(210, 0)
+layout_mode = 2
+text = "Cappuchino"
+label_settings = SubResource("LabelSettings_wmgx3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Percent" type="Label" parent="RecipeBg/Book/RightPage/DoubleEsp/Cappuch"]
+texture_filter = 1
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+text = "50-75% Steamed"
+label_settings = SubResource("LabelSettings_wmgx3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Dry" type="HBoxContainer" parent="RecipeBg/Book/RightPage/DoubleEsp"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+
+[node name="Name" type="Label" parent="RecipeBg/Book/RightPage/DoubleEsp/Dry"]
+texture_filter = 1
+custom_minimum_size = Vector2(210, 0)
+layout_mode = 2
+text = "Dry Espresso"
+label_settings = SubResource("LabelSettings_wmgx3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Percent" type="Label" parent="RecipeBg/Book/RightPage/DoubleEsp/Dry"]
+texture_filter = 1
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+text = "75-100% Steamed"
+label_settings = SubResource("LabelSettings_wmgx3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CloseRecipes" type="NinePatchRect" parent="RecipeBg"]
+texture_filter = 1
+custom_minimum_size = Vector2(40, 12)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -125.5
+offset_top = -81.0
+offset_right = 125.5
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("6_qn5ym")
+region_rect = Rect2(0, 0, 12, 12)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="ActionName" type="Label" parent="RecipeBg/CloseRecipes"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Close"
+label_settings = SubResource("LabelSettings_q2g1w")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="RecipeBg/CloseRecipes"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+
+[node name="Hover" type="NinePatchRect" parent="RecipeBg/CloseRecipes/Button"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_q2g1w")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[connection signal="pressed" from="Content/Decorations/MilkBottle/Button" to="." method="milk_carton_pressed"]
+[connection signal="pressed" from="Content/Decorations/MilkBottle/BottleOptions/Pour/Button" to="." method="milkbottle_pour_pressed"]
+[connection signal="pressed" from="Content/Decorations/MilkBottle/BottleOptions/Cancel/Button" to="." method="milkbottle_cancel_pressed"]
+[connection signal="mouse_entered" from="Content/Machine/LiquidButton" to="." method="liquid_button_hover_enter"]
+[connection signal="mouse_exited" from="Content/Machine/LiquidButton" to="." method="liquid_button_hover_exit"]
+[connection signal="pressed" from="Content/Machine/LiquidButton" to="." method="liquid_button_pressed"]
+[connection signal="button_down" from="Content/Machine/SteamButton" to="." method="steam_button_down"]
+[connection signal="button_up" from="Content/Machine/SteamButton" to="." method="steam_button_up"]
+[connection signal="mouse_entered" from="Content/Machine/SteamButton" to="." method="steam_button_hover_enter"]
+[connection signal="mouse_exited" from="Content/Machine/SteamButton" to="." method="steam_button_hover_exit"]
+[connection signal="mouse_entered" from="Content/Machine/CupsButton" to="." method="cups_button_hover_enter"]
+[connection signal="mouse_exited" from="Content/Machine/CupsButton" to="." method="cups_button_hover_exited"]
+[connection signal="pressed" from="Content/Machine/CupsButton" to="." method="cup_button_pressed"]
+[connection signal="mouse_entered" from="Content/CoffeeCup/CoffeeClick" to="." method="current_coffee_hover_enter"]
+[connection signal="mouse_exited" from="Content/CoffeeCup/CoffeeClick" to="." method="current_coffee_hover_exited"]
+[connection signal="pressed" from="Content/CoffeeCup/CoffeeClick" to="." method="current_coffee_pressed"]
+[connection signal="pressed" from="Content/CoffeeCup/CoffeeOptions/Serve/Button" to="." method="serve_drink_pressed"]
+[connection signal="pressed" from="Content/CoffeeCup/CoffeeOptions/Discard/Button" to="." method="discard_drink_pressed"]
+[connection signal="pressed" from="Content/CoffeeCup/CoffeeOptions/Cancel/Button" to="." method="cancel_drink_pressed"]
+[connection signal="pressed" from="Content/Jug/MilkJug" to="." method="milk_jug_clicked"]
+[connection signal="pressed" from="Content/Jug/JugOptions/Use/Button" to="." method="milk_pour_pressed"]
+[connection signal="pressed" from="Content/Jug/JugOptions/MoveUp/Button" to="." method="milk_move_up"]
+[connection signal="pressed" from="Content/Jug/JugOptions/MoveDown/Button" to="." method="milk_move_down"]
+[connection signal="pressed" from="Content/Jug/JugOptions/Discard/Button" to="." method="milkjug_discard_pressed"]
+[connection signal="pressed" from="Content/Jug/JugOptions/Cancel/Button" to="." method="milk_cancel"]
+[connection signal="mouse_entered" from="Exit/Button" to="." method="close_button_hover_enter"]
+[connection signal="mouse_exited" from="Exit/Button" to="." method="close_button_hover_exited"]
+[connection signal="pressed" from="Exit/Button" to="." method="close_machine"]
+[connection signal="pressed" from="UseLast/Button" to="." method="uselast_pressed"]
+[connection signal="pressed" from="RecipeBook/Button" to="." method="open_recipes"]
+[connection signal="mouse_entered" from="PanDown" to="." method="pan_down_hover"]
+[connection signal="mouse_entered" from="PanUp" to="." method="pan_up_hover"]
+[connection signal="pressed" from="RecipeBg/CloseRecipes/Button" to="." method="close_recipes"]

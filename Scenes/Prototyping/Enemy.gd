@@ -5,7 +5,6 @@ const accel = 1000.0
 
 @export_category("Scene Stuff")
 @export var night_manager: NightManager
-@export var player: CharacterBody2D
 
 @export_category("Node References")
 @export var damage_box: Area2D
@@ -27,10 +26,10 @@ func movement_process(delta: float):
 	var prefix = ""
 	
 	if attack_on_cooldown or is_kicked:
-		prefix = "sit-"
+		prefix = "sit-alt-"
 	else:
-		direction = (player.global_position - global_position).normalized() # moves towards player
-		prefix = "run-"
+		direction = (GameManager.PlayerInstance.global_position - global_position).normalized() # moves towards player
+		prefix = "alt-"
 	
 	# Movement Animation
 	if (direction.x < -0.6) or (direction.x > 0.6):
@@ -62,21 +61,21 @@ var attack_on_cooldown = false
 var is_kicked = false
 
 func attempt_attack():
-	if not damage_box.overlaps_body(player): # damage box not overlapping player
+	if not damage_box.overlaps_body(GameManager.PlayerInstance): # damage box not overlapping player
 		return
 	if attack_on_cooldown:
 		return
 	
 	# can attack
-	var knockback_dir = (player.global_position - global_position).normalized() 
-	night_manager.damage_player(knockback_dir)
+	var knockback_dir = (GameManager.PlayerInstance.global_position - global_position).normalized() 
+	get_tree().current_scene.damage_player(knockback_dir)
 	
 	attack_cooldown.start()
 	attack_on_cooldown = true
 
 
 func get_kicked():
-	var knockback_dir = (global_position - player.global_position).normalized() 
+	var knockback_dir = (global_position - GameManager.PlayerInstance.global_position).normalized() 
 	velocity = knockback_dir * 500
 	kicked_cooldown.start()
 	is_kicked = true

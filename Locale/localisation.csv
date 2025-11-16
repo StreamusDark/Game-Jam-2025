@@ -47,11 +47,47 @@ fox_name_17:Lyxi
 fox_name_18:Ruan
 fox_name_19:Dara
 fox_name_20:Craig
+fox_name_21:Cassy
 fox_speak_0:Hi there, could I get a [rainbow]{0}[/rainbow], please?\nThanks!
 fox_recheck:Hey, I ordered a [rainbow]{0}[/rainbow], is it ready soon?
 fox_wrongorder:Oh! I think you got the orders messed up?\nI ordered a [rainbow]{0}[/rainbow]...
 fox_emptymug:Are you for real?
+fox_noseats:Oh, you've got no seats?\nThat's too bad. I'll come back another time.
 fox_drinking:(is drinking)
 fox_satisfied:Oh, awesome! Thanks!
 fox_neutral:Great thanks.
 fox_disatisfied:Finally.
+pause_day:Your job is to serve the customers coming in the coffees they order! Keep the satisfaction meter up by serving them in order to complete the day! Satisfaction goes down when you have not been attentive to the customers.
+pause_night:You have the opportunity to grab any resources you can to take back to your café for the next day, but be careful of the evil foxes! Make choices whether it's work the risk or not.
+tutorial_0:Welcome to [wave]Coff[/wave][wave]ee[/wave] [wave]Be[/wave][wave]an![/wave]\nA game where you play as Bean, and take care of your customers during the day out of the kindness of your heart, and foraging for resources during the night!
+tutorial_1:Currently, you're in the [rainbow]Daytime[/rainbow] section.\nYou will make coffees for the customers!
+tutorial_2:Each day lasts from 9 AM to 5 PM, and each day will progressively get more harder.\nUp in the [color=#eebb00]top right[/color] of the screen, you can see the current Time of Day for this.
+tutorial_3:As customers come in and out, your [color=#ee0000][shake rate=20 level=10]Satisfaction Meter[/shake][/color] will fluctuate.\nWhen customers are waiting for their orders, the meter will go down. When you serve them, it will go back up!
+tutorial_4:Oh how convenient, a customer just so happened to drop by! Let's see what he'd like.\nGo up to the counter and press 'Z' to take the order of the first customer in the queue!
+fox_tutorial_speak:Hey there! I hear it's your first day, congrats! May I please have a [rainbow]Espresso[/rainbow]?\nYou can take as long as you like!
+tutorial_5:Great! Brush is going to sit down at a table now and wait for you to serve him.
+tutorial_6:First, we need to go to the coffee machine, which is next to the counter.\nWhen there, press 'Z' to open the menu.
+tutorial_7:This is the coffee machine. Bean's pride and joy!
+tutorial_8:You will use this to make coffee for your customers. Luckily, it's not too hard to use too.\nTechnology nowadays, huh?
+tutorial_9:Lets create our first [rainbow]Espresso[/rainbow] then. [color=#eebb00]Click on the cups on the right[/color] to place a new cup on the grid.
+tutorial_10:Nice, the cup is now on the grid. Whenever you hover over a cup, it'll tell you the name of the type of coffee it is.\nCurrently, it's an [rainbow]Empty Cup[/rainbow].
+tutorial_11:Lets make this cup into a cup of [rainbow]Espresso[/rainbow].\nClick on the espresso button above the cup, with the droplet icon, to start the machine.
+tutorial_12:Congrats! You have made your [wave]fir[/wave][wave]st[/wave] [wave]coff[/wave][wave]ee[/wave]!
+tutorial_13:Now you can select on the cup. This will give you the option to [color=#00ee00]Serve[/color] or [color=#ee0000]Discard[/color] the drink.
+tutorial_14:[color=#00ee00]Serve[/color] will place the cup on Bean's head, which you can use to give to customers.\n[color=#ee0000]Discard[/color] destroys the drink and lets you start again.
+tutorial_15:Right now though, we want to [color=#00ee00]Serve[/color] this drink. Click on the cup to select an option.
+tutorial_16:Now that you have placed the drink on Bean's head, you can walk over to Basil to serve it to him.\nServe him by pressing the letter 'Z' while in front of him.
+tutorial_17:Excellent job! You've served your first customer. How convenient he shows up right as you're playing this tutorial.
+tutorial_18:Bean can hold more than one coffee or other beverages on her head at once! However, in order to keep her items balanced, she slows down with the more items she holds.\nUse the sink to discard the top item off of her head! The sink is on the far left of the café.
+tutorial_19:Let's wait for another customer to stroll in.
+tutorial_20:[rainbow]Double Espressos[/rainbow] are quite simple. Just press on the pour button again after making your first [rainbow]Espresso[/rainbow].
+tutorial_21:Now it's time to learn how to use the Milk Jug. Head to the coffee machine.
+tutorial_22:First, you want to pan down to the second section of the table.\nHover your mouse over the "vvvvv" panel at the bottom of the screen.
+tutorial_23:Next, click on the Milk Bottle on the right side, behind the jug.\nYou must pour the milk into the jug to use it.
+tutorial_24:Now that the jug is full, you can use it with your coffee cup!\nClick on the [color=#0000ee]Move Up[/color] button on the jug to move it next to the cup.
+tutorial_25:Next, pan back up to the screen by hovering over the reverse panel at the top of the screen.
+tutorial_26:Now, in order to get the specific right coffee type, you need to make sure of the espresso type ([rainbow]espresso[/rainbow] or [rainbow]double espresso[/rainbow]) and your [wave]ste[/wave][wave]am[/wave][wave] per[/wave][wave]can[/wave][wave]tage[/wave] are within ranges of the corrisponding drink.
+tutorial_27:You can check the [color=#ee0000]Recipe Book[/color] on the right to check the percentages of each!
+tutorial_28:In order to change the Steam Percentage in the Milk, you must hold down the Steam Pipe button.\nIt is above the milk jug, with a steam icon.
+tutorial_29:Hover over the jug to check the steam percentage. You can [color=#ee0000]Empty[/color] the jug to try again.\nKeep holding it down until you're at the percentage you need. Afterwards, click [color=#00ee00]Pour[/color] on the jug!
+tutorial_30:Congratulations! You've completed the tutorial for the game so far. In the real game, you can press "Escape" to pause at any time.\nNow you can learn about how the night system works!

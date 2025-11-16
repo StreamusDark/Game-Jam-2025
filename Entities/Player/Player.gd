@@ -2,6 +2,7 @@ class_name Player
 extends CharacterBody2D
 
 @export var max_speed = 130.0
+var current_max_speed = 130.0
 const Acceleration = 1000.0
 
 var inventory_data: Array[Node] = []
@@ -85,7 +86,7 @@ func inventory_add_item(new_item_data: Dictionary):
 		inventory_latest = new_child
 		add_child(new_child)
 	
-	max_speed = 130 - (25 * (len(inventory_data) - 1))
+	current_max_speed = max_speed - (25 * (len(inventory_data) - 1))
 
 func inventory_remove_item():
 	var latest_idx = len(inventory_data) - 1
@@ -100,35 +101,27 @@ func inventory_remove_item():
 	else:
 		inventory_latest = null
 	
-	max_speed = 130 - (25 * (len(inventory_data) - 1))
+	current_max_speed = max_speed - (25 * (len(inventory_data) - 1))
 
 
 func kick():
 	kicking = true
 	GameManager.player_can_move = false
-	
 	player_sprite.visible = false
 	kick_sprite.visible = true
-	
 	kick_sprite.position = kick_offsets[last_face_dir]
-	
 	kick_sprite.play(last_face_dir)
 	# IM GONNA KILL MYSELF IM GONNA KILL MYSELF IM GONNA KILL MYSELF IM GONNA KILL MYSELF IM GONNA KILL MYSELF IM GONNA KILL MYSELF IM GONNA KILL MYSELF 
 
 
 func _on_kick_animation_finished() -> void:
 	kicking = false
-	
 	player_sprite.visible = true
 	kick_sprite.visible = false
-	
 	GameManager.player_can_move = true
 
-
 func _on_kick_area_body_entered(body: Node2D) -> void:
-	if body is Enemy:
-		enemy_in_kick_area = true
+	if body is Enemy: enemy_in_kick_area = true
 
 func _on_kick_area_body_exited(body: Node2D) -> void:
-	if body is Enemy:
-		enemy_in_kick_area = false
+	if body is Enemy: enemy_in_kick_area = false

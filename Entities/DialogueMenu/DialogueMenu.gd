@@ -6,6 +6,7 @@ var is_complete = false
 @onready var content_menu: RichTextLabel = $DialogueText
 var current_sentence: String = ""
 var current_sentence_filtered: String = ""
+@onready var continue_icon = $ContinueIcon
 
 @onready var charname_container: NinePatchRect = $NamePlate
 @onready var charname_label: Label = $NamePlate/CharacterName
@@ -61,13 +62,14 @@ func update_dialogue(message_data: Dictionary) -> void:
 	content_menu.text = current_sentence
 	content_menu.visible_characters = 0
 	
+	continue_icon.visible = false
 	voice_playing = true
 	voice_sound.play(0)
 	letter_timer.start()
 
 func letter_timer_timeout() -> void:
 	var chr = current_sentence_filtered[content_menu.visible_characters-1]
-	if chr in ['!', '.', '?']:
+	if chr in ['!', '.', '?', ',']:
 		voice_playing = false
 		await get_tree().create_timer(0.5).timeout
 		voice_playing = true
@@ -76,6 +78,7 @@ func letter_timer_timeout() -> void:
 	content_menu.visible_characters += 1
 	
 	if content_menu.visible_ratio >= 1.0:
+		continue_icon.visible = true
 		voice_playing = false
 		is_complete = true
 		letter_timer.stop()

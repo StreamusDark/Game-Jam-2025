@@ -1,0 +1,8 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://cqgrebv5jw3dd"]
+
+[ext_resource type="FontFile" uid="uid://db1mivm1mc3hf" path="res://Assets/Fonts/Belajar Menulis.otf" id="1_rfewp"]
+
+[resource]
+line_spacing = -14.0
+font = ExtResource("1_rfewp")
+font_size = 15

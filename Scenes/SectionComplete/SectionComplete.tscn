@@ -1,0 +1,261 @@
+[gd_scene load_steps=12 format=3 uid="uid://dcoqjsoheckfv"]
+
+[ext_resource type="Script" uid="uid://c6xpbjky0pluo" path="res://Scenes/SectionComplete/SectionComplete.gd" id="1_5dnqh"]
+[ext_resource type="Texture2D" uid="uid://cphewqe0uebiw" path="res://Scenes/SectionComplete/day_complete.png" id="2_a7j3t"]
+[ext_resource type="Texture2D" uid="uid://bvbcdda4plikk" path="res://Scenes/SectionComplete/night_complete.png" id="3_i2rpo"]
+[ext_resource type="Texture2D" uid="uid://cgks5cp1v0muq" path="res://Scenes/interface_button_day.png" id="4_mbjkd"]
+[ext_resource type="FontFile" uid="uid://db1mivm1mc3hf" path="res://Assets/Fonts/Belajar Menulis.otf" id="5_nwvdy"]
+[ext_resource type="Texture2D" uid="uid://cpsy0ekqmj70v" path="res://Scenes/interface_button_hover.png" id="6_h3616"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5dnqh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_a7j3t")
+}],
+"loop": false,
+"name": &"day",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_i2rpo")
+}],
+"loop": false,
+"name": &"night",
+"speed": 0.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_1pnq2"]
+font = ExtResource("5_nwvdy")
+font_size = 26
+
+[sub_resource type="Animation" id="Animation_nwvdy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0.6745098)]
+}
+
+[sub_resource type="Animation" id="Animation_mbjkd"]
+resource_name = "fade"
+length = 0.65
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.65),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 0.6745098)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nwvdy"]
+_data = {
+&"RESET": SubResource("Animation_nwvdy"),
+&"fade": SubResource("Animation_mbjkd")
+}
+
+[node name="SectionComplete" type="ColorRect"]
+process_mode = 3
+z_index = 9
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.6745098)
+script = ExtResource("1_5dnqh")
+is_night = true
+
+[node name="Title" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(418, 248)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_5dnqh")
+animation = &"night"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 226.0
+offset_top = 362.0
+offset_right = 489.88904
+offset_bottom = 659.0
+theme_override_constants/separation = 10
+
+[node name="Continue" type="NinePatchRect" parent="VBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+texture = ExtResource("4_mbjkd")
+region_rect = Rect2(0, 0, 71, 23)
+patch_margin_left = 15
+patch_margin_top = 9
+patch_margin_right = 15
+patch_margin_bottom = 8
+
+[node name="Title" type="Label" parent="VBoxContainer/Continue"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Continue Run"
+label_settings = SubResource("LabelSettings_1pnq2")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="VBoxContainer/Continue"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+
+[node name="Hover" type="NinePatchRect" parent="VBoxContainer/Continue"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -133.9455
+offset_top = -27.0
+offset_right = 134.0545
+offset_bottom = 27.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_h3616")
+patch_margin_left = 22
+patch_margin_top = 9
+patch_margin_right = 23
+patch_margin_bottom = 8
+
+[node name="SkipNight" type="NinePatchRect" parent="VBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+texture = ExtResource("4_mbjkd")
+region_rect = Rect2(0, 0, 71, 23)
+patch_margin_left = 15
+patch_margin_top = 9
+patch_margin_right = 15
+patch_margin_bottom = 8
+
+[node name="Title" type="Label" parent="VBoxContainer/SkipNight"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Skip Nighttime"
+label_settings = SubResource("LabelSettings_1pnq2")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="VBoxContainer/SkipNight"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+
+[node name="Hover" type="NinePatchRect" parent="VBoxContainer/SkipNight"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -133.9455
+offset_top = -27.0
+offset_right = 134.0545
+offset_bottom = 27.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_h3616")
+patch_margin_left = 22
+patch_margin_top = 9
+patch_margin_right = 23
+patch_margin_bottom = 8
+
+[node name="Quit" type="NinePatchRect" parent="VBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+texture = ExtResource("4_mbjkd")
+region_rect = Rect2(0, 0, 71, 23)
+patch_margin_left = 15
+patch_margin_top = 9
+patch_margin_right = 15
+patch_margin_bottom = 8
+
+[node name="Title" type="Label" parent="VBoxContainer/Quit"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Quit to Title"
+label_settings = SubResource("LabelSettings_1pnq2")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="VBoxContainer/Quit"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+
+[node name="Hover" type="NinePatchRect" parent="VBoxContainer/Quit"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -133.9455
+offset_top = -27.0
+offset_right = 134.0545
+offset_bottom = 27.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_h3616")
+patch_margin_left = 22
+patch_margin_top = 9
+patch_margin_right = 23
+patch_margin_bottom = 8
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_nwvdy")
+}
+
+[connection signal="pressed" from="VBoxContainer/Continue/Button" to="." method="continue_pressed"]
+[connection signal="pressed" from="VBoxContainer/SkipNight/Button" to="." method="skipnight_pressed"]
+[connection signal="pressed" from="VBoxContainer/Quit/Button" to="." method="quit_pressed"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="anim_finished"]

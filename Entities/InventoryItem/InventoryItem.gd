@@ -32,7 +32,8 @@ func read_detail(detail: Variant):
 
 func set_all_offset(off:Vector2):
 	for n in get_children():
-		n.offset = off
+		if n is Node2D:
+			n.offset = off
 	offset = off
 
 func coffee_detail(detail: GameManager.CoffeeType):

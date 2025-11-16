@@ -1,5 +1,7 @@
 extends Control
 
+var tutorial_mode = false
+@onready var game_scene: CafeGame = get_tree().current_scene
 @export var content_node: Node2D
 
 @export var current_cup: Sprite2D
@@ -39,6 +41,7 @@ var milk_bottle_pouring = false
 var milk_bottle_volume = 25
 
 func _ready() -> void:
+	tutorial_mode = (GameManager.RunData["day"] == 0)
 	initialise_signals()
 	
 	current_cup.position = Vector2(341.0, 532.4)
@@ -153,8 +156,10 @@ func update_coffee_state(coffee_id: GameManager.CoffeeType):
 	current_cup.get_node("CoffeeColouring").self_modulate = InventoryItem.coffee_colouring[current_cup_type]
 
 func liquid_button_pressed() -> void:
+	liquid_button.get_node("Beep").play()
 	if current_cup_selected or milk_selected or GameManager.dialogue_menu_open or milk_pouring:
 		return
+		
 	if current_cup_type == GameManager.CoffeeType.NONE and (not GameManager.dialogue_menu_open):
 		var no_drink_info: Array[Dictionary] = [{"name":"", "message":GameManager.game_lang["coffee_needscup"]}]
 		GameManager.create_dialogue(no_drink_info, false)
@@ -167,12 +172,13 @@ func liquid_button_pressed() -> void:
 	liquid_button.disabled = true
 	liquid_effect.emitting = true
 	coffee_pouring_active = true
-	
+	liquid_button.get_node("Pouring").play()
 	await get_tree().create_timer(8).timeout
 	
 	coffee_pouring_active = false
 	liquid_effect.emitting = false
 	liquid_button.disabled = false
+	liquid_button.get_node("Pouring").stop()
 	
 	var change_state_link = {
 		GameManager.CoffeeType.EMPTY: GameManager.CoffeeType.ESPRESSO,
@@ -185,8 +191,12 @@ func liquid_button_pressed() -> void:
 	
 	current_espresso_count += 1
 	update_coffee_state(change_state_link[current_cup_type])
+	
+	if tutorial_mode and (not game_scene.tutorial_progression["first_espresso"]):
+		game_scene.tutorial_progress(4)
 
 func steam_button_down() -> void:
+	steam_button.get_node("Beep").play()
 	if (milk_in_deco) and (not GameManager.dialogue_menu_open):
 		var need_milk: Array[Dictionary] = [{"name":"", "message":GameManager.game_lang["coffee_needmilkjug"]}]
 		GameManager.create_dialogue(need_milk, false)
@@ -212,10 +222,21 @@ func steam_button_up() -> void:
 		steam_effect.emitting = false
 
 func cup_button_pressed() -> void:
+	if tutorial_mode and (not game_scene.tutorial_progression["first_cup_on_grid"]): 
+		if (current_cup_type == GameManager.CoffeeType.NONE) and GameManager.dialogue_menu_open == false:
+			game_scene.tutorial_progress(3)
+			update_coffee_state(GameManager.CoffeeType.EMPTY)
+			cups_button.get_node("MoveSound").play()
+			return
+	
 	if (current_cup_type == GameManager.CoffeeType.NONE) and GameManager.dialogue_menu_open == false:
+		cups_button.get_node("MoveSound").play()
 		update_coffee_state(GameManager.CoffeeType.EMPTY)
 
 func current_coffee_pressed() -> void:
+	if tutorial_mode and (not game_scene.tutorial_progression["first_espresso"]):
+		return
+	
 	if (not coffee_pouring_active):
 		change_selectable("cup")
 
@@ -229,11 +250,16 @@ func current_coffee_hover_exited() -> void:
 		current_cup.get_node("Hover").visible = false
 
 func serve_drink_pressed() -> void:
+	get_node("MoveSound").play()
+	if tutorial_mode and (not game_scene.tutorial_progression["first_serve_button"]):
+		game_scene.tutorial_progress(5)
+	
 	if len(GameManager.PlayerInstance.inventory_data) >= 6:
 		change_selectable("close")
 		var toomany: Array[Dictionary] = [{"name":"", "message":GameManager.game_lang["coffee_toomany"]}]
 		GameManager.create_dialogue(toomany, false)
 		return
+		
 	
 	var coffee_value = {
 		"type": "coffee",
@@ -250,6 +276,8 @@ func cancel_drink_pressed() -> void:
 	change_selectable("close")
 
 func close_machine() -> void:
+	if (tutorial_mode and not game_scene.tutorial_progression["first_serve_button"]):
+		return
 	GameManager.close_coffee_machine()
 	visible = false
 
@@ -282,19 +310,39 @@ func pan_direction(up: bool):
 	await get_tree().create_tween().tween_property(content_node, "position", pos, 0.2).finished
 
 func pan_down_hover() -> void:
+	if (tutorial_mode) and (not game_scene.tutorial_progression["third_fox_dialogue"]):
+		return
+	
 	if (not GameManager.dialogue_menu_open):
 		await pan_direction(false)
 		$PanUp.visible = true
 		milk_jug.get_node("Liquid").visible = true
+	
+	if (tutorial_mode):
+		if (game_scene.tutorial_progression["third_fox_dialogue"]) and not (game_scene.tutorial_progression["first_pan_down"]):
+			GameManager.create_dialogue([{"name":"", "message": GameManager.game_lang["tutorial_23"]}], false)
+			game_scene.tutorial_progression["first_pan_down"] = true
 
 func pan_up_hover() -> void:
+	if (tutorial_mode) and (not game_scene.tutorial_progression["first_jug_move"]):
+		return
+	
 	if (not GameManager.dialogue_menu_open):
 		await pan_direction(true)
 		$PanDown.visible = true
 		liquid_effect.visible = true
 		steam_effect.visible = true
+	
+		if (tutorial_mode) and (not game_scene.tutorial_progression["first_pan_up"]):
+				var dr_dat: Array[Dictionary] = []
+				for n in range(26, 30): dr_dat.append({"name":"", "message": GameManager.game_lang["tutorial_"+str(n)]})
+				GameManager.create_dialogue(dr_dat, false)
+				game_scene.tutorial_progression["first_pan_up"] = true
 
 func milk_jug_clicked() -> void:
+	if tutorial_mode and not (game_scene.tutorial_progression["first_bottle_pour"]):
+		return
+	
 	if (not milk_bottle_pouring) and (not steam_active):
 		change_selectable("milkjug")
 		milk_jug_options.get_node("Use").visible = (not coffee_pouring_active) and (current_cup_type in [GameManager.CoffeeType.ESPRESSO,GameManager.CoffeeType.DOUBLE_ESPRESSO]) and milk_in_jug and (current_cup_in_deco == milk_in_deco)
@@ -306,18 +354,27 @@ func milk_move_up() -> void:
 	change_selectable("close")
 	milk_in_deco = false
 	
-	get_tree().create_tween().tween_property(milk_jug, "position", milk_jug_positons["up"], 0.2)
+	if (tutorial_mode and not (game_scene.tutorial_progression["first_jug_move"])):
+		GameManager.create_dialogue([{"name":"", "message": GameManager.game_lang["tutorial_25"]}], false)
+		game_scene.tutorial_progression["first_jug_move"] = true
+	
+	await get_tree().create_tween().tween_property(milk_jug, "position", milk_jug_positons["up"], 0.2).finished
+	milk_jug.get_node("MoveSound").play()
 
 func milk_move_down() -> void:
 	change_selectable("close")
 	milk_in_deco = true
 	
-	get_tree().create_tween().tween_property(milk_jug, "position", milk_jug_positons["down"], 0.2)
+	await get_tree().create_tween().tween_property(milk_jug, "position", milk_jug_positons["down"], 0.2).finished
+	milk_jug.get_node("MoveSound").play()
 
 func milk_cancel():
 	change_selectable("close")
 
 func milk_carton_pressed() -> void:
+	if tutorial_mode and not (game_scene.tutorial_progression["first_pan_down"]):
+		return
+	
 	if (milk_in_deco) and (not milk_bottle_pouring):
 		change_selectable("milkbottle")
 
@@ -357,6 +414,10 @@ func milkbottle_pour_pressed() -> void:
 	await get_tree().create_tween().tween_property(milk_bottle, "rotation_degrees", 0, 0.3).finished
 	milk_jug.get_node("MilkJug").disabled = false
 	milkbottle_update_sprites(true)
+	
+	if (tutorial_mode and not game_scene.tutorial_progression["first_bottle_pour"]):
+		GameManager.create_dialogue([{"name":"", "message": GameManager.game_lang["tutorial_24"]}], false)
+		game_scene.tutorial_progression["first_bottle_pour"] = true
 
 func milkbottle_cancel_pressed() -> void:
 	change_selectable("close")
@@ -410,4 +471,5 @@ func close_recipes() -> void:
 	$RecipeBg.visible = false
 
 func open_recipes() -> void:
-	$RecipeBg.visible = true
+	if (not GameManager.dialogue_menu_open):
+		$RecipeBg.visible = true

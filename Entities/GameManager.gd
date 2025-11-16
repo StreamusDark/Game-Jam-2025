@@ -5,29 +5,10 @@ var player_can_move: bool = true
 var dialogue_menu_open: bool = false
 var machine_menu_open: bool = false
 var game_lang: Dictionary = {}
+var true_new_game = true
 
 var Satisfaction: float = 50.0
-var RunData: Dictionary = {
-	"day": 1,
-	"satisfaction": 50.0,
-	"customers_served": 0,
-	"cafe_inventory": {
-		"coffee": 1000,
-		"milk": 50,
-	},
-	"coffees_served": {
-		CoffeeType.ESPRESSO: 0,
-		CoffeeType.DOUBLE_ESPRESSO: 0,
-		CoffeeType.MACCHIATO: 0,
-		CoffeeType.MINILATTE: 0,
-		CoffeeType.CORTADO: 0,
-		CoffeeType.FLATWHITE: 0,
-		CoffeeType.DOUBLE_MACCHIATO: 0,
-		CoffeeType.LATTE: 0,
-		CoffeeType.CAPPUCHINO: 0,
-		CoffeeType.DRY: 0
-	}
-}
+var RunData: Dictionary = Interlude.Defaults.duplicate(true)
 
 enum CoffeeType {
 	NONE,
@@ -42,6 +23,61 @@ enum CoffeeType {
 	LATTE,
 	CAPPUCHINO,
 	DRY,
+}
+
+enum Difficulies {
+	EASY,
+	MEDIUM,
+	HARD,
+	EXTREME
+}
+
+var CurrentDifficulty = Difficulies.EASY
+
+const CoffeeDifficultyOptions = {
+	Difficulies.EASY: [ 
+		GameManager.CoffeeType.ESPRESSO,
+		GameManager.CoffeeType.DOUBLE_ESPRESSO,
+		GameManager.CoffeeType.MACCHIATO,
+		GameManager.CoffeeType.MINILATTE,
+		GameManager.CoffeeType.DOUBLE_MACCHIATO,
+		GameManager.CoffeeType.LATTE
+	],
+	Difficulies.MEDIUM: [ 
+		GameManager.CoffeeType.ESPRESSO,
+		GameManager.CoffeeType.DOUBLE_ESPRESSO,
+		GameManager.CoffeeType.MACCHIATO,
+		GameManager.CoffeeType.MINILATTE,
+		GameManager.CoffeeType.CORTADO,
+		GameManager.CoffeeType.FLATWHITE,
+		GameManager.CoffeeType.DOUBLE_MACCHIATO,
+		GameManager.CoffeeType.LATTE,
+		GameManager.CoffeeType.CAPPUCHINO
+	],
+	Difficulies.HARD: [ 
+		GameManager.CoffeeType.ESPRESSO,
+		GameManager.CoffeeType.DOUBLE_ESPRESSO,
+		GameManager.CoffeeType.MACCHIATO,
+		GameManager.CoffeeType.MINILATTE,
+		GameManager.CoffeeType.CORTADO,
+		GameManager.CoffeeType.FLATWHITE,
+		GameManager.CoffeeType.DOUBLE_MACCHIATO,
+		GameManager.CoffeeType.LATTE,
+		GameManager.CoffeeType.CAPPUCHINO,
+		GameManager.CoffeeType.DRY
+	],
+	Difficulies.EXTREME: [ 
+		GameManager.CoffeeType.ESPRESSO,
+		GameManager.CoffeeType.DOUBLE_ESPRESSO,
+		GameManager.CoffeeType.MACCHIATO,
+		GameManager.CoffeeType.MINILATTE,
+		GameManager.CoffeeType.CORTADO,
+		GameManager.CoffeeType.FLATWHITE,
+		GameManager.CoffeeType.DOUBLE_MACCHIATO,
+		GameManager.CoffeeType.LATTE,
+		GameManager.CoffeeType.CAPPUCHINO,
+		GameManager.CoffeeType.DRY
+	]
 }
 
 const CoffeeCodenames = ["none", "empty", "espresso", "double_espresso", "macchiato", "minilatte", "cortado", "flatwhite", "double_macchiato", "latte", "cappuchino", "dry" ]
@@ -77,22 +113,23 @@ func destroy_dialogue(obj: NinePatchRect):
 	dialogue_menu_open = false
 
 var machine_inst = null
-const machine_scene = preload("res://Scenes/CoffeeMachine/CoffeeMachine.tscn")
 
 func open_coffee_machine():
 	player_can_move = false
 	machine_menu_open = true
 	if machine_inst == null:
-		machine_inst = machine_scene.instantiate()
-		append_to_interface(machine_inst)
-	else:
-		machine_inst.visible = true
+		machine_inst = get_tree().current_scene.get_node("Interface/Container/CoffeeMachineSim")
+	
+	machine_inst.visible = true
 
 func close_coffee_machine():
 	player_can_move = true
 	machine_menu_open = false
 
 func update_satisfaction(value: float):
-	GameManager.RunData["satisfaction"] += value
 	var scene: CafeGame = get_tree().current_scene
+	if (not scene.day_active): return # In case we reach zero after day has ended
+	
+	GameManager.RunData["satisfaction"] += value
+	GameManager.RunData["satisfaction"] = clamp(GameManager.RunData["satisfaction"], 0, 100)
 	scene.update_satisfaction()
