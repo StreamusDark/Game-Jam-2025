@@ -92,7 +92,7 @@ size = Vector2(32, 32)
 
 [node name="ItemCollect" type="Area2D" node_paths=PackedStringArray("item_sprites")]
 script = ExtResource("1_oginw")
-item_sprites = [NodePath("Cow"), NodePath("CarrotPatch"), NodePath("CoffeePlant"), NodePath("Strawberry")]
+item_sprites = [NodePath("Cow"), NodePath("CoffeePlant")]
 
 [node name="Shape" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_tehqt")
