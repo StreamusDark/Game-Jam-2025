@@ -29,29 +29,11 @@ var drinking = false
 @onready var satisfaction_timer: Timer = $SatisfactionTimer
 
 func _ready() -> void:
-	customer_served_satisfaction = (customer_current_satisfaction - ((disatisfaction_rate * 60) / satisfaction_timeout_time)) / 2
+	customer_served_satisfaction = (customer_current_satisfaction - ((disatisfaction_rate * 60) / satisfaction_timeout_time))
 
 func init(customer_variant: CUSTOMER_TYPE):
 	# Pick Drink
-	var type = InventoryItem.ItemType.COFFEE
-	var detail = null
-	
-	# Difficulty System
-	# Low day count: Easier coffee, no addons
-	# Medium day count: All mixes of coffee, some addons
-	# High day count: All mixes of coffee, always addons
-	
-	match type:
-		InventoryItem.ItemType.COFFEE:
-			var options = GameManager.CoffeeDifficultyOptions[GameManager.CurrentDifficulty]
-			detail = GameManager.CoffeeCodenames[options.pick_random()]
-			drink_request_formatted = GameManager.game_lang["coffee_name_" + detail]
-	
-	drink_request = {
-		"type": type,
-		"detail": detail,
-		"extra": null
-	}
+	pick_drink_request()
 	
 	# Pick Name
 	var lang_key = type_to_id[customer_variant] + "_name_" + str(randi_range(0,21))
@@ -65,6 +47,35 @@ func init(customer_variant: CUSTOMER_TYPE):
 	await get_tree().create_tween().tween_property(self, "position", Vector2(queue_offset, 90), randi_range(2,6)).finished
 	satisfaction_timer.start(satisfaction_timeout_time)
 	customer_sprites.play("sit-left")
+
+func pick_drink_request(request_override: Dictionary = {}):
+	# TODO: Rewrite this so randomising is only a piece of this and still formats based on values.
+	# ^ Will need to do this when we add more beverage types.
+	if request_override == {}:
+		var type = InventoryItem.ItemType.COFFEE
+		var detail = null
+		
+		# Difficulty System
+		# Low day count: Easier coffee, no addons
+		# Medium day count: All mixes of coffee, some addons
+		# High day count: All mixes of coffee, always addons
+		
+		match type:
+			InventoryItem.ItemType.COFFEE:
+				var options = GameManager.CoffeeDifficultyOptions[GameManager.CurrentDifficulty]
+				detail = GameManager.CoffeeCodenames[options.pick_random()]
+				drink_request_formatted = GameManager.game_lang["coffee_name_" + detail]
+		
+		drink_request = {
+			"type": type,
+			"detail": detail,
+			"extra": null
+		}
+		return
+	
+	# Use override
+	drink_request = request_override
+	drink_request_formatted = GameManager.game_lang["coffee_name_" + request_override["detail"]]
 
 func pick_seat():
 	satisfaction_timer.stop()
@@ -158,7 +169,7 @@ func on_interact():
 		elif (game_scene.tutorial_progression["second_serving_correct"]) and (not game_scene.tutorial_progression["third_serving_correct"]):
 			game_scene.tutorial_progress(12)
 	
-	await get_tree().create_timer(randi_range(10, 15)).timeout
+	await GameManager.wait_seconds(randi_range(10, 15))
 	coffee_clone.queue_free()
 	drinking = false
 	

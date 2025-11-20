@@ -34,10 +34,10 @@ func _ready() -> void:
 	
 	await get_tree().create_tween().tween_property(black_overlay, "self_modulate", Color("ffffff00"), 1).finished
 	black_overlay.visible = false
-	await get_tree().create_timer(1).timeout
+	await GameManager.wait_seconds(1)
 	$AnimationPlayer.play("introduction")
 	
-	await get_tree().create_timer(1).timeout
+	await GameManager.wait_seconds(1)
 	repeat_loop_bg()
 
 func hover_enter(btn): btn.get_node("Hover").visible = true
@@ -45,9 +45,9 @@ func hover_exit(btn): btn.get_node("Hover").visible = false
 
 func repeat_loop_bg():
 	await get_tree().create_tween().tween_property(self, "day_night_progression", 100, 8).finished
-	await get_tree().create_timer(1).timeout
+	await GameManager.wait_seconds(1)
 	await get_tree().create_tween().tween_property(self, "day_night_progression", 0, 8).finished
-	await get_tree().create_timer(1).timeout
+	await GameManager.wait_seconds(1)
 	repeat_loop_bg()
 
 func repeat_clouds():

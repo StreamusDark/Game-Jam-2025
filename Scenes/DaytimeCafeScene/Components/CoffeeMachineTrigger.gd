@@ -10,7 +10,7 @@ func on_interact():
 			GameManager.open_coffee_machine()
 			game_scene.tutorial_progress(2)
 			return
-		elif ((game_scene.tutorial_progression["first_machine_open"]) and not (game_scene.tutorial_progression["second_serving_correct"])):
+		elif ((game_scene.tutorial_progression["first_serving_correct"]) and not (game_scene.tutorial_progression["second_serving_correct"])):
 			GameManager.open_coffee_machine()
 			game_scene.tutorial_progress(8)
 			return

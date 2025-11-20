@@ -71,7 +71,7 @@ func letter_timer_timeout() -> void:
 	var chr = current_sentence_filtered[content_menu.visible_characters-1]
 	if chr in ['!', '.', '?', ',']:
 		voice_playing = false
-		await get_tree().create_timer(0.5).timeout
+		await GameManager.wait_seconds(0.5)
 		voice_playing = true
 		voice_sound.play(0)
 	

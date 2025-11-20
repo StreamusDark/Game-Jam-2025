@@ -81,6 +81,13 @@ const CoffeeCodenames = ["none", "empty", "espresso", "double_espresso", "macchi
 func _ready() -> void:
 	initalise_locale()
 
+func wait_seconds(s: float):
+	var st := Engine.get_main_loop() as SceneTree
+	if not st: 
+		return
+	var timer := st.create_timer(s)
+	await timer.timeout
+
 func initalise_locale():
 	var csv_raw: String = FileAccess.open("res://Locale/localisation.csv", FileAccess.READ).get_as_text()
 	for kv in csv_raw.split("\n"):
@@ -105,7 +112,7 @@ func create_dialogue(dr_data: Array[Dictionary], disable_walk = true):
 
 func destroy_dialogue(obj: NinePatchRect):
 	obj.queue_free()
-	await get_tree().create_timer(1).timeout
+	await GameManager.wait_seconds(1)
 	dialogue_menu_open = false
 
 var machine_inst = null

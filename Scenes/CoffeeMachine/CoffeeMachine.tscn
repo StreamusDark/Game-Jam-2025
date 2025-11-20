@@ -109,7 +109,10 @@ font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_back8"]
 font = ExtResource("8_h5omg")
+font_size = 40
+shadow_size = 8
 shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(3, 3)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pkxhv"]
 
@@ -179,7 +182,7 @@ font_color = Color(0, 0, 0, 1)
 [sub_resource type="LabelSettings" id="LabelSettings_r8gtr"]
 line_spacing = -9.0
 font = ExtResource("8_h5omg")
-font_size = 25
+font_size = 55
 
 [sub_resource type="LabelSettings" id="LabelSettings_0otgf"]
 line_spacing = -24.0
@@ -205,7 +208,7 @@ font = ExtResource("8_h5omg")
 font_size = 20
 font_color = Color(0, 0, 0, 1)
 
-[node name="CoffeeMachineSim" type="Control" node_paths=PackedStringArray("content_node", "current_cup", "current_cup_options", "liquid_button", "liquid_effect", "steam_button", "steam_effect", "cups_button", "cup_type_display", "beans_that_move", "milk_jug", "milk_jug_options", "milk_display", "milk_bottle")]
+[node name="CoffeeMachineSim" type="Control" node_paths=PackedStringArray("content_node", "current_cup", "current_cup_options", "liquid_button", "liquid_effect", "steam_button", "steam_effect", "bottle_pour_effect", "cups_button", "cup_type_display", "beans_that_move", "milk_jug", "milk_jug_options", "milk_display", "milk_bottle")]
 process_mode = 1
 texture_filter = 1
 layout_mode = 3
@@ -222,6 +225,7 @@ liquid_button = NodePath("Content/Machine/LiquidButton")
 liquid_effect = NodePath("Content/CoffeeCup/CoffeeEffect")
 steam_button = NodePath("Content/Machine/SteamButton")
 steam_effect = NodePath("Content/Jug/SteamEffect")
+bottle_pour_effect = NodePath("Content/Jug/Liquid")
 cups_button = NodePath("Content/Machine/CupsButton")
 cup_type_display = NodePath("Content/CoffeeCup/CoffeeTypeContainer/CoffeeType")
 beans_that_move = NodePath("Content/Machine/Beans")
@@ -288,12 +292,6 @@ sprite_frames = SubResource("SpriteFrames_p32a0")
 frame = 2
 speed_scale = 0.0
 
-[node name="Lid" type="AnimatedSprite2D" parent="Content/Decorations/MilkBottle"]
-visible = false
-position = Vector2(0, -64.44797)
-sprite_frames = SubResource("SpriteFrames_p32a0")
-speed_scale = 0.0
-
 [node name="Button" type="Button" parent="Content/Decorations/MilkBottle"]
 self_modulate = Color(1, 1, 1, 0)
 anchors_preset = 15
@@ -352,6 +350,11 @@ text = "Milk Bottle"
 label_settings = SubResource("LabelSettings_h5omg")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Lid" type="AnimatedSprite2D" parent="Content/Decorations/MilkBottle"]
+position = Vector2(0, -64.44797)
+sprite_frames = SubResource("SpriteFrames_p32a0")
+speed_scale = 0.0
 
 [node name="BottleOptions" type="VBoxContainer" parent="Content/Decorations/MilkBottle"]
 visible = false
@@ -504,12 +507,13 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -4.60151
-offset_right = 28.049454
-offset_bottom = 24.937365
+offset_left = 2.9678345
+offset_top = -2.213501
+offset_right = 62.875305
+offset_bottom = 47.989517
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.6, 0.6)
+scale = Vector2(0.34, 0.34)
 text = "15"
 label_settings = SubResource("LabelSettings_back8")
 horizontal_alignment = 1
@@ -552,16 +556,17 @@ patch_margin_right = 15
 patch_margin_bottom = 8
 
 [node name="Value" type="Label" parent="Content/Machine/Glass/Badge"]
+texture_filter = 3
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -4.60151
-offset_right = 26.69719
-offset_bottom = 26.89815
+offset_top = 0.1644516
+offset_right = 93.377075
+offset_bottom = 50.367477
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.6, 0.6)
+scale = Vector2(0.3, 0.3)
 text = "15"
 label_settings = SubResource("LabelSettings_back8")
 horizontal_alignment = 1
@@ -1466,13 +1471,13 @@ texture_filter = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -10.538025
-offset_top = 13.420685
-offset_right = 37.461975
-offset_bottom = 25.420685
+offset_left = -12.133789
+offset_top = 13.903412
+offset_right = 130.86621
+offset_bottom = 77.90341
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.3, 0.3)
+scale = Vector2(0.15, 0.15)
 text = "Recipes"
 label_settings = SubResource("LabelSettings_r8gtr")
 horizontal_alignment = 1
@@ -1567,7 +1572,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="RecipeBg" type="ColorRect" parent="."]
-visible = false
 z_index = 2
 layout_mode = 1
 anchors_preset = 15
@@ -1586,9 +1590,9 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 176.66669
-offset_top = 106.0
+offset_top = 58.0
 offset_right = -176.66669
-offset_bottom = -106.0
+offset_bottom = -154.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("35_gnwfp")
@@ -1839,9 +1843,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -125.5
-offset_top = -81.0
+offset_top = -129.0
 offset_right = 125.5
-offset_bottom = -24.0
+offset_bottom = -72.0
 grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("6_qn5ym")

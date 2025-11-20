@@ -295,6 +295,20 @@ label_settings = SubResource("LabelSettings_q82or")
 horizontal_alignment = 1
 vertical_alignment = 2
 
+[node name="Version" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -719.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = 47.0
+grow_horizontal = 0
+text = "Version 1.0.1"
+label_settings = SubResource("LabelSettings_q82or")
+horizontal_alignment = 2
+
 [node name="BlackOverlay" type="ColorRect" parent="."]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1

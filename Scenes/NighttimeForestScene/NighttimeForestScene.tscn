@@ -178,7 +178,7 @@ font_size = 86
 [node name="PrototypeForest" type="Node2D" node_paths=PackedStringArray("collector_ui_labels", "hearts", "game_over", "pause_screen", "black_screen")]
 process_mode = 1
 script = ExtResource("1_oqm00")
-collector_ui_labels = [NodePath("Interface/Container/GridContainer/Milk"), NodePath(""), NodePath("Interface/Container/GridContainer/Coffee"), NodePath("")]
+collector_ui_labels = [NodePath("Interface/Container/GridContainer/Milk"), null, NodePath("Interface/Container/GridContainer/Coffee"), null]
 hearts = [NodePath("Interface/Container/HealthUI/Heart1"), NodePath("Interface/Container/HealthUI/Heart2"), NodePath("Interface/Container/HealthUI/Heart3")]
 game_over = NodePath("Interface/Container/GameOver")
 pause_screen = NodePath("Interface/Container/PauseMenu")
@@ -237,28 +237,28 @@ position = Vector2(-720, -592)
 
 [node name="ItemCollect3" parent="Entities" instance=ExtResource("6_7ar17")]
 position = Vector2(848, 16)
-item_type = 2
+item_type = 1
 
 [node name="ItemCollect5" parent="Entities" instance=ExtResource("6_7ar17")]
 position = Vector2(784, 752)
 
 [node name="ItemCollect7" parent="Entities" instance=ExtResource("6_7ar17")]
 position = Vector2(-496, 752)
-item_type = 2
+item_type = 1
 
 [node name="ItemCollect9" parent="Entities" instance=ExtResource("6_7ar17")]
 position = Vector2(-272, -304)
 
 [node name="ItemCollect11" parent="Entities" instance=ExtResource("6_7ar17")]
 position = Vector2(-1104, -272)
-item_type = 2
+item_type = 1
 
 [node name="ItemCollect13" parent="Entities" instance=ExtResource("6_7ar17")]
 position = Vector2(-48, 912)
 
 [node name="ItemCollect15" parent="Entities" instance=ExtResource("6_7ar17")]
 position = Vector2(-112, -848)
-item_type = 2
+item_type = 1
 
 [node name="Tree2" parent="Entities" instance=ExtResource("7_3k2p7")]
 position = Vector2(304, 304)

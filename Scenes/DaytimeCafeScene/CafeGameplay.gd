@@ -71,9 +71,9 @@ func _ready() -> void:
 	day_cnt.modulate = Color("ffffff00")
 	await get_tree().create_tween().tween_property(black_screen, "self_modulate", Color("ffffffac"), 0.65).finished
 	await get_tree().create_tween().tween_property(day_cnt, "modulate", Color("fff"), 0.35).finished
-	await get_tree().create_timer(0.7).timeout
+	await GameManager.wait_seconds(0.7)
 	await get_tree().create_tween().tween_property(day_cnt.get_node("Control/Alignment"), "position", Vector2(0,-149), 0.35).finished
-	await get_tree().create_timer(1).timeout
+	await GameManager.wait_seconds(1)
 	await get_tree().create_tween().tween_property(black_screen, "self_modulate", Color("ffffff00"), 0.65).finished
 	black_screen.visible = false
 	
@@ -130,7 +130,7 @@ func do_light_cycle():
 	await get_tree().create_tween().tween_property(time_of_day_lighting, "color", Color("000000"), (60 * 4)).finished
 	
 	# 1pm -> 5pm
-	await get_tree().create_tween().tween_property(time_of_day_lighting, "color", Color("c4be7e"), (60 * 4)).finished
+	await get_tree().create_tween().tween_property(time_of_day_lighting, "color", Color("9c7d56"), (60 * 4)).finished
 
 func start_day():
 	var current_day: int = GameManager.RunData["day"]
@@ -152,7 +152,7 @@ func start_day():
 	else:
 		GameManager.CurrentDifficulty = GameManager.Difficulies.EXTREME
 	
-	await get_tree().create_timer(10).timeout
+	await GameManager.wait_seconds(10)
 	
 	## Interval Calculation
 	var min_start = 40.0
@@ -167,7 +167,7 @@ func start_day():
 		if (game_timer.time_left <= 0) or (game_over_screen.is_game_over):
 			break
 		new_customer()
-		await get_tree().create_timer(randf_range(low, high)).timeout
+		await GameManager.wait_seconds(randf_range(low, high))
 
 func wait_until(condition: Callable) -> void:
 	while not condition.call():
@@ -187,17 +187,18 @@ func tutorial_progress(prog: int):
 		
 		GameManager.create_dialogue(dr_dat, false)
 		await wait_until(func(): return not GameManager.dialogue_menu_open)
-		await get_tree().create_timer(2).timeout
+		await GameManager.wait_seconds(2)
 		
 		tutorial_customer_puppets[0] = customer_scene.instantiate()
 		entities_node.add_child(tutorial_customer_puppets[0])
 		tutorial_customer_puppets[0].position = Vector2(465.0, 90.0)
 		tutorial_customer_puppets[0].customer_sprites.play("left")
-		tutorial_customer_puppets[0].drink_request = {
+		tutorial_customer_puppets[0].customer_name = GameManager.game_lang["fox_name_0"]
+		tutorial_customer_puppets[0].pick_drink_request({
 			"type": InventoryItem.ItemType.COFFEE,
 			"detail": "espresso",
 			"extra": null
-		}
+		})
 		await get_tree().create_tween().tween_property(tutorial_customer_puppets[0], "position", Vector2(114, 90), 4).finished
 		tutorial_customer_puppets[0].customer_sprites.play("sit-left")
 		
@@ -257,16 +258,17 @@ func tutorial_progress(prog: int):
 		GameManager.create_dialogue(dr_dat, false)
 		tutorial_progression["first_serving_correct"] = true
 		
-		await get_tree().create_timer(6).timeout
+		await GameManager.wait_seconds(10)
 		tutorial_customer_puppets[1] = customer_scene.instantiate()
 		entities_node.add_child(tutorial_customer_puppets[1])
 		tutorial_customer_puppets[1].position = Vector2(465.0, 90.0)
 		tutorial_customer_puppets[1].customer_sprites.play("left")
-		tutorial_customer_puppets[1].drink_request = {
+		tutorial_customer_puppets[1].customer_name = GameManager.game_lang["fox_name_1"]
+		tutorial_customer_puppets[1].pick_drink_request({
 			"type": InventoryItem.ItemType.COFFEE,
 			"detail": "double_espresso",
 			"extra": null
-		}
+		})
 		await get_tree().create_tween().tween_property(tutorial_customer_puppets[1], "position", Vector2(114, 90), 4).finished
 		tutorial_customer_puppets[1].customer_sprites.play("sit-left")
 	
@@ -295,16 +297,17 @@ func tutorial_progress(prog: int):
 	elif prog == 9:
 		tutorial_progression["second_serving_correct"] = true
 		
-		await get_tree().create_timer(6).timeout
+		await GameManager.wait_seconds(10)
 		tutorial_customer_puppets[2] = customer_scene.instantiate()
 		entities_node.add_child(tutorial_customer_puppets[2])
 		tutorial_customer_puppets[2].position = Vector2(465.0, 90.0)
 		tutorial_customer_puppets[2].customer_sprites.play("left")
-		tutorial_customer_puppets[2].drink_request = {
+		tutorial_customer_puppets[2].customer_name = GameManager.game_lang["fox_name_2"]
+		tutorial_customer_puppets[2].pick_drink_request({
 			"type": InventoryItem.ItemType.COFFEE,
 			"detail": "cappuchino",
 			"extra": null
-		}
+		})
 		await get_tree().create_tween().tween_property(tutorial_customer_puppets[2], "position", Vector2(114, 90), 4).finished
 		tutorial_customer_puppets[2].customer_sprites.play("sit-left")
 		
@@ -328,12 +331,11 @@ func tutorial_progress(prog: int):
 		GameManager.create_dialogue([{"name":"", "message": GameManager.game_lang["tutorial_22"]}], false)
 		
 	elif prog == 12:
-		await get_tree().create_timer(2).timeout
+		await GameManager.wait_seconds(2)
 		GameManager.create_dialogue([{"name":"", "message": GameManager.game_lang["tutorial_30"]}], false)
 		await wait_until(func(): return not GameManager.dialogue_menu_open)
+		await GameManager.wait_seconds(8)
 		await wait_until(func(): return not GameManager.dialogue_menu_open)
-		await wait_until(func(): return not GameManager.dialogue_menu_open)
-		await get_tree().create_timer(2).timeout
 		$Interface/Container/SectionComplete.init()
 
 func gametimer_timeout() -> void:

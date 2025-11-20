@@ -62,9 +62,9 @@ func _ready() -> void:
 	day_cnt.modulate = Color("ffffff00")
 	await get_tree().create_tween().tween_property(black_screen, "self_modulate", Color("ffffffac"), 0.65).finished
 	await get_tree().create_tween().tween_property(day_cnt, "modulate", Color("fff"), 0.35).finished
-	await get_tree().create_timer(0.7).timeout
+	await GameManager.wait_seconds(0.7)
 	await get_tree().create_tween().tween_property(day_cnt.get_node("Control/Alignment"), "position", Vector2(0,-149), 0.35).finished
-	await get_tree().create_timer(1).timeout
+	await GameManager.wait_seconds(1)
 	await get_tree().create_tween().tween_property(black_screen, "self_modulate", Color("ffffff00"), 0.65).finished
 	black_screen.visible = false
 	
