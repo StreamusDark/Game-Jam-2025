@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://ca7kidqb3rqqp"]
+[gd_scene format=3 uid="uid://ca7kidqb3rqqp"]
 
 [ext_resource type="Script" uid="uid://c6ktq1h1p5y48" path="res://Entities/Customer/Customer.gd" id="1_n7d7n"]
 [ext_resource type="SpriteFrames" uid="uid://dky3y2fx3bqah" path="res://Entities/Customer/CustomerFoxFrames.tres" id="1_p0mig"]
@@ -7,10 +7,10 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p0mig"]
 size = Vector2(34, 40)
 
-[node name="Customer" type="Area2D"]
+[node name="Customer" type="Area2D" unique_id=1856760085]
 script = ExtResource("1_n7d7n")
 
-[node name="Sprite" type="AnimatedSprite2D" parent="."]
+[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=931986219]
 texture_filter = 1
 sprite_frames = ExtResource("1_p0mig")
 animation = &"sit-right"
@@ -18,15 +18,15 @@ frame = 2
 frame_progress = 0.9084566
 offset = Vector2(0, -14.5)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1516431420]
 position = Vector2(0, -12)
 shape = SubResource("RectangleShape2D_p0mig")
 debug_color = Color(0.7, 0.6766667, 0, 0.41960785)
 
-[node name="SatisfactionTimer" type="Timer" parent="."]
+[node name="SatisfactionTimer" type="Timer" parent="." unique_id=1812719328]
 wait_time = 10.0
 
-[node name="MoveSound" type="AudioStreamPlayer" parent="."]
+[node name="MoveSound" type="AudioStreamPlayer" parent="." unique_id=9801255]
 stream = ExtResource("3_38jce")
 bus = &"SoundEffects"
 

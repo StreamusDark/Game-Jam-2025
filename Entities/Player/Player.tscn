@@ -412,11 +412,12 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_vweq0"]
 radius = 39.051247
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("player_sprite", "kick_sprite", "kick_area")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("player_sprite", "player_collision", "kick_sprite", "kick_area")]
 y_sort_enabled = true
 motion_mode = 1
 script = ExtResource("1_ww0jn")
 player_sprite = NodePath("Sprite")
+player_collision = NodePath("Collision")
 kick_sprite = NodePath("Kick")
 kick_area = NodePath("KickArea")
 metadata/_edit_group_ = true

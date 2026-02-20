@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=66 format=3 uid="uid://dky3y2fx3bqah"]
+[gd_resource type="SpriteFrames" format=3 uid="uid://dky3y2fx3bqah"]
 
 [ext_resource type="Texture2D" uid="uid://dru71g0vcja66" path="res://Entities/Customer/CustomerFoxSheets.png" id="1_0hvrb"]
 

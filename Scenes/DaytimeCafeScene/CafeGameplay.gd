@@ -49,12 +49,14 @@ func _ready() -> void:
 	for n in table_nodes.get_child_count():
 		occupied_seats[n] = null
 	
+	$Interface.visible = true
+	
 	$TimeOfDayLighting.color = Color("8fb6ff81")
 	$Interface/Container/TopLeft/Day/Num.text = str(GameManager.RunData["day"])
-	GameManager.player_can_move = true
 	game_timer.start()
 	game_timer.paused = true
 	update_satisfaction()
+	GameManager.player_can_move = true
 	
 	black_screen.self_modulate = Color("fff")
 	black_screen.visible = true

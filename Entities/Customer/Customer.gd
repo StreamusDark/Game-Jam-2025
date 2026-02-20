@@ -10,7 +10,7 @@ enum CUSTOMER_TYPE {
 
 var customer_type: CUSTOMER_TYPE
 var customer_name: String
-var customer_seat_number = -1
+var customer_seat_number = -1      # Seat No. the customer picks after their order is taken
 
 @export var satisfaction_timeout_time = 5
 @export var disatisfaction_rate = 0.25
@@ -21,12 +21,25 @@ var drink_request: Dictionary = {}
 var drink_request_formatted: String
 const type_to_id = {CUSTOMER_TYPE.FOX: "fox"}
 
-var awaiting_order = false
-var drinking = false
+var awaiting_order_taken = false  # Customer has had their order taken at the cash register
+var awaiting_order = false        # Customer has had their order taken and is sitting waiting for their coffee
+var drinking = false              # Customer has recieved their order and is consuming it
 
 @onready var customer_sprites: AnimatedSprite2D = $Sprite
 @onready var game_scene: CafeGame = get_tree().current_scene
 @onready var satisfaction_timer: Timer = $SatisfactionTimer
+
+"""
+Customer Process:
+	1. Satisfaction for being served is calculated on _ready()
+	2. init() called on it when CafeGameplay initialises it
+	3. Picks a drink as it's order
+	4. Moves up to register
+	5. Awaits to have order taken, decreasing satisfaction when waiting
+	6. Has order taken and then picks a spot to sit in.
+	7. Awaits for order to arrive, decreasing satisfaction when waiting
+	8. Recieves order, increases satisfaction, takes time to consume, and then leaves.
+"""
 
 func _ready() -> void:
 	customer_served_satisfaction = (customer_current_satisfaction - ((disatisfaction_rate * 60) / satisfaction_timeout_time))
@@ -39,14 +52,20 @@ func init(customer_variant: CUSTOMER_TYPE):
 	var lang_key = type_to_id[customer_variant] + "_name_" + str(randi_range(0,21))
 	customer_name = GameManager.game_lang[lang_key]
 	
+	# Set defaults upon spawn
 	position = Vector2(465.0, 90.0)
 	customer_sprites.play("left")
 	
 	game_scene.customer_queue.append(self)
+	
+	# TODO: Rewrite this, it's very buggy.
+	# Find position to sit in in the queue. 
 	var queue_offset = 114.0 + (27 * (len(game_scene.customer_queue) - 1))
 	await get_tree().create_tween().tween_property(self, "position", Vector2(queue_offset, 90), randi_range(2,6)).finished
+	
 	satisfaction_timer.start(satisfaction_timeout_time)
 	customer_sprites.play("sit-left")
+	awaiting_order_taken = true       # Can now be interacted with so that skipping dialogue doesn't break movement
 
 func pick_drink_request(request_override: Dictionary = {}):
 	# TODO: Rewrite this so randomising is only a piece of this and still formats based on values.

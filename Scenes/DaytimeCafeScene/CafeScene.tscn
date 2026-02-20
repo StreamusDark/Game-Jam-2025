@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=4 uid="uid://wibk80qhr1t2"]
+[gd_scene format=4 uid="uid://wibk80qhr1t2"]
 
 [ext_resource type="Script" uid="uid://6apjgsnxwiv4" path="res://Scenes/DaytimeCafeScene/CafeGameplay.gd" id="1_vlhgq"]
 [ext_resource type="PackedScene" uid="uid://icty0spbjj72" path="res://Entities/Player/Player.tscn" id="2_7e3x4"]
@@ -9,11 +9,15 @@
 [ext_resource type="Texture2D" uid="uid://obwbtoev2pxq" path="res://Scenes/DaytimeCafeScene/Components/Counter.png" id="7_3dscb"]
 [ext_resource type="Script" uid="uid://c3pan6twuv8m" path="res://Scenes/DaytimeCafeScene/Components/DessertCounter.gd" id="7_5mwdy"]
 [ext_resource type="Script" uid="uid://ctohfi5c5vwx3" path="res://Scenes/DaytimeCafeScene/Components/Sink.gd" id="7_urop6"]
+[ext_resource type="Texture2D" uid="uid://7tuanrgjlhfa" path="res://Scenes/DaytimeCafeScene/Components/DessertCounterOutline.png" id="8_nyqyl"]
 [ext_resource type="Texture2D" uid="uid://dpmmrwccg7081" path="res://Scenes/DaytimeCafeScene/Components/Sink.png" id="8_obde2"]
 [ext_resource type="Script" uid="uid://dv4o661tqex01" path="res://Scenes/DaytimeCafeScene/OrderTableTrigger.gd" id="8_sj5sr"]
 [ext_resource type="Script" uid="uid://d0qq8vwtv3bk4" path="res://Scenes/DaytimeCafeScene/Components/CoffeeMachineTrigger.gd" id="8_yq1jw"]
+[ext_resource type="Texture2D" uid="uid://4ipvpoprc6i0" path="res://Scenes/DaytimeCafeScene/Components/CashregOutline.png" id="9_6dldk"]
+[ext_resource type="Texture2D" uid="uid://cvceit41yoaru" path="res://Scenes/DaytimeCafeScene/Components/CoffeeMachineOutline.png" id="10_5ip5d"]
 [ext_resource type="Texture2D" uid="uid://bpem2wvfaecui" path="res://Scenes/DaytimeCafeScene/Components/table.png" id="11_yq1jw"]
 [ext_resource type="Texture2D" uid="uid://jqj7ain4532b" path="res://Scenes/DaytimeCafeScene/Components/Mats.png" id="12_nsguh"]
+[ext_resource type="Texture2D" uid="uid://ctee0owofe8lf" path="res://Scenes/DaytimeCafeScene/Components/SinkOutline.png" id="13_gn82v"]
 [ext_resource type="Texture2D" uid="uid://c1y3g4mss6sri" path="res://Scenes/DaytimeCafeScene/Interface/timer.png" id="15_oic7s"]
 [ext_resource type="FontFile" uid="uid://db1mivm1mc3hf" path="res://Assets/Fonts/Belajar Menulis.otf" id="16_hmors"]
 [ext_resource type="Texture2D" uid="uid://cjtx86xjlk46s" path="res://Scenes/DaytimeCafeScene/Interface/dial_panel.png" id="17_cbydh"]
@@ -109,7 +113,7 @@ size = Vector2(34, 35)
 size = Vector2(26, 51.99025)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nsguh"]
-size = Vector2(24.5, 63.5)
+size = Vector2(24.5, 59.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vlhgq"]
 size = Vector2(26, 25.995129)
@@ -175,7 +179,7 @@ outline_color = Color(0, 0, 0, 1)
 font = ExtResource("16_hmors")
 font_size = 86
 
-[node name="CafeScene" type="Node2D" node_paths=PackedStringArray("table_nodes", "entities_node", "section_complete_screen", "pause_screen", "game_over_screen", "timer_display", "black_screen")]
+[node name="CafeScene" type="Node2D" unique_id=832040869 node_paths=PackedStringArray("table_nodes", "entities_node", "section_complete_screen", "pause_screen", "game_over_screen", "timer_display", "black_screen")]
 process_mode = 1
 script = ExtResource("1_vlhgq")
 table_nodes = NodePath("Entities/TablesNodes")
@@ -186,132 +190,203 @@ game_over_screen = NodePath("Interface/Container/GameOver")
 timer_display = NodePath("Interface/Container/TopRight/Timer/CurrentTime")
 black_screen = NodePath("Interface/Container/BlackOverlay")
 
-[node name="TileMap" type="TileMapLayer" parent="."]
+[node name="TileMap" type="TileMapLayer" parent="." unique_id=1445609732]
 texture_filter = 1
 tile_map_data = PackedByteArray("AAAAAAAAAQAAAAAAAAAAAAEAAQABAAAAAAAAAAIAAQAAAAAAAAAAAAMAAQAAAAAAAAAAAAQAAQAAAAAAAAAAAAUAAQAAAAAAAAAAAAYAAwAAAAAAAAABAAAAAQABAAEAAAABAAEAAQAAAAAAAAABAAIAAQABAAAAAAABAAMAAQAAAAAAAAABAAQAAQAAAAAAAAABAAUAAQABAAAAAAABAAYAAwAAAAAAAAACAAAAAQAAAAEAAAACAAEAAQAAAAAAAAACAAIAAQAAAAAAAAACAAMAAQAAAAAAAAACAAQAAQAAAAAAAAACAAUAAQAAAAAAAAACAAYAAwAAAAAAAAADAAAAAQAAAAAAAAADAAEAAQAAAAAAAAADAAIAAQAAAAAAAAADAAMAAQAAAAAAAAADAAQAAQAAAAAAAAADAAUAAQAAAAAAAAADAAYAAwAAAAAAAAAEAAAAAQABAAEAAAAEAAEAAQAAAAAAAAAEAAIAAQABAAAAAAAEAAMAAQAAAAAAAAAEAAQAAQABAAEAAAAEAAUAAQABAAEAAAAEAAYAAwAAAAAAAAAFAAAAAQABAAEAAAAFAAEAAQABAAAAAAAFAAIAAQABAAEAAAAFAAMAAQAAAAAAAAAFAAQAAQAAAAAAAAAFAAUAAQABAAEAAAAFAAYAAwAAAAAAAAAGAAAAAQAAAAAAAAAGAAEAAQAAAAAAAAAGAAIAAQABAAAAAAAGAAMAAQABAAAAAAAGAAQAAQAAAAAAAAAGAAUAAQAAAAEAAAAGAAYAAwAAAAAAAAAHAAAAAQAAAAAAAAAHAAEAAQAAAAAAAAAHAAIAAQAAAAAAAAAHAAMAAQAAAAAAAAAHAAQAAQABAAAAAAAHAAUAAQAAAAEAAAAHAAYAAwAAAAAAAAAIAAAAAQAAAAAAAAAIAAEAAQAAAAEAAAAIAAIAAQAAAAAAAAAIAAMAAQABAAAAAAAIAAQAAQAAAAAAAAAIAAUAAQAAAAAAAAAIAAYAAwAAAAAAAAAJAAAAAQAAAAAAAAAJAAEAAQABAAEAAAAJAAIAAQABAAAAAAAJAAMAAQAAAAEAAAAJAAQAAQAAAAEAAAAJAAUAAQAAAAAAAAAJAAYAAwAAAAAAAAAKAAAAAQAAAAAAAAAKAAEAAQAAAAAAAAAKAAIAAQAAAAAAAAAKAAMAAQAAAAAAAAAKAAQAAQABAAAAAAAKAAUAAQAAAAEAAAAKAAYAAwAAAAAAAAALAAAAAQAAAAAAAAALAAEAAQAAAAAAAAALAAIAAQAAAAAAAAALAAMAAQAAAAAAAAALAAQAAQABAAAAAAALAAUAAQAAAAAAAAALAAYAAwAAAAAAAAAMAAAAAQAAAAAAAAAMAAEAAQAAAAAAAAAMAAIAAQAAAAAAAAAMAAMAAQAAAAAAAAAMAAQAAQAAAAAAAAAMAAUAAQAAAAAAAAAMAAYAAwAAAAAAAAANAAAAAQAAAAAAAAANAAEAAQAAAAEAAAANAAIAAQABAAEAAAANAAMAAQAAAAAAAAANAAQAAQAAAAAAAAANAAUAAQAAAAAAAAANAAYAAwAAAAAAAAAAAP//AgAEAAQAAAABAP//AgAEAAQAAAACAP//AgAEAAQAAAADAP//AgAEAAQAAAAEAP//AgAEAAQAAAAFAP//AgAEAAQAAAAGAP//AgAEAAQAAAAHAP//AgAEAAQAAAAIAP//AgAEAAQAAAAJAP//AgAEAAQAAAAKAP//AgAEAAQAAAALAP//AgAEAAQAAAAMAP//AgAEAAQAAAANAP//AgAEAAQAAAAAAP7/AgAEAAMAAAABAP7/AgAEAAMAAAACAP7/AgAFAAMAAAADAP7/AgAGAAMAAAAEAP7/AgAHAAMAAAAFAP7/AgAEAAMAAAAGAP7/AgAFAAMAAAAHAP7/AgAGAAMAAAAIAP7/AgAHAAMAAAAJAP7/AgAEAAMAAAAKAP7/AgAFAAMAAAALAP7/AgAGAAMAAAAMAP7/AgAHAAMAAAANAP7/AgAEAAMAAAAAAPv/AgAEAAAAAAAAAPz/AgAEAAEAAAAAAP3/AgAEAAIAAAABAPv/AgAFAAAAAAABAPz/AgAFAAEAAAABAP3/AgAFAAIAAAACAPv/AgAGAAAAAAACAPz/AgAGAAEAAAACAP3/AgAGAAIAAAADAPv/AgAHAAAAAAADAPz/AgAHAAEAAAADAP3/AgAHAAIAAAAEAPv/AgAEAAAAAAAEAPz/AgAEAAEAAAAEAP3/AgAEAAIAAAAFAPv/AgAFAAAAAAAFAPz/AgAFAAEAAAAFAP3/AgAFAAIAAAAGAPv/AgAGAAAAAAAGAPz/AgAGAAEAAAAGAP3/AgAGAAIAAAAHAPv/AgAHAAAAAAAHAPz/AgAHAAEAAAAHAP3/AgAHAAIAAAAIAPv/AgAEAAAAAAAIAPz/AgAEAAEAAAAIAP3/AgAEAAIAAAAJAPv/AgAFAAAAAAAJAPz/AgAFAAEAAAAJAP3/AgAFAAIAAAAKAPv/AgAGAAAAAAAKAPz/AgAGAAEAAAAKAP3/AgAGAAIAAAALAPv/AgAHAAAAAAALAPz/AgAHAAEAAAALAP3/AgAHAAIAAAAMAPv/AgAEAAAAAAAMAPz/AgAEAAEAAAAMAP3/AgAEAAIAAAANAPv/AgAFAAAAAAANAPz/AgAFAAEAAAANAP3/AgAFAAIAAAD+////AwAAAAAAAAD+/wAAAwAAAAAAAAD+/wEAAwAAAAAAAAD+/wIAAwAAAAAAAAD+/wMAAwAAAAAAAAD+/wQAAwAAAAAAAAD+/wUAAwAAAAAAAAD+/wYAAwAAAAAAAAD+/wcAAwAAAAAAAAD/////AwAAAAAAAAD//wAAAwAAAAAAAAD//wEAAwAAAAAAAAD//wIAAwAAAAAAAAD//wMAAwAAAAAAAAD//wQAAwAAAAAAAAD//wUAAwAAAAAAAAD//wYAAwAAAAAAAAD//wcAAwAAAAAAAAD+/wgAAwAAAAAAAAD//wgAAwAAAAAAAAAAAAcAAwAAAAAAAAAAAAgAAwAAAAAAAAABAAcAAwAAAAAAAAABAAgAAwAAAAAAAAACAAcAAwAAAAAAAAACAAgAAwAAAAAAAAADAAcAAwAAAAAAAAADAAgAAwAAAAAAAAAEAAcAAwAAAAAAAAAEAAgAAwAAAAAAAAAFAAcAAwAAAAAAAAAFAAgAAwAAAAAAAAAGAAcAAwAAAAAAAAAGAAgAAwAAAAAAAAAHAAcAAwAAAAAAAAAHAAgAAwAAAAAAAAAIAAcAAwAAAAAAAAAIAAgAAwAAAAAAAAAJAAcAAwAAAAAAAAAJAAgAAwAAAAAAAAAKAAcAAwAAAAAAAAAKAAgAAwAAAAAAAAALAAcAAwAAAAAAAAALAAgAAwAAAAAAAAAMAAcAAwAAAAAAAAAMAAgAAwAAAAAAAAANAAcAAwAAAAAAAAANAAgAAwAAAAAAAAAOAP//AwAAAAAAAAAOAAAAAwAAAAAAAAAOAAEAAwAAAAAAAAAOAAIAAwAAAAAAAAAOAAMAAwAAAAAAAAAOAAQAAwAAAAAAAAAOAAUAAwAAAAAAAAAOAAYAAwAAAAAAAAAOAAcAAwAAAAAAAAAOAAgAAwAAAAAAAAAPAP//AwAAAAAAAAAPAAAAAwAAAAAAAAAPAAEAAwAAAAAAAAAPAAIAAwAAAAAAAAAPAAMAAwAAAAAAAAAPAAQAAwAAAAAAAAAPAAUAAwAAAAAAAAAPAAYAAwAAAAAAAAAPAAcAAwAAAAAAAAAPAAgAAwAAAAAAAAD9////AwAAAAAAAAD9/wAAAwAAAAAAAAD9/wEAAwAAAAAAAAD9/wIAAwAAAAAAAAD9/wMAAwAAAAAAAAD9/wQAAwAAAAAAAAD9/wUAAwAAAAAAAAD9/wYAAwAAAAAAAAD9/wcAAwAAAAAAAAD9/wgAAwAAAAAAAAD9/wkAAwAAAAAAAAD+/wkAAwAAAAAAAAD//wkAAwAAAAAAAAAAAAkAAwAAAAAAAAABAAkAAwAAAAAAAAACAAkAAwAAAAAAAAADAAkAAwAAAAAAAAAEAAkAAwAAAAAAAAAFAAkAAwAAAAAAAAAGAAkAAwAAAAAAAAAHAAkAAwAAAAAAAAAIAAkAAwAAAAAAAAAJAAkAAwAAAAAAAAAKAAkAAwAAAAAAAAALAAkAAwAAAAAAAAAMAAkAAwAAAAAAAAANAAkAAwAAAAAAAAAOAAkAAwAAAAAAAAAPAAkAAwAAAAAAAAAQAP//AwAAAAAAAAAQAAAAAwAAAAAAAAAQAAEAAwAAAAAAAAAQAAIAAwAAAAAAAAAQAAMAAwAAAAAAAAAQAAQAAwAAAAAAAAAQAAUAAwAAAAAAAAAQAAYAAwAAAAAAAAAQAAcAAwAAAAAAAAAQAAgAAwAAAAAAAAAQAAkAAwAAAAAAAAD9//v/AwAAAAAAAAD9//z/AwAAAAAAAAD9//3/AwAAAAAAAAD9//7/AwAAAAAAAAD+//v/AwAAAAAAAAD+//z/AwAAAAAAAAD+//3/AwAAAAAAAAD+//7/AwAAAAAAAAD///v/AwAAAAAAAAD///z/AwAAAAAAAAD///3/AwAAAAAAAAD///7/AwAAAAAAAAD7//v/AwAAAAAAAAD7//z/AwAAAAAAAAD7//3/AwAAAAAAAAD7//7/AwAAAAAAAAD7////AwAAAAAAAAD7/wAAAwAAAAAAAAD7/wEAAwAAAAAAAAD7/wIAAwAAAAAAAAD7/wMAAwAAAAAAAAD7/wQAAwAAAAAAAAD7/wUAAwAAAAAAAAD7/wYAAwAAAAAAAAD7/wcAAwAAAAAAAAD7/wgAAwAAAAAAAAD7/wkAAwAAAAAAAAD8//v/AwAAAAAAAAD8//z/AwAAAAAAAAD8//3/AwAAAAAAAAD8//7/AwAAAAAAAAD8////AwAAAAAAAAD8/wAAAwAAAAAAAAD8/wEAAwAAAAAAAAD8/wIAAwAAAAAAAAD8/wMAAwAAAAAAAAD8/wQAAwAAAAAAAAD8/wUAAwAAAAAAAAD8/wYAAwAAAAAAAAD8/wcAAwAAAAAAAAD8/wgAAwAAAAAAAAD8/wkAAwAAAAAAAAD7/woAAwAAAAAAAAD7/wsAAwAAAAAAAAD8/woAAwAAAAAAAAD8/wsAAwAAAAAAAAD9/woAAwAAAAAAAAD9/wsAAwAAAAAAAAD+/woAAwAAAAAAAAD+/wsAAwAAAAAAAAD//woAAwAAAAAAAAD//wsAAwAAAAAAAAAAAAoAAwAAAAAAAAAAAAsAAwAAAAAAAAABAAoAAwAAAAAAAAABAAsAAwAAAAAAAAACAAoAAwAAAAAAAAACAAsAAwAAAAAAAAADAAoAAwAAAAAAAAADAAsAAwAAAAAAAAAEAAoAAwAAAAAAAAAEAAsAAwAAAAAAAAAFAAoAAwAAAAAAAAAFAAsAAwAAAAAAAAAGAAoAAwAAAAAAAAAGAAsAAwAAAAAAAAAHAAoAAwAAAAAAAAAHAAsAAwAAAAAAAAAIAAoAAwAAAAAAAAAIAAsAAwAAAAAAAAAJAAoAAwAAAAAAAAAJAAsAAwAAAAAAAAAKAAoAAwAAAAAAAAAKAAsAAwAAAAAAAAALAAoAAwAAAAAAAAALAAsAAwAAAAAAAAAMAAoAAwAAAAAAAAAMAAsAAwAAAAAAAAANAAoAAwAAAAAAAAANAAsAAwAAAAAAAAAOAAoAAwAAAAAAAAAOAAsAAwAAAAAAAAAPAAoAAwAAAAAAAAAPAAsAAwAAAAAAAAAQAAoAAwAAAAAAAAAQAAsAAwAAAAAAAAARAPv/AwAAAAAAAAARAPz/AwAAAAAAAAARAP3/AwAAAAAAAAARAP7/AwAAAAAAAAARAP//AwAAAAAAAAARAAAAAwAAAAAAAAARAAEAAwAAAAAAAAARAAIAAwAAAAAAAAARAAMAAwAAAAAAAAARAAQAAwAAAAAAAAARAAUAAwAAAAAAAAARAAYAAwAAAAAAAAARAAcAAwAAAAAAAAARAAgAAwAAAAAAAAARAAkAAwAAAAAAAAARAAoAAwAAAAAAAAARAAsAAwAAAAAAAAASAPv/AwAAAAAAAAASAPz/AwAAAAAAAAASAP3/AwAAAAAAAAASAP7/AwAAAAAAAAASAP//AwAAAAAAAAASAAAAAwAAAAAAAAASAAEAAwAAAAAAAAASAAIAAwAAAAAAAAASAAMAAwAAAAAAAAASAAQAAwAAAAAAAAASAAUAAwAAAAAAAAASAAYAAwAAAAAAAAASAAcAAwAAAAAAAAASAAgAAwAAAAAAAAASAAkAAwAAAAAAAAASAAoAAwAAAAAAAAASAAsAAwAAAAAAAAAOAPv/AwAAAAAAAAAOAPz/AwAAAAAAAAAOAP3/AwAAAAAAAAAOAP7/AwAAAAAAAAAPAPv/AwAAAAAAAAAPAPz/AwAAAAAAAAAPAP3/AwAAAAAAAAAPAP7/AwAAAAAAAAAQAPv/AwAAAAAAAAAQAPz/AwAAAAAAAAAQAP3/AwAAAAAAAAAQAP7/AwAAAAAAAAA=")
 tile_set = SubResource("TileSet_bc8pf")
 metadata/_edit_lock_ = true
 
-[node name="Entities" type="Node2D" parent="."]
+[node name="Entities" type="Node2D" parent="." unique_id=1824644593]
 y_sort_enabled = true
 
-[node name="Player" parent="Entities" instance=ExtResource("2_7e3x4")]
+[node name="Player" parent="Entities" unique_id=1320480470 instance=ExtResource("2_7e3x4")]
 position = Vector2(50, 77)
 
-[node name="MainCamera" type="Camera2D" parent="Entities/Player"]
+[node name="MainCamera" type="Camera2D" parent="Entities/Player" unique_id=2064861981]
 zoom = Vector2(4, 4)
 position_smoothing_enabled = true
 position_smoothing_speed = 15.0
 
-[node name="FrontTable" type="Node2D" parent="Entities"]
+[node name="FrontTable" type="Node2D" parent="Entities" unique_id=385447879]
 y_sort_enabled = true
 position = Vector2(72, 32)
 
-[node name="Counter" type="Sprite2D" parent="Entities/FrontTable"]
+[node name="Counter" type="Sprite2D" parent="Entities/FrontTable" unique_id=1759627679]
 texture_filter = 1
 position = Vector2(16, 0)
 scale = Vector2(1.230769, 1.1034482)
 texture = ExtResource("6_urop6")
 offset = Vector2(0, 54)
 
-[node name="DessertCounter" type="StaticBody2D" parent="Entities/FrontTable"]
+[node name="DessertCounter" type="StaticBody2D" parent="Entities/FrontTable" unique_id=764322305 node_paths=PackedStringArray("outline_sprite")]
 script = ExtResource("7_5mwdy")
+outline_sprite = NodePath("InteractCollider/Outline")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/FrontTable/DessertCounter"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/FrontTable/DessertCounter" unique_id=238910034]
 position = Vector2(16, 110.627045)
 scale = Vector2(1.231, 1.231)
 shape = SubResource("RectangleShape2D_obde2")
 
-[node name="InteractCollider" type="Area2D" parent="Entities/FrontTable/DessertCounter"]
+[node name="InteractCollider" type="Area2D" parent="Entities/FrontTable/DessertCounter" unique_id=435094944]
 position = Vector2(0, 96)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/FrontTable/DessertCounter/InteractCollider"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/FrontTable/DessertCounter/InteractCollider" unique_id=914438573]
 position = Vector2(16.5, 14)
 shape = SubResource("RectangleShape2D_5mwdy")
 debug_color = Color(0.7, 0.5833334, 0, 0.41960785)
 
-[node name="Cashreg" type="StaticBody2D" parent="Entities/FrontTable"]
-script = ExtResource("8_sj5sr")
+[node name="Outline" type="TextureRect" parent="Entities/FrontTable/DessertCounter/InteractCollider" unique_id=999595576]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -0.99999905
+offset_top = -4.000004
+offset_right = 28.565216
+offset_bottom = 18.66666
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.15, 1.5)
+texture = ExtResource("8_nyqyl")
+expand_mode = 1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/FrontTable/Cashreg"]
+[node name="Cashreg" type="StaticBody2D" parent="Entities/FrontTable" unique_id=1758828418 node_paths=PackedStringArray("outline_sprite")]
+script = ExtResource("8_sj5sr")
+outline_sprite = NodePath("InteractCollider/Outline")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/FrontTable/Cashreg" unique_id=1485355792]
 position = Vector2(16, 64)
 scale = Vector2(1.231, 1.231)
 shape = SubResource("RectangleShape2D_yq1jw")
 
-[node name="InteractCollider" type="Area2D" parent="Entities/FrontTable/Cashreg"]
+[node name="InteractCollider" type="Area2D" parent="Entities/FrontTable/Cashreg" unique_id=1375853089]
 position = Vector2(0, 33)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/FrontTable/Cashreg/InteractCollider"]
-position = Vector2(11.75, 31.25)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/FrontTable/Cashreg/InteractCollider" unique_id=1559357100]
+position = Vector2(11.75, 29.25)
 shape = SubResource("RectangleShape2D_nsguh")
 debug_color = Color(0.7, 0.5833334, 0, 0.41960785)
 
-[node name="CoffeeMachine" type="StaticBody2D" parent="Entities/FrontTable"]
-script = ExtResource("8_yq1jw")
+[node name="Outline" type="TextureRect" parent="Entities/FrontTable/Cashreg/InteractCollider" unique_id=1291614411]
+visible = false
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2.0
+offset_top = -3.0000014
+offset_right = 27.244518
+offset_bottom = 55.023567
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.231, 1.103)
+texture = ExtResource("9_6dldk")
+expand_mode = 1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/FrontTable/CoffeeMachine"]
+[node name="CoffeeMachine" type="StaticBody2D" parent="Entities/FrontTable" unique_id=1419418585 node_paths=PackedStringArray("outline_sprite")]
+script = ExtResource("8_yq1jw")
+outline_sprite = NodePath("InteractCollider/Outline")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/FrontTable/CoffeeMachine" unique_id=1920169687]
 position = Vector2(16, 16)
 scale = Vector2(1.231, 1.231)
 shape = SubResource("RectangleShape2D_vlhgq")
 
-[node name="InteractCollider" type="Area2D" parent="Entities/FrontTable/CoffeeMachine"]
+[node name="InteractCollider" type="Area2D" parent="Entities/FrontTable/CoffeeMachine" unique_id=1193663605]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/FrontTable/CoffeeMachine/InteractCollider"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/FrontTable/CoffeeMachine/InteractCollider" unique_id=552038813]
 position = Vector2(11.75, 12)
 shape = SubResource("RectangleShape2D_sj5sr")
 debug_color = Color(0.7, 0.5833334, 0, 0.41960785)
 
-[node name="CounterSink" type="StaticBody2D" parent="Entities"]
+[node name="Outline" type="TextureRect" parent="Entities/FrontTable/CoffeeMachine/InteractCollider" unique_id=167415398]
+visible = false
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1.9299984
+offset_top = -8.0
+offset_right = 27.257654
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.231, 1.103)
+texture = ExtResource("10_5ip5d")
+expand_mode = 1
+
+[node name="CounterSink" type="StaticBody2D" parent="Entities" unique_id=782729566 node_paths=PackedStringArray("outline_sprite")]
 y_sort_enabled = true
 position = Vector2(0, 32)
 script = ExtResource("7_urop6")
+outline_sprite = NodePath("InteractCollider/Outline")
 
-[node name="Counter" type="Sprite2D" parent="Entities/CounterSink"]
+[node name="Counter" type="Sprite2D" parent="Entities/CounterSink" unique_id=1617132939]
 texture_filter = 1
 position = Vector2(16, 16)
 texture = ExtResource("7_3dscb")
 offset = Vector2(0, 16)
 
-[node name="Sink" type="Sprite2D" parent="Entities/CounterSink"]
+[node name="Sink" type="Sprite2D" parent="Entities/CounterSink" unique_id=1729150765]
 texture_filter = 1
 position = Vector2(16, 48)
 texture = ExtResource("8_obde2")
 offset = Vector2(0, 32)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/CounterSink"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/CounterSink" unique_id=1077295432]
 position = Vector2(16, 60)
 scale = Vector2(1.230769, 1.1034479)
 shape = SubResource("RectangleShape2D_3dscb")
 
-[node name="InteractCollider" type="Area2D" parent="Entities/CounterSink"]
+[node name="InteractCollider" type="Area2D" parent="Entities/CounterSink" unique_id=797597144]
 position = Vector2(0, 48)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/CounterSink/InteractCollider"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/CounterSink/InteractCollider" unique_id=1285615133]
 position = Vector2(17.5, 33)
 shape = SubResource("RectangleShape2D_urop6")
 debug_color = Color(0.7, 0.5833334, 0, 0.41960785)
 
-[node name="TablesNodes" type="Node2D" parent="Entities"]
+[node name="Outline" type="TextureRect" parent="Entities/CounterSink/InteractCollider" unique_id=1053783136]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2.0
+offset_top = -2.0
+offset_right = 34.0
+offset_bottom = 66.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("13_gn82v")
+
+[node name="TablesNodes" type="Node2D" parent="Entities" unique_id=1528184496]
 y_sort_enabled = true
 
-[node name="Table0" type="StaticBody2D" parent="Entities/TablesNodes"]
+[node name="Table0" type="StaticBody2D" parent="Entities/TablesNodes" unique_id=1311416287]
 y_sort_enabled = true
 position = Vector2(128, 32)
 
-[node name="Sprite2D" type="Sprite2D" parent="Entities/TablesNodes/Table0"]
+[node name="Sprite2D" type="Sprite2D" parent="Entities/TablesNodes/Table0" unique_id=1570495433]
 texture_filter = 1
 texture = ExtResource("11_yq1jw")
 centered = false
 offset = Vector2(0, -13)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/TablesNodes/Table0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/TablesNodes/Table0" unique_id=1900332198]
 position = Vector2(10, 4)
 shape = SubResource("RectangleShape2D_oic7s")
 
-[node name="Mat" type="StaticBody2D" parent="Entities/TablesNodes/Table0"]
+[node name="Mat" type="StaticBody2D" parent="Entities/TablesNodes/Table0" unique_id=1064778738]
 position = Vector2(21, 0)
 
-[node name="Sprite2D" type="AnimatedSprite2D" parent="Entities/TablesNodes/Table0/Mat"]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="Entities/TablesNodes/Table0/Mat" unique_id=1178180530]
 texture_filter = 1
 position = Vector2(-1, 3)
 scale = Vector2(0.65625, 0.65625)
@@ -319,28 +394,28 @@ sprite_frames = SubResource("SpriteFrames_yq1jw")
 centered = false
 offset = Vector2(0, -13)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/TablesNodes/Table0/Mat"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/TablesNodes/Table0/Mat" unique_id=854221777]
 position = Vector2(10, 8)
 shape = SubResource("RectangleShape2D_oic7s")
 
-[node name="Table1" type="StaticBody2D" parent="Entities/TablesNodes"]
+[node name="Table1" type="StaticBody2D" parent="Entities/TablesNodes" unique_id=1488771237]
 y_sort_enabled = true
 position = Vector2(200, 16)
 
-[node name="Sprite2D" type="Sprite2D" parent="Entities/TablesNodes/Table1"]
+[node name="Sprite2D" type="Sprite2D" parent="Entities/TablesNodes/Table1" unique_id=29900720]
 texture_filter = 1
 texture = ExtResource("11_yq1jw")
 centered = false
 offset = Vector2(0, -13)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/TablesNodes/Table1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/TablesNodes/Table1" unique_id=1143321747]
 position = Vector2(10, 4)
 shape = SubResource("RectangleShape2D_oic7s")
 
-[node name="Mat" type="StaticBody2D" parent="Entities/TablesNodes/Table1"]
+[node name="Mat" type="StaticBody2D" parent="Entities/TablesNodes/Table1" unique_id=1202206581]
 position = Vector2(21, 0)
 
-[node name="Sprite2D" type="AnimatedSprite2D" parent="Entities/TablesNodes/Table1/Mat"]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="Entities/TablesNodes/Table1/Mat" unique_id=1951438539]
 texture_filter = 1
 position = Vector2(-1, 3)
 scale = Vector2(0.65625, 0.65625)
@@ -349,28 +424,28 @@ frame = 2
 centered = false
 offset = Vector2(0, -13)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/TablesNodes/Table1/Mat"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/TablesNodes/Table1/Mat" unique_id=10872583]
 position = Vector2(10, 8)
 shape = SubResource("RectangleShape2D_oic7s")
 
-[node name="Table2" type="StaticBody2D" parent="Entities/TablesNodes"]
+[node name="Table2" type="StaticBody2D" parent="Entities/TablesNodes" unique_id=781051467]
 y_sort_enabled = true
 position = Vector2(264, 32)
 
-[node name="Sprite2D" type="Sprite2D" parent="Entities/TablesNodes/Table2"]
+[node name="Sprite2D" type="Sprite2D" parent="Entities/TablesNodes/Table2" unique_id=1543123981]
 texture_filter = 1
 texture = ExtResource("11_yq1jw")
 centered = false
 offset = Vector2(0, -13)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/TablesNodes/Table2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/TablesNodes/Table2" unique_id=592860350]
 position = Vector2(10, 4)
 shape = SubResource("RectangleShape2D_oic7s")
 
-[node name="Mat" type="StaticBody2D" parent="Entities/TablesNodes/Table2"]
+[node name="Mat" type="StaticBody2D" parent="Entities/TablesNodes/Table2" unique_id=547872797]
 position = Vector2(21, 0)
 
-[node name="Sprite2D" type="AnimatedSprite2D" parent="Entities/TablesNodes/Table2/Mat"]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="Entities/TablesNodes/Table2/Mat" unique_id=527123058]
 texture_filter = 1
 position = Vector2(-1, 3)
 scale = Vector2(0.65625, 0.65625)
@@ -379,28 +454,28 @@ frame = 1
 centered = false
 offset = Vector2(0, -13)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/TablesNodes/Table2/Mat"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/TablesNodes/Table2/Mat" unique_id=1428326410]
 position = Vector2(10, 8)
 shape = SubResource("RectangleShape2D_oic7s")
 
-[node name="Table3" type="StaticBody2D" parent="Entities/TablesNodes"]
+[node name="Table3" type="StaticBody2D" parent="Entities/TablesNodes" unique_id=1221536737]
 y_sort_enabled = true
 position = Vector2(328, 16)
 
-[node name="Sprite2D" type="Sprite2D" parent="Entities/TablesNodes/Table3"]
+[node name="Sprite2D" type="Sprite2D" parent="Entities/TablesNodes/Table3" unique_id=1063907176]
 texture_filter = 1
 texture = ExtResource("11_yq1jw")
 centered = false
 offset = Vector2(0, -13)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/TablesNodes/Table3"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/TablesNodes/Table3" unique_id=742295953]
 position = Vector2(10, 4)
 shape = SubResource("RectangleShape2D_oic7s")
 
-[node name="Mat" type="StaticBody2D" parent="Entities/TablesNodes/Table3"]
+[node name="Mat" type="StaticBody2D" parent="Entities/TablesNodes/Table3" unique_id=1917950087]
 position = Vector2(21, 0)
 
-[node name="Sprite2D" type="AnimatedSprite2D" parent="Entities/TablesNodes/Table3/Mat"]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="Entities/TablesNodes/Table3/Mat" unique_id=1247775160]
 texture_filter = 1
 position = Vector2(-1, 3)
 scale = Vector2(0.65625, 0.65625)
@@ -409,28 +484,28 @@ frame = 2
 centered = false
 offset = Vector2(0, -13)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/TablesNodes/Table3/Mat"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/TablesNodes/Table3/Mat" unique_id=1700799065]
 position = Vector2(10, 8)
 shape = SubResource("RectangleShape2D_oic7s")
 
-[node name="Table4" type="StaticBody2D" parent="Entities/TablesNodes"]
+[node name="Table4" type="StaticBody2D" parent="Entities/TablesNodes" unique_id=1306141106]
 y_sort_enabled = true
 position = Vector2(392, 40)
 
-[node name="Sprite2D" type="Sprite2D" parent="Entities/TablesNodes/Table4"]
+[node name="Sprite2D" type="Sprite2D" parent="Entities/TablesNodes/Table4" unique_id=1432567036]
 texture_filter = 1
 texture = ExtResource("11_yq1jw")
 centered = false
 offset = Vector2(0, -13)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/TablesNodes/Table4"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/TablesNodes/Table4" unique_id=1381536845]
 position = Vector2(10, 4)
 shape = SubResource("RectangleShape2D_oic7s")
 
-[node name="Mat" type="StaticBody2D" parent="Entities/TablesNodes/Table4"]
+[node name="Mat" type="StaticBody2D" parent="Entities/TablesNodes/Table4" unique_id=732510723]
 position = Vector2(21, 0)
 
-[node name="Sprite2D" type="AnimatedSprite2D" parent="Entities/TablesNodes/Table4/Mat"]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="Entities/TablesNodes/Table4/Mat" unique_id=170233860]
 texture_filter = 1
 position = Vector2(-1, 3)
 scale = Vector2(0.65625, 0.65625)
@@ -439,28 +514,28 @@ frame = 1
 centered = false
 offset = Vector2(0, -13)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/TablesNodes/Table4/Mat"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/TablesNodes/Table4/Mat" unique_id=1515694487]
 position = Vector2(10, 8)
 shape = SubResource("RectangleShape2D_oic7s")
 
-[node name="Table5" type="StaticBody2D" parent="Entities/TablesNodes"]
+[node name="Table5" type="StaticBody2D" parent="Entities/TablesNodes" unique_id=2055051196]
 y_sort_enabled = true
 position = Vector2(344, 112)
 
-[node name="Sprite2D" type="Sprite2D" parent="Entities/TablesNodes/Table5"]
+[node name="Sprite2D" type="Sprite2D" parent="Entities/TablesNodes/Table5" unique_id=877676148]
 texture_filter = 1
 texture = ExtResource("11_yq1jw")
 centered = false
 offset = Vector2(0, -13)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/TablesNodes/Table5"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/TablesNodes/Table5" unique_id=1493248400]
 position = Vector2(10, 4)
 shape = SubResource("RectangleShape2D_oic7s")
 
-[node name="Mat" type="StaticBody2D" parent="Entities/TablesNodes/Table5"]
+[node name="Mat" type="StaticBody2D" parent="Entities/TablesNodes/Table5" unique_id=240035078]
 position = Vector2(21, 0)
 
-[node name="Sprite2D" type="AnimatedSprite2D" parent="Entities/TablesNodes/Table5/Mat"]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="Entities/TablesNodes/Table5/Mat" unique_id=8091336]
 texture_filter = 1
 position = Vector2(-1, 3)
 scale = Vector2(0.65625, 0.65625)
@@ -468,28 +543,28 @@ sprite_frames = SubResource("SpriteFrames_yq1jw")
 centered = false
 offset = Vector2(0, -13)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/TablesNodes/Table5/Mat"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/TablesNodes/Table5/Mat" unique_id=2061391892]
 position = Vector2(10, 8)
 shape = SubResource("RectangleShape2D_oic7s")
 
-[node name="Table6" type="StaticBody2D" parent="Entities/TablesNodes"]
+[node name="Table6" type="StaticBody2D" parent="Entities/TablesNodes" unique_id=1054879368]
 y_sort_enabled = true
 position = Vector2(296, 144)
 
-[node name="Sprite2D" type="Sprite2D" parent="Entities/TablesNodes/Table6"]
+[node name="Sprite2D" type="Sprite2D" parent="Entities/TablesNodes/Table6" unique_id=126241602]
 texture_filter = 1
 texture = ExtResource("11_yq1jw")
 centered = false
 offset = Vector2(0, -13)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/TablesNodes/Table6"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/TablesNodes/Table6" unique_id=1340850896]
 position = Vector2(10, 4)
 shape = SubResource("RectangleShape2D_oic7s")
 
-[node name="Mat" type="StaticBody2D" parent="Entities/TablesNodes/Table6"]
+[node name="Mat" type="StaticBody2D" parent="Entities/TablesNodes/Table6" unique_id=1829318624]
 position = Vector2(21, 0)
 
-[node name="Sprite2D" type="AnimatedSprite2D" parent="Entities/TablesNodes/Table6/Mat"]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="Entities/TablesNodes/Table6/Mat" unique_id=765723994]
 texture_filter = 1
 position = Vector2(-1, 3)
 scale = Vector2(0.65625, 0.65625)
@@ -498,28 +573,28 @@ frame = 2
 centered = false
 offset = Vector2(0, -13)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/TablesNodes/Table6/Mat"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/TablesNodes/Table6/Mat" unique_id=681842866]
 position = Vector2(10, 8)
 shape = SubResource("RectangleShape2D_oic7s")
 
-[node name="Table7" type="StaticBody2D" parent="Entities/TablesNodes"]
+[node name="Table7" type="StaticBody2D" parent="Entities/TablesNodes" unique_id=1695868441]
 y_sort_enabled = true
 position = Vector2(248, 120)
 
-[node name="Sprite2D" type="Sprite2D" parent="Entities/TablesNodes/Table7"]
+[node name="Sprite2D" type="Sprite2D" parent="Entities/TablesNodes/Table7" unique_id=1948895042]
 texture_filter = 1
 texture = ExtResource("11_yq1jw")
 centered = false
 offset = Vector2(0, -13)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/TablesNodes/Table7"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/TablesNodes/Table7" unique_id=974394738]
 position = Vector2(10, 4)
 shape = SubResource("RectangleShape2D_oic7s")
 
-[node name="Mat" type="StaticBody2D" parent="Entities/TablesNodes/Table7"]
+[node name="Mat" type="StaticBody2D" parent="Entities/TablesNodes/Table7" unique_id=1032491988]
 position = Vector2(21, 0)
 
-[node name="Sprite2D" type="AnimatedSprite2D" parent="Entities/TablesNodes/Table7/Mat"]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="Entities/TablesNodes/Table7/Mat" unique_id=1864658429]
 texture_filter = 1
 position = Vector2(-1, 3)
 scale = Vector2(0.65625, 0.65625)
@@ -528,28 +603,28 @@ frame = 1
 centered = false
 offset = Vector2(0, -13)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/TablesNodes/Table7/Mat"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/TablesNodes/Table7/Mat" unique_id=656216537]
 position = Vector2(10, 8)
 shape = SubResource("RectangleShape2D_oic7s")
 
-[node name="Table8" type="StaticBody2D" parent="Entities/TablesNodes"]
+[node name="Table8" type="StaticBody2D" parent="Entities/TablesNodes" unique_id=574348859]
 y_sort_enabled = true
 position = Vector2(176, 128)
 
-[node name="Sprite2D" type="Sprite2D" parent="Entities/TablesNodes/Table8"]
+[node name="Sprite2D" type="Sprite2D" parent="Entities/TablesNodes/Table8" unique_id=1652954219]
 texture_filter = 1
 texture = ExtResource("11_yq1jw")
 centered = false
 offset = Vector2(0, -13)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/TablesNodes/Table8"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/TablesNodes/Table8" unique_id=1973180159]
 position = Vector2(10, 4)
 shape = SubResource("RectangleShape2D_oic7s")
 
-[node name="Mat" type="StaticBody2D" parent="Entities/TablesNodes/Table8"]
+[node name="Mat" type="StaticBody2D" parent="Entities/TablesNodes/Table8" unique_id=1628874985]
 position = Vector2(21, 0)
 
-[node name="Sprite2D" type="AnimatedSprite2D" parent="Entities/TablesNodes/Table8/Mat"]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="Entities/TablesNodes/Table8/Mat" unique_id=1133647518]
 texture_filter = 1
 position = Vector2(-1, 3)
 scale = Vector2(0.65625, 0.65625)
@@ -558,28 +633,28 @@ frame = 2
 centered = false
 offset = Vector2(0, -13)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/TablesNodes/Table8/Mat"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/TablesNodes/Table8/Mat" unique_id=1083905645]
 position = Vector2(10, 8)
 shape = SubResource("RectangleShape2D_oic7s")
 
-[node name="Table9" type="StaticBody2D" parent="Entities/TablesNodes"]
+[node name="Table9" type="StaticBody2D" parent="Entities/TablesNodes" unique_id=353259820]
 y_sort_enabled = true
 position = Vector2(128, 152)
 
-[node name="Sprite2D" type="Sprite2D" parent="Entities/TablesNodes/Table9"]
+[node name="Sprite2D" type="Sprite2D" parent="Entities/TablesNodes/Table9" unique_id=1001920170]
 texture_filter = 1
 texture = ExtResource("11_yq1jw")
 centered = false
 offset = Vector2(0, -13)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/TablesNodes/Table9"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/TablesNodes/Table9" unique_id=2112021285]
 position = Vector2(10, 4)
 shape = SubResource("RectangleShape2D_oic7s")
 
-[node name="Mat" type="StaticBody2D" parent="Entities/TablesNodes/Table9"]
+[node name="Mat" type="StaticBody2D" parent="Entities/TablesNodes/Table9" unique_id=984611499]
 position = Vector2(21, 0)
 
-[node name="Sprite2D" type="AnimatedSprite2D" parent="Entities/TablesNodes/Table9/Mat"]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="Entities/TablesNodes/Table9/Mat" unique_id=2119267100]
 texture_filter = 1
 position = Vector2(-1, 3)
 scale = Vector2(0.65625, 0.65625)
@@ -587,19 +662,20 @@ sprite_frames = SubResource("SpriteFrames_yq1jw")
 centered = false
 offset = Vector2(0, -13)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/TablesNodes/Table9/Mat"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/TablesNodes/Table9/Mat" unique_id=51092628]
 position = Vector2(10, 8)
 shape = SubResource("RectangleShape2D_oic7s")
 
-[node name="RightEdge" type="ColorRect" parent="."]
+[node name="RightEdge" type="ColorRect" parent="." unique_id=311667239]
 offset_left = 456.0
 offset_right = 674.0
 offset_bottom = 193.0
 color = Color(0, 0, 0, 1)
 
-[node name="Interface" type="CanvasLayer" parent="."]
+[node name="Interface" type="CanvasLayer" parent="." unique_id=1102546518]
+visible = false
 
-[node name="Container" type="Control" parent="Interface"]
+[node name="Container" type="Control" parent="Interface" unique_id=1630293698]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -608,7 +684,7 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_lock_ = true
 
-[node name="TopLeft" type="HBoxContainer" parent="Interface/Container"]
+[node name="TopLeft" type="HBoxContainer" parent="Interface/Container" unique_id=2080264871]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -618,13 +694,13 @@ offset_right = -630.0
 offset_bottom = 100.0
 grow_horizontal = 0
 
-[node name="Day" type="TextureRect" parent="Interface/Container/TopLeft"]
+[node name="Day" type="TextureRect" parent="Interface/Container/TopLeft" unique_id=1203475394]
 texture_filter = 1
 custom_minimum_size = Vector2(140, 100)
 layout_mode = 2
 texture = ExtResource("15_oic7s")
 
-[node name="Day" type="Label" parent="Interface/Container/TopLeft/Day"]
+[node name="Day" type="Label" parent="Interface/Container/TopLeft/Day" unique_id=659937523]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -640,7 +716,7 @@ label_settings = SubResource("LabelSettings_hmors")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Num" type="Label" parent="Interface/Container/TopLeft/Day"]
+[node name="Num" type="Label" parent="Interface/Container/TopLeft/Day" unique_id=1892197249]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -656,7 +732,7 @@ label_settings = SubResource("LabelSettings_jr2k8")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TopRight" type="HBoxContainer" parent="Interface/Container"]
+[node name="TopRight" type="HBoxContainer" parent="Interface/Container" unique_id=238298790]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -667,13 +743,13 @@ offset_bottom = 100.0
 grow_horizontal = 0
 alignment = 2
 
-[node name="Timer" type="TextureRect" parent="Interface/Container/TopRight"]
+[node name="Timer" type="TextureRect" parent="Interface/Container/TopRight" unique_id=268856008]
 texture_filter = 1
 custom_minimum_size = Vector2(250, 100)
 layout_mode = 2
 texture = ExtResource("15_oic7s")
 
-[node name="Title" type="Label" parent="Interface/Container/TopRight/Timer"]
+[node name="Title" type="Label" parent="Interface/Container/TopRight/Timer" unique_id=515170638]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -689,7 +765,7 @@ label_settings = SubResource("LabelSettings_hmors")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CurrentTime" type="Label" parent="Interface/Container/TopRight/Timer"]
+[node name="CurrentTime" type="Label" parent="Interface/Container/TopRight/Timer" unique_id=1075865060]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -705,7 +781,7 @@ label_settings = SubResource("LabelSettings_jr2k8")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Satisfaction" type="TextureRect" parent="Interface/Container/TopRight"]
+[node name="Satisfaction" type="TextureRect" parent="Interface/Container/TopRight" unique_id=1629591225]
 texture_filter = 1
 custom_minimum_size = Vector2(130, 90)
 layout_mode = 2
@@ -713,14 +789,14 @@ texture = ExtResource("17_cbydh")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Spinner" type="Sprite2D" parent="Interface/Container/TopRight/Satisfaction"]
+[node name="Spinner" type="Sprite2D" parent="Interface/Container/TopRight/Satisfaction" unique_id=960401601]
 position = Vector2(65, 51.76137)
 rotation = 2.0943952
 scale = Vector2(4, 3.7)
 texture = ExtResource("18_ncafe")
 offset = Vector2(0, -4)
 
-[node name="Title" type="Label" parent="Interface/Container/TopRight/Satisfaction"]
+[node name="Title" type="Label" parent="Interface/Container/TopRight/Satisfaction" unique_id=1920893925]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -736,15 +812,15 @@ label_settings = SubResource("LabelSettings_ncafe")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CoffeeMachineSim" parent="Interface/Container" instance=ExtResource("19_xcxqu")]
+[node name="CoffeeMachineSim" parent="Interface/Container" unique_id=1006988371 instance=ExtResource("19_xcxqu")]
 visible = false
 layout_mode = 1
 
-[node name="GameOver" parent="Interface/Container" instance=ExtResource("19_gupgk")]
+[node name="GameOver" parent="Interface/Container" unique_id=1058357363 instance=ExtResource("19_gupgk")]
 visible = false
 layout_mode = 1
 
-[node name="BlackOverlay" type="ColorRect" parent="Interface/Container"]
+[node name="BlackOverlay" type="ColorRect" parent="Interface/Container" unique_id=687820454]
 visible = false
 self_modulate = Color(1, 1, 1, 0.6745098)
 z_index = 9
@@ -756,7 +832,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="DayCnt" type="Control" parent="Interface/Container/BlackOverlay"]
+[node name="DayCnt" type="Control" parent="Interface/Container/BlackOverlay" unique_id=217155929]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -764,7 +840,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Day" type="Label" parent="Interface/Container/BlackOverlay/DayCnt"]
+[node name="Day" type="Label" parent="Interface/Container/BlackOverlay/DayCnt" unique_id=221783295]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -777,7 +853,7 @@ label_settings = SubResource("LabelSettings_p0iq8")
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="Control" type="Control" parent="Interface/Container/BlackOverlay/DayCnt"]
+[node name="Control" type="Control" parent="Interface/Container/BlackOverlay/DayCnt" unique_id=510220235]
 clip_contents = true
 anchors_preset = 0
 offset_left = 600.0
@@ -785,7 +861,7 @@ offset_top = 285.5
 offset_right = 1170.0
 offset_bottom = 434.5
 
-[node name="Alignment" type="VBoxContainer" parent="Interface/Container/BlackOverlay/DayCnt/Control"]
+[node name="Alignment" type="VBoxContainer" parent="Interface/Container/BlackOverlay/DayCnt/Control" unique_id=356431243]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -795,36 +871,36 @@ offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Old" type="Label" parent="Interface/Container/BlackOverlay/DayCnt/Control/Alignment"]
+[node name="Old" type="Label" parent="Interface/Container/BlackOverlay/DayCnt/Control/Alignment" unique_id=1717634677]
 layout_mode = 2
 text = "1"
 label_settings = SubResource("LabelSettings_p0iq8")
 vertical_alignment = 1
 
-[node name="New" type="Label" parent="Interface/Container/BlackOverlay/DayCnt/Control/Alignment"]
+[node name="New" type="Label" parent="Interface/Container/BlackOverlay/DayCnt/Control/Alignment" unique_id=1927634907]
 layout_mode = 2
 text = "2"
 label_settings = SubResource("LabelSettings_p0iq8")
 vertical_alignment = 1
 
-[node name="SectionComplete" parent="Interface/Container" instance=ExtResource("21_up1lg")]
+[node name="SectionComplete" parent="Interface/Container" unique_id=641731055 instance=ExtResource("21_up1lg")]
 visible = false
 layout_mode = 1
 is_night = false
 
-[node name="PauseMenu" parent="Interface/Container" instance=ExtResource("20_p0iq8")]
+[node name="PauseMenu" parent="Interface/Container" unique_id=1229215804 instance=ExtResource("20_p0iq8")]
 visible = false
 layout_mode = 1
 is_night = false
 
-[node name="DaylightTime" type="Timer" parent="."]
+[node name="DaylightTime" type="Timer" parent="." unique_id=1253265301]
 wait_time = 480.0
 
-[node name="TimeOfDayLighting" type="DirectionalLight2D" parent="."]
+[node name="TimeOfDayLighting" type="DirectionalLight2D" parent="." unique_id=1263230516]
 color = Color(0, 0, 0, 1)
 blend_mode = 1
 
-[node name="DaytimeTheme" type="AudioStreamPlayer" parent="."]
+[node name="DaytimeTheme" type="AudioStreamPlayer" parent="." unique_id=913825034]
 stream = ExtResource("17_jr2k8")
 volume_db = -30.0
 autoplay = true

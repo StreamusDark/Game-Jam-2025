@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cfwuxa35v5ble"]
+[gd_scene format=3 uid="uid://cfwuxa35v5ble"]
 
 [ext_resource type="Script" uid="uid://d05b6plqc4d06" path="res://Scenes/PauseMenu/PauseMenu.gd" id="1_456hk"]
 [ext_resource type="Texture2D" uid="uid://can6ddmhretak" path="res://Scenes/PauseMenu/pause_day.png" id="1_kgxba"]
@@ -99,7 +99,7 @@ texture_margin_bottom = 11.0
 expand_margin_top = 3.0
 expand_margin_bottom = 3.0
 
-[node name="PauseMenu" type="Control"]
+[node name="PauseMenu" type="Control" unique_id=554470993]
 process_mode = 2
 z_index = 10
 layout_mode = 3
@@ -111,7 +111,7 @@ grow_vertical = 2
 script = ExtResource("1_456hk")
 is_night = true
 
-[node name="BG" type="ColorRect" parent="."]
+[node name="BG" type="ColorRect" parent="." unique_id=1677484437]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -121,14 +121,14 @@ grow_vertical = 2
 color = Color(0, 0, 0, 0.6745098)
 metadata/_edit_lock_ = true
 
-[node name="Pause" type="AnimatedSprite2D" parent="."]
+[node name="Pause" type="AnimatedSprite2D" parent="." unique_id=1233984652]
 texture_filter = 1
 position = Vector2(418, 248)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_d7lcw")
 animation = &"day"
 
-[node name="Continue" type="NinePatchRect" parent="."]
+[node name="Continue" type="NinePatchRect" parent="." unique_id=817442359]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 8
@@ -149,7 +149,7 @@ patch_margin_top = 9
 patch_margin_right = 15
 patch_margin_bottom = 8
 
-[node name="Title" type="Label" parent="Continue"]
+[node name="Title" type="Label" parent="Continue" unique_id=1737614084]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -161,7 +161,7 @@ label_settings = SubResource("LabelSettings_x6lxg")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="Continue"]
+[node name="Button" type="Button" parent="Continue" unique_id=326659708]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -171,7 +171,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_default_cursor_shape = 2
 
-[node name="Hover" type="NinePatchRect" parent="Continue"]
+[node name="Hover" type="NinePatchRect" parent="Continue" unique_id=862081082]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -190,7 +190,7 @@ patch_margin_top = 9
 patch_margin_right = 23
 patch_margin_bottom = 8
 
-[node name="Quit" type="NinePatchRect" parent="."]
+[node name="Quit" type="NinePatchRect" parent="." unique_id=838952562]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 8
@@ -211,7 +211,7 @@ patch_margin_top = 9
 patch_margin_right = 15
 patch_margin_bottom = 8
 
-[node name="Title" type="Label" parent="Quit"]
+[node name="Title" type="Label" parent="Quit" unique_id=774401829]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -223,7 +223,7 @@ label_settings = SubResource("LabelSettings_x6lxg")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="Quit"]
+[node name="Button" type="Button" parent="Quit" unique_id=110673379]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -233,7 +233,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_default_cursor_shape = 2
 
-[node name="Hover" type="NinePatchRect" parent="Quit"]
+[node name="Hover" type="NinePatchRect" parent="Quit" unique_id=1624262779]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -252,7 +252,7 @@ patch_margin_top = 9
 patch_margin_right = 23
 patch_margin_bottom = 8
 
-[node name="Objective" type="NinePatchRect" parent="."]
+[node name="Objective" type="NinePatchRect" parent="." unique_id=1219765433]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -272,7 +272,7 @@ patch_margin_top = 9
 patch_margin_right = 15
 patch_margin_bottom = 8
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Objective"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Objective" unique_id=705673234]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -284,14 +284,14 @@ offset_bottom = 5.645233
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Title" type="Label" parent="Objective/VBoxContainer"]
+[node name="Title" type="Label" parent="Objective/VBoxContainer" unique_id=1264373287]
 layout_mode = 2
 text = "Objective"
 label_settings = SubResource("LabelSettings_ifvnd")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Description" type="Label" parent="Objective/VBoxContainer"]
+[node name="Description" type="Label" parent="Objective/VBoxContainer" unique_id=1436716137]
 custom_minimum_size = Vector2(0, 350)
 layout_mode = 2
 text = "Your job is to serve the customers coming in the coffees they order! Keep the satisfaction meter up by serving them in order to complete the day! Satisfaction goes down when you have not been attentive to the customers."
@@ -299,7 +299,7 @@ label_settings = SubResource("LabelSettings_456hk")
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="MusicSlider" type="HSlider" parent="."]
+[node name="MusicSlider" type="HSlider" parent="." unique_id=66355625]
 texture_filter = 1
 layout_mode = 0
 offset_left = 297.0
@@ -314,7 +314,7 @@ max_value = 1.0
 step = 0.001
 value = 1.0
 
-[node name="Title" type="Label" parent="MusicSlider"]
+[node name="Title" type="Label" parent="MusicSlider" unique_id=1138965864]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -328,7 +328,7 @@ label_settings = SubResource("LabelSettings_x6lxg")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SoundsSlider" type="HSlider" parent="."]
+[node name="SoundsSlider" type="HSlider" parent="." unique_id=1511279451]
 texture_filter = 1
 layout_mode = 0
 offset_left = 297.0
@@ -343,7 +343,7 @@ max_value = 1.0
 step = 0.001
 value = 1.0
 
-[node name="Title" type="Label" parent="SoundsSlider"]
+[node name="Title" type="Label" parent="SoundsSlider" unique_id=1664656245]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

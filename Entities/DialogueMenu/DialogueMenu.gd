@@ -44,6 +44,11 @@ func _input(event: InputEvent) -> void:
 					GameManager.destroy_dialogue(self)
 				else:
 					update_dialogue(dialogue_data[dialogue_progress])
+	else:
+		if event is InputEventKey:
+			if event.is_action("kick"):
+				on_dialogue_section_complete()
+				content_menu.visible_characters = -1
 
 func update_dialogue(message_data: Dictionary) -> void:
 	is_complete = false
@@ -68,20 +73,24 @@ func update_dialogue(message_data: Dictionary) -> void:
 	letter_timer.start()
 
 func letter_timer_timeout() -> void:
+	if content_menu.visible_ratio >= 1.0:
+		on_dialogue_section_complete()
+	
 	var chr = current_sentence_filtered[content_menu.visible_characters-1]
 	if chr in ['!', '.', '?', ',']:
 		voice_playing = false
 		await GameManager.wait_seconds(0.5)
+		if content_menu.visible_ratio >= 1.0: return
 		voice_playing = true
 		voice_sound.play(0)
 	
 	content_menu.visible_characters += 1
-	
-	if content_menu.visible_ratio >= 1.0:
-		continue_icon.visible = true
-		voice_playing = false
-		is_complete = true
-		letter_timer.stop()
+
+func on_dialogue_section_complete():
+	continue_icon.visible = true
+	voice_playing = false
+	is_complete = true
+	letter_timer.stop()
 
 func voicesound_finished() -> void:
 	if voice_playing:

@@ -16,6 +16,7 @@ var animation_prefix = ""
 
 @export_category("Node References")
 @export var player_sprite: AnimatedSprite2D
+@export var player_collision: CollisionShape2D
 @export var kick_sprite: AnimatedSprite2D
 @export var kick_area: Area2D
 

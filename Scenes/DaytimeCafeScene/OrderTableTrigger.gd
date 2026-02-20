@@ -22,6 +22,7 @@ func on_interact():
 	if len(queue) == 0: return
 	
 	var latest: Customer = queue[0]
+	if (not latest.awaiting_order_taken): return        # Don't let player interact when they're not even in the queue yet.
 	
 	var dialogue_data: Array[Dictionary] = [{
 		"name": latest.customer_name, 

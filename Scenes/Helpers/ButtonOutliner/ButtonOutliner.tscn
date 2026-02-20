@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://oy7b53j5p23v"]
+
+[ext_resource type="Script" uid="uid://cgkd1ge70o3qf" path="res://Scenes/Helpers/ButtonOutliner/ButtonOutliner.gd" id="1_6kji2"]
+
+[node name="ButtonOutliner" type="Node" unique_id=304757876]
+script = ExtResource("1_6kji2")

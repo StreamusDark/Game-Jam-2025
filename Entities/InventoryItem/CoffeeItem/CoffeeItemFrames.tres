@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=5 format=3 uid="uid://cwv7hxln7hrnl"]
+[gd_resource type="SpriteFrames" format=3 uid="uid://cwv7hxln7hrnl"]
 
 [ext_resource type="Texture2D" uid="uid://8g2cftq8tyi3" path="res://Entities/InventoryItem/CoffeeItem/CoffeeSpritesheet.png" id="1_rs4yo"]
 

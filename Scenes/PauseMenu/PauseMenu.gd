@@ -38,7 +38,9 @@ func quit_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scenes/TitleScreen/TitleScreen.tscn")
 
 func music_changed(value_changed: bool) -> void:
-	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), linear_to_db($MusicSlider.value))
+	if value_changed:
+		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), linear_to_db($MusicSlider.value))
 
 func sfx_changed(value_changed: bool) -> void:
-	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SoundEffects"), linear_to_db($SoundsSlider.value))
+	if value_changed:
+		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SoundEffects"), linear_to_db($SoundsSlider.value))
